@@ -219,7 +219,7 @@ print("\27[36m"..[[
 |  | |_| |  _ <  / ___ \ |_| | |_| | |\  |  |
 |  |____/|_| \_\/_/   \_\____|\___/|_| \_|  |
 |-------------------------------------------|
-|This Source Was Developed By (SOFI) @s00f4.|
+|This Source Was Developed By (Ahme) @s00f4.|
 |   This Is The Source Channel @S0DRG .     |
 |                - Dragon -                 |
 ---------------------------------------------
