@@ -5159,7 +5159,6 @@ keyboard = {}
 keyboard.inline_keyboard = {
 {
 {text = ' مــطــور الــبــوت🔰', url="http://t.me/"U_U_U_Q},
-},
 }
 local function getpro(extra, result, success) 
 if result.photos_[0] then 
