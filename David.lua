@@ -3421,22 +3421,35 @@ SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
 end
 --     Source David     --
+
 if text == '/start' and ChCheck(msg) then  
 if not DevRio:get(David..'Rio:Start:Time'..msg.sender_user_id_) then
-tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp) 
-local inline = {{{text="• ᥀ المطور . •",url="t.me/"..(dp.username_ or "SOURCEANUBIS")}},{{text="• ᥀ السورس . •",url="https://t.me/SOURCEANUBIS"},{text="• ᥀ لتنصيب بوت . •",url="https://t.me/U_U_U_Q"}},{{text="• ᥀ اضفني في مجموعتك . •",url="t.me/"..dp.username_.."?startgroup=botstart"}}}
-local start = DevRio:get(David.."Rio:Start:Bot")
-if start then 
-Start_Source = start
-else
-Start_Source = "᥀︙مرحبا انا بوت اسمي "..NameBot.."\n᥀︙اختصاصي حماية المجموعات\n᥀︙من التفليش والسبام والخخ .. . ،\n᥀︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر ↫ تفعيل\n᥀︙سيتم رفع الادمنيه والمنشئ تلقائيا\n᥀︙ارسل امر /free او /play للتمتع باوامر الاعضاء"
+local Namebot = (DevRio:get(David..'Name:Bot') or 'سوريا') 
+local ANUBIS_Msg = { 
+' ـــــــــــــــــــــــــــــــــــــــــــــــ\n   🤖╖ أهلآ بك عزيزي أنا بوت  '..Namebot..'\n🌐╢ وظيفتي حماية المجموعات\n✅╢ لتفعيل البوت عليك اتباع مايلي \n🔘╢ أضِف البوت إلى مجموعتك\n⚡️╢ ارفعهُ » مشرف\n⬆️╜ سيتم ترقيتك مالك في البوت لاوامر التسليه اضغط /free او اظهار الكيب\nــــــــــــــــــــــــــــــــــــــــــــــــــــ ',
+} 
+Namebot = David_Msg[math.random(#David_Msg)] 
+local msg_id = msg.id_/2097152/0.5  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'معلومات📚', callback_data="/change-hhh"},{text = 'السورس🌀', callback_data="/change-siusr"},
+},
+{
+{text = 'الابراج🔮', callback_data="/zDRGd"},{text = 'الالعاب🎮', callback_data="/add"},
+},
+}
+local function getpro(extra, result, success) 
+if result.photos_[0] then 
+https.request("https://api.telegram.org/bot"..token..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo='..result.photos_[0].sizes_[1].photo_.persistent_id_..'&caption=' .. URL.escape(Namebot).."&photo="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+else 
+send(msg.chat_id_, msg.id_,Namebot, 1, 'md') 
 end 
-SendInline(msg.chat_id_,Start_Source,nil,inline)
-end,nil)
+end 
+tdcli_function ({ ID = "GetUserProfilePhotos", user_id_ = David, offset_ = 0, limit_ = 1 }, getpro, nil) 
 end
-DevRio:setex(David..'Rio:Start:Time'..msg.sender_user_id_,300,true)
-return false
-end 
+end
+end
 --     Source David     --
 if not SecondSudo(msg) and not DevRio:sismember(David..'Rio:Ban:Pv',msg.sender_user_id_) and not DevRio:get(David..'Rio:Texting:Pv') then
 tdcli_function({ID="GetUser",user_id_=DevId},function(arg,chat) 
