@@ -5158,7 +5158,7 @@ local msg_id = msg.id_/2097152/0.5
 keyboard = {} 
 keyboard.inline_keyboard = {
 {
-{text = ' مــطــور الــبــوت🔰', url="http://t.me/"U_U_U_Q},
+{text = ' مــطــور الــبــوت🔰', url="http://t.me/U_U_U_Q},
 }
 local function getpro(extra, result, success) 
 if result.photos_[0] then 
