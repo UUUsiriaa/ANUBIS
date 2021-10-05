@@ -1,10 +1,10 @@
 ------------------------------------------------
--- This Source Was Developed By ( Ahme) @U_U_U_Q.--
+-- This Source Was Developed By ( SOFI) @U_U_U_Q.--
 --   This Is The Source Channel @SOURCEANUBIS .     --
 --                 - ANUBIS -                 --
 --         -- https://t.me/SOURCEANUBIS --          --
 ------------------------------------------------ 
-Dev Ahme  = dofile("./Src_ANUBIS/redis.lua").connect("127.0.0.1", 6379)
+Dev SOFI  = dofile("./Src_ANUBIS/redis.lua").connect("127.0.0.1", 6379)
 serpent = dofile("./Src_ANUBIS/serpent.lua")
 JSON    = dofile("./Src_ANUBIS/dkjson.lua")
 json    = dofile("./Src_ANUBIS/JSON.lua")
@@ -21,18 +21,18 @@ Port    = io.popen("echo ${SSH_CLIENT} | awk '{ port = $3 } END { print port }'"
 UpTime  = io.popen([[uptime | awk -F'( |,|:)+' '{if ($7=="min") m=$6; else {if ($7~/^day/) {d=$6;h=$8;m=$9} else {h=$6;m=$7}}} {print d+0,"days,",h+0,"hours,",m+0,"minutes"}']]):read('*a'):gsub('[\n\r]+', '')
 --     Source ANUBIS     --
 local AutoSet = function() 
-if not Dev Ahme:get(Server_ANUBIS.."IdANUBIS") then 
+if not Dev SOFI:get(Server_ANUBIS.."IdANUBIS") then 
 io.write('\27[1;35m\nالان ارسل ايدي المطور الاساسي ↫ ⤈\n\27[0;33;49m') 
 local ⁦DevId = io.read():gsub(' ','') 
 if tostring(⁦DevId):match('%d+') then 
 io.write('\27[1;36mتم حفظ ايدي المطور الاساسي\n27[0;39;49m') 
-Dev Ahme:set(Server_ANUBIS.."IdANUBIS",⁦DevId) 
+Dev SOFI:set(Server_ANUBIS.."IdANUBIS",⁦DevId) 
 else 
 print('\27[1;31mꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\nلم يتم حفظ ايدي المطور الاساسي ارسله مره اخرى\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ') 
 end 
 os.execute('lua ANUBIS.lua') 
 end 
-if not Dev Ahme:get(Server_ANUBIS.."TokenANUBIS") then 
+if not Dev SOFI:get(Server_ANUBIS.."TokenANUBIS") then 
 io.write('\27[1;35m\nالان قم بارسال توكن البوت ↫ ⤈\n\27[0;33;49m') 
 local TokenBot = io.read() 
 if TokenBot ~= '' then 
@@ -42,8 +42,8 @@ if res ~= 200 then
 print('\27[1;31mꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\nالتوكن غير صحيح تاكد منه ثم ارسله\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ') 
 else 
 io.write('\27[1;36mتم حفظ توكن البوت بنجاح\n27[0;39;49m') 
-Dev Ahme:set(Server_ANUBIS.."TokenANUBIS",TokenBot) 
-Dev Ahme:set(Server_ANUBIS.."Token_username",""..data.result.username)
+Dev SOFI:set(Server_ANUBIS.."TokenANUBIS",TokenBot) 
+Dev SOFI:set(Server_ANUBIS.."Token_username",""..data.result.username)
 end  
 else 
 print('\27[1;31mꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\nلم يتم حفظ توكن البوت ارسله مره اخرى\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ') 
@@ -63,17 +63,17 @@ file:close()
 end
 local CreateConfigAuto = function()
 Config = {
-⁦DevId = Dev Ahme:get(Server_ANUBIS.."IdANUBIS"),
-TokenBot = Dev Ahme:get(Server_ANUBIS.."TokenANUBIS"),
-ANUBIS = Dev Ahme:get(Server_ANUBIS.."TokenANUBIS"):match("(%d+)"),
-SudoIds = {Dev Ahme:get(Server_ANUBIS.."IdANUBIS")},
+⁦DevId = Dev SOFI:get(Server_ANUBIS.."IdANUBIS"),
+TokenBot = Dev SOFI:get(Server_ANUBIS.."TokenANUBIS"),
+ANUBIS = Dev SOFI:get(Server_ANUBIS.."TokenANUBIS"):match("(%d+)"),
+SudoIds = {Dev SOFI:get(Server_ANUBIS.."IdANUBIS")},
 }
 Create(Config, "./config.lua") 
 file = io.open("ANUBIS.sh", "w")  
 file:write([[
 #!/usr/bin/env bash
 cd $HOME/ANUBIS
-token="]]..Dev Ahme:get(Server_ANUBIS.."TokenANUBIS")..[["
+token="]]..Dev SOFI:get(Server_ANUBIS.."TokenANUBIS")..[["
 while(true) do
 rm -fr ../.telegram-cli
 if [ ! -f ./tg ]; then
@@ -114,7 +114,7 @@ if not f then
 AutoSet() 
 else 
 f:close() 
-Dev Ahme:del(Server_ANUBIS.."IdANUBIS");Dev Ahme:del(Server_ANUBIS.."TokenANUBIS")
+Dev SOFI:del(Server_ANUBIS.."IdANUBIS");Dev SOFI:del(Server_ANUBIS.."TokenANUBIS")
 end 
 local config = loadfile("./config.lua")() 
 return config 
@@ -128,7 +128,7 @@ print("\27[36m"..[[
 |  | |_| |  _ <  / ___ \ |_| | |_| | |\  |  |
 |  |____/|_| \_\/_/   \_\____|\___/|_| \_|  |
 |-------------------------------------------|
-|This Source Was Developed By ( Ahme) @U_U_U_Q.|
+|This Source Was Developed By ( SOFI) @U_U_U_Q.|
 |   This Is The Source Channel @S0DRG .     |
 |                - ANUBIS -                 |
 ---------------------------------------------
@@ -138,7 +138,7 @@ Config = dofile("./config.lua")
 SudoIds = {Config.SudoIds,119541395,1950281200}
 ANUBIS = Config.ANUBIS
 TokenBot = Config.TokenBot
-NameBot = (Dev Ahme:get(ANUBIS..' Ahme:NameBot') or 'انوبيس')
+NameBot = (Dev SOFI:get(ANUBIS..' SOFI:NameBot') or 'انوبيس')
 --     Source ANUBIS     --
 FilesPrint = "\27[35m".."\nAll Source Files Started ↬ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ ≈ ┉ ≈ ┉\n"..'\27[m'
 FilesNumber = 0
@@ -187,7 +187,7 @@ end
 --     Source ANUBIS     --
 -------  SecondSudo  -------
 function SecondSudo(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:',msg.sender_user_id_) 
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:',msg.sender_user_id_) 
 if Status or Sudo(msg) then  
 return true  
 else  
@@ -206,7 +206,7 @@ end
 --     Source ANUBIS     --
 ---------  SudoBot  --------
 function SudoBot(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:SudoBot:',msg.sender_user_id_) 
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:SudoBot:',msg.sender_user_id_) 
 if Status or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
@@ -216,7 +216,7 @@ end
 --     Source ANUBIS     --
 ---------Manager All--------
 function ManagerAll(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:ManagerAll:',msg.sender_user_id_) 
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:ManagerAll:',msg.sender_user_id_) 
 if Status or SudoBot(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
@@ -226,7 +226,7 @@ end
 --     Source ANUBIS     --
 --------- Admin All --------
 function AdminAll(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:AdminAll:',msg.sender_user_id_) 
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:AdminAll:',msg.sender_user_id_) 
 if Status or SudoBot(msg) or ManagerAll(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
@@ -236,7 +236,7 @@ end
 --     Source ANUBIS     --
 ------ Vip Member All ------
 function VipAll(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:VipAll:',msg.sender_user_id_) 
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:VipAll:',msg.sender_user_id_) 
 if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
@@ -244,9 +244,9 @@ return false
 end  
 end
 --     Source ANUBIS     --
-----    AhmeConstructor   ----
-function  AhmeConstructor(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,msg.sender_user_id_) 
+----    SOFIConstructor   ----
+function  SOFIConstructor(msg) 
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,msg.sender_user_id_) 
 if Status or SudoBot(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
@@ -256,8 +256,8 @@ end
 --     Source ANUBIS     --
 ----  BasicConstructor  ----
 function BasicConstructor(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or  AhmeConstructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,msg.sender_user_id_) 
+if Status or SudoBot(msg) or  SOFIConstructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -266,8 +266,8 @@ end
 --     Source ANUBIS     --
 ----    Constructor     ----
 function Constructor(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or  AhmeConstructor(msg) or BasicConstructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,msg.sender_user_id_) 
+if Status or SudoBot(msg) or  SOFIConstructor(msg) or BasicConstructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -276,8 +276,8 @@ end
 --     Source ANUBIS     --
 ---------  Manager  --------
 function Manager(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:Managers:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or ManagerAll(msg) or  AhmeConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:Managers:'..msg.chat_id_,msg.sender_user_id_) 
+if Status or SudoBot(msg) or ManagerAll(msg) or  SOFIConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -286,8 +286,8 @@ end
 --     Source ANUBIS     --
 ----------  Admin  ---------
 function Admin(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:Admins:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or  AhmeConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:Admins:'..msg.chat_id_,msg.sender_user_id_) 
+if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or  SOFIConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -296,8 +296,8 @@ end
 --     Source ANUBIS     --
 ---------Vip Member---------
 function VipMem(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:VipMem:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or VipAll(msg) or  AhmeConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Admin(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:VipMem:'..msg.chat_id_,msg.sender_user_id_) 
+if Status or SudoBot(msg) or ManagerAll(msg) or AdminAll(msg) or VipAll(msg) or  SOFIConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Manager(msg) or Admin(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -306,8 +306,8 @@ end
 --     Source ANUBIS     --
 --------- Cleaner ----------
 function Cleaner(msg) 
-local Status = Dev Ahme:sismember(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_,msg.sender_user_id_) 
-if Status or SudoBot(msg) or  AhmeConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
+local Status = Dev SOFI:sismember(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_,msg.sender_user_id_) 
+if Status or SudoBot(msg) or  SOFIConstructor(msg) or BasicConstructor(msg) or Constructor(msg) or Sudo(msg) or SecondSudo(msg) or Bot(msg) then  
 return true  
 else  
 return false  
@@ -316,7 +316,7 @@ end
 --     Source ANUBIS     --
 ---------  Banned  ---------
 local function Ban(user_id, chat_id)
-if Dev Ahme:sismember(ANUBIS..' Ahme:Ban:'..chat_id, user_id) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Ban:'..chat_id, user_id) then
 var = true
 else
 var = false
@@ -326,7 +326,7 @@ end
 --     Source ANUBIS     --
 ---------  BanAll  ---------
 function BanAll(user_id)
-if Dev Ahme:sismember(ANUBIS..' Ahme:BanAll:', user_id) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:BanAll:', user_id) then
 var = true
 else
 var = false
@@ -336,7 +336,7 @@ end
 --     Source ANUBIS     --
 ----------  Muted  ---------
 local function Muted(user_id, chat_id)
-if Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..chat_id, user_id) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..chat_id, user_id) then
 var = true
 else
 var = false
@@ -346,7 +346,7 @@ end
 --     Source ANUBIS     --
 ---------  MuteAll  --------
 function MuteAll(user_id)
-if Dev Ahme:sismember(ANUBIS..' Ahme:MuteAll:', user_id) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:MuteAll:', user_id) then
 var = true
 else
 var = false
@@ -412,70 +412,70 @@ end
 local info_file = io.open('./'..ANUBIS..'.json', "r"):read('*a')
 local JsonInfo = JSON.decode(info_file)
 vardump(JsonInfo)
-Dev Ahme:set(ANUBIS.." Ahme:NameBot",JsonInfo.BotName) 
+Dev SOFI:set(ANUBIS.." SOFI:NameBot",JsonInfo.BotName) 
 for IdGps,v in pairs(JsonInfo.GroupsList) do
-Dev Ahme:sadd(ANUBIS.." Ahme:Groups",IdGps) 
-Dev Ahme:set(ANUBIS.." Ahme:Lock:Bots"..IdGps,"del") Dev Ahme:hset(ANUBIS.." Ahme:Spam:Group:User"..IdGps ,"Spam:User","keed") 
-LockList ={' Ahme:Lock:Links',' Ahme:Lock:Contact',' Ahme:Lock:Forwards',' Ahme:Lock:Videos',' Ahme:Lock:Gifs',' Ahme:Lock:EditMsgs',' Ahme:Lock:Stickers',' Ahme:Lock:Farsi',' Ahme:Lock:Spam',' Ahme:Lock:WebLinks',' Ahme:Lock:Photo'}
+Dev SOFI:sadd(ANUBIS.." SOFI:Groups",IdGps) 
+Dev SOFI:set(ANUBIS.." SOFI:Lock:Bots"..IdGps,"del") Dev SOFI:hset(ANUBIS.." SOFI:Spam:Group:User"..IdGps ,"Spam:User","keed") 
+LockList ={' SOFI:Lock:Links',' SOFI:Lock:Contact',' SOFI:Lock:Forwards',' SOFI:Lock:Videos',' SOFI:Lock:Gifs',' SOFI:Lock:EditMsgs',' SOFI:Lock:Stickers',' SOFI:Lock:Farsi',' SOFI:Lock:Spam',' SOFI:Lock:WebLinks',' SOFI:Lock:Photo'}
 for i,Lock in pairs(LockList) do
-Dev Ahme:set(ANUBIS..Lock..IdGps,true)
+Dev SOFI:set(ANUBIS..Lock..IdGps,true)
 end
 for mem,v in pairs(JsonInfo.GroupsList.mem) do
-Dev Ahme:sadd(ANUBIS..' Ahme:Users',mem) 
+Dev SOFI:sadd(ANUBIS..' SOFI:Users',mem) 
 print("\27[30;42m\n         ( تم رفع ( "..mem.." ) المشتركين )    \27[37;42m100%") 
 end
-if v. AhmeConstructors then
-for k,Id AhmeConstructors in pairs(v. AhmeConstructors) do
-Dev Ahme:sadd(ANUBIS..' Ahme: AhmeConstructor:'..IdGps,Id AhmeConstructors)  
+if v. SOFIConstructors then
+for k,Id SOFIConstructors in pairs(v. SOFIConstructors) do
+Dev SOFI:sadd(ANUBIS..' SOFI: SOFIConstructor:'..IdGps,Id SOFIConstructors)  
 print("\27[31;42m\n        ( تم رفع منشئين المجموعات )    \27[37;42m100%") 
 end
 end
 if v.BasicConstructors then
 for k,IdBasicConstructors in pairs(v.BasicConstructors) do
-Dev Ahme:sadd(ANUBIS..' Ahme:BasicConstructor:'..IdGps,IdBasicConstructors)  
+Dev SOFI:sadd(ANUBIS..' SOFI:BasicConstructor:'..IdGps,IdBasicConstructors)  
 print("\27[34;42m\n      ( تم رفع ( "..k.." ) منشئين اساسيين )  \27[37;42m100%") 
 end
 end
 if v.Constructors then
 for k,IdConstructors in pairs(v.Constructors) do
-Dev Ahme:sadd(ANUBIS..' Ahme:Constructor:'..IdGps,IdConstructors)  
+Dev SOFI:sadd(ANUBIS..' SOFI:Constructor:'..IdGps,IdConstructors)  
 print("\27[35;42m\n          ( تم رفع ( "..k.." ) منشئين )      \27[37;42m100%") 
 end
 end
 if v.Managers then
 for k,IdManagers in pairs(v.Managers) do
-Dev Ahme:sadd(ANUBIS..' Ahme:Managers:'..IdGps,IdManagers)  
+Dev SOFI:sadd(ANUBIS..' SOFI:Managers:'..IdGps,IdManagers)  
 print("\27[34;42m\n           ( تم رفع ( "..k.." ) مدراء )      \27[37;42m100%") 
 end
 end
 if v.Admins then
 for k,idmod in pairs(v.Admins) do
 vardump(IdAdmins)
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..IdGps,IdAdmins)  
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..IdGps,IdAdmins)  
 print("\27[35;42m\n         ( تم رفع ( "..k.." ) ادمنيه )      \27[37;42m100%") 
 end
 end
 if v.Vips then
 for k,IdVips in pairs(v.Vips) do
-Dev Ahme:sadd(ANUBIS..' Ahme:VipMem:'..IdGps,IdVips)  
+Dev SOFI:sadd(ANUBIS..' SOFI:VipMem:'..IdGps,IdVips)  
 print("\27[34;42m\n          ( تم رفع ( "..k.." ) مميزين )      \27[37;42m100%") 
 end
 end
 if v.LinkGroups then
 if v.LinkGroups ~= "" then
-Dev Ahme:set(ANUBIS.." Ahme:Groups:Links"..IdGps,v.LinkGroups)   
+Dev SOFI:set(ANUBIS.." SOFI:Groups:Links"..IdGps,v.LinkGroups)   
 print("\27[35;42m\n         ( تم وضع روابط المجموعات )    \27[37;42m100%") 
 end
 end
 if v.Welcomes then
 if v.Welcomes ~= "" then
-Dev Ahme:set(ANUBIS.." Ahme:Groups:Welcomes"..IdGps,v.Welcomes)   
+Dev SOFI:set(ANUBIS.." SOFI:Groups:Welcomes"..IdGps,v.Welcomes)   
 print("\27[34;42m\n         ( تم وضع ترحيب المجموعات )    \27[37;42m100%") 
 end
 end
 end
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Groups') 
-local Members = Dev Ahme:smembers(ANUBIS..' Ahme:Users')
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Groups') 
+local Members = Dev SOFI:smembers(ANUBIS..' SOFI:Users')
 local text = "⌯︙تم رفع النسخه بنجاح \n⌯︙تم رفع ↫ ( "..#Members.." ) مشترك في البوت\n⌯︙تم رفع وتفعيل ↫ ( "..#List.." ) مجموعة\n⌯︙تم استرجاع مشرفين المجموعات \n⌯︙تم استرجاع اوامر القفل والفتح في جميع مجموعات البوت \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ"
 local inline = {{{text = '• سـوࢪس دࢪاڪـون •',url='t.me/SOURCEANUBIS'}},}
 msg_id =  msg.id_/2097152/0.5
@@ -549,7 +549,7 @@ function sendPhoto(chat_id, reply_to_message_id, disable_notification, from_back
 tdcli_function ({ ID = "SendMessage", chat_id_ = chat_id, reply_to_message_id_ = reply_to_message_id, disable_notification_ = disable_notification, from_background_ = from_background, reply_markup_ = reply_markup, input_message_content_ = { ID = "InputMessagePhoto", photo_ = getInputFile(photo), added_sticker_file_ids_ = {}, width_ = 0, height_ = 0, caption_ = caption }, }, dl_cb, nil)
 end
 --     Source ANUBIS     --
-function Dev_ Ahme(chat_id, reply_to_message_id, disable_notification, text, disable_web_page_preview, parse_mode)
+function Dev_ SOFI(chat_id, reply_to_message_id, disable_notification, text, disable_web_page_preview, parse_mode)
 local TextParseMode = getParseMode(parse_mode) tdcli_function ({ ID = "SendMessage", chat_id_ = chat_id, reply_to_message_id_ = reply_to_message_id, disable_notification_ = disable_notification, from_background_ = 1, reply_markup_ = nil, input_message_content_ = { ID = "InputMessageText", text_ = text, disable_web_page_preview_ = disable_web_page_preview, clear_draft_ = 0, entities_ = {}, parse_mode_ = TextParseMode, }, }, dl_cb, nil)
 end
 --     Source ANUBIS     --
@@ -605,13 +605,13 @@ vardump(data)
 end ,nil) 
 end
 --     Source ANUBIS     --
-local  AhmeRank = function(msg) 
+local  SOFIRank = function(msg) 
 if SudoId(msg.sender_user_id_) then 
 DraGoN  = "المطور الاساسي" elseif SecondSudo(msg) then 
 DraGoN = "المطور الاساسي²" elseif SudoBot(msg) then 
 DraGoN = "المطور" elseif ManagerAll(msg) then 
 DraGoN = "المدير" elseif AdminAll(msg) then 
-DraGoN = "الادمن" elseif  AhmeConstructor(msg) then 
+DraGoN = "الادمن" elseif  SOFIConstructor(msg) then 
 DraGoN = "المالك" elseif BasicConstructor(msg) then 
 DraGoN = "المنشئ" elseif Constructor(msg) then 
 DraGoN = "المنشئ" elseif Manager(msg) then 
@@ -627,19 +627,19 @@ DraGoN = 'مطـور السـورس' elseif tonumber(user_id) == tonumber(ANUBIS
 elseif tonumber(user_id) == tonumber(1950281200) then
 DraGoN = 'مبـرمج انوبيس' elseif tonumber(user_id) == tonumber(ANUBIS) then 
 DraGoN = 'البوت' elseif SudoId(user_id) then 
-DraGoN = 'المطور الاساسي' elseif Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:', user_id) then 
-DraGoN = 'المطور الثانوي' elseif Dev Ahme:sismember(ANUBIS..' Ahme:SudoBot:', user_id) then 
-DraGoN = Dev Ahme:get(ANUBIS.." Ahme:SudoBot:Rd"..chat_id) or 'المطور' elseif Dev Ahme:sismember(ANUBIS..' Ahme:ManagerAll:', user_id) then 
-DraGoN = Dev Ahme:get(ANUBIS.." Ahme:Managers:Rd"..chat_id) or 'المدير العام' elseif Dev Ahme:sismember(ANUBIS..' Ahme:AdminAll:', user_id) then 
-DraGoN = Dev Ahme:get(ANUBIS.." Ahme:Admins:Rd"..chat_id) or 'الادمن العام' elseif Dev Ahme:sismember(ANUBIS..' Ahme:VipAll:', user_id) then 
-DraGoN = Dev Ahme:get(ANUBIS.." Ahme:VipMem:Rd"..chat_id) or 'المميز العام' elseif Dev Ahme:sismember(ANUBIS..' Ahme: AhmeConstructor:'..chat_id, user_id) then 
-DraGoN = 'المالك' elseif Dev Ahme:sismember(ANUBIS..' Ahme:BasicConstructor:'..chat_id, user_id) then 
-DraGoN = Dev Ahme:get(ANUBIS.." Ahme:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif Dev Ahme:sismember(ANUBIS..' Ahme:Constructor:'..chat_id, user_id) then 
-DraGoN = Dev Ahme:get(ANUBIS.." Ahme:Constructor:Rd"..chat_id) or 'المنشئ' elseif Dev Ahme:sismember(ANUBIS..' Ahme:Managers:'..chat_id, user_id) then 
-DraGoN = Dev Ahme:get(ANUBIS.." Ahme:Managers:Rd"..chat_id) or 'المدير' elseif Dev Ahme:sismember(ANUBIS..' Ahme:Admins:'..chat_id, user_id) then 
-DraGoN = Dev Ahme:get(ANUBIS.." Ahme:Admins:Rd"..chat_id) or 'الادمن' elseif Dev Ahme:sismember(ANUBIS..' Ahme:VipMem:'..chat_id, user_id) then  
-DraGoN = Dev Ahme:get(ANUBIS.." Ahme:VipMem:Rd"..chat_id) or 'المميز' elseif Dev Ahme:sismember(ANUBIS..' Ahme:Cleaner:'..chat_id, user_id) then  
-DraGoN = Dev Ahme:get(ANUBIS.." Ahme:Cleaner:Rd"..chat_id) or 'المنظف' else DraGoN = Dev Ahme:get(ANUBIS.." Ahme:mem:Rd"..chat_id) or 'العضو' 
+DraGoN = 'المطور الاساسي' elseif Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:', user_id) then 
+DraGoN = 'المطور الثانوي' elseif Dev SOFI:sismember(ANUBIS..' SOFI:SudoBot:', user_id) then 
+DraGoN = Dev SOFI:get(ANUBIS.." SOFI:SudoBot:Rd"..chat_id) or 'المطور' elseif Dev SOFI:sismember(ANUBIS..' SOFI:ManagerAll:', user_id) then 
+DraGoN = Dev SOFI:get(ANUBIS.." SOFI:Managers:Rd"..chat_id) or 'المدير العام' elseif Dev SOFI:sismember(ANUBIS..' SOFI:AdminAll:', user_id) then 
+DraGoN = Dev SOFI:get(ANUBIS.." SOFI:Admins:Rd"..chat_id) or 'الادمن العام' elseif Dev SOFI:sismember(ANUBIS..' SOFI:VipAll:', user_id) then 
+DraGoN = Dev SOFI:get(ANUBIS.." SOFI:VipMem:Rd"..chat_id) or 'المميز العام' elseif Dev SOFI:sismember(ANUBIS..' SOFI: SOFIConstructor:'..chat_id, user_id) then 
+DraGoN = 'المالك' elseif Dev SOFI:sismember(ANUBIS..' SOFI:BasicConstructor:'..chat_id, user_id) then 
+DraGoN = Dev SOFI:get(ANUBIS.." SOFI:BasicConstructor:Rd"..chat_id) or 'المنشئ الاساسي' elseif Dev SOFI:sismember(ANUBIS..' SOFI:Constructor:'..chat_id, user_id) then 
+DraGoN = Dev SOFI:get(ANUBIS.." SOFI:Constructor:Rd"..chat_id) or 'المنشئ' elseif Dev SOFI:sismember(ANUBIS..' SOFI:Managers:'..chat_id, user_id) then 
+DraGoN = Dev SOFI:get(ANUBIS.." SOFI:Managers:Rd"..chat_id) or 'المدير' elseif Dev SOFI:sismember(ANUBIS..' SOFI:Admins:'..chat_id, user_id) then 
+DraGoN = Dev SOFI:get(ANUBIS.." SOFI:Admins:Rd"..chat_id) or 'الادمن' elseif Dev SOFI:sismember(ANUBIS..' SOFI:VipMem:'..chat_id, user_id) then  
+DraGoN = Dev SOFI:get(ANUBIS.." SOFI:VipMem:Rd"..chat_id) or 'المميز' elseif Dev SOFI:sismember(ANUBIS..' SOFI:Cleaner:'..chat_id, user_id) then  
+DraGoN = Dev SOFI:get(ANUBIS.." SOFI:Cleaner:Rd"..chat_id) or 'المنظف' else DraGoN = Dev SOFI:get(ANUBIS.." SOFI:mem:Rd"..chat_id) or 'العضو' 
 end 
 return DraGoN 
 end
@@ -649,47 +649,47 @@ if SudoId(user_id) then
 var = true  
 elseif tonumber(user_id) == tonumber(ANUBIS) then  
 var = true  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:', user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:', user_id) then
 var = true  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:SudoBot:', user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:SudoBot:', user_id) then
 var = true  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:ManagerAll:', user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:ManagerAll:', user_id) then
 var = true  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:AdminAll:', user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:AdminAll:', user_id) then
 var = true  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:VipAll:', user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:VipAll:', user_id) then
 var = true  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme: AhmeConstructor:'..chat_id, user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI: SOFIConstructor:'..chat_id, user_id) then
 var = true
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:BasicConstructor:'..chat_id, user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:BasicConstructor:'..chat_id, user_id) then
 var = true
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Constructor:'..chat_id, user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Constructor:'..chat_id, user_id) then
 var = true  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Managers:'..chat_id, user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Managers:'..chat_id, user_id) then
 var = true  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Admins:'..chat_id, user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Admins:'..chat_id, user_id) then
 var = true  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:VipMem:'..chat_id, user_id) then  
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:VipMem:'..chat_id, user_id) then  
 var = true 
 else  
 var = false
 end  
 return var
 end
-function  AhmeDelAll(user_id,chat_id)
+function  SOFIDelAll(user_id,chat_id)
 if SudoId(user_id) then
 var = 'sudoid'  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:', user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:', user_id) then
 var = 'secondsudo' 
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:SudoBot:', user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:SudoBot:', user_id) then
 var = 'sudobot'  
-elseif Dev Ahme:sismember(ANUBIS..' Ahme: AhmeConstructor:'..chat_id, user_id) then
-var = ' Ahmeconstructor'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:BasicConstructor:'..chat_id, user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI: SOFIConstructor:'..chat_id, user_id) then
+var = ' SOFIconstructor'
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:BasicConstructor:'..chat_id, user_id) then
 var = 'basicconstructor'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Constructor:'..chat_id, user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Constructor:'..chat_id, user_id) then
 var = 'constructor'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Managers:'..chat_id, user_id) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Managers:'..chat_id, user_id) then
 var = 'manager'  
 else  
 var = 'No'
@@ -698,9 +698,9 @@ return var
 end 
 --     Source ANUBIS     --
 local function Filters(msg, value)
-local  Ahme = (ANUBIS..' Ahme:Filters:'..msg.chat_id_)
-if  Ahme then
-local names = Dev Ahme:hkeys( Ahme)
+local  SOFI = (ANUBIS..' SOFI:Filters:'..msg.chat_id_)
+if  SOFI then
+local names = Dev SOFI:hkeys( SOFI)
 local value = value:gsub(' ','')
 for i=1, #names do
 if string.match(value:lower(), names[i]:lower()) and not VipMem(msg) then
@@ -720,15 +720,15 @@ end
 if status == "WrongWay" then
 local ANUBIS = {"حبيبي","؏َـمࢪي","عزيزي","يڪلبي","روحي","حب","حــچي","ضلعي"} 
 local ⁦DevId = ANUBIS[math.random(#ANUBIS)]
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙عذࢪاَ "..⁦DevId.." ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙عذࢪاَ "..⁦DevId.." ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
 if status == "Reply" then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙العضو ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙العضو ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
 if status == "ReplyBy" then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙بواسطة ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙بواسطة ↫ ["..dp.first_name_.."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
 if status == "EbDsDrg" then
@@ -736,11 +736,11 @@ local ANUBIS = {"حبيبي","؏َـمࢪي","عزيزي","يڪلبي","روحي
 local ⁦DevId = ANUBIS[math.random(#ANUBIS)]
 local Hello = {"ﭑهـلاً","هيلآو","هايـہ","يهلۿ`","مࢪحبا"} 
 local welcom = Hello[math.random(#Hello)]
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙"..welcom.." "..⁦DevId.."↫ ["..IdRank(msg.sender_user_id_,msg.chat_id_).."](T.me/"..UserName..")".."\n"..text, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙"..welcom.." "..⁦DevId.."↫ ["..IdRank(msg.sender_user_id_,msg.chat_id_).."](T.me/"..UserName..")".."\n"..text, 1, 'md')
 return false
 end
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙الحساب محذوف قم بالتاكد واعد المحاوله", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙الحساب محذوف قم بالتاكد واعد المحاوله", 1, 'md')
 end
 end,nil)   
 end
@@ -757,12 +757,12 @@ else
 Status = false
 end
 if GetInfo.result.custom_title then 
- Ahme = GetInfo.result.custom_title
+ SOFI = GetInfo.result.custom_title
 else 
- Ahme = Status
+ SOFI = Status
 end
 end
-return  Ahme
+return  SOFI
 end
 function Validity(msg,user_id) 
 local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..user_id)
@@ -794,12 +794,12 @@ local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?
 local GetInfo = JSON.decode(Check)
 if GetInfo.ok == true then
 if GetInfo.result.bio then 
- Ahme = GetInfo.result.bio
+ SOFI = GetInfo.result.bio
 else 
- Ahme = "لا يوجد"
+ SOFI = "لا يوجد"
 end
 end
-return  Ahme
+return  SOFI
 end
 --     Source ANUBIS     --
 local sendRequest = function(request_id, chat_id, reply_to_message_id, disable_notification, from_background, reply_markup, input_message_content, callback, extra)
@@ -854,18 +854,18 @@ end
 return MsgText
 end
 --     Source ANUBIS     --
-function  Ahmemoned(chat_id, user_id, msg_id, text, offset, length) tdcli_function ({ ID = "SendMessage", chat_id_ = chat_id, reply_to_message_id_ = msg_id, disable_notification_ = 0, from_background_ = 1, reply_markup_ = nil, input_message_content_ = { ID = "InputMessageText", text_ = text, disable_web_page_preview_ = 1, clear_draft_ = 0, entities_ = {[0]={ ID="MessageEntityMentionName", offset_=offset, length_=length, user_id_=user_id }, }, }, }, dl_cb, nil) end
+function  SOFImoned(chat_id, user_id, msg_id, text, offset, length) tdcli_function ({ ID = "SendMessage", chat_id_ = chat_id, reply_to_message_id_ = msg_id, disable_notification_ = 0, from_background_ = 1, reply_markup_ = nil, input_message_content_ = { ID = "InputMessageText", text_ = text, disable_web_page_preview_ = 1, clear_draft_ = 0, entities_ = {[0]={ ID="MessageEntityMentionName", offset_=offset, length_=length, user_id_=user_id }, }, }, }, dl_cb, nil) end
 --     Source ANUBIS     --
 function ChCheck(msg)
 local var = true 
-if Dev Ahme:get(ANUBIS.." Ahme:ChId") then
-local url , res = https.request('https://api.telegram.org/bot'..TokenBot..'/getchatmember?chat_id='..Dev Ahme:get(ANUBIS..' Ahme:ChId')..'&user_id='..msg.sender_user_id_)
+if Dev SOFI:get(ANUBIS.." SOFI:ChId") then
+local url , res = https.request('https://api.telegram.org/bot'..TokenBot..'/getchatmember?chat_id='..Dev SOFI:get(ANUBIS..' SOFI:ChId')..'&user_id='..msg.sender_user_id_)
 local data = json:decode(url)
 if res ~= 200 or data.result.status == "left" or data.result.status == "kicked" then
 var = false 
-if Dev Ahme:get(ANUBIS..' Ahme:ChText') then
-local ChText = Dev Ahme:get(ANUBIS..' Ahme:ChText')
-local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev Ahme:get(ANUBIS.." Ahme:ChId"))
+if Dev SOFI:get(ANUBIS..' SOFI:ChText') then
+local ChText = Dev SOFI:get(ANUBIS..' SOFI:ChText')
+local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev SOFI:get(ANUBIS.." SOFI:ChId"))
 local GetInfo = JSON.decode(Check)
 User = "https://t.me/"..GetInfo.result.username
 local inline = {{{text=GetInfo.result.title,url=User}}}
@@ -873,7 +873,7 @@ Msg_id = msg.id_/2097152/0.5
 SendInline(msg.chat_id_,'['..ChText..']',nil,inline,Msg_id)
 else
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
-local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev Ahme:get(ANUBIS.." Ahme:ChId"))
+local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev SOFI:get(ANUBIS.." SOFI:ChId"))
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.username then
 User = "https://t.me/"..GetInfo.result.username
@@ -902,9 +902,9 @@ local Chat_Id2 = data.chat_id_
 local MsgId2 = data.message_id_
 local DataText = data.payload_.data_
 local Msg_Id2 = data.message_id_/2097152/0.5
-if DataText == '/delyes' and Dev Ahme:get(ANUBIS..'yes'..data.sender_user_id_) == 'delyes' then
-Dev Ahme:del(ANUBIS..'yes'..data.sender_user_id_, 'delyes')
-Dev Ahme:del(ANUBIS..'no'..data.sender_user_id_, 'delno')
+if DataText == '/delyes' and Dev SOFI:get(ANUBIS..'yes'..data.sender_user_id_) == 'delyes' then
+Dev SOFI:del(ANUBIS..'yes'..data.sender_user_id_, 'delyes')
+Dev SOFI:del(ANUBIS..'no'..data.sender_user_id_, 'delno')
 if RankChecking(data.sender_user_id_, data.chat_id_) then
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙لا استطيع طرد ↫ "..IdRank(data.sender_user_id_, data.chat_id_)) 
 return false
@@ -929,67 +929,67 @@ return false
 end
 end,nil)  
 end
-if DataText == '/delno' and Dev Ahme:get(ANUBIS..'no'..data.sender_user_id_) == 'delno' then
-Dev Ahme:del(ANUBIS..'yes'..data.sender_user_id_, 'delyes')
-Dev Ahme:del(ANUBIS..'no'..data.sender_user_id_, 'delno')
+if DataText == '/delno' and Dev SOFI:get(ANUBIS..'no'..data.sender_user_id_) == 'delno' then
+Dev SOFI:del(ANUBIS..'yes'..data.sender_user_id_, 'delyes')
+Dev SOFI:del(ANUBIS..'no'..data.sender_user_id_, 'delno')
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙تم الغاء امر اطردني") 
 end
 --     Source ANUBIS     --
-if DataText == '/yesdel' and Dev Ahme:get(ANUBIS..'yesdel'..data.sender_user_id_) == 'delyes' then
-Dev Ahme:del(ANUBIS..'yesdel'..data.sender_user_id_, 'delyes')
-Dev Ahme:del(ANUBIS..'nodel'..data.sender_user_id_, 'delno')
-if Dev Ahme:sismember(ANUBIS..' Ahme:Constructor:'..data.chat_id_, data.sender_user_id_) then
+if DataText == '/yesdel' and Dev SOFI:get(ANUBIS..'yesdel'..data.sender_user_id_) == 'delyes' then
+Dev SOFI:del(ANUBIS..'yesdel'..data.sender_user_id_, 'delyes')
+Dev SOFI:del(ANUBIS..'nodel'..data.sender_user_id_, 'delno')
+if Dev SOFI:sismember(ANUBIS..' SOFI:Constructor:'..data.chat_id_, data.sender_user_id_) then
 constructor = 'المنشئين • ' else constructor = '' end 
-if Dev Ahme:sismember(ANUBIS..' Ahme:Managers:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Managers:'..data.chat_id_, data.sender_user_id_) then
 Managers = 'المدراء • ' else Managers = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Admins:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Admins:'..data.chat_id_, data.sender_user_id_) then
 admins = 'الادمنيه • ' else admins = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:VipMem:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:VipMem:'..data.chat_id_, data.sender_user_id_) then
 vipmem = 'المميزين • ' else vipmem = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Cleaner:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Cleaner:'..data.chat_id_, data.sender_user_id_) then
 cleaner = 'المنظفين • ' else cleaner = '' end
-if Dev Ahme:sismember(ANUBIS..'User:Donky:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Donky:'..data.chat_id_, data.sender_user_id_) then
 donky = 'المطايه • ' else donky = '' end
-if Dev Ahme:sismember(ANUBIS..'User:HaTa:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:HaTa:'..data.chat_id_, data.sender_user_id_) then
 HaTa = 'الحاتات • ' else HaTa = '' end
-if Dev Ahme:sismember(ANUBIS..'User:hlo:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:hlo:'..data.chat_id_, data.sender_user_id_) then
 hlo = 'الصاكين • ' else hlo = '' end
-if Dev Ahme:sismember(ANUBIS..'User:Sakl:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Sakl:'..data.chat_id_, data.sender_user_id_) then
 Sakl = 'الصخوله • ' else Sakl = '' end
-if Dev Ahme:sismember(ANUBIS..'User:Dog:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Dog:'..data.chat_id_, data.sender_user_id_) then
 Dog = 'الجلاب • ' else Dog = '' end
-if Dev Ahme:sismember(ANUBIS..'User:Monkey:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Monkey:'..data.chat_id_, data.sender_user_id_) then
 Monkey = 'القورده • ' else Monkey = '' end
-if Dev Ahme:sismember(ANUBIS..'User:Bakra:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Bakra:'..data.chat_id_, data.sender_user_id_) then
 Bakra = 'البقرات • ' else Bakra = '' end
-if Dev Ahme:sismember(ANUBIS..'User:Tale:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Tale:'..data.chat_id_, data.sender_user_id_) then
 Tale = 'الطليان • ' else Tale = '' end
-if Dev Ahme:sismember(ANUBIS..'User:Zahf:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Zahf:'..data.chat_id_, data.sender_user_id_) then
 Zahf = 'الزواحف • ' else Zahf = '' end
-if Dev Ahme:sismember(ANUBIS..'User:Jred:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Jred:'..data.chat_id_, data.sender_user_id_) then
 Jred = 'الجريذيه • ' else Jred = '' end
-if Dev Ahme:sismember(ANUBIS..'User:Bro:'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Bro:'..data.chat_id_, data.sender_user_id_) then
 Bro = 'الضلوع • ' else Bro = '' end
-if Dev Ahme:sismember(ANUBIS..'User:Bro:Girl'..data.chat_id_, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Bro:Girl'..data.chat_id_, data.sender_user_id_) then
 Girl = 'الضلعات • ' else Girl = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Constructor:'..data.chat_id_, data.sender_user_id_) or Dev Ahme:sismember(ANUBIS..' Ahme:Managers:'..data.chat_id_, data.sender_user_id_) or Dev Ahme:sismember(ANUBIS..' Ahme:Admins:'..data.chat_id_, data.sender_user_id_) or Dev Ahme:sismember(ANUBIS..' Ahme:VipMem:'..data.chat_id_, data.sender_user_id_) or Dev Ahme:sismember(ANUBIS..' Ahme:Cleaner:'..data.chat_id_, data.sender_user_id_) or Dev Ahme:sismember(ANUBIS..'User:Donky:'..data.chat_id_, data.sender_user_id_) or Dev Ahme:sismember(ANUBIS..'User:HaTa:'..data.chat_id_, data.sender_user_id_)or Dev Ahme:sismember(ANUBIS..'User:hlo:'..data.chat_id_, data.sender_user_id_)or Dev Ahme:sismember(ANUBIS..'User:Sakl:'..data.chat_id_, data.sender_user_id_)or Dev Ahme:sismember(ANUBIS..'User:Dog:'..data.chat_id_, data.sender_user_id_)or Dev Ahme:sismember(ANUBIS..'User:Monkey:'..data.chat_id_, data.sender_user_id_)or Dev Ahme:sismember(ANUBIS..'User:Bakra:'..data.chat_id_, data.sender_user_id_)or Dev Ahme:sismember(ANUBIS..'User:Tale:'..data.chat_id_, data.sender_user_id_)or Dev Ahme:sismember(ANUBIS..'User:Zahf:'..data.chat_id_, data.sender_user_id_)or Dev Ahme:sismember(ANUBIS..'User:Jred:'..data.chat_id_, data.sender_user_id_)or Dev Ahme:sismember(ANUBIS..'User:Bro:'..data.chat_id_, data.sender_user_id_)or Dev Ahme:sismember(ANUBIS..'User:Bro:Girl'..data.chat_id_, data.sender_user_id_) then
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:Donky:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:HaTa:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:hlo:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:Sakl:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:Dog:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:Monkey:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:Bakra:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:Tale:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:Zahf:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:Jred:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:Bro:'..data.chat_id_,data.sender_user_id_)
-Dev Ahme:srem(ANUBIS..'User:Bro:Girl'..data.chat_id_,data.sender_user_id_)
+if Dev SOFI:sismember(ANUBIS..' SOFI:Constructor:'..data.chat_id_, data.sender_user_id_) or Dev SOFI:sismember(ANUBIS..' SOFI:Managers:'..data.chat_id_, data.sender_user_id_) or Dev SOFI:sismember(ANUBIS..' SOFI:Admins:'..data.chat_id_, data.sender_user_id_) or Dev SOFI:sismember(ANUBIS..' SOFI:VipMem:'..data.chat_id_, data.sender_user_id_) or Dev SOFI:sismember(ANUBIS..' SOFI:Cleaner:'..data.chat_id_, data.sender_user_id_) or Dev SOFI:sismember(ANUBIS..'User:Donky:'..data.chat_id_, data.sender_user_id_) or Dev SOFI:sismember(ANUBIS..'User:HaTa:'..data.chat_id_, data.sender_user_id_)or Dev SOFI:sismember(ANUBIS..'User:hlo:'..data.chat_id_, data.sender_user_id_)or Dev SOFI:sismember(ANUBIS..'User:Sakl:'..data.chat_id_, data.sender_user_id_)or Dev SOFI:sismember(ANUBIS..'User:Dog:'..data.chat_id_, data.sender_user_id_)or Dev SOFI:sismember(ANUBIS..'User:Monkey:'..data.chat_id_, data.sender_user_id_)or Dev SOFI:sismember(ANUBIS..'User:Bakra:'..data.chat_id_, data.sender_user_id_)or Dev SOFI:sismember(ANUBIS..'User:Tale:'..data.chat_id_, data.sender_user_id_)or Dev SOFI:sismember(ANUBIS..'User:Zahf:'..data.chat_id_, data.sender_user_id_)or Dev SOFI:sismember(ANUBIS..'User:Jred:'..data.chat_id_, data.sender_user_id_)or Dev SOFI:sismember(ANUBIS..'User:Bro:'..data.chat_id_, data.sender_user_id_)or Dev SOFI:sismember(ANUBIS..'User:Bro:Girl'..data.chat_id_, data.sender_user_id_) then
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Donky:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:HaTa:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:hlo:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Sakl:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Dog:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Monkey:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Bakra:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Tale:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Zahf:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Jred:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Bro:'..data.chat_id_,data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Bro:Girl'..data.chat_id_,data.sender_user_id_)
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙تم تنزيلك من ↫ ⤈\n~ ( "..constructor..''..Managers..''..admins..''..vipmem..''..cleaner..''..donky..''..HaTa..''..hlo..''..Sakl..''..Dog..''..Monkey..''..Bakra..''..Tale..''..Zahf..''..Jred..''..Bro..''..Girl..") ~ \n") 
 else 
 if IdRank(data.sender_user_id_, data.chat_id_) == 'العضو' then
@@ -999,14 +999,14 @@ EditMsg(Chat_Id2, Msg_Id2, "⌯︙لا استطيع تنزيل ↫ "..IdRank(dat
 end
 end
 end
-if Dev Ahme:get(ANUBIS.." Ahme:NewDev"..data.sender_user_id_) then
+if Dev SOFI:get(ANUBIS.." SOFI:NewDev"..data.sender_user_id_) then
 if DataText == '/setno' then
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙تم الغاء امر تغير المطور الاساسي") 
-Dev Ahme:del(ANUBIS.." Ahme:NewDev"..data.sender_user_id_)
+Dev SOFI:del(ANUBIS.." SOFI:NewDev"..data.sender_user_id_)
 return false
 end
 if DataText == '/setyes' then
-local NewDev = Dev Ahme:get(ANUBIS.." Ahme:NewDev"..data.sender_user_id_)
+local NewDev = Dev SOFI:get(ANUBIS.." SOFI:NewDev"..data.sender_user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = NewDev},function(arg,dp) 
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙المطور الجديد ↫ ["..dp.first_name_.."](tg://user?id="..dp.id_..")\n⌯︙تم تغير المطور الاساسي بنجاح") 
 end,nil)
@@ -1031,33 +1031,33 @@ ANUBIS = TokenBot:match("(%d+)"),
 SudoIds = {NewDev},
 }
 Create(Config, "./config.lua")  
-Dev Ahme:del(ANUBIS.." Ahme:NewDev"..data.sender_user_id_)
+Dev SOFI:del(ANUBIS.." SOFI:NewDev"..data.sender_user_id_)
 dofile('ANUBIS.lua') 
 end
 end
-if DataText == '/nodel' and Dev Ahme:get(ANUBIS..'nodel'..data.sender_user_id_) == 'delno' then
-Dev Ahme:del(ANUBIS..'yesdel'..data.sender_user_id_, 'delyes')
-Dev Ahme:del(ANUBIS..'nodel'..data.sender_user_id_, 'delno')
+if DataText == '/nodel' and Dev SOFI:get(ANUBIS..'nodel'..data.sender_user_id_) == 'delno' then
+Dev SOFI:del(ANUBIS..'yesdel'..data.sender_user_id_, 'delyes')
+Dev SOFI:del(ANUBIS..'nodel'..data.sender_user_id_, 'delno')
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙تم الغاء امر نزلني") 
 end
-if DataText == '/YesRolet' and Dev Ahme:get(ANUBIS.." Ahme:WittingStartRolet"..data.chat_id_..data.sender_user_id_) then
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:ListRolet'..data.chat_id_) 
+if DataText == '/YesRolet' and Dev SOFI:get(ANUBIS.." SOFI:WittingStartRolet"..data.chat_id_..data.sender_user_id_) then
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:ListRolet'..data.chat_id_) 
 local UserName = List[math.random(#List)]
 tdcli_function ({ID="SearchPublicChat",username_ = UserName},function(arg,dp) 
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..data.chat_id_..dp.id_, 5) 
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..data.chat_id_..dp.id_, 5) 
 end,nil) 
-Dev Ahme:del(ANUBIS..' Ahme:ListRolet'..data.chat_id_) 
-Dev Ahme:del(ANUBIS.." Ahme:WittingStartRolet"..data.chat_id_..data.sender_user_id_)
+Dev SOFI:del(ANUBIS..' SOFI:ListRolet'..data.chat_id_) 
+Dev SOFI:del(ANUBIS.." SOFI:WittingStartRolet"..data.chat_id_..data.sender_user_id_)
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙*صاحب الحظ* ↫ ["..UserName.."]\n⌯︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*")
 end
 if DataText == '/NoRolet' then
-Dev Ahme:del(ANUBIS..' Ahme:ListRolet'..data.chat_id_) 
-Dev Ahme:del(ANUBIS.." Ahme:NumRolet"..data.chat_id_..data.sender_user_id_) 
-Dev Ahme:del(ANUBIS.." Ahme:WittingStartRolet"..data.chat_id_..data.sender_user_id_)
+Dev SOFI:del(ANUBIS..' SOFI:ListRolet'..data.chat_id_) 
+Dev SOFI:del(ANUBIS.." SOFI:NumRolet"..data.chat_id_..data.sender_user_id_) 
+Dev SOFI:del(ANUBIS.." SOFI:WittingStartRolet"..data.chat_id_..data.sender_user_id_)
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙تم الغاء اللعبه لاعادة اللعب ارسل الالعاب") 
 end
 if DataText == '/ListRolet' then
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:ListRolet'..data.chat_id_) 
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:ListRolet'..data.chat_id_) 
 local Text = '⌯︙قائمة الاعبين ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n' 
 local Textt = 'ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙تم اكتمال العدد الكلي هل انت مستعد ؟'
 for k, v in pairs(List) do 
@@ -1068,9 +1068,9 @@ keyboard.inline_keyboard = {{{text="نعم",callback_data="/YesRolet"},{text="ل
 return https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Text..Textt).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if DataText == '/UnTkeed' then
-if Dev Ahme:sismember(ANUBIS..' Ahme:Tkeed:'..Chat_Id2, data.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Tkeed:'..Chat_Id2, data.sender_user_id_) then
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..Chat_Id2.."&user_id="..data.sender_user_id_.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..Chat_Id2, data.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..Chat_Id2, data.sender_user_id_)
 DeleteMessage(Chat_Id2,{[0] = MsgId2})
 return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌯ تم الغاء تقيدك من المجموعه بنجاح .")..'&show_alert=true')
 else
@@ -1078,220 +1078,220 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackq
 end 
 end
 if DataText and DataText:match(tonumber(data.sender_user_id_)..':SetMem:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':SetMem:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:sadd(ANUBIS..' Ahme:VipMem:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':SetMem:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:sadd(ANUBIS..' SOFI:VipMem:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم رفعه في قائمة المميزين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetCleaner:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':SetCleaner:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:sadd(ANUBIS..' Ahme:Cleaner:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':SetCleaner:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:sadd(ANUBIS..' SOFI:Cleaner:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم رفعه في قائمة المنظفين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetAdmin:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':SetAdmin:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':SetAdmin:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم رفعه في قائمة الادمنيه')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetManager:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':SetManager:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:sadd(ANUBIS..' Ahme:Managers:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':SetManager:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:sadd(ANUBIS..' SOFI:Managers:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم رفعه في قائمة المدراء')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetConstructor:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':SetConstructor:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:sadd(ANUBIS..' Ahme:Constructor:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':SetConstructor:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:sadd(ANUBIS..' SOFI:Constructor:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم رفعه في قائمة المنشئين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetBasicConstructor:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':SetBasicConstructor:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:sadd(ANUBIS..' Ahme:BasicConstructor:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':SetBasicConstructor:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:sadd(ANUBIS..' SOFI:BasicConstructor:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم رفعه في قائمة المنشئين الاساسيين')
 end,nil)
-elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':Set AhmeConstructor:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':Set AhmeConstructor:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:sadd(ANUBIS..' Ahme: AhmeConstructor:'..data.chat_id_,dp.id_)
+elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':Set SOFIConstructor:(.*)') then
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':Set SOFIConstructor:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:sadd(ANUBIS..' SOFI: SOFIConstructor:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم رفعه في قائمة المالكين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetSudoBot:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':SetSudoBot:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:sadd(ANUBIS..' Ahme:SudoBot:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':SetSudoBot:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:sadd(ANUBIS..' SOFI:SudoBot:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم رفعه في قائمة المطورين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':SetSecondSudo:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':SetSecondSudo:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:sadd(ANUBIS..' Ahme:SecondSudo:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':SetSecondSudo:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:sadd(ANUBIS..' SOFI:SecondSudo:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم رفعه في قائمة المطورين الثانويين')
 end,nil)
 end
 if DataText and DataText:match(tonumber(data.sender_user_id_)..':RemMem:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':RemMem:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':RemMem:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم تنزيله من قائمة المميزين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemCleaner:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':RemCleaner:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':RemCleaner:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم تنزيله من قائمة المنظفين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemAdmin:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':RemAdmin:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':RemAdmin:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم تنزيله من قائمة الادمنيه')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemManager:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':RemManager:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':RemManager:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم تنزيله من قائمة المدراء')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemConstructor:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':RemConstructor:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':RemConstructor:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم تنزيله من قائمة المنشئين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemBasicConstructor:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':RemBasicConstructor:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':RemBasicConstructor:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم تنزيله من قائمة المنشئين الاساسيين')
 end,nil)
-elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':Rem AhmeConstructor:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':Rem AhmeConstructor:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme: AhmeConstructor:'..data.chat_id_,dp.id_)
+elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':Rem SOFIConstructor:(.*)') then
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':Rem SOFIConstructor:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI: SOFIConstructor:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم تنزيله من قائمة المالكين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemSudoBot:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':RemSudoBot:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme:SudoBot:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':RemSudoBot:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI:SudoBot:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم تنزيله من قائمة المطورين')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':RemSecondSudo:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':RemSecondSudo:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme:SecondSudo:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':RemSecondSudo:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI:SecondSudo:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم تنزيله من قائمة المطورين الثانويين')
 end,nil)
 end
 if DataText and DataText:match(tonumber(data.sender_user_id_)..':Mute:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':Mute:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':Mute:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
 if RankChecking(dp.id_, data.chat_id_) then
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙لا تستطيع كتم ↫ '..IdRank(dp.id_, data.chat_id_))
 else
-Dev Ahme:sadd(ANUBIS..' Ahme:Muted:'..data.chat_id_,dp.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Muted:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم كتمه من المجموعه')
 end
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':UnMute:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':UnMute:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme:Muted:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':UnMute:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI:Muted:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم الغاء كتمه من المجموعه')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':Ban:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':Ban:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':Ban:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
 if RankChecking(dp.id_, data.chat_id_) then
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙لا تستطيع حظر ↫ '..IdRank(dp.id_, data.chat_id_))
 else
-Dev Ahme:sadd(ANUBIS..' Ahme:Ban:'..data.chat_id_,dp.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Ban:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم حظره من المجموعه')
 end
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':UnBan:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':UnBan:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
-Dev Ahme:srem(ANUBIS..' Ahme:Ban:'..data.chat_id_,dp.id_)
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':UnBan:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
+Dev SOFI:srem(ANUBIS..' SOFI:Ban:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم الغاء حظره من المجموعه')
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':Tked:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':Tked:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':Tked:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
 if RankChecking(dp.id_, data.chat_id_) then
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙لا تستطيع تقيد ↫ '..IdRank(dp.id_, data.chat_id_))
 else
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..data.chat_id_.."&user_id="..dp.id_)
-Dev Ahme:sadd(ANUBIS..' Ahme:Tkeed:'..data.chat_id_,dp.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Tkeed:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم تقيده من المجموعه')
 end
 end,nil)
 elseif DataText and DataText:match(tonumber(data.sender_user_id_)..':UnTked:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':UnTked:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':UnTked:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..data.chat_id_.."&user_id="..dp.id_.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..data.chat_id_,dp.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..data.chat_id_,dp.id_)
 EditMsg(Chat_Id2, Msg_Id2,'⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n⌯︙تم الغاء تقيده من المجموعه')
 end,nil)
 end
 if DataText and DataText:match(tonumber(data.sender_user_id_)..':SetRtba:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':SetRtba:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':SetRtba:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
 if dp.first_name_ == false then
-Dev_ Ahme(data.chat_id_, data.id_, 1, "⌯︙الحساب محذوف", 1, "md")
+Dev_ SOFI(data.chat_id_, data.id_, 1, "⌯︙الحساب محذوف", 1, "md")
 return false  
 end
 local Text = ' ⌯︙قم باستعمال الازرار لرفع العضو ↫ ⤈\n⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n✓'
 keyboard = {} 
 if Sudo(data) then
-keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. AhmeId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. AhmeId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:".. AhmeId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. AhmeId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. AhmeId},{text="رفع منشئ اساسي",callback_data=data.sender_user_id_..":SetBasicConstructor:".. AhmeId}},{{text="رفع مالك",callback_data=data.sender_user_id_..":Set AhmeConstructor:".. AhmeId},{text="رفع مطور",callback_data=data.sender_user_id_..":SetSudoBot:".. AhmeId}},{{text="رفع مطور ثانوي",callback_data=data.sender_user_id_..":SetSecondSudo:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. SOFIId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. SOFIId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:".. SOFIId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. SOFIId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. SOFIId},{text="رفع منشئ اساسي",callback_data=data.sender_user_id_..":SetBasicConstructor:".. SOFIId}},{{text="رفع مالك",callback_data=data.sender_user_id_..":Set SOFIConstructor:".. SOFIId},{text="رفع مطور",callback_data=data.sender_user_id_..":SetSudoBot:".. SOFIId}},{{text="رفع مطور ثانوي",callback_data=data.sender_user_id_..":SetSecondSudo:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif SecondSudo(data) then
-keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. AhmeId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. AhmeId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:".. AhmeId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. AhmeId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. AhmeId},{text="رفع منشئ اساسي",callback_data=data.sender_user_id_..":SetBasicConstructor:".. AhmeId}},{{text="رفع مالك",callback_data=data.sender_user_id_..":Set AhmeConstructor:".. AhmeId},{text="رفع مطور",callback_data=data.sender_user_id_..":SetSudoBot:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. SOFIId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. SOFIId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:".. SOFIId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. SOFIId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. SOFIId},{text="رفع منشئ اساسي",callback_data=data.sender_user_id_..":SetBasicConstructor:".. SOFIId}},{{text="رفع مالك",callback_data=data.sender_user_id_..":Set SOFIConstructor:".. SOFIId},{text="رفع مطور",callback_data=data.sender_user_id_..":SetSudoBot:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif SudoBot(data) then
-keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. AhmeId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. AhmeId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:".. AhmeId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. AhmeId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. AhmeId},{text="رفع منشئ اساسي",callback_data=data.sender_user_id_..":SetBasicConstructor:".. AhmeId}},{{text="رفع مالك",callback_data=data.sender_user_id_..":Set AhmeConstructor:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
-elseif  AhmeConstructor(data) then
-keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. AhmeId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. AhmeId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:".. AhmeId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. AhmeId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. AhmeId},{text="رفع منشئ اساسي",callback_data=data.sender_user_id_..":SetBasicConstructor:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. SOFIId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. SOFIId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:".. SOFIId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. SOFIId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. SOFIId},{text="رفع منشئ اساسي",callback_data=data.sender_user_id_..":SetBasicConstructor:".. SOFIId}},{{text="رفع مالك",callback_data=data.sender_user_id_..":Set SOFIConstructor:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+elseif  SOFIConstructor(data) then
+keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. SOFIId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. SOFIId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:".. SOFIId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. SOFIId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. SOFIId},{text="رفع منشئ اساسي",callback_data=data.sender_user_id_..":SetBasicConstructor:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif BasicConstructor(data) then
-keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. AhmeId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. AhmeId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:".. AhmeId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. AhmeId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. SOFIId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. SOFIId}},{{text="رفع منشئ",callback_data=data.sender_user_id_..":SetConstructor:".. SOFIId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. SOFIId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif Constructor(data) then
-keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. AhmeId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. AhmeId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. AhmeId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. SOFIId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. SOFIId}},{{text="رفع منظف",callback_data=data.sender_user_id_..":SetCleaner:".. SOFIId},{text="رفع مدير",callback_data=data.sender_user_id_..":SetManager:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif Manager(data) then
-keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. AhmeId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. SOFIId},{text="رفع ادمن",callback_data=data.sender_user_id_..":SetAdmin:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif Admin(data) then
-keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="رفع مميز",callback_data=data.sender_user_id_..":SetMem:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 end 
 https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end,nil)
 end
 if DataText and DataText:match(tonumber(data.sender_user_id_)..':RemRtba:(.*)') then
-local  AhmeId = DataText:match(tonumber(data.sender_user_id_)..':RemRtba:(.*)')
-tdcli_function ({ID = "GetUser",user_id_ =  AhmeId},function(arg,dp) 
+local  SOFIId = DataText:match(tonumber(data.sender_user_id_)..':RemRtba:(.*)')
+tdcli_function ({ID = "GetUser",user_id_ =  SOFIId},function(arg,dp) 
 if dp.first_name_ == false then
-Dev_ Ahme(data.chat_id_, data.id_, 1, "⌯︙الحساب محذوف", 1, "md")
+Dev_ SOFI(data.chat_id_, data.id_, 1, "⌯︙الحساب محذوف", 1, "md")
 return false  
 end
 local Text = ' ⌯︙قم باستعمال الازرار لتنزيل العضو ↫ ⤈\n⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n✓'
 keyboard = {} 
 if Sudo(data) then
-keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. AhmeId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. AhmeId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:".. AhmeId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. AhmeId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. AhmeId},{text="تنزيل منشئ اساسي",callback_data=data.sender_user_id_..":RemBasicConstructor:".. AhmeId}},{{text="تنزيل مالك",callback_data=data.sender_user_id_..":Rem AhmeConstructor:".. AhmeId},{text="تنزيل مطور",callback_data=data.sender_user_id_..":RemSudoBot:".. AhmeId}},{{text="تنزيل مطور ثانوي",callback_data=data.sender_user_id_..":RemSecondSudo:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. SOFIId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. SOFIId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:".. SOFIId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. SOFIId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. SOFIId},{text="تنزيل منشئ اساسي",callback_data=data.sender_user_id_..":RemBasicConstructor:".. SOFIId}},{{text="تنزيل مالك",callback_data=data.sender_user_id_..":Rem SOFIConstructor:".. SOFIId},{text="تنزيل مطور",callback_data=data.sender_user_id_..":RemSudoBot:".. SOFIId}},{{text="تنزيل مطور ثانوي",callback_data=data.sender_user_id_..":RemSecondSudo:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif SecondSudo(data) then
-keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. AhmeId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. AhmeId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:".. AhmeId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. AhmeId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. AhmeId},{text="تنزيل منشئ اساسي",callback_data=data.sender_user_id_..":RemBasicConstructor:".. AhmeId}},{{text="تنزيل مالك",callback_data=data.sender_user_id_..":Rem AhmeConstructor:".. AhmeId},{text="تنزيل مطور",callback_data=data.sender_user_id_..":RemSudoBot:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. SOFIId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. SOFIId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:".. SOFIId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. SOFIId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. SOFIId},{text="تنزيل منشئ اساسي",callback_data=data.sender_user_id_..":RemBasicConstructor:".. SOFIId}},{{text="تنزيل مالك",callback_data=data.sender_user_id_..":Rem SOFIConstructor:".. SOFIId},{text="تنزيل مطور",callback_data=data.sender_user_id_..":RemSudoBot:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif SudoBot(data) then
-keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. AhmeId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. AhmeId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:".. AhmeId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. AhmeId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. AhmeId},{text="تنزيل منشئ اساسي",callback_data=data.sender_user_id_..":RemBasicConstructor:".. AhmeId}},{{text="تنزيل مالك",callback_data=data.sender_user_id_..":Rem AhmeConstructor:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
-elseif  AhmeConstructor(data) then
-keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. AhmeId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. AhmeId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:".. AhmeId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. AhmeId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. AhmeId},{text="تنزيل منشئ اساسي",callback_data=data.sender_user_id_..":RemBasicConstructor:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. SOFIId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. SOFIId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:".. SOFIId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. SOFIId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. SOFIId},{text="تنزيل منشئ اساسي",callback_data=data.sender_user_id_..":RemBasicConstructor:".. SOFIId}},{{text="تنزيل مالك",callback_data=data.sender_user_id_..":Rem SOFIConstructor:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+elseif  SOFIConstructor(data) then
+keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. SOFIId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. SOFIId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:".. SOFIId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. SOFIId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. SOFIId},{text="تنزيل منشئ اساسي",callback_data=data.sender_user_id_..":RemBasicConstructor:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif BasicConstructor(data) then
-keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. AhmeId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. AhmeId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:".. AhmeId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. AhmeId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. SOFIId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. SOFIId}},{{text="تنزيل منشئ",callback_data=data.sender_user_id_..":RemConstructor:".. SOFIId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. SOFIId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif Constructor(data) then
-keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. AhmeId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. AhmeId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. AhmeId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. SOFIId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. SOFIId}},{{text="تنزيل منظف",callback_data=data.sender_user_id_..":RemCleaner:".. SOFIId},{text="تنزيل مدير",callback_data=data.sender_user_id_..":RemManager:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif Manager(data) then
-keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. AhmeId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. SOFIId},{text="تنزيل ادمن",callback_data=data.sender_user_id_..":RemAdmin:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif Admin(data) then
-keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. AhmeId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+keyboard.inline_keyboard = {{{text="تنزيل مميز",callback_data=data.sender_user_id_..":RemMem:".. SOFIId}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 end 
 https.request("https://api.telegram.org/bot"..TokenBot..'/editMessageText?chat_id='..Chat_Id2..'&message_id='..Msg_Id2..'&text=' .. URL.escape(Text).."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end,nil)
@@ -1299,27 +1299,27 @@ end
 if DataText and DataText:match('/DelRed:'..tonumber(data.sender_user_id_)..'(.*)') then
 local S0FI = DataText:match('/DelRed:'..tonumber(data.sender_user_id_)..'(.*)')
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙الكلمه ↫ "..S0FI.." تم حذفها") 
-Dev Ahme:del(ANUBIS..' Ahme:Text:GpTexts'..S0FI..data.chat_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Manager:GpRedod'..data.chat_id_,S0FI)
+Dev SOFI:del(ANUBIS..' SOFI:Text:GpTexts'..S0FI..data.chat_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Manager:GpRedod'..data.chat_id_,S0FI)
 end
 if DataText and DataText:match('/EndRedod:'..tonumber(data.sender_user_id_)..'(.*)') then
 local S0FI = DataText:match('/EndRedod:'..tonumber(data.sender_user_id_)..'(.*)')
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Text:GpTexts'..S0FI..data.chat_id_)
-if Dev Ahme:get(ANUBIS..' Ahme:Add:GpRedod'..data.sender_user_id_..data.chat_id_) then
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Text:GpTexts'..S0FI..data.chat_id_)
+if Dev SOFI:get(ANUBIS..' SOFI:Add:GpRedod'..data.sender_user_id_..data.chat_id_) then
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙تم انهاء وحفظ ↫ "..#List.." من الردود المتعدده للامر ↫ "..S0FI) 
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRedod'..data.sender_user_id_..data.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRedod'..data.sender_user_id_..data.chat_id_)
 else
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙عذرا صلاحية الامر منتهيه !") 
 end
 end
 if DataText and DataText:match('/DelRedod:'..tonumber(data.sender_user_id_)..'(.*)') then
 local S0FI = DataText:match('/DelRedod:'..tonumber(data.sender_user_id_)..'(.*)')
-if Dev Ahme:get(ANUBIS..' Ahme:Add:GpRedod'..data.sender_user_id_..data.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Add:GpRedod'..data.sender_user_id_..data.chat_id_) then
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙تم الغاء عملية حفظ الردود المتعدده للامر ↫ "..S0FI) 
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRedod'..data.sender_user_id_..data.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Text:GpTexts'..S0FI..data.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpTexts'..data.sender_user_id_..data.chat_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Manager:GpRedod'..data.chat_id_,S0FI)
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRedod'..data.sender_user_id_..data.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Text:GpTexts'..S0FI..data.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpTexts'..data.sender_user_id_..data.chat_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Manager:GpRedod'..data.chat_id_,S0FI)
 else
 EditMsg(Chat_Id2, Msg_Id2, "⌯︙عذرا صلاحية الامر منتهيه !") 
 end
@@ -1335,7 +1335,7 @@ end
 if DataText and DataText:match('/HelpList:(.*)') then
 local S0FI = DataText:match('/HelpList:(.*)')
 if tonumber(S0FI) == tonumber(data.sender_user_id_) then
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help')
 local Text = [[
 ⌯︙اهلا بك في قائمة الاوامر ↫ ⤈ 
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -1361,7 +1361,7 @@ if tonumber(S0FI) == tonumber(data.sender_user_id_) then
 if not Admin(data) then
 return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌯ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
 end
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help1')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help1')
 local Text = [[
 ⌯︙اوامر حماية المجموعه ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -1423,7 +1423,7 @@ if tonumber(S0FI) == tonumber(data.sender_user_id_) then
 if not Admin(data) then
 return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌯ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
 end
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help2')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help2')
 local Text = [[
 ⌯︙اوامر الادمنيه ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -1493,7 +1493,7 @@ if tonumber(S0FI) == tonumber(data.sender_user_id_) then
 if not Admin(data) then
 return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌯ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
 end
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help3')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help3')
 local Text = [[
 ⌯︙اوامر المدراء ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -1552,7 +1552,7 @@ if tonumber(S0FI) == tonumber(data.sender_user_id_) then
 if not Admin(data) then
 return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌯ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
 end
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help4')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help4')
 local Text = [[
 ⌯︙اوامر المنشئين ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -1605,7 +1605,7 @@ if tonumber(S0FI) == tonumber(data.sender_user_id_) then
 if not Admin(data) then
 return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackquery?callback_query_id='..data.id_..'&text='..URL.escape("⌯ عذرا ليس لديك صلاحية التحكم لهذا الامر .")..'&show_alert=true')
 end
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help5')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help5')
 local Text = [[
 ⌯︙اوامر المطورين ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -1682,7 +1682,7 @@ end
 if DataText and DataText:match('/HelpList6:(.*)') then
 local S0FI = DataText:match('/HelpList6:(.*)')
 if tonumber(S0FI) == tonumber(data.sender_user_id_) then
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help6')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help6')
 local Text = [[
 ⌯︙اوامر الاعضاء ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -1725,49 +1725,49 @@ end
 if (data.ID == "UpdateNewMessage") then
 local msg = data.message_
 text = msg.content_.text_ 
-if text and Dev Ahme:get(ANUBIS.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_) == "true" then
-local NewCmmd = Dev Ahme:get(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..text)
+if text and Dev SOFI:get(ANUBIS.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_) == "true" then
+local NewCmmd = Dev SOFI:get(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..text)
 if NewCmmd then
-Dev Ahme:del(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..text)
-Dev Ahme:del(ANUBIS.."Set:Cmd:Group:New"..msg.chat_id_)
-Dev Ahme:srem(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف الامر من المجموعه", 1, 'html')  
+Dev SOFI:del(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..text)
+Dev SOFI:del(ANUBIS.."Set:Cmd:Group:New"..msg.chat_id_)
+Dev SOFI:srem(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف الامر من المجموعه", 1, 'html')  
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لايوجد امر بهذا الاسم", 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لايوجد امر بهذا الاسم", 1, 'html')
 end
-Dev Ahme:del(ANUBIS.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_)
 return false
 end
-if text and text:match('^'..(Dev Ahme:get(ANUBIS..' Ahme:NameBot') or "انوبيس")..' ') then
-data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..(Dev Ahme:get(ANUBIS..' Ahme:NameBot') or "انوبيس")..' ','')
+if text and text:match('^'..(Dev SOFI:get(ANUBIS..' SOFI:NameBot') or "انوبيس")..' ') then
+data.message_.content_.text_ = data.message_.content_.text_:gsub('^'..(Dev SOFI:get(ANUBIS..' SOFI:NameBot') or "انوبيس")..' ','')
 end
 if data.message_.content_.text_ then
-local NewCmmd = Dev Ahme:get(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..data.message_.content_.text_)
+local NewCmmd = Dev SOFI:get(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..data.message_.content_.text_)
 if NewCmmd then
 data.message_.content_.text_ = (NewCmmd or data.message_.content_.text_)
 end
 end
-if text and Dev Ahme:get(ANUBIS.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_) == "true" then
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New"..msg.chat_id_,text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل الامر الجديد", 1, 'html')
-Dev Ahme:del(ANUBIS.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group1"..msg.chat_id_..":"..msg.sender_user_id_,"true1") 
+if text and Dev SOFI:get(ANUBIS.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_) == "true" then
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New"..msg.chat_id_,text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل الامر الجديد", 1, 'html')
+Dev SOFI:del(ANUBIS.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group1"..msg.chat_id_..":"..msg.sender_user_id_,"true1") 
 return false
 end
-if text and Dev Ahme:get(ANUBIS.."Set:Cmd:Group1"..msg.chat_id_..":"..msg.sender_user_id_) == "true1" then
-local NewCmd = Dev Ahme:get(ANUBIS.."Set:Cmd:Group:New"..msg.chat_id_)
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..text,NewCmd)
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الامر", 1, 'html')
-Dev Ahme:del(ANUBIS.."Set:Cmd:Group1"..msg.chat_id_..":"..msg.sender_user_id_)
+if text and Dev SOFI:get(ANUBIS.."Set:Cmd:Group1"..msg.chat_id_..":"..msg.sender_user_id_) == "true1" then
+local NewCmd = Dev SOFI:get(ANUBIS.."Set:Cmd:Group:New"..msg.chat_id_)
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..text,NewCmd)
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الامر", 1, 'html')
+Dev SOFI:del(ANUBIS.."Set:Cmd:Group1"..msg.chat_id_..":"..msg.sender_user_id_)
 return false
 end
 if Constructor(msg) then
 if text == "الاوامر المضافه" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_.."") 
+local List = Dev SOFI:smembers(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_.."") 
 t = "⌯︙قائمة الاوامر المضافه ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-Cmds = Dev Ahme:get(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..v)
+Cmds = Dev SOFI:get(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..v)
 if Cmds then 
 t = t..k.."~ ("..v..") • {"..Cmds.."}\n"
 else
@@ -1777,151 +1777,151 @@ end
 if #List == 0 then
 t = "⌯︙لاتوجد اوامر مضافه في المجموعه"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, t, 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, t, 1, 'html')
 end
 if text == "حذف الاوامر المضافه" or text == "حذف الاوامر" or text == "مسح الاوامر المضافه" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_)
 for k,v in pairs(List) do
-Dev Ahme:del(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..v)
-Dev Ahme:del(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":"..v)
+Dev SOFI:del(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_)
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف الاوامر المضافه في المجموعه", 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف الاوامر المضافه في المجموعه", 1, 'html')
 end
 if text == "ترتيب الاوامر" and Constructor(msg) and ChCheck(msg) then
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":ا","ايدي")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"ا")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":م","رفع مميز")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"م")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":اد","رفع ادمن")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"اد")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":مد","رفع مدير")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"مد")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":من","رفع منشئ")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"من")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":اس","رفع منشئ اساسي")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"اس")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":تعط","تعطيل الايدي بالصوره")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"تعط")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":تفع","تفعيل الايدي بالصوره")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"تفع")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":تك","تنزيل الكل")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"تك")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":رد","اضف رد")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"رد")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":رس","مسح رسائلي")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"رس")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":سح","مسح سحكاتي")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"سح")
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":تغ","تغير الايدي")
-Dev Ahme:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"تغ")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":ا","ايدي")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"ا")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":م","رفع مميز")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"م")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":اد","رفع ادمن")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"اد")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":مد","رفع مدير")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"مد")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":من","رفع منشئ")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"من")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":اس","رفع منشئ اساسي")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"اس")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":تعط","تعطيل الايدي بالصوره")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"تعط")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":تفع","تفعيل الايدي بالصوره")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"تفع")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":تك","تنزيل الكل")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"تك")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":رد","اضف رد")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"رد")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":رس","مسح رسائلي")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"رس")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":سح","مسح سحكاتي")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"سح")
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group:New1"..msg.chat_id_..":تغ","تغير الايدي")
+Dev SOFI:sadd(ANUBIS.."List:Cmd:Group:New"..msg.chat_id_,"تغ")
 local text = "⌯︙ تم ترتيب الاوامر بالشكل التالي :\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n• ايدي ↫ ا\n• رفع مميز ↫ م\n• رفع ادمن ↫ اد\n• رفع مدير ↫ مد\n• رفع منشئ ↫ من\n• رفع منشئ اساسي ↫ اس\n• تفعيل الايدي بالصوره ↫ تفع\n• تعطيل الايدي بالصوره ↫ تعط\n• تنزيل الكل ↫ تك\n• اضف رد ↫ رد\n• مسح رسائلي ↫ رس\n• مسح سحكاتي ↫ سح\n• تغير الايدي ↫ تغ\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ"
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "اضف امر" or text == "اضافة امر" or text == "اضافه امر" and ChCheck(msg) then
-Dev Ahme:set(ANUBIS.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_,"true") 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل الامر القديم", 1, 'html')
+Dev SOFI:set(ANUBIS.."Set:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_,"true") 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل الامر القديم", 1, 'html')
 return false
 end
 if text == "حذف امر" or text == "مسح امر" and ChCheck(msg) then 
-Dev Ahme:set(ANUBIS.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_,"true") 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل الامر الذي قمت باضافته يدويا", 1, 'html')
+Dev SOFI:set(ANUBIS.."Del:Cmd:Group"..msg.chat_id_..":"..msg.sender_user_id_,"true") 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل الامر الذي قمت باضافته يدويا", 1, 'html')
 return false
 end
 end
 --     Source ANUBIS     --
 if text == "الصلاحيات" or text == "صلاحيات" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS.."Coomds"..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS.."Coomds"..msg.chat_id_)
 if #List == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لاتوجد صلاحيات مضافه", 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لاتوجد صلاحيات مضافه", 1, 'html')
 return false
 end
 t = "⌯︙قائمة الصلاحيات المضافه ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-var = Dev Ahme:get(ANUBIS.."Comd:New:rt: Ahme:"..v..msg.chat_id_)
+var = Dev SOFI:get(ANUBIS.."Comd:New:rt: SOFI:"..v..msg.chat_id_)
 if var then
 t = t..k.."~ "..v.." • ("..var..")\n"
 else
 t = t..k.."~ "..v.."\n"
 end
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, t, 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, t, 1, 'html')
 end
 if Admin(msg) then
 if text == "حذف الصلاحيات" and ChCheck(msg) or text == "مسح الصلاحيات" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS.."Coomds"..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS.."Coomds"..msg.chat_id_)
 for k,v in pairs(List) do
-Dev Ahme:del(ANUBIS.."Comd:New:rt: Ahme:"..v..msg.chat_id_)
-Dev Ahme:del(ANUBIS.."Coomds"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.."Comd:New:rt: SOFI:"..v..msg.chat_id_)
+Dev SOFI:del(ANUBIS.."Coomds"..msg.chat_id_)
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف الصلاحيات المضافه", 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف الصلاحيات المضافه", 1, 'html')
 end
 end
 if text and text:match("^اضف صلاحيه (.*)$") and ChCheck(msg) then 
 ComdNew = text:match("^اضف صلاحيه (.*)$")
-Dev Ahme:set(ANUBIS.."Comd:New:rt"..msg.chat_id_..msg.sender_user_id_,ComdNew)  
-Dev Ahme:sadd(ANUBIS.."Coomds"..msg.chat_id_,ComdNew)  
-Dev Ahme:setex(ANUBIS.."Comd:New"..msg.chat_id_..msg.sender_user_id_,200,true)  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل نوع الصلاحيه \n{ عضو • مميز  • ادمن  • مدير }\n⌯︙ارسل الغاء لالغاء الامر ", 1, 'html')
+Dev SOFI:set(ANUBIS.."Comd:New:rt"..msg.chat_id_..msg.sender_user_id_,ComdNew)  
+Dev SOFI:sadd(ANUBIS.."Coomds"..msg.chat_id_,ComdNew)  
+Dev SOFI:setex(ANUBIS.."Comd:New"..msg.chat_id_..msg.sender_user_id_,200,true)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل نوع الصلاحيه \n{ عضو • مميز  • ادمن  • مدير }\n⌯︙ارسل الغاء لالغاء الامر ", 1, 'html')
 end
 if text and text:match("^حذف صلاحيه (.*)$") and ChCheck(msg) or text and text:match("^مسح صلاحيه (.*)$") and ChCheck(msg) then 
 ComdNew = text:match("^حذف صلاحيه (.*)$") or text:match("^مسح صلاحيه (.*)$")
-Dev Ahme:del(ANUBIS.."Comd:New:rt: Ahme:"..ComdNew..msg.chat_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف الصلاحيه", 1, 'html')
+Dev SOFI:del(ANUBIS.."Comd:New:rt: SOFI:"..ComdNew..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف الصلاحيه", 1, 'html')
 end
-if Dev Ahme:get(ANUBIS.."Comd:New"..msg.chat_id_..msg.sender_user_id_) then 
+if Dev SOFI:get(ANUBIS.."Comd:New"..msg.chat_id_..msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر", 1, 'html')
-Dev Ahme:del(ANUBIS.."Comd:New"..msg.chat_id_..msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر", 1, 'html')
+Dev SOFI:del(ANUBIS.."Comd:New"..msg.chat_id_..msg.sender_user_id_) 
 return false  
 end 
 if text == "مدير" then
 if not Constructor(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تستطيع اضافة صلاحية ( عضو • مميز  • ادمن )\n⌯︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تستطيع اضافة صلاحية ( عضو • مميز  • ادمن )\n⌯︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
 return false
 end
 end
 if text == "ادمن" then
 if not Manager(msg) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تستطيع اضافة صلاحية ( عضو • مميز )\n⌯︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تستطيع اضافة صلاحية ( عضو • مميز )\n⌯︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
 return false
 end
 end
 if text == "مميز" then
 if not Admin(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تستطيع اضافة صلاحية ( عضو )\n⌯︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تستطيع اضافة صلاحية ( عضو )\n⌯︙ارسال نوع الصلاحيه مره اخرى", 1, 'html')
 return false
 end
 end
 if text == "مدير" or text == "ادمن" or text == "مميز" or text == "عضو" then
-local textn = Dev Ahme:get(ANUBIS.."Comd:New:rt"..msg.chat_id_..msg.sender_user_id_)  
-Dev Ahme:set(ANUBIS.."Comd:New:rt: Ahme:"..textn..msg.chat_id_,text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم اضافة الصلاحيه", 1, 'html')
-Dev Ahme:del(ANUBIS.."Comd:New"..msg.chat_id_..msg.sender_user_id_) 
+local textn = Dev SOFI:get(ANUBIS.."Comd:New:rt"..msg.chat_id_..msg.sender_user_id_)  
+Dev SOFI:set(ANUBIS.."Comd:New:rt: SOFI:"..textn..msg.chat_id_,text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم اضافة الصلاحيه", 1, 'html')
+Dev SOFI:del(ANUBIS.."Comd:New"..msg.chat_id_..msg.sender_user_id_) 
 return false  
 end 
 end
 
 if text and text:match("رفع (.*)") and tonumber(msg.reply_to_message_id_) > 0 then 
 local DEV_SoOoFi = text:match("رفع (.*)")
-if Dev Ahme:sismember(ANUBIS.."Coomds"..msg.chat_id_,DEV_SoOoFi) then
+if Dev SOFI:sismember(ANUBIS.."Coomds"..msg.chat_id_,DEV_SoOoFi) then
 function by_reply(extra, result, success)   
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-local mr Ahme = Dev Ahme:get(ANUBIS.."Comd:New:rt: Ahme:"..DEV_SoOoFi..msg.chat_id_)
-if mr Ahme == "مميز" and VipMem(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
-Dev Ahme:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_SoOoFi) 
-Dev Ahme:sadd(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.sender_user_id_)
-elseif mr Ahme == "ادمن" and Admin(msg) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
-Dev Ahme:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_SoOoFi)
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.sender_user_id_)
-elseif mr Ahme == "مدير" and Manager(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
-Dev Ahme:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_SoOoFi)  
-Dev Ahme:sadd(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.sender_user_id_)
-elseif mr Ahme == "عضو" then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
+local mr SOFI = Dev SOFI:get(ANUBIS.."Comd:New:rt: SOFI:"..DEV_SoOoFi..msg.chat_id_)
+if mr SOFI == "مميز" and VipMem(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
+Dev SOFI:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_SoOoFi) 
+Dev SOFI:sadd(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.sender_user_id_)
+elseif mr SOFI == "ادمن" and Admin(msg) then 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
+Dev SOFI:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_SoOoFi)
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.sender_user_id_)
+elseif mr SOFI == "مدير" and Manager(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
+Dev SOFI:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_,DEV_SoOoFi)  
+Dev SOFI:sadd(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.sender_user_id_)
+elseif mr SOFI == "عضو" then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
 end
 end,nil)   
 end   
@@ -1930,24 +1930,24 @@ end
 end
 if text and text:match("تنزيل (.*)") and tonumber(msg.reply_to_message_id_) > 0 then 
 local DEV_SoOoFi = text:match("تنزيل (.*)")
-if Dev Ahme:sismember(ANUBIS.."Coomds"..msg.chat_id_,DEV_SoOoFi) then
+if Dev SOFI:sismember(ANUBIS.."Coomds"..msg.chat_id_,DEV_SoOoFi) then
 function by_reply(extra, result, success)   
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-local mr Ahme = Dev Ahme:get(ANUBIS.."Comd:New:rt: Ahme:"..DEV_SoOoFi..msg.chat_id_)
-if mr Ahme == "مميز" and VipMem(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
-elseif mr Ahme == "ادمن" and Admin(msg) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
-elseif mr Ahme == "مدير" and Manager(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
-elseif mr Ahme == "عضو" then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
+local mr SOFI = Dev SOFI:get(ANUBIS.."Comd:New:rt: SOFI:"..DEV_SoOoFi..msg.chat_id_)
+if mr SOFI == "مميز" and VipMem(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
+elseif mr SOFI == "ادمن" and Admin(msg) then 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
+elseif mr SOFI == "مدير" and Manager(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.sender_user_id_)
+elseif mr SOFI == "عضو" then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..data.first_name_..'](t.me/'..(data.username_ or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..DEV_SoOoFi..' ❩ بنجاح', 1, 'md')
 end
 end,nil)   
 end   
@@ -1956,27 +1956,27 @@ end
 end
 if text and text:match("^رفع (.*) @(.*)") then 
 local text1 = {string.match(text, "^(رفع) (.*) @(.*)$")}
-if Dev Ahme:sismember(ANUBIS.."Coomds"..msg.chat_id_,text1[2]) then
+if Dev SOFI:sismember(ANUBIS.."Coomds"..msg.chat_id_,text1[2]) then
 function py_username(extra, result, success)   
 if result.id_ then
-local mr Ahme = Dev Ahme:get(ANUBIS.."Comd:New:rt: Ahme:"..text1[2]..msg.chat_id_)
-if mr Ahme == "مميز" and VipMem(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
-Dev Ahme:sadd(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.id_)
-Dev Ahme:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
-elseif mr Ahme == "ادمن" and Admin(msg) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.id_)
-Dev Ahme:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
-elseif mr Ahme == "مدير" and Manager(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
-Dev Ahme:sadd(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.id_)
-Dev Ahme:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
-elseif mr Ahme == "عضو" then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+local mr SOFI = Dev SOFI:get(ANUBIS.."Comd:New:rt: SOFI:"..text1[2]..msg.chat_id_)
+if mr SOFI == "مميز" and VipMem(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev SOFI:sadd(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.id_)
+Dev SOFI:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
+elseif mr SOFI == "ادمن" and Admin(msg) then 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.id_)
+Dev SOFI:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
+elseif mr SOFI == "مدير" and Manager(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev SOFI:sadd(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.id_)
+Dev SOFI:set(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_,text1[2])
+elseif mr SOFI == "عضو" then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم رفعه ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 end
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*المعرف غير صحيح*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*المعرف غير صحيح*", 1, 'md')
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text1[3]},py_username,nil) 
@@ -1984,27 +1984,27 @@ end
 end
 if text and text:match("^تنزيل (.*) @(.*)") then 
 local text1 = {string.match(text, "^(تنزيل) (.*) @(.*)$")}
-if Dev Ahme:sismember(ANUBIS.."Coomds"..msg.chat_id_,text1[2]) then
+if Dev SOFI:sismember(ANUBIS.."Coomds"..msg.chat_id_,text1[2]) then
 function py_username(extra, result, success)   
 if result.id_ then
-local mr Ahme = Dev Ahme:get(ANUBIS.."Comd:New:rt: Ahme:"..text1[2]..msg.chat_id_)
-if mr Ahme == "مميز" and VipMem(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.id_)
-Dev Ahme:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
-elseif mr Ahme == "ادمن" and Admin(msg) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.id_)
-Dev Ahme:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
-elseif mr Ahme == "مدير" and Manager(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.id_)
-Dev Ahme:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
-elseif mr Ahme == "عضو" then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+local mr SOFI = Dev SOFI:get(ANUBIS.."Comd:New:rt: SOFI:"..text1[2]..msg.chat_id_)
+if mr SOFI == "مميز" and VipMem(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.id_)
+Dev SOFI:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
+elseif mr SOFI == "ادمن" and Admin(msg) then 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.id_)
+Dev SOFI:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
+elseif mr SOFI == "مدير" and Manager(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.id_)
+Dev SOFI:del(ANUBIS.."Comd:New:rt:User:"..msg.chat_id_..result.id_)
+elseif mr SOFI == "عضو" then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو ↫ ❨ ['..result.title_..'](t.me/'..(text1[3] or 'SOURCEANUBIS')..')'..' ❩\n⌯︙تم تنزيله ❨ '..text1[2]..' ❩ بنجاح', 1, 'md')
 end
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*المعرف غير صحيح*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*المعرف غير صحيح*", 1, 'md')
 end
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text1[3]},py_username,nil) 
@@ -2014,13 +2014,13 @@ end
 if msg.chat_id_ then
 local id = tostring(msg.chat_id_)
 if id:match("-100(%d+)") then
-Dev Ahme:incr(ANUBIS..' Ahme:UsersMsgs'..ANUBIS..os.date('%d')..':'..msg.chat_id_..':'..msg.sender_user_id_)
-Dev Ahme:incr(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
-Dev Ahme:incr(ANUBIS..' Ahme:MsgNumberDay'..msg.chat_id_..':'..os.date('%d'))  
+Dev SOFI:incr(ANUBIS..' SOFI:UsersMsgs'..ANUBIS..os.date('%d')..':'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev SOFI:incr(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev SOFI:incr(ANUBIS..' SOFI:MsgNumberDay'..msg.chat_id_..':'..os.date('%d'))  
 ChatType = 'sp' 
 elseif id:match("^(%d+)") then
-if not Dev Ahme:sismember(ANUBIS.." Ahme:Users",msg.chat_id_) then
-Dev Ahme:sadd(ANUBIS.." Ahme:Users",msg.chat_id_)
+if not Dev SOFI:sismember(ANUBIS.." SOFI:Users",msg.chat_id_) then
+Dev SOFI:sadd(ANUBIS.." SOFI:Users",msg.chat_id_)
 end
 ChatType = 'pv' 
 else
@@ -2150,7 +2150,7 @@ end end
 if text == '↫ المتجر ⌯' then 
 if SecondSudo(msg) then 
 local Sudo_Welcome = '⌯︙اهلا بك مجددا عزيزي المطور \n⌯︙اليك الازرار الخاصه المتجر الخاص لسورس انوبيس فقط اضغط على الملف الذي تريد تفعيل او تعطيله'
-local Get_Files, res = https.request("https://raw.githubusercontent.com/UUUAhmeaa/Files_ANUBIS/main/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/UUUSOFIaa/Files_ANUBIS/main/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
@@ -2204,13 +2204,13 @@ SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
 end end
 if text == '/start' and ChCheck(msg) then  
-if not Dev Ahme:get(ANUBIS..' Ahme:Start:Time'..msg.sender_user_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Start:Time'..msg.sender_user_id_) then
 tdcli_function({ID="GetUser",user_id_=⁦DevId},function(arg,dp) 
-local bot_username = Dev Ahme:get(Server_ANUBIS.."Token_username")
+local bot_username = Dev SOFI:get(Server_ANUBIS.."Token_username")
 local inline = { 
 {{text = "⌯ اضف البوت في مجموعتك .", url="http://t.me/"..bot_username.."?startgroup=start"}}, 
 {{text="⌯ المطور .",url="t.me/"..dp.username_ or "S0DRG"},{text="⌯ شراء بوت .",url="t.me/S0DRGbot"}}}
-local start = Dev Ahme:get(ANUBIS.." Ahme:Start:Bot")
+local start = Dev SOFI:get(ANUBIS.." SOFI:Start:Bot")
 if start then 
 Start_Source = start
 else
@@ -2219,13 +2219,13 @@ end
 SendInline(msg.chat_id_,Start_Source,nil,inline)
 end,nil)
 end
-Dev Ahme:setex(ANUBIS..' Ahme:Start:Time'..msg.sender_user_id_,300,true)
+Dev SOFI:setex(ANUBIS..' SOFI:Start:Time'..msg.sender_user_id_,300,true)
 return false
 end 
 --     Source ANUBIS     --
-if not SecondSudo(msg) and not Dev Ahme:sismember(ANUBIS..' Ahme:Ban:Pv',msg.sender_user_id_) and not Dev Ahme:get(ANUBIS..' Ahme:Texting:Pv') then
+if not SecondSudo(msg) and not Dev SOFI:sismember(ANUBIS..' SOFI:Ban:Pv',msg.sender_user_id_) and not Dev SOFI:get(ANUBIS..' SOFI:Texting:Pv') then
 tdcli_function({ID="GetUser",user_id_=⁦DevId},function(arg,chat) 
-Dev_ Ahme(msg.sender_user_id_, msg.id_, 1, '⌯︙تم ارسال رسالتك الى [المطور](t.me/'..(chat.username_ or "SOURCEANUBIS")..')', 1, 'md') 
+Dev_ SOFI(msg.sender_user_id_, msg.id_, 1, '⌯︙تم ارسال رسالتك الى [المطور](t.me/'..(chat.username_ or "SOURCEANUBIS")..')', 1, 'md') 
 tdcli_function({ID="ForwardMessages",chat_id_=⁦DevId,from_chat_id_= msg.sender_user_id_,message_ids_={[0]=msg.id_},disable_notification_=1,from_background_=1},function(arg,data) 
 tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(arg,dp) 
 if data and data.messages_ and data.messages_[0] ~= false and data.ID ~= "Error" then
@@ -2242,23 +2242,23 @@ tdcli_function ({ID = "GetUser",user_id_ = id_user},function(arg,data)
 if text == 'حظر' or text == 'حضر' then
 local Text = '⌯︙العضو ↫ ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n⌯︙تم حظره من التواصل'
 SendText(⁦DevId,Text,msg.id_/2097152/0.5,'md') 
-Dev Ahme:sadd(ANUBIS..' Ahme:Ban:Pv',data.id_)  
+Dev SOFI:sadd(ANUBIS..' SOFI:Ban:Pv',data.id_)  
 return false  
 end 
 if text == 'الغاء الحظر' or text == 'الغاء حظر' then
 local Text = '⌯︙العضو ↫ ['..string.sub(data.first_name_,0, 40)..'](tg://user?id='..data.id_..')'..'\n⌯︙تم الغاء حظره من التواصل'
 SendText(⁦DevId,Text,msg.id_/2097152/0.5,'md') 
-Dev Ahme:srem(ANUBIS..' Ahme:Ban:Pv',data.id_)  
+Dev SOFI:srem(ANUBIS..' SOFI:Ban:Pv',data.id_)  
 return false  
 end 
 tdcli_function({ID='GetChat',chat_id_ = id_user},function(arg,dataq)
 tdcli_function ({ ID = "SendChatAction",chat_id_ = id_user, action_ = {  ID = "SendMessageTypingAction", progress_ = 100} },function(arg,dp) 
 if dp.code_ == 400 or dp.code_ == 5 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو قام بحظر البوت لا تستطيع ارسال الرسائل له', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو قام بحظر البوت لا تستطيع ارسال الرسائل له', 1, 'md')
 return false  
 end 
 if text then
-Dev_ Ahme(id_user, 0, 1, text, 1, "md")  
+Dev_ SOFI(id_user, 0, 1, text, 1, "md")  
 Text = '⌯︙تم ارسال الرساله الى ↫ ⤈'
 elseif msg.content_.ID == 'MessageSticker' then    
 sendSticker(id_user, msg.id_, 0, 1,nil, msg.content_.sticker_.sticker_.persistent_id_)   
@@ -2281,44 +2281,44 @@ end,nil);
 end 
 end 
 --     Source ANUBIS     --
-if text and Dev Ahme:get(ANUBIS..' Ahme:Start:Bots'..msg.sender_user_id_) then
+if text and Dev SOFI:get(ANUBIS..' SOFI:Start:Bots'..msg.sender_user_id_) then
 if text == 'الغاء' then   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ كليشة الستارت', 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Start:Bots'..msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ كليشة الستارت', 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Start:Bots'..msg.sender_user_id_) 
 return false
 end
-Dev Ahme:set(ANUBIS.." Ahme:Start:Bot",text)  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ كليشة الستارت', 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Start:Bots'..msg.sender_user_id_) 
+Dev SOFI:set(ANUBIS.." SOFI:Start:Bot",text)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ كليشة الستارت', 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Start:Bots'..msg.sender_user_id_) 
 return false
 end
 if SecondSudo(msg) then
 if text == 'تعيين رد الخاص' or text == 'ضع كليشه ستارت' or text == '↫ تعيين رد الخاص ⌯' or text == 'تعيين رسالة الستارت' or text == '↫ تعيين رسالة الستارت ⌯' then 
-Dev Ahme:set(ANUBIS..' Ahme:Start:Bots'..msg.sender_user_id_,true) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي كليشة الستارت الان', 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:Start:Bots'..msg.sender_user_id_,true) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي كليشة الستارت الان', 1, 'md')
 return false
 end
 if text == 'حذف رد الخاص' or text == 'حذف كليشه ستارت' or text == '↫ حذف رد الخاص ⌯' or text == 'حذف رسالة الستارت' or text == '↫ حذف رسالة الستارت ⌯' then 
-Dev Ahme:del(ANUBIS..'Start:Bot') 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف كليشة الستارت بنجاح', 1, 'md')
+Dev SOFI:del(ANUBIS..'Start:Bot') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف كليشة الستارت بنجاح', 1, 'md')
 end
 if text == 'جلب رد الخاص' or text == 'جلب رسالة الستارت' or text == '↫ جلب رسالة الستارت ⌯' then  
-local start = Dev Ahme:get(ANUBIS.." Ahme:Start:Bot")
+local start = Dev SOFI:get(ANUBIS.." SOFI:Start:Bot")
 if start then 
 Start_Source = start
 else
 Start_Source = "⌯︙مرحبا انا بوت اسمي "..NameBot.."\n⌯︙اختصاصي حماية المجموعات\n⌯︙من التفليش والسبام والخخ .. . ،\n⌯︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر ↫ تفعيل\n⌯︙سيتم رفع الادمنيه والمنشئ تلقائيا"
 end 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, Start_Source, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, Start_Source, 1, 'md')
 return false
 end
 if text == 'تفعيل التواصل' or text == '↫ تفعيل التواصل ⌯' then   
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل التواصل بنجاح\n✓")
-Dev Ahme:del(ANUBIS..' Ahme:Texting:Pv') 
+Dev SOFI:del(ANUBIS..' SOFI:Texting:Pv') 
 end
 if text == 'تعطيل التواصل' or text == '↫ تعطيل التواصل ⌯' then  
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل التواصل بنجاح\n✓")
-Dev Ahme:set(ANUBIS..' Ahme:Texting:Pv',true) 
+Dev SOFI:set(ANUBIS..' SOFI:Texting:Pv',true) 
 end
 end
 --     Source ANUBIS     --
@@ -2331,10 +2331,10 @@ end
 local msg = data.message_
 text = msg.content_.text_
 if msg.content_.ID == "MessageChatAddMembers" then 
-Dev Ahme:incr(ANUBIS..' Ahme:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS.."Who:Added:Me"..msg.chat_id_..':'..msg.content_.members_[0].id_,msg.sender_user_id_)
+Dev SOFI:incr(ANUBIS..' SOFI:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS.."Who:Added:Me"..msg.chat_id_..':'..msg.content_.members_[0].id_,msg.sender_user_id_)
 local mem_id = msg.content_.members_  
-local Bots = Dev Ahme:get(ANUBIS.." Ahme:Lock:Bots"..msg.chat_id_) 
+local Bots = Dev SOFI:get(ANUBIS.." SOFI:Lock:Bots"..msg.chat_id_) 
 for i=0,#mem_id do  
 if msg.content_.members_[i].type_.ID == "UserTypeBot" and Bots == "kick" and not VipMem(msg) then   
 https.request("https://api.telegram.org/bot"..TokenBot.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_)
@@ -2373,7 +2373,7 @@ end
 for i=0,#mem_id do  
 if msg.content_.members_[i].type_.ID == "UserTypeBot" and Bots == "ked" and not VipMem(msg) then
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_.."&can_send_messages=false&can_send_media_messages=false&can_send_other_messages=false&can_add_web_page_previews=false")
-Dev Ahme:sadd(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, msg.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, msg.sender_user_id_)
 GetInfo = https.request("https://api.telegram.org/bot"..TokenBot.."/kickChatMember?chat_id="..msg.chat_id_.."&user_id="..mem_id[i].id_)
 local JsonInfo = JSON.decode(GetInfo)
 if JsonInfo.ok == true and #mem_id == i then
@@ -2391,7 +2391,7 @@ end
 end  
 end
 if msg.content_.ID == "MessageChatDeleteMember" and tonumber(msg.content_.user_.id_) == tonumber(ANUBIS) then 
-Dev Ahme:srem(ANUBIS.." Ahme:Groups", msg.chat_id_) 
+Dev SOFI:srem(ANUBIS.." SOFI:Groups", msg.chat_id_) 
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,dp) 
 local Name1 = result.first_name_
@@ -2416,28 +2416,28 @@ end,nil)
 end,nil)
 end
 if msg.content_.ID == "MessageChatDeletePhoto" or msg.content_.ID == "MessageChatChangePhoto" or msg.content_.ID == 'MessagePinMessage' or msg.content_.ID == "MessageChatJoinByLink" or msg.content_.ID == "MessageChatAddMembers" or msg.content_.ID == 'MessageChatChangeTitle' or msg.content_.ID == "MessageChatDeleteMember" then   
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:TagServr'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:TagServr'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})    
 end   
 end
 if msg.content_.ID == "MessageChatJoinByLink" or msg.content_.ID == "MessageChatAddMembers" then   
-Dev Ahme:incr(ANUBIS..' Ahme:EntryNumber'..msg.chat_id_..':'..os.date('%d'))  
+Dev SOFI:incr(ANUBIS..' SOFI:EntryNumber'..msg.chat_id_..':'..os.date('%d'))  
 elseif msg.content_.ID == "MessageChatDeleteMember" then   
-Dev Ahme:incr(ANUBIS..' Ahme:ExitNumber'..msg.chat_id_..':'..os.date('%d'))  
+Dev SOFI:incr(ANUBIS..' SOFI:ExitNumber'..msg.chat_id_..':'..os.date('%d'))  
 end
 --     Source ANUBIS     --
 if text ==('تفعيل') and not SudoBot(msg) and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:FreeBot'..ANUBIS) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:FreeBot'..ANUBIS) then
 if ChatType == 'pv' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لاتستطيع تفعيلي هنا يرجى اضافتي في مجموعه اولا', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لاتستطيع تفعيلي هنا يرجى اضافتي في مجموعه اولا', 1, 'md')
 return false
 end
 if ChatType ~= 'sp' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه عاديه وليست خارقه لا تستطيع تفعيلي يرجى ان تضع سجل رسائل المجموعه ضاهر وليس مخفي ومن بعدها يمكنك رفعي ادمن ثم تفعيلي', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه عاديه وليست خارقه لا تستطيع تفعيلي يرجى ان تضع سجل رسائل المجموعه ضاهر وليس مخفي ومن بعدها يمكنك رفعي ادمن ثم تفعيلي', 1, 'md')
 return false
 end
 if msg.can_be_deleted_ == false then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙البوت ليس ادمن يرجى ترقيتي !', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙البوت ليس ادمن يرجى ترقيتي !', 1, 'md')
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = msg.chat_id_:gsub("-100","")}, function(arg,data)  
@@ -2457,37 +2457,37 @@ tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100"
 local admins = SoOoFi.members_
 for i=0 , #admins do
 if SoOoFi.members_[i].bot_info_ == false and SoOoFi.members_[i].status_.ID == "ChatMemberStatusEditor" then
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..msg.chat_id_, admins[i].user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..msg.chat_id_, admins[i].user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = admins[i].user_id_},function(arg,ba) 
 if ba.first_name_ == false then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, admins[i].user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, admins[i].user_id_)
 end
 end,nil)   
 else
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..msg.chat_id_, admins[i].user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..msg.chat_id_, admins[i].user_id_)
 end
 if SoOoFi.members_[i].status_.ID == "ChatMemberStatusCreator" then
-Dev Ahme:sadd(ANUBIS.." Ahme:BasicConstructor:"..msg.chat_id_,admins[i].user_id_)
-Dev Ahme:sadd(ANUBIS.." Ahme: AhmeConstructor:"..msg.chat_id_,admins[i].user_id_)
+Dev SOFI:sadd(ANUBIS.." SOFI:BasicConstructor:"..msg.chat_id_,admins[i].user_id_)
+Dev SOFI:sadd(ANUBIS.." SOFI: SOFIConstructor:"..msg.chat_id_,admins[i].user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = admins[i].user_id_},function(arg,ba) 
 if ba.first_name_ == false then
-Dev Ahme:srem(ANUBIS.." Ahme:BasicConstructor:"..msg.chat_id_,admins[i].user_id_)
-Dev Ahme:srem(ANUBIS.." Ahme: AhmeConstructor:"..msg.chat_id_,admins[i].user_id_)
+Dev SOFI:srem(ANUBIS.." SOFI:BasicConstructor:"..msg.chat_id_,admins[i].user_id_)
+Dev SOFI:srem(ANUBIS.." SOFI: SOFIConstructor:"..msg.chat_id_,admins[i].user_id_)
 end
 end,nil)  
 end 
 end
 end,nil)
-if Dev Ahme:sismember(ANUBIS..' Ahme:Groups',msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه بالتاكيد مفعله', 1, 'md')
+if Dev SOFI:sismember(ANUBIS..' SOFI:Groups',msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه بالتاكيد مفعله', 1, 'md')
 else
-if tonumber(data.member_count_) < tonumber(Dev Ahme:get(ANUBIS..' Ahme:Num:Add:Bot') or 0) and not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عدد اعضاء المجموعه اقل من ↫ *'..(Dev Ahme:get(ANUBIS..' Ahme:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
+if tonumber(data.member_count_) < tonumber(Dev SOFI:get(ANUBIS..' SOFI:Num:Add:Bot') or 0) and not SecondSudo(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عدد اعضاء المجموعه اقل من ↫ *'..(Dev SOFI:get(ANUBIS..' SOFI:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
 return false
 end
 ReplyStatus(msg,result.id_,"ReplyBy","⌯︙تم تفعيل المجموعه "..dp.title_)  
-Dev Ahme:sadd(ANUBIS.." Ahme:Groups",msg.chat_id_)
-Dev Ahme:sadd(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,msg.sender_user_id_)
+Dev SOFI:sadd(ANUBIS.." SOFI:Groups",msg.chat_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,msg.sender_user_id_)
 local Name1 = result.first_name_
 local Name1 = Name1:gsub('"',"") 
 local Name1 = Name1:gsub("'","") 
@@ -2510,7 +2510,7 @@ LinkGroup = LinkGp.result
 else
 LinkGroup = 'لا يوجد'
 end
-Dev Ahme:set(ANUBIS.." Ahme:Groups:Links"..msg.chat_id_,LinkGroup) 
+Dev SOFI:set(ANUBIS.." SOFI:Groups:Links"..msg.chat_id_,LinkGroup) 
 SendText(⁦DevId,"⌯︙تم تفعيل مجموعه جديده ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙بواسطة ↫ "..Name.."\n⌯︙موقعه في المجموعه ↫ "..status.."\n⌯︙اسم المجموعه ↫ ["..NameChat.."]\n⌯︙عدد اعضاء المجموعه ↫ ❨ *"..NumMem.."* ❩\n⌯︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⌯︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙الوقت ↫ "..os.date("%I:%M%p").."\n⌯︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
 end end
@@ -2519,7 +2519,7 @@ end,nil)
 end,nil)
 end,nil)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تفعيل هذه المجموعه بسبب تعطيل البوت الخدمي من قبل المطور الاساسي', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تفعيل هذه المجموعه بسبب تعطيل البوت الخدمي من قبل المطور الاساسي', 1, 'md') 
 end 
 end 
 --     Source ANUBIS     --
@@ -2530,21 +2530,21 @@ end
 --     Source ANUBIS     --
 tdcli_function({ID = "GetUser",user_id_ = msg.sender_user_id_},function(arg,data) 
 if data.username_ ~= false then
-Dev Ahme:set(ANUBIS..'Save:UserName'..msg.sender_user_id_,data.username_)
+Dev SOFI:set(ANUBIS..'Save:UserName'..msg.sender_user_id_,data.username_)
 end;end,nil) 
 --     Source ANUBIS     --
 local ReFalse = tostring(msg.chat_id_)
-if not Dev Ahme:sismember(ANUBIS.." Ahme:Groups",msg.chat_id_) and not ReFalse:match("^(%d+)") and not SudoBot(msg) then
+if not Dev SOFI:sismember(ANUBIS.." SOFI:Groups",msg.chat_id_) and not ReFalse:match("^(%d+)") and not SudoBot(msg) then
 print("Return False : The Bot Is Not Enabled In The Group")
 return false
 end
 --     Source ANUBIS     --
 -------- MSG TYPES ---------
 if msg.content_.ID == "MessageChatJoinByLink" and not VipMem(msg) then 
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Robot'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Robot'..msg.chat_id_) then
 tdcli_function({ID="GetUser",user_id_=msg.sender_user_id_},function(arg,dp) 
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..dp.id_)
-Dev Ahme:sadd(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, dp.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, dp.id_)
 local Text = '⌯︙اهلا عزيزي ↫ ['..string.sub(dp.first_name_,0, 40)..'](tg://user?id='..dp.id_..')\n⌯︙يجب علينا التأكد أنك لست روبوت\n⌯︙تم تقيدك اضغط الزر بالاسفل لفكه'
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="اضغط هنا لفك تقيدك",callback_data="/UnTkeed"}}} 
@@ -2553,14 +2553,14 @@ HTTPS.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='.
 end,nil)
 return false
 end
-if Dev Ahme:get(ANUBIS.." Ahme:Lock:Join"..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS.." SOFI:Lock:Join"..msg.chat_id_) then
 ChatKick(msg.chat_id_,msg.sender_user_id_) 
 return false  
 end
 end
 if msg.content_.ID == "MessagePhoto" then
 if not Manager(msg) then 
-local filter = Dev Ahme:smembers(ANUBIS.." Ahme:FilterPhoto"..msg.chat_id_)
+local filter = Dev SOFI:smembers(ANUBIS.." SOFI:FilterPhoto"..msg.chat_id_)
 for k,v in pairs(filter) do
 if v == msg.content_.photo_.id_ then
 ReplyStatus(msg,msg.sender_user_id_,"WrongWay","⌯︙الصوره التي ارسلتها تم منعها من المجموعه")  
@@ -2572,7 +2572,7 @@ end
 end
 if msg.content_.ID == "MessageAnimation" then
 if not Manager(msg) then 
-local filter = Dev Ahme:smembers(ANUBIS.." Ahme:FilterAnimation"..msg.chat_id_)
+local filter = Dev SOFI:smembers(ANUBIS.." SOFI:FilterAnimation"..msg.chat_id_)
 for k,v in pairs(filter) do
 if v == msg.content_.animation_.animation_.persistent_id_ then
 ReplyStatus(msg,msg.sender_user_id_,"WrongWay","⌯︙المتحركه التي ارسلتها تم منعها من المجموعه")  
@@ -2584,7 +2584,7 @@ end
 end
 if msg.content_.ID == "MessageSticker" then
 if not Manager(msg) then 
-local filter = Dev Ahme:smembers(ANUBIS.." Ahme:FilterSteckr"..msg.chat_id_)
+local filter = Dev SOFI:smembers(ANUBIS.." SOFI:FilterSteckr"..msg.chat_id_)
 for k,v in pairs(filter) do
 if v == msg.content_.sticker_.sticker_.persistent_id_ then
 ReplyStatus(msg,msg.sender_user_id_,"WrongWay","⌯︙الملصق الذي ارسلته تم منعه من المجموعه")  
@@ -2596,118 +2596,118 @@ end
 end
 --     Source ANUBIS     --
 if text and text:match("^(.*)$") then
-local DelGpRedRedods = Dev Ahme:get(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
-local GetGpTexts = Dev Ahme:get(ANUBIS..' Ahme:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
+local DelGpRedRedods = Dev SOFI:get(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+local GetGpTexts = Dev SOFI:get(ANUBIS..' SOFI:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
 if DelGpRedRedods == 'DelGpRedRedods' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙الرد ↫ '..msg.content_.text_..' للكلمه ↫ '..GetGpTexts..' تم حذفها',  1, "html")
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Text:GpTexts'..GetGpTexts..msg.chat_id_,msg.content_.text_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙الرد ↫ '..msg.content_.text_..' للكلمه ↫ '..GetGpTexts..' تم حذفها',  1, "html")
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Text:GpTexts'..GetGpTexts..msg.chat_id_,msg.content_.text_)
 return false
 end
 end
 if text and text:match("^(.*)$") then
-local DelGpRed = Dev Ahme:get(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+local DelGpRed = Dev SOFI:get(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 if DelGpRed == 'DelGpRedod' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Text:GpTexts'..msg.content_.text_..msg.chat_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_,msg.content_.text_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Text:GpTexts'..msg.content_.text_..msg.chat_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_,msg.content_.text_)
 return false
 end
 end
 if text and text:match("^(.*)$") then
-local DelGpRed = Dev Ahme:get(ANUBIS..' Ahme:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+local DelGpRed = Dev SOFI:get(ANUBIS..' SOFI:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
 if DelGpRed == 'DelGpRed' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Gif:GpRed'..msg.content_.text_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Voice:GpRed'..msg.content_.text_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Audio:GpRed'..msg.content_.text_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Photo:GpRed'..msg.content_.text_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Stecker:GpRed'..msg.content_.text_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Video:GpRed'..msg.content_.text_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:File:GpRed'..msg.content_.text_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Text:GpRed'..msg.content_.text_..msg.chat_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Manager:GpRed'..msg.chat_id_,msg.content_.text_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Gif:GpRed'..msg.content_.text_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Voice:GpRed'..msg.content_.text_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Audio:GpRed'..msg.content_.text_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Photo:GpRed'..msg.content_.text_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Stecker:GpRed'..msg.content_.text_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Video:GpRed'..msg.content_.text_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:File:GpRed'..msg.content_.text_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Text:GpRed'..msg.content_.text_..msg.chat_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Manager:GpRed'..msg.chat_id_,msg.content_.text_)
 return false
 end
 end
 if text and text:match("^(.*)$") then
-local DelAllRed = Dev Ahme:get(ANUBIS.." Ahme:Add:AllRed"..msg.sender_user_id_)
+local DelAllRed = Dev SOFI:get(ANUBIS.." SOFI:Add:AllRed"..msg.sender_user_id_)
 if DelAllRed == 'DelAllRed' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
-Dev Ahme:del(ANUBIS.." Ahme:Add:AllRed"..msg.sender_user_id_)
-Dev Ahme:del(ANUBIS.." Ahme:Gif:AllRed"..msg.content_.text_)
-Dev Ahme:del(ANUBIS.." Ahme:Voice:AllRed"..msg.content_.text_)
-Dev Ahme:del(ANUBIS.." Ahme:Audio:AllRed"..msg.content_.text_)
-Dev Ahme:del(ANUBIS.." Ahme:Photo:AllRed"..msg.content_.text_)
-Dev Ahme:del(ANUBIS.." Ahme:Stecker:AllRed"..msg.content_.text_)
-Dev Ahme:del(ANUBIS.." Ahme:Video:AllRed"..msg.content_.text_)
-Dev Ahme:del(ANUBIS.." Ahme:File:AllRed"..msg.content_.text_)
-Dev Ahme:del(ANUBIS.." Ahme:Text:AllRed"..msg.content_.text_)
-Dev Ahme:del(ANUBIS.." Ahme:Sudo:AllRed",msg.content_.text_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙الكلمه ↫ '..msg.content_.text_..' تم حذفها',  1, "html")
+Dev SOFI:del(ANUBIS.." SOFI:Add:AllRed"..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Gif:AllRed"..msg.content_.text_)
+Dev SOFI:del(ANUBIS.." SOFI:Voice:AllRed"..msg.content_.text_)
+Dev SOFI:del(ANUBIS.." SOFI:Audio:AllRed"..msg.content_.text_)
+Dev SOFI:del(ANUBIS.." SOFI:Photo:AllRed"..msg.content_.text_)
+Dev SOFI:del(ANUBIS.." SOFI:Stecker:AllRed"..msg.content_.text_)
+Dev SOFI:del(ANUBIS.." SOFI:Video:AllRed"..msg.content_.text_)
+Dev SOFI:del(ANUBIS.." SOFI:File:AllRed"..msg.content_.text_)
+Dev SOFI:del(ANUBIS.." SOFI:Text:AllRed"..msg.content_.text_)
+Dev SOFI:del(ANUBIS.." SOFI:Sudo:AllRed",msg.content_.text_)
 return false
 end
 end
 --     Source ANUBIS     --
 if text and text:match("^(.*)$") then
-local SaveGpRedod = Dev Ahme:get(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+local SaveGpRedod = Dev SOFI:get(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 if SaveGpRedod == 'SaveGpRedod' then
-local GetGpTexts = Dev Ahme:get(ANUBIS..' Ahme:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Text:GpTexts'..GetGpTexts..msg.chat_id_)
+local GetGpTexts = Dev SOFI:get(ANUBIS..' SOFI:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Text:GpTexts'..GetGpTexts..msg.chat_id_)
 if text == "الغاء" then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙⌯︙تم الغاء عملية حفظ الردود المتعدده للامر ↫ "..GetGpTexts ,  1, "md")
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Text:GpTexts'..GetGpTexts..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_,GetGpTexts)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙⌯︙تم الغاء عملية حفظ الردود المتعدده للامر ↫ "..GetGpTexts ,  1, "md")
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Text:GpTexts'..GetGpTexts..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_,GetGpTexts)
 return false
 end
 Text = text:gsub('"',""):gsub('"',""):gsub("`",""):gsub("*","")
-Dev Ahme:sadd(ANUBIS..' Ahme:Text:GpTexts'..GetGpTexts..msg.chat_id_,Text)
+Dev SOFI:sadd(ANUBIS..' SOFI:Text:GpTexts'..GetGpTexts..msg.chat_id_,Text)
 if #List == 4 then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ ↫ 5 من الردود المتعدده للامر ↫ "..GetGpTexts ,  1, "md")
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ ↫ 5 من الردود المتعدده للامر ↫ "..GetGpTexts ,  1, "md")
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 return false
 end
-local  Ahme = "⌯︙تم حفظ الرد رقم ↫ "..(#List+1).."\n⌯︙قم بارسال الرد رقم ↫ "..(#List+2)
+local  SOFI = "⌯︙تم حفظ الرد رقم ↫ "..(#List+1).."\n⌯︙قم بارسال الرد رقم ↫ "..(#List+2)
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="انهاء وحفظ "..(#List+1).." من الردود",callback_data="/EndRedod:"..msg.sender_user_id_..GetGpTexts}},{{text="الغاء وحذف التخزين",callback_data="/DelRedod:"..msg.sender_user_id_..GetGpTexts}}} 
 Msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape( Ahme).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape( SOFI).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
 end
 end
-if text and not Dev Ahme:get(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_) then
-if Dev Ahme:sismember(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_,text) then
-local DraGoN =  Dev Ahme:smembers(ANUBIS..' Ahme:Text:GpTexts'..text..msg.chat_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '['..DraGoN[math.random(#DraGoN)]..']' , 1, 'md')  
+if text and not Dev SOFI:get(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_,text) then
+local DraGoN =  Dev SOFI:smembers(ANUBIS..' SOFI:Text:GpTexts'..text..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '['..DraGoN[math.random(#DraGoN)]..']' , 1, 'md')  
 end
 end
 --     Source ANUBIS     --
 if msg.content_.text_ or msg.content_.video_ or msg.content_.document_ or msg.content_.sticker_ or msg.content_.voice_ or msg.content_.audio_ or msg.content_.photo_ or msg.content_.animation_ then 
-local SaveGpRed = Dev Ahme:get(ANUBIS..' Ahme:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+local SaveGpRed = Dev SOFI:get(ANUBIS..' SOFI:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
 if SaveGpRed == 'SaveGpRed' then 
 if text == 'الغاء' then
-local DelManagerRep = Dev Ahme:get(ANUBIS..'DelManagerRep'..msg.chat_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Manager:GpRed'..msg.chat_id_,DelManagerRep)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ الرد', 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpText'..msg.sender_user_id_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'DelManagerRep'..msg.chat_id_)
+local DelManagerRep = Dev SOFI:get(ANUBIS..'DelManagerRep'..msg.chat_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Manager:GpRed'..msg.chat_id_,DelManagerRep)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ الرد', 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpText'..msg.sender_user_id_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'DelManagerRep'..msg.chat_id_)
 return false
 end
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
-local SaveGpRed = Dev Ahme:get(ANUBIS..' Ahme:Add:GpText'..msg.sender_user_id_..msg.chat_id_)
-if msg.content_.video_ then Dev Ahme:set(ANUBIS..' Ahme:Video:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.video_.video_.persistent_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+local SaveGpRed = Dev SOFI:get(ANUBIS..' SOFI:Add:GpText'..msg.sender_user_id_..msg.chat_id_)
+if msg.content_.video_ then Dev SOFI:set(ANUBIS..' SOFI:Video:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.video_.video_.persistent_id_)
 end
-if msg.content_.document_ then Dev Ahme:set(ANUBIS..' Ahme:File:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.document_.document_.persistent_id_)
+if msg.content_.document_ then Dev SOFI:set(ANUBIS..' SOFI:File:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.document_.document_.persistent_id_)
 end
-if msg.content_.sticker_ then Dev Ahme:set(ANUBIS..' Ahme:Stecker:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.sticker_.sticker_.persistent_id_) 
+if msg.content_.sticker_ then Dev SOFI:set(ANUBIS..' SOFI:Stecker:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.sticker_.sticker_.persistent_id_) 
 end 
-if msg.content_.voice_ then Dev Ahme:set(ANUBIS..' Ahme:Voice:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.voice_.voice_.persistent_id_) 
+if msg.content_.voice_ then Dev SOFI:set(ANUBIS..' SOFI:Voice:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.voice_.voice_.persistent_id_) 
 end
-if msg.content_.audio_ then Dev Ahme:set(ANUBIS..' Ahme:Audio:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.audio_.audio_.persistent_id_) 
+if msg.content_.audio_ then Dev SOFI:set(ANUBIS..' SOFI:Audio:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.audio_.audio_.persistent_id_) 
 end
 if msg.content_.photo_ then
 if msg.content_.photo_.sizes_[0] then
@@ -2722,47 +2722,47 @@ end
 if msg.content_.photo_.sizes_[3] then
 photo_in_group = msg.content_.photo_.sizes_[3].photo_.persistent_id_
 end
-Dev Ahme:set(ANUBIS..' Ahme:Photo:GpRed'..SaveGpRed..msg.chat_id_, photo_in_group) 
+Dev SOFI:set(ANUBIS..' SOFI:Photo:GpRed'..SaveGpRed..msg.chat_id_, photo_in_group) 
 end
-if msg.content_.animation_ then Dev Ahme:set(ANUBIS..' Ahme:Gif:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.animation_.animation_.persistent_id_) 
+if msg.content_.animation_ then Dev SOFI:set(ANUBIS..' SOFI:Gif:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.animation_.animation_.persistent_id_) 
 end 
 if msg.content_.text_ then
-Dev Ahme:set(ANUBIS..' Ahme:Text:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.text_)
+Dev SOFI:set(ANUBIS..' SOFI:Text:GpRed'..SaveGpRed..msg.chat_id_, msg.content_.text_)
 end 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ الرد الجديد', 1, 'md') 
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpText'..msg.sender_user_id_..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'DelManagerRep'..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ الرد الجديد', 1, 'md') 
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpText'..msg.sender_user_id_..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'DelManagerRep'..msg.chat_id_)
 return false 
 end 
 end
-if msg.content_.text_ and not Dev Ahme:get(ANUBIS..' Ahme:Lock:GpRed'..msg.chat_id_) then 
-if Dev Ahme:get(ANUBIS..' Ahme:Video:GpRed'..msg.content_.text_..msg.chat_id_) then 
-sendVideo(msg.chat_id_, msg.id_, 0, 1,nil, Dev Ahme:get(ANUBIS..' Ahme:Video:GpRed'..msg.content_.text_..msg.chat_id_)) 
+if msg.content_.text_ and not Dev SOFI:get(ANUBIS..' SOFI:Lock:GpRed'..msg.chat_id_) then 
+if Dev SOFI:get(ANUBIS..' SOFI:Video:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendVideo(msg.chat_id_, msg.id_, 0, 1,nil, Dev SOFI:get(ANUBIS..' SOFI:Video:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end 
-if Dev Ahme:get(ANUBIS..' Ahme:File:GpRed'..msg.content_.text_..msg.chat_id_) then 
-sendDocument(msg.chat_id_, msg.id_, 0, 1,nil, Dev Ahme:get(ANUBIS..' Ahme:File:GpRed'..msg.content_.text_..msg.chat_id_)) 
+if Dev SOFI:get(ANUBIS..' SOFI:File:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendDocument(msg.chat_id_, msg.id_, 0, 1,nil, Dev SOFI:get(ANUBIS..' SOFI:File:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end 
-if Dev Ahme:get(ANUBIS..' Ahme:Voice:GpRed'..msg.content_.text_..msg.chat_id_) then 
-sendVoice(msg.chat_id_, msg.id_, 0, 1, nil, Dev Ahme:get(ANUBIS..' Ahme:Voice:GpRed'..msg.content_.text_..msg.chat_id_)) 
+if Dev SOFI:get(ANUBIS..' SOFI:Voice:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendVoice(msg.chat_id_, msg.id_, 0, 1, nil, Dev SOFI:get(ANUBIS..' SOFI:Voice:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Audio:GpRed'..msg.content_.text_..msg.chat_id_) then 
-sendAudio(msg.chat_id_, msg.id_, 0, 1, nil, Dev Ahme:get(ANUBIS..' Ahme:Audio:GpRed'..msg.content_.text_..msg.chat_id_)) 
+if Dev SOFI:get(ANUBIS..' SOFI:Audio:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendAudio(msg.chat_id_, msg.id_, 0, 1, nil, Dev SOFI:get(ANUBIS..' SOFI:Audio:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Photo:GpRed'..msg.content_.text_..msg.chat_id_) then 
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, Dev Ahme:get(ANUBIS..' Ahme:Photo:GpRed'..msg.content_.text_..msg.chat_id_)) 
+if Dev SOFI:get(ANUBIS..' SOFI:Photo:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, Dev SOFI:get(ANUBIS..' SOFI:Photo:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Gif:GpRed'..msg.content_.text_..msg.chat_id_) then 
-sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, Dev Ahme:get(ANUBIS..' Ahme:Gif:GpRed'..msg.content_.text_..msg.chat_id_)) 
+if Dev SOFI:get(ANUBIS..' SOFI:Gif:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, Dev SOFI:get(ANUBIS..' SOFI:Gif:GpRed'..msg.content_.text_..msg.chat_id_)) 
 end 
-if Dev Ahme:get(ANUBIS..' Ahme:Stecker:GpRed'..msg.content_.text_..msg.chat_id_) then 
-sendSticker(msg.chat_id_, msg.id_, 0, 1,nil, Dev Ahme:get(ANUBIS..' Ahme:Stecker:GpRed'..msg.content_.text_..msg.chat_id_))
+if Dev SOFI:get(ANUBIS..' SOFI:Stecker:GpRed'..msg.content_.text_..msg.chat_id_) then 
+sendSticker(msg.chat_id_, msg.id_, 0, 1,nil, Dev SOFI:get(ANUBIS..' SOFI:Stecker:GpRed'..msg.content_.text_..msg.chat_id_))
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Text:GpRed'..msg.content_.text_..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Text:GpRed'..msg.content_.text_..msg.chat_id_) then
 function DraGoN(extra,result,success)
 if result.username_ then username = '[@'..result.username_..']' else username = 'لا يوجد' end
-local edit_msg = Dev Ahme:get(ANUBIS..' Ahme:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0
-local user_msgs = Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
-local Text = Dev Ahme:get(ANUBIS..' Ahme:Text:GpRed'..msg.content_.text_..msg.chat_id_)
+local edit_msg = Dev SOFI:get(ANUBIS..' SOFI:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0
+local user_msgs = Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
+local Text = Dev SOFI:get(ANUBIS..' SOFI:Text:GpRed'..msg.content_.text_..msg.chat_id_)
 local Text = Text:gsub('#username',(username or 'لا يوجد')) 
 local Text = Text:gsub('#name','['..result.first_name_..']')
 local Text = Text:gsub('#id',msg.sender_user_id_)
@@ -2778,33 +2778,33 @@ end
 --     Source ANUBIS     --
 text = msg.content_.text_
 if msg.content_.text_ or msg.content_.video_ or msg.content_.document_ or msg.content_.sticker_ or msg.content_.voice_ or msg.content_.audio_ or msg.content_.photo_ or msg.content_.animation_ then
-local SaveAllRed = Dev Ahme:get(ANUBIS.." Ahme:Add:AllRed"..msg.sender_user_id_)
+local SaveAllRed = Dev SOFI:get(ANUBIS.." SOFI:Add:AllRed"..msg.sender_user_id_)
 if SaveAllRed == 'SaveAllRed' then
 if text == 'الغاء' then
-local DelSudoRep = Dev Ahme:get(ANUBIS..'DelSudoRep')
-Dev Ahme:del(ANUBIS.." Ahme:Sudo:AllRed",DelSudoRep)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ الرد', 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Add:AllText"..msg.sender_user_id_)
-Dev Ahme:del(ANUBIS.." Ahme:Add:AllRed"..msg.sender_user_id_)
-Dev Ahme:del(ANUBIS.."DelSudoRep")
+local DelSudoRep = Dev SOFI:get(ANUBIS..'DelSudoRep')
+Dev SOFI:del(ANUBIS.." SOFI:Sudo:AllRed",DelSudoRep)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ الرد', 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Add:AllText"..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Add:AllRed"..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.."DelSudoRep")
 return false
 end
-Dev Ahme:del(ANUBIS.." Ahme:Add:AllRed"..msg.sender_user_id_)
-local SaveAllRed = Dev Ahme:get(ANUBIS.." Ahme:Add:AllText"..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Add:AllRed"..msg.sender_user_id_)
+local SaveAllRed = Dev SOFI:get(ANUBIS.." SOFI:Add:AllText"..msg.sender_user_id_)
 if msg.content_.video_ then
-Dev Ahme:set(ANUBIS.." Ahme:Video:AllRed"..SaveAllRed, msg.content_.video_.video_.persistent_id_)
+Dev SOFI:set(ANUBIS.." SOFI:Video:AllRed"..SaveAllRed, msg.content_.video_.video_.persistent_id_)
 end
 if msg.content_.document_ then
-Dev Ahme:set(ANUBIS.." Ahme:File:AllRed"..SaveAllRed, msg.content_.document_.document_.persistent_id_)
+Dev SOFI:set(ANUBIS.." SOFI:File:AllRed"..SaveAllRed, msg.content_.document_.document_.persistent_id_)
 end
 if msg.content_.sticker_ then
-Dev Ahme:set(ANUBIS.." Ahme:Stecker:AllRed"..SaveAllRed, msg.content_.sticker_.sticker_.persistent_id_)
+Dev SOFI:set(ANUBIS.." SOFI:Stecker:AllRed"..SaveAllRed, msg.content_.sticker_.sticker_.persistent_id_)
 end
 if msg.content_.voice_ then
-Dev Ahme:set(ANUBIS.." Ahme:Voice:AllRed"..SaveAllRed, msg.content_.voice_.voice_.persistent_id_)
+Dev SOFI:set(ANUBIS.." SOFI:Voice:AllRed"..SaveAllRed, msg.content_.voice_.voice_.persistent_id_)
 end
 if msg.content_.audio_ then
-Dev Ahme:set(ANUBIS.." Ahme:Audio:AllRed"..SaveAllRed, msg.content_.audio_.audio_.persistent_id_)
+Dev SOFI:set(ANUBIS.." SOFI:Audio:AllRed"..SaveAllRed, msg.content_.audio_.audio_.persistent_id_)
 end
 if msg.content_.photo_ then
 if msg.content_.photo_.sizes_[0] then
@@ -2819,46 +2819,46 @@ end
 if msg.content_.photo_.sizes_[3] then
 photo_in_all_groups = msg.content_.photo_.sizes_[3].photo_.persistent_id_
 end
-Dev Ahme:set(ANUBIS.." Ahme:Photo:AllRed"..SaveAllRed, photo_in_all_groups)
+Dev SOFI:set(ANUBIS.." SOFI:Photo:AllRed"..SaveAllRed, photo_in_all_groups)
 end
 if msg.content_.animation_ then
-Dev Ahme:set(ANUBIS.." Ahme:Gif:AllRed"..SaveAllRed, msg.content_.animation_.animation_.persistent_id_)
+Dev SOFI:set(ANUBIS.." SOFI:Gif:AllRed"..SaveAllRed, msg.content_.animation_.animation_.persistent_id_)
 end
 if msg.content_.text_ then
-Dev Ahme:set(ANUBIS.." Ahme:Text:AllRed"..SaveAllRed, msg.content_.text_)
+Dev SOFI:set(ANUBIS.." SOFI:Text:AllRed"..SaveAllRed, msg.content_.text_)
 end 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ الرد الجديد', 1, 'md') 
-Dev Ahme:del(ANUBIS.." Ahme:Add:AllText"..msg.sender_user_id_)
-Dev Ahme:del(ANUBIS..'DelSudoRep')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ الرد الجديد', 1, 'md') 
+Dev SOFI:del(ANUBIS.." SOFI:Add:AllText"..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS..'DelSudoRep')
 return false end end
-if msg.content_.text_ and not Dev Ahme:get(ANUBIS..' Ahme:Lock:AllRed'..msg.chat_id_) then
-if Dev Ahme:get(ANUBIS.." Ahme:Video:AllRed"..msg.content_.text_) then
-sendVideo(msg.chat_id_, msg.id_, 0, 1,nil, Dev Ahme:get(ANUBIS.." Ahme:Video:AllRed"..msg.content_.text_))
+if msg.content_.text_ and not Dev SOFI:get(ANUBIS..' SOFI:Lock:AllRed'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS.." SOFI:Video:AllRed"..msg.content_.text_) then
+sendVideo(msg.chat_id_, msg.id_, 0, 1,nil, Dev SOFI:get(ANUBIS.." SOFI:Video:AllRed"..msg.content_.text_))
 end
-if Dev Ahme:get(ANUBIS.." Ahme:File:AllRed"..msg.content_.text_) then
-sendDocument(msg.chat_id_, msg.id_, 0, 1,nil, Dev Ahme:get(ANUBIS.." Ahme:File:AllRed"..msg.content_.text_))
+if Dev SOFI:get(ANUBIS.." SOFI:File:AllRed"..msg.content_.text_) then
+sendDocument(msg.chat_id_, msg.id_, 0, 1,nil, Dev SOFI:get(ANUBIS.." SOFI:File:AllRed"..msg.content_.text_))
 end
-if Dev Ahme:get(ANUBIS.." Ahme:Voice:AllRed"..msg.content_.text_)  then
-sendVoice(msg.chat_id_, msg.id_, 0, 1, nil, Dev Ahme:get(ANUBIS.." Ahme:Voice:AllRed"..msg.content_.text_))
+if Dev SOFI:get(ANUBIS.." SOFI:Voice:AllRed"..msg.content_.text_)  then
+sendVoice(msg.chat_id_, msg.id_, 0, 1, nil, Dev SOFI:get(ANUBIS.." SOFI:Voice:AllRed"..msg.content_.text_))
 end
-if Dev Ahme:get(ANUBIS.." Ahme:Audio:AllRed"..msg.content_.text_)  then
-sendAudio(msg.chat_id_, msg.id_, 0, 1, nil, Dev Ahme:get(ANUBIS.." Ahme:Audio:AllRed"..msg.content_.text_))
+if Dev SOFI:get(ANUBIS.." SOFI:Audio:AllRed"..msg.content_.text_)  then
+sendAudio(msg.chat_id_, msg.id_, 0, 1, nil, Dev SOFI:get(ANUBIS.." SOFI:Audio:AllRed"..msg.content_.text_))
 end
-if Dev Ahme:get(ANUBIS.." Ahme:Photo:AllRed"..msg.content_.text_)  then
-sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, Dev Ahme:get(ANUBIS.." Ahme:Photo:AllRed"..msg.content_.text_))
+if Dev SOFI:get(ANUBIS.." SOFI:Photo:AllRed"..msg.content_.text_)  then
+sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, Dev SOFI:get(ANUBIS.." SOFI:Photo:AllRed"..msg.content_.text_))
 end
-if  Dev Ahme:get(ANUBIS.." Ahme:Gif:AllRed"..msg.content_.text_) then
-sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, Dev Ahme:get(ANUBIS.." Ahme:Gif:AllRed"..msg.content_.text_))
+if  Dev SOFI:get(ANUBIS.." SOFI:Gif:AllRed"..msg.content_.text_) then
+sendDocument(msg.chat_id_, msg.id_, 0, 1, nil, Dev SOFI:get(ANUBIS.." SOFI:Gif:AllRed"..msg.content_.text_))
 end
-if Dev Ahme:get(ANUBIS.." Ahme:Stecker:AllRed"..msg.content_.text_) then
-sendSticker(msg.chat_id_, msg.id_, 0, 1,nil, Dev Ahme:get(ANUBIS.." Ahme:Stecker:AllRed"..msg.content_.text_))
+if Dev SOFI:get(ANUBIS.." SOFI:Stecker:AllRed"..msg.content_.text_) then
+sendSticker(msg.chat_id_, msg.id_, 0, 1,nil, Dev SOFI:get(ANUBIS.." SOFI:Stecker:AllRed"..msg.content_.text_))
 end
-if Dev Ahme:get(ANUBIS.." Ahme:Text:AllRed"..msg.content_.text_) then
+if Dev SOFI:get(ANUBIS.." SOFI:Text:AllRed"..msg.content_.text_) then
 function DraGoN(extra,result,success)
 if result.username_ then username = '[@'..result.username_..']' else username = 'لا يوجد' end
-local edit_msg = Dev Ahme:get(ANUBIS..' Ahme:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0
-local user_msgs = Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
-local Text = Dev Ahme:get(ANUBIS.." Ahme:Text:AllRed"..msg.content_.text_)
+local edit_msg = Dev SOFI:get(ANUBIS..' SOFI:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0
+local user_msgs = Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
+local Text = Dev SOFI:get(ANUBIS.." SOFI:Text:AllRed"..msg.content_.text_)
 local Text = Text:gsub('#username',(username or 'لا يوجد')) 
 local Text = Text:gsub('#name','['..result.first_name_..']')
 local Text = Text:gsub('#id',msg.sender_user_id_)
@@ -2897,9 +2897,9 @@ if Type == "del" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})   
 return false  
 end 
-if Type == "keed" and not Dev Ahme:sismember(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, msg.sender_user_id_) then
+if Type == "keed" and not Dev SOFI:sismember(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, msg.sender_user_id_) then
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..msg.sender_user_id_.."") 
-Dev Ahme:sadd(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, msg.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, msg.sender_user_id_)
 my_ide = msg.sender_user_id_
 msgm = msg.id_
 local num = 100
@@ -2915,8 +2915,8 @@ Text = '⌯︙العضو ↫ '..GetName..' \n⌯︙قام بالتكرار ال�
 SendText(msg.chat_id_,Text,0,'md')
 return false  
 end  
-if Type == "mute" and not Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_, msg.sender_user_id_) then
-Dev Ahme:sadd(ANUBIS..' Ahme:Muted:'..msg.chat_id_,msg.sender_user_id_)
+if Type == "mute" and not Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_, msg.sender_user_id_) then
+Dev SOFI:sadd(ANUBIS..' SOFI:Muted:'..msg.chat_id_,msg.sender_user_id_)
 my_ide = msg.sender_user_id_
 msgm = msg.id_
 local num = 100
@@ -2937,25 +2937,25 @@ end
 --  end functions ANUBIS --
 --     Source ANUBIS     --
 --       Spam Check       --
-if not Admin(msg) and msg.content_.ID ~= "MessageChatAddMembers" and Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Spam:User") then 
+if not Admin(msg) and msg.content_.ID ~= "MessageChatAddMembers" and Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Spam:User") then 
 if msg.sender_user_id_ ~= ANUBIS then
-floods = Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Spam:User") or "nil"
-Num_Msg_Max = Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Num:Spam") or 5
-Time_Spam = Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Num:Spam:Time") or 5
-local post_count = tonumber(Dev Ahme:get(ANUBIS.." Ahme:Spam:Cont"..msg.sender_user_id_..":"..msg.chat_id_) or 0)
-if post_count > tonumber(Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Num:Spam") or 5) then 
+floods = Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Spam:User") or "nil"
+Num_Msg_Max = Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Num:Spam") or 5
+Time_Spam = Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Num:Spam:Time") or 5
+local post_count = tonumber(Dev SOFI:get(ANUBIS.." SOFI:Spam:Cont"..msg.sender_user_id_..":"..msg.chat_id_) or 0)
+if post_count > tonumber(Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Num:Spam") or 5) then 
 local ch = msg.chat_id_
-local type = Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Spam:User") 
+local type = Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Spam:User") 
 NotSpam(msg,type)  
 end
-Dev Ahme:setex(ANUBIS.." Ahme:Spam:Cont"..msg.sender_user_id_..":"..msg.chat_id_, tonumber(Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Num:Spam:Time") or 3), post_count+1) 
+Dev SOFI:setex(ANUBIS.." SOFI:Spam:Cont"..msg.sender_user_id_..":"..msg.chat_id_, tonumber(Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Num:Spam:Time") or 3), post_count+1) 
 local edit_id = data.text_ or "nil"  
 Num_Msg_Max = 5
-if Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Num:Spam") then
-Num_Msg_Max = Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Num:Spam") 
+if Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Num:Spam") then
+Num_Msg_Max = Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Num:Spam") 
 end
-if Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Num:Spam:Time") then
-Time_Spam = Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Num:Spam:Time") 
+if Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Num:Spam:Time") then
+Time_Spam = Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Num:Spam:Time") 
 end 
 end
 end 
@@ -2981,20 +2981,20 @@ return false
 end
 if msg.content_.ID == "MessagePinMessage" then
 if Constructor(msg) or tonumber(msg.sender_user_id_) == tonumber(ANUBIS) then
-Dev Ahme:set(ANUBIS..' Ahme:PinnedMsg'..msg.chat_id_,msg.content_.message_id_)
+Dev SOFI:set(ANUBIS..' SOFI:PinnedMsg'..msg.chat_id_,msg.content_.message_id_)
 else
-local pin_id = Dev Ahme:get(ANUBIS..' Ahme:PinnedMsg'..msg.chat_id_)
-if pin_id and Dev Ahme:get(ANUBIS..' Ahme:Lock:Pin'..msg.chat_id_) then
+local pin_id = Dev SOFI:get(ANUBIS..' SOFI:PinnedMsg'..msg.chat_id_)
+if pin_id and Dev SOFI:get(ANUBIS..' SOFI:Lock:Pin'..msg.chat_id_) then
 pinmsg(msg.chat_id_,pin_id,0)
 end
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:viewget'..msg.sender_user_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:viewget'..msg.sender_user_id_) then
 if not msg.forward_info_ then
-Dev Ahme:del(ANUBIS..' Ahme:viewget'..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS..' SOFI:viewget'..msg.sender_user_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عدد مشاهدات المنشور هي ↫ ('..msg.views_..')', 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:viewget'..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عدد مشاهدات المنشور هي ↫ ('..msg.views_..')', 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:viewget'..msg.sender_user_id_)
 end
 end
 --     Source ANUBIS     --
@@ -3002,44 +3002,44 @@ end
 if msg.content_.ID == "MessagePhoto" then
 if not VipMem(msg) then
 if msg.forward_info_ then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Photo'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Photo'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if msg.content_.caption_ then
 Filters(msg, msg.content_.caption_)
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then
 if msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then
 if msg.content_.caption_:match("@") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("#") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.content_.caption_:match("[Hh][Tt][Tt][Pp]://") or msg.content_.caption_:match(".[Ii][Rr]") or msg.content_.caption_:match(".[Cc][Oo][Mm]") or msg.content_.caption_:match(".[Oo][Rr][Gg]") or msg.content_.caption_:match(".[Ii][Nn][Ff][Oo]") or msg.content_.caption_:match("[Ww][Ww][Ww].") or msg.content_.caption_:match(".[Xx][Yy][Zz]") or msg.content_.caption_:match(".[Tt][Kk]") or msg.content_.ID == "MessageEntityTextUrl" or msg.content_.ID == "MessageEntityUrl" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[\216-\219][\128-\191]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[A-Z]") or msg.content_.caption_:match("[a-z]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
@@ -3048,7 +3048,7 @@ end
 --     Source ANUBIS     --
 --        Markdown        --
 elseif not msg.reply_markup_ and msg.via_bot_user_id_ ~= 0 then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Markdown'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Markdown'..msg.chat_id_) then
 if not VipMem(msg) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
@@ -3058,44 +3058,44 @@ end
 elseif msg.content_.ID == "MessageDocument" then
 if not VipMem(msg) then
 if msg.forward_info_ then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Document'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Document'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if msg.content_.caption_ then
 Filters(msg, msg.content_.caption_)
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then
 if msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then
 if msg.content_.caption_:match("@") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("#") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.content_.caption_:match("[Hh][Tt][Tt][Pp]://") or msg.content_.caption_:match(".[Ii][Rr]") or msg.content_.caption_:match(".[Cc][Oo][Mm]") or msg.content_.caption_:match(".[Oo][Rr][Gg]") or msg.content_.caption_:match(".[Ii][Nn][Ff][Oo]") or msg.content_.caption_:match("[Ww][Ww][Ww].") or msg.content_.caption_:match(".[Xx][Yy][Zz]") or msg.content_.caption_:match(".[Tt][Kk]") or msg.content_.ID == "MessageEntityTextUrl" or msg.content_.ID == "MessageEntityUrl" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[\216-\219][\128-\191]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[A-Z]") or msg.content_.caption_:match("[a-z]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
@@ -3105,7 +3105,7 @@ end
 --         Inline         --
 elseif msg.reply_markup_ and msg.reply_markup_.ID == "ReplyMarkupInlineKeyboard" and msg.via_bot_user_id_ ~= 0 then
 if not VipMem(msg) then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Inline'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Inline'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
@@ -3113,50 +3113,50 @@ end
 --        Sticker         --
 elseif msg.content_.ID == "MessageSticker" then
 if not VipMem(msg) then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Stickers'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Stickers'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 elseif msg.content_.ID == "MessageChatJoinByLink" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:TagServr'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:TagServr'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 return
 end
 function get_welcome(extra,result,success)
-if Dev Ahme:get(ANUBIS..' Ahme:Groups:Welcomes'..msg.chat_id_) then
-Welcomes = Dev Ahme:get(ANUBIS..' Ahme:Groups:Welcomes'..msg.chat_id_)
+if Dev SOFI:get(ANUBIS..' SOFI:Groups:Welcomes'..msg.chat_id_) then
+Welcomes = Dev SOFI:get(ANUBIS..' SOFI:Groups:Welcomes'..msg.chat_id_)
 else
 Welcomes = '• نورت حبي \n• firstname \n• username'
 end
 local Welcomes = Welcomes:gsub('"',"") Welcomes = Welcomes:gsub("'","") Welcomes = Welcomes:gsub(",","") Welcomes = Welcomes:gsub("*","") Welcomes = Welcomes:gsub(";","") Welcomes = Welcomes:gsub("`","") Welcomes = Welcomes:gsub("{","") Welcomes = Welcomes:gsub("}","") 
 local Welcomes = Welcomes:gsub('firstname',('['..result.first_name_..']' or ''))
 local Welcomes = Welcomes:gsub('username',('[@'..result.username_..']' or '[@SOURCEANUBIS]'))
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, Welcomes, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, Welcomes, 1, 'md')
 end 
-if Dev Ahme:get(ANUBIS.." Ahme:Lock:Welcome"..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS.." SOFI:Lock:Welcome"..msg.chat_id_) then
 getUser(msg.sender_user_id_,get_welcome)
 end
 --     Source ANUBIS     --
 --      New User Add      --
 elseif msg.content_.ID == "MessageChatAddMembers" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:BotWelcome') then 
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:BotWelcome') then 
 tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = ANUBIS,offset_ = 0,limit_ = 1},function(extra,SoOoFi,success) 
 for i=0,#msg.content_.members_ do    
 BotWelcome = msg.content_.members_[i].id_    
 if BotWelcome and BotWelcome == tonumber(ANUBIS) then 
-if Dev Ahme:sismember(ANUBIS..' Ahme:Groups',msg.chat_id_) then BotText = "مفعله في السابق\n⌯︙ارسل ↫ الاوامر واستمتع بالمميزيات" else BotText = "معطله يجب رفعي مشرف\n⌯︙بعد ذلك يرجى ارسال امر ↫ تفعيل\n⌯︙سيتم رفع الادمنيه والمنشئ تلقائيا" end 
-if Dev Ahme:get(ANUBIS.." Ahme:Text:BotWelcome") then  AhmeText = Dev Ahme:get(ANUBIS.." Ahme:Text:BotWelcome") else  AhmeText = "⌯︙مرحبا انا بوت اسمي "..NameBot.."\n⌯︙حالة المجموعه ↫ "..BotText.."\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ" end 
-if Dev Ahme:get(ANUBIS.." Ahme:Photo:BotWelcome") then  AhmePhoto = Dev Ahme:get(ANUBIS.." Ahme:Photo:BotWelcome") elseif SoOoFi.photos_[0] then  AhmePhoto = SoOoFi.photos_[0].sizes_[1].photo_.persistent_id_ else  AhmePhoto = nil end 
-if  AhmePhoto ~= nil then
-sendPhoto(msg.chat_id_,msg.id_,0,1,nil, AhmePhoto, AhmeText)
+if Dev SOFI:sismember(ANUBIS..' SOFI:Groups',msg.chat_id_) then BotText = "مفعله في السابق\n⌯︙ارسل ↫ الاوامر واستمتع بالمميزيات" else BotText = "معطله يجب رفعي مشرف\n⌯︙بعد ذلك يرجى ارسال امر ↫ تفعيل\n⌯︙سيتم رفع الادمنيه والمنشئ تلقائيا" end 
+if Dev SOFI:get(ANUBIS.." SOFI:Text:BotWelcome") then  SOFIText = Dev SOFI:get(ANUBIS.." SOFI:Text:BotWelcome") else  SOFIText = "⌯︙مرحبا انا بوت اسمي "..NameBot.."\n⌯︙حالة المجموعه ↫ "..BotText.."\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ" end 
+if Dev SOFI:get(ANUBIS.." SOFI:Photo:BotWelcome") then  SOFIPhoto = Dev SOFI:get(ANUBIS.." SOFI:Photo:BotWelcome") elseif SoOoFi.photos_[0] then  SOFIPhoto = SoOoFi.photos_[0].sizes_[1].photo_.persistent_id_ else  SOFIPhoto = nil end 
+if  SOFIPhoto ~= nil then
+sendPhoto(msg.chat_id_,msg.id_,0,1,nil, SOFIPhoto, SOFIText)
 else 
-send(msg.chat_id_,msg.id_, AhmeText)
+send(msg.chat_id_,msg.id_, SOFIText)
 end 
 end   
 end
 end,nil)
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:TagServr'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:TagServr'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 return
 end
@@ -3170,29 +3170,29 @@ ChatKick(msg.chat_id_, msg.content_.members_[0].id_)
 DeleteMessage(msg.chat_id_, {[0] = msg.id_}) 
 return false
 end
-if Dev Ahme:get(ANUBIS.." Ahme:Lock:Welcome"..msg.chat_id_) then
-if Dev Ahme:get(ANUBIS..' Ahme:Groups:Welcomes'..msg.chat_id_) then
-Welcomes = Dev Ahme:get(ANUBIS..' Ahme:Groups:Welcomes'..msg.chat_id_)
+if Dev SOFI:get(ANUBIS.." SOFI:Lock:Welcome"..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Groups:Welcomes'..msg.chat_id_) then
+Welcomes = Dev SOFI:get(ANUBIS..' SOFI:Groups:Welcomes'..msg.chat_id_)
 else
 Welcomes = '• نورت حبي \n• firstname \n• username'
 end
 local Welcomes = Welcomes:gsub('"',"") Welcomes = Welcomes:gsub("'","") Welcomes = Welcomes:gsub(",","") Welcomes = Welcomes:gsub("*","") Welcomes = Welcomes:gsub(";","") Welcomes = Welcomes:gsub("`","") Welcomes = Welcomes:gsub("{","") Welcomes = Welcomes:gsub("}","") 
 local Welcomes = Welcomes:gsub('firstname',('['..msg.content_.members_[0].first_name_..']' or ''))
 local Welcomes = Welcomes:gsub('username',('[@'..msg.content_.members_[0].username_..']' or '[@SOURCEANUBIS]'))
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, Welcomes, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, Welcomes, 1, 'md')
 end
 --     Source ANUBIS     --
 --        Contact         --
 elseif msg.content_.ID == "MessageContact" then
 if not VipMem(msg) then
 if msg.forward_info_ then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Contact'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Contact'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
@@ -3201,44 +3201,44 @@ end
 elseif msg.content_.ID == "MessageAudio" then
 if not VipMem(msg) then
 if msg.forward_info_ then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Music'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Music'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if msg.content_.caption_ then
 Filters(msg, msg.content_.caption_)
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then
 if msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then
 if msg.content_.caption_:match("@") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("#") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.content_.caption_:match("[Hh][Tt][Tt][Pp]://") or msg.content_.caption_:match(".[Ii][Rr]") or msg.content_.caption_:match(".[Cc][Oo][Mm]") or msg.content_.caption_:match(".[Oo][Rr][Gg]") or msg.content_.caption_:match(".[Ii][Nn][Ff][Oo]") or msg.content_.caption_:match("[Ww][Ww][Ww].") or msg.content_.caption_:match(".[Xx][Yy][Zz]") or msg.content_.caption_:match(".[Tt][Kk]") or msg.content_.ID == "MessageEntityTextUrl" or msg.content_.ID == "MessageEntityUrl" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[\216-\219][\128-\191]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[A-Z]") or msg.content_.caption_:match("[a-z]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
@@ -3249,44 +3249,44 @@ end
 elseif msg.content_.ID == "MessageVoice" then
 if not VipMem(msg) then
 if msg.forward_info_ then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Voice'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Voice'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if msg.content_.caption_ then
 Filters(msg, msg.content_.caption_)
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then
 if msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then
 if msg.content_.caption_:match("@") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("#") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.content_.caption_:match("[Hh][Tt][Tt][Pp]://") or msg.content_.caption_:match(".[Ii][Rr]") or msg.content_.caption_:match(".[Cc][Oo][Mm]") or msg.content_.caption_:match(".[Oo][Rr][Gg]") or msg.content_.caption_:match(".[Ii][Nn][Ff][Oo]") or msg.content_.caption_:match("[Ww][Ww][Ww].") or msg.content_.caption_:match(".[Xx][Yy][Zz]") or msg.content_.caption_:match(".[Tt][Kk]") or msg.content_.ID == "MessageEntityTextUrl" or msg.content_.ID == "MessageEntityUrl" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[\216-\219][\128-\191]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[A-Z]") or msg.content_.caption_:match("[a-z]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
@@ -3297,45 +3297,45 @@ end
 elseif msg.content_.ID == "MessageLocation" then
 if not VipMem(msg) then
 if msg.forward_info_ then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Location'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Location'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 return
 end
 if msg.content_.caption_ then
 Filters(msg, msg.content_.caption_)
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then
 if msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then
 if msg.content_.caption_:match("@") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("#") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.content_.caption_:match("[Hh][Tt][Tt][Pp]://") or msg.content_.caption_:match(".[Ii][Rr]") or msg.content_.caption_:match(".[Cc][Oo][Mm]") or msg.content_.caption_:match(".[Oo][Rr][Gg]") or msg.content_.caption_:match(".[Ii][Nn][Ff][Oo]") or msg.content_.caption_:match("[Ww][Ww][Ww].") or msg.content_.caption_:match(".[Xx][Yy][Zz]") or msg.content_.caption_:match(".[Tt][Kk]") or msg.content_.ID == "MessageEntityTextUrl" or msg.content_.ID == "MessageEntityUrl" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[\216-\219][\128-\191]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[A-Z]") or msg.content_.caption_:match("[a-z]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
@@ -3346,44 +3346,44 @@ end
 elseif msg.content_.ID == "MessageVideo" then
 if not VipMem(msg) then
 if msg.forward_info_ then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Videos'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Videos'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if msg.content_.caption_ then
 Filters(msg, msg.content_.caption_)
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then
 if msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or msg.content_.caption_:match("[Tt].[Mm][Ee]") or msg.content_.caption_:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then
 if msg.content_.caption_:match("@") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("#") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.content_.caption_:match("[Hh][Tt][Tt][Pp]://") or msg.content_.caption_:match(".[Ii][Rr]") or msg.content_.caption_:match(".[Cc][Oo][Mm]") or msg.content_.caption_:match(".[Oo][Rr][Gg]") or msg.content_.caption_:match(".[Ii][Nn][Ff][Oo]") or msg.content_.caption_:match("[Ww][Ww][Ww].") or msg.content_.caption_:match(".[Xx][Yy][Zz]") or msg.content_.caption_:match(".[Tt][Kk]") or msg.content_.ID == "MessageEntityTextUrl" or msg.content_.ID == "MessageEntityUrl" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[\216-\219][\128-\191]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[A-Z]") or msg.content_.caption_:match("[a-z]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
@@ -3394,44 +3394,44 @@ end
 elseif msg.content_.ID == "MessageAnimation" then
 if not VipMem(msg) then
 if msg.forward_info_ then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Gifs'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Gifs'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if msg.content_.caption_ then
 Filters(msg, msg.content_.caption_)
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then
 if msg.content_.caption_:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.content_.caption_:match("[Hh][Tt][Tt][Pp]://") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then
 if msg.content_.caption_:match("@") then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("#") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[Hh][Tt][Tt][Pp][Ss]://") or msg.content_.caption_:match("[Hh][Tt][Tt][Pp]://") or msg.content_.caption_:match(".[Ii][Rr]") or msg.content_.caption_:match(".[Cc][Oo][Mm]") or msg.content_.caption_:match(".[Oo][Rr][Gg]") or msg.content_.caption_:match(".[Ii][Nn][Ff][Oo]") or msg.content_.caption_:match("[Ww][Ww][Ww].") or msg.content_.caption_:match(".[Xx][Yy][Zz]") or msg.content_.caption_:match(".[Tt][Kk]") or msg.content_.ID == "MessageEntityTextUrl" or msg.content_.ID == "MessageEntityUrl" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[\216-\219][\128-\191]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.caption_:match("[A-Z]") or msg.content_.caption_:match("[a-z]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
@@ -3443,68 +3443,68 @@ elseif msg.content_.ID == "MessageText" then
 if not VipMem(msg) then
 Filters(msg,text)
 if msg.forward_info_ then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 if msg.forward_info_.ID == "MessageForwardedFromUser" or msg.forward_info_.ID == "MessageForwardedPost" then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Text'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Text'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 if msg.content_.text_:match("@") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.text_:match("#") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if text:match("[Hh][Tt][Tt][Pp][Ss]://") or text:match("[Hh][Tt][Tt][Pp]://") or text:match(".[Ii][Rr]") or text:match(".[Cc][Oo][Mm]") or text:match(".[Oo][Rr][Gg]") or text:match(".[Ii][Nn][Ff][Oo]") or text:match("[Ww][Ww][Ww].") or text:match(".[Tt][Kk]") or text:match(".[Xx][Yy][Zz]") or msg.content_.ID == "MessageEntityTextUrl" or msg.content_.ID == "MessageEntityUrl" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.text_:match("[\216-\219][\128-\191]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.text_ then
 local _nl, ctrl_chars = string.gsub(text, '%c', '')
 local _nl, real_digits = string.gsub(text, '%d', '')
-if not Dev Ahme:get(ANUBIS..' Ahme:Spam:Text'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Spam:Text'..msg.chat_id_) then
 sens = 400
 else
-sens = tonumber(Dev Ahme:get(ANUBIS..' Ahme:Spam:Text'..msg.chat_id_))
+sens = tonumber(Dev SOFI:get(ANUBIS..' SOFI:Spam:Text'..msg.chat_id_))
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Spam'..msg.chat_id_) and string.len(msg.content_.text_) > (sens) or ctrl_chars > (sens) or real_digits > (sens) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Spam'..msg.chat_id_) and string.len(msg.content_.text_) > (sens) or ctrl_chars > (sens) or real_digits > (sens) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 if msg.content_.text_:match("[A-Z]") or msg.content_.text_:match("[a-z]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 end
 end
 --     Source ANUBIS     --
-if (msg.content_.sticker_)  and msg.reply_to_message_id_ == 0 and Dev Ahme:get(ANUBIS.." Ahme: Ahme:Lock:Xn"..msg.chat_id_)=="del" then
+if (msg.content_.sticker_)  and msg.reply_to_message_id_ == 0 and Dev SOFI:get(ANUBIS.." SOFI: SOFI:Lock:Xn"..msg.chat_id_)=="del" then
 sticker_id = msg.content_.sticker_.sticker_.persistent_id_
 st = https.request('https://boyka-api.ml/ImageInfo.php?token='..TokenBot..'&url='..sticker_id.."&type=sticker")
 eker = JSON.decode(st)
 if eker.ok.Info == "Indecent" then
-local list = Dev Ahme:smembers(ANUBIS.." Ahme:BasicConstructor:"..msg.chat_id_)
+local list = Dev SOFI:smembers(ANUBIS.." SOFI:BasicConstructor:"..msg.chat_id_)
 t = "⌯︙المنشئين الاساسين تعالو مخرب \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(list) do
-local username = Dev Ahme:get(ANUBIS.."Save:UserName" .. v)
+local username = Dev SOFI:get(ANUBIS.."Save:UserName" .. v)
 if username then
 t = t..""..k.."- ([@"..username.."])\n"
 else
@@ -3518,15 +3518,15 @@ ReplyStatus(msg,msg.sender_user_id_,"Reply","⌯︙قام بنشر ملصق اب
 DeleteMessage(msg.chat_id_,{[0] = tonumber(msg.id_),msg.id_})   
 end   
 end
-if (msg.content_.photo_) and msg.reply_to_message_id_ == 0 and Dev Ahme:get(ANUBIS.." Ahme: Ahme:Lock:Xn"..msg.chat_id_)=="del" then
+if (msg.content_.photo_) and msg.reply_to_message_id_ == 0 and Dev SOFI:get(ANUBIS.." SOFI: SOFI:Lock:Xn"..msg.chat_id_)=="del" then
 photo_id = msg.content_.photo_.sizes_[1].photo_.persistent_id_  
 Srrt = https.request('https://boyka-api.ml/ImageInfo.php?token='..TokenBot..'&url='..photo_id.."&type=photo")
 Sto = JSON.decode(Srrt)
 if Sto.ok.Info == "Indecent" then
-local list = Dev Ahme:smembers(ANUBIS.." Ahme:BasicConstructor:"..msg.chat_id_)
+local list = Dev SOFI:smembers(ANUBIS.." SOFI:BasicConstructor:"..msg.chat_id_)
 t = "⌯︙  المنشئين الاساسين تعالو مخرب \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(list) do
-local username = Dev Ahme:get(ANUBIS.."Save:UserName" .. v)
+local username = Dev SOFI:get(ANUBIS.."Save:UserName" .. v)
 if username then
 t = t..""..k.."- ([@"..username.."])\n"
 else
@@ -3541,17 +3541,17 @@ DeleteMessage(msg.chat_id_,{[0] = tonumber(msg.id_),msg.id_})
 end   
 end
 --     Source ANUBIS     --
-if Dev Ahme:get(ANUBIS.." Ahme:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_) then
+if Dev SOFI:get(ANUBIS.." SOFI:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_) then
 if text == "الغاء" then
 send(msg.chat_id_,msg.id_,"⌯︙تم الغاء حفظ الرابط")       
-Dev Ahme:del(ANUBIS.." Ahme:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_) 
+Dev SOFI:del(ANUBIS.." SOFI:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_) 
 return false
 end
 if msg.content_.text_:match("(https://telegram.me/joinchat/%S+)") or msg.content_.text_:match("(https://t.me/joinchat/%S+)") then
 local Link = msg.content_.text_:match("(https://telegram.me/joinchat/%S+)") or msg.content_.text_:match("(https://t.me/joinchat/%S+)")
-Dev Ahme:set(ANUBIS.." Ahme:Groups:Links"..msg.chat_id_,Link)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ الرابط بنجاح', 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_) 
+Dev SOFI:set(ANUBIS.." SOFI:Groups:Links"..msg.chat_id_,Link)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ الرابط بنجاح', 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
 end
@@ -3559,78 +3559,78 @@ end
 local msg = data.message_
 text = msg.content_.text_
 if text and Constructor(msg) then 
-if Dev Ahme:get('DraGoN:'..ANUBIS.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_) then 
+if Dev SOFI:get('DraGoN:'..ANUBIS.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
-Dev Ahme:del('DraGoN:'..ANUBIS..'id:user'..msg.chat_id_)  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء الامر', 1, 'md')
-Dev Ahme:del('DraGoN:'..ANUBIS.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
+Dev SOFI:del('DraGoN:'..ANUBIS..'id:user'..msg.chat_id_)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء الامر', 1, 'md')
+Dev SOFI:del('DraGoN:'..ANUBIS.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 return false  end 
-Dev Ahme:del('DraGoN:'..ANUBIS.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
+Dev SOFI:del('DraGoN:'..ANUBIS.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 local numadded = string.match(text, "(%d+)") 
-local iduserr = Dev Ahme:get('DraGoN:'..ANUBIS..'id:user'..msg.chat_id_)  
-Dev Ahme:incrby(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..iduserr,numadded)
-Dev_ Ahme(msg.chat_id_, msg.id_,  1, "⌯︙تم اضافة "..numadded..' رساله', 1, 'md')
-Dev Ahme:del('DraGoN:'..ANUBIS..'id:user'..msg.chat_id_) 
+local iduserr = Dev SOFI:get('DraGoN:'..ANUBIS..'id:user'..msg.chat_id_)  
+Dev SOFI:incrby(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..iduserr,numadded)
+Dev_ SOFI(msg.chat_id_, msg.id_,  1, "⌯︙تم اضافة "..numadded..' رساله', 1, 'md')
+Dev SOFI:del('DraGoN:'..ANUBIS..'id:user'..msg.chat_id_) 
 end
 end
 if text and Constructor(msg) then 
-if Dev Ahme:get('DraGoN:'..ANUBIS.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_) then 
+if Dev SOFI:get('DraGoN:'..ANUBIS.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
-Dev Ahme:del('DraGoN:'..ANUBIS..'ids:user'..msg.chat_id_)  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء الامر', 1, 'md')
-Dev Ahme:del('DraGoN:'..ANUBIS.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
+Dev SOFI:del('DraGoN:'..ANUBIS..'ids:user'..msg.chat_id_)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء الامر', 1, 'md')
+Dev SOFI:del('DraGoN:'..ANUBIS.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 return false  end 
-Dev Ahme:del('DraGoN:'..ANUBIS.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
+Dev SOFI:del('DraGoN:'..ANUBIS.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 local numadded = string.match(text, "(%d+)") 
-local iduserr = Dev Ahme:get('DraGoN:'..ANUBIS..'ids:user'..msg.chat_id_)  
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..iduserr,numadded)  
-Dev_ Ahme(msg.chat_id_, msg.id_,  1, "⌯︙تم اضافة "..numadded..' نقطه', 1, 'md')
-Dev Ahme:del('DraGoN:'..ANUBIS..'ids:user'..msg.chat_id_)  
+local iduserr = Dev SOFI:get('DraGoN:'..ANUBIS..'ids:user'..msg.chat_id_)  
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..iduserr,numadded)  
+Dev_ SOFI(msg.chat_id_, msg.id_,  1, "⌯︙تم اضافة "..numadded..' نقطه', 1, 'md')
+Dev SOFI:del('DraGoN:'..ANUBIS..'ids:user'..msg.chat_id_)  
 end
 end
 --     Source ANUBIS     --
 if text and (text:match("طيز") or text:match("ديس") or text:match("انيج") or text:match("نيج") or text:match("ديوس") or text:match("عير") or text:match("كسختك") or text:match("كسمك") or text:match("كسربك") or text:match("بلاع") or text:match("ابو العيوره") or text:match("منيوج") or text:match("كحبه") or text:match("كحاب") or text:match("الكحبه") or text:match("كسك") or text:match("طيزك") or text:match("كس امك") or text:match("صرم") or text:match("كس اختك")) then
-if not Dev Ahme:get(ANUBIS.." Ahme:Lock:Fshar"..msg.chat_id_) and not BasicConstructor(msg) then
+if not Dev SOFI:get(ANUBIS.." SOFI:Lock:Fshar"..msg.chat_id_) and not BasicConstructor(msg) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 ReplyStatus(msg,msg.sender_user_id_,"WrongWay","⌯︙ممنوع الفشار في المجموعه \n⌯︙تأدب شوية عيب\n✓")  
 end end
 if text and (text:match("ڬ") or text:match("ٺ") or text:match("چ") or text:match("ڇ") or text:match("ڿ") or text:match("ڀ") or text:match("ڎ") or text:match("ݫ") or text:match("ژ") or text:match("ڟ") or text:match("ݜ") or text:match("ڸ") or text:match("پ") or text:match("۴") or text:match("مک") or text:match("زدن") or text:match("دخترا") or text:match("دیوث") or text:match("کلیپشن") or text:match("خوششون") or text:match("میدا") or text:match("که") or text:match("بدانیم") or text:match("باید") or text:match("زناشویی") or text:match("آموزش") or text:match("راحتی") or text:match("خسته") or text:match("بیام") or text:match("بپوشم") or text:match("كرمه")) then
-if Dev Ahme:get(ANUBIS.." Ahme:Lock:Farsi"..msg.chat_id_) and not Admin(msg) then
+if Dev SOFI:get(ANUBIS.." SOFI:Lock:Farsi"..msg.chat_id_) and not Admin(msg) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 ReplyStatus(msg,msg.sender_user_id_,"WrongWay","⌯︙ممنوع التكلم بالغه الفارسيه هنا\n⌯︙لتصير ذيل\n✓")  
 end end
 if text and (text:match("ڬ") or text:match("ٺ") or text:match("چ") or text:match("ڇ") or text:match("ڿ") or text:match("ڀ") or text:match("ڎ") or text:match("ݫ") or text:match("ژ") or text:match("ڟ") or text:match("ݜ") or text:match("ڸ") or text:match("پ") or text:match("۴") or text:match("مک") or text:match("زدن") or text:match("دخترا") or text:match("دیوث") or text:match("کلیپشن") or text:match("خوششون") or text:match("میدا") or text:match("که") or text:match("بدانیم") or text:match("باید") or text:match("زناشویی") or text:match("آموزش") or text:match("راحتی") or text:match("خسته") or text:match("بیام") or text:match("بپوشم") or text:match("كرمه")) then
-if Dev Ahme:get(ANUBIS.." Ahme:Lock:FarsiBan"..msg.chat_id_) and not Admin(msg) then
+if Dev SOFI:get(ANUBIS.." SOFI:Lock:FarsiBan"..msg.chat_id_) and not Admin(msg) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 ChatKick(msg.chat_id_, msg.sender_user_id_)
 end end 
 if text and (text:match("خره بالله") or text:match("خبربك") or text:match("كسدينربك") or text:match("خرب بالله") or text:match("خرب الله") or text:match("خره بربك") or text:match("الله الكواد") or text:match("خره بمحمد") or text:match("كسم الله") or text:match("كسم ربك") or text:match("كسربك") or text:match("كسختالله") or text:match("كسخت الله") or text:match("خره بدينك") or text:match("خرهبدينك") or text:match("كسالله") or text:match("خربالله")) then
-if not Dev Ahme:get(ANUBIS.." Ahme:Lock:Kfr"..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS.." SOFI:Lock:Kfr"..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 ReplyStatus(msg,msg.sender_user_id_,"WrongWay","⌯︙ممنوع الكفران في المجموعه\n⌯︙استغفر ربك\n✓") 
 end end
 if text and (text:match("سني نكس") or text:match("شيعه") or text:match("الشيعه") or text:match("السنه") or text:match("طائفتكم") or text:match("شيعي") or text:match("انا سني") or text:match("مسيحي") or text:match("يهودي") or text:match("صابئي") or text:match("ملحد") or text:match("بالسنه") or text:match("شيعة")) then
-if not Dev Ahme:get(ANUBIS.." Ahme:Lock:Taf"..msg.chat_id_) and not BasicConstructor(msg) then
+if not Dev SOFI:get(ANUBIS.." SOFI:Lock:Taf"..msg.chat_id_) and not BasicConstructor(msg) then
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 ReplyStatus(msg,msg.sender_user_id_,"WrongWay","⌯︙ممنوع التكلم بالطائفيه هنا\n⌯︙اخوان سنة وشيعة ❤️\n✓") 
 end end
 --     Source ANUBIS     --
 if SecondSudo(msg) then
 if text == 'جلب نسخه الكروبات' or text == 'جلب نسخه احتياطيه' or text == 'جلب النسخه الاحتياطيه' or text == '↫ جلب نسخه احتياطيه ⌯' and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Groups') 
-local Members = Dev Ahme:smembers(ANUBIS..' Ahme:Users') 
-local BotName = (Dev Ahme:get(ANUBIS.." Ahme:NameBot") or 'انوبيس')
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Groups') 
+local Members = Dev SOFI:smembers(ANUBIS..' SOFI:Users') 
+local BotName = (Dev SOFI:get(ANUBIS.." SOFI:NameBot") or 'انوبيس')
 local GetJson = '{"BotId": '..ANUBIS..',"BotName": "'..BotName..'","GroupsList":{'  
 for k,v in pairs(List) do 
-LinkGroups = Dev Ahme:get(ANUBIS.." Ahme:Groups:Links"..v)
-Welcomes = Dev Ahme:get(ANUBIS..' Ahme:Groups:Welcomes'..v) or ''
+LinkGroups = Dev SOFI:get(ANUBIS.." SOFI:Groups:Links"..v)
+Welcomes = Dev SOFI:get(ANUBIS..' SOFI:Groups:Welcomes'..v) or ''
 Welcomes = Welcomes:gsub('"',"") Welcomes = Welcomes:gsub("'","") Welcomes = Welcomes:gsub(",","") Welcomes = Welcomes:gsub("*","") Welcomes = Welcomes:gsub(";","") Welcomes = Welcomes:gsub("`","") Welcomes = Welcomes:gsub("{","") Welcomes = Welcomes:gsub("}","") 
- AhmeConstructors = Dev Ahme:smembers(ANUBIS..' Ahme: AhmeConstructor:'..v)
-Constructors = Dev Ahme:smembers(ANUBIS..' Ahme:BasicConstructor:'..v)
-BasicConstructors = Dev Ahme:smembers(ANUBIS..' Ahme:Constructor:'..v)
-Managers = Dev Ahme:smembers(ANUBIS..' Ahme:Managers:'..v)
-Admis = Dev Ahme:smembers(ANUBIS..' Ahme:Admins:'..v)
-Vips = Dev Ahme:smembers(ANUBIS..' Ahme:VipMem:'..v)
+ SOFIConstructors = Dev SOFI:smembers(ANUBIS..' SOFI: SOFIConstructor:'..v)
+Constructors = Dev SOFI:smembers(ANUBIS..' SOFI:BasicConstructor:'..v)
+BasicConstructors = Dev SOFI:smembers(ANUBIS..' SOFI:Constructor:'..v)
+Managers = Dev SOFI:smembers(ANUBIS..' SOFI:Managers:'..v)
+Admis = Dev SOFI:smembers(ANUBIS..' SOFI:Admins:'..v)
+Vips = Dev SOFI:smembers(ANUBIS..' SOFI:VipMem:'..v)
 if k == 1 then
 GetJson = GetJson..'"'..v..'":{'
 else
@@ -3691,9 +3691,9 @@ end
 end   
 GetJson = GetJson..'],'
 end
-if # AhmeConstructors ~= 0 then
-GetJson = GetJson..'" AhmeConstructors":['
-for k,v in pairs( AhmeConstructors) do
+if # SOFIConstructors ~= 0 then
+GetJson = GetJson..'" SOFIConstructors":['
+for k,v in pairs( SOFIConstructors) do
 if k == 1 then
 GetJson =  GetJson..'"'..v..'"'
 else
@@ -3737,29 +3737,29 @@ tdcli_function ({ ID = "GetMessage", chat_id_ = msg.chat_id_, message_id_ = tonu
 end
 end
 --     Source ANUBIS     --
-if Dev Ahme:get(ANUBIS.."SET:GAME"..msg.chat_id_) then  
+if Dev SOFI:get(ANUBIS.."SET:GAME"..msg.chat_id_) then  
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 6 then
-Dev_ Ahme( msg.chat_id_, msg.id_, 1,"⌯︙يوجد فقط ( 6 ) اختيارات\n⌯︙ارسل اختيارك مره اخرى", 1, "md")    
+Dev_ SOFI( msg.chat_id_, msg.id_, 1,"⌯︙يوجد فقط ( 6 ) اختيارات\n⌯︙ارسل اختيارك مره اخرى", 1, "md")    
 return false  end 
-local GETNUM = Dev Ahme:get(ANUBIS.."GAMES"..msg.chat_id_)
+local GETNUM = Dev SOFI:get(ANUBIS.."GAMES"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
-Dev Ahme:del(ANUBIS.."SET:GAME"..msg.chat_id_)   
-Dev_ Ahme( msg.chat_id_, msg.id_, 1,'⌯︙*المحيبس باليد رقم* ↫ '..NUM..'\n⌯︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, "md") 
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
+Dev SOFI:del(ANUBIS.."SET:GAME"..msg.chat_id_)   
+Dev_ SOFI( msg.chat_id_, msg.id_, 1,'⌯︙*المحيبس باليد رقم* ↫ '..NUM..'\n⌯︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, "md") 
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
-Dev Ahme:del(ANUBIS.."SET:GAME"..msg.chat_id_)   
-Dev_ Ahme( msg.chat_id_, msg.id_, 1,'⌯︙*المحيبس باليد رقم* ↫ '..GETNUM..'\n⌯︙*للاسف لقد خسرت حاول مره اخرى للعثور على المحيبس*', 1, "md")
+Dev SOFI:del(ANUBIS.."SET:GAME"..msg.chat_id_)   
+Dev_ SOFI( msg.chat_id_, msg.id_, 1,'⌯︙*المحيبس باليد رقم* ↫ '..GETNUM..'\n⌯︙*للاسف لقد خسرت حاول مره اخرى للعثور على المحيبس*', 1, "md")
 end
 end
 end
-if Dev Ahme:get(ANUBIS..'Dev Ahme4'..msg.sender_user_id_) then
+if Dev SOFI:get(ANUBIS..'Dev SOFI4'..msg.sender_user_id_) then
 if text and text:match("^الغاء$") then 
 send(msg.chat_id_, msg.id_, "⌯︙تم الغاء الامر")
-Dev Ahme:del(ANUBIS..'Dev Ahme4'..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS..'Dev SOFI4'..msg.sender_user_id_)
 return false  end 
-Dev Ahme:del(ANUBIS..'Dev Ahme4'..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS..'Dev SOFI4'..msg.sender_user_id_)
 local username = string.match(text, "@[%a%d_]+") 
 tdcli_function({ID = "SearchPublicChat",username_ = username},function(arg,data) 
 if data and data.message_ and data.message_ == "USERNAME_NOT_OCCUPIED" then 
@@ -3774,7 +3774,7 @@ return false  end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.is_supergroup_ == false then
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.ID and data.type_.channel_.status_.ID == 'ChatMemberStatusEditor' then
 send(msg.chat_id_, msg.id_,'⌯︙البوت ادمن في القناة \n⌯︙تم تفعيل الاشتراك الاجباري \n⌯︙ايدي القناة ↫ '..data.id_..'\n⌯︙معرف القناة ↫ [@'..data.type_.channel_.username_..']')
-Dev Ahme:set(ANUBIS..' Ahme:ChId',data.id_)
+Dev SOFI:set(ANUBIS..' SOFI:ChId',data.id_)
 else
 send(msg.chat_id_, msg.id_,'⌯︙عذرا البوت ليس ادمن في القناة')
 end
@@ -3783,36 +3783,36 @@ end
 end,nil)
 end
 --     Source ANUBIS     --
-if Dev Ahme:get(ANUBIS.." Ahme:DevText"..msg.chat_id_..":" .. msg.sender_user_id_) then
+if Dev SOFI:get(ANUBIS.." SOFI:DevText"..msg.chat_id_..":" .. msg.sender_user_id_) then
 if text and text:match("^الغاء$") then 
-Dev Ahme:del(ANUBIS.." Ahme:DevText"..msg.chat_id_..":" .. msg.sender_user_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء الامر', 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:DevText"..msg.chat_id_..":" .. msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء الامر', 1, 'md')
 return false 
 end 
-Dev Ahme:del(ANUBIS.." Ahme:DevText"..msg.chat_id_..":" .. msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.." SOFI:DevText"..msg.chat_id_..":" .. msg.sender_user_id_)
 local DevText = msg.content_.text_:match("(.*)")
-Dev Ahme:set(ANUBIS.."DevText", DevText)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ كليشة المطور", 1, "md")
+Dev SOFI:set(ANUBIS.."DevText", DevText)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ كليشة المطور", 1, "md")
 end
-if Dev Ahme:get(ANUBIS..' Ahme:NameBot'..msg.sender_user_id_) == 'msg' then
+if Dev SOFI:get(ANUBIS..' SOFI:NameBot'..msg.sender_user_id_) == 'msg' then
 if text and text:match("^الغاء$") then 
-Dev Ahme:del(ANUBIS..' Ahme:NameBot'..msg.sender_user_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء الامر', 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:NameBot'..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء الامر', 1, 'md')
 return false 
 end 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ اسم البوت ', 1, 'html')
-Dev Ahme:del(ANUBIS..' Ahme:NameBot'..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS..' Ahme:NameBot', text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ اسم البوت ', 1, 'html')
+Dev SOFI:del(ANUBIS..' SOFI:NameBot'..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS..' SOFI:NameBot', text)
 return false 
 end
 --     Source ANUBIS     --
 if text == "الرابط" then 
-if not Dev Ahme:get(ANUBIS.." Ahme:Lock:GpLinks"..msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙جلب رابط المجموعه معطل', 1, 'md') 
+if not Dev SOFI:get(ANUBIS.." SOFI:Lock:GpLinks"..msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙جلب رابط المجموعه معطل', 1, 'md') 
 return false  
 end
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,ta) 
-local link = Dev Ahme:get(ANUBIS.." Ahme:Groups:Links"..msg.chat_id_)            
+local link = Dev SOFI:get(ANUBIS.." SOFI:Groups:Links"..msg.chat_id_)            
 if link then  
 local textLink = '⌯︙🌐 Group Link ↬ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n• ['..ta.title_..']('..link..')'  
 local inline = {{{text = '• '..ta.title_..' •',url=''..link}},}
@@ -3826,7 +3826,7 @@ local inline = {{{text = '• '..ta.title_..' •',url=''..linkgpp.result}},}
 msg_id =  msg.id_/2097152/0.5
 SendInline(msg.chat_id_,linkgp,nil,inline,msg_id) 
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لايوجد رابط ارسل ↫ ضع رابط او ارسل ↫ انشاء رابط للانشاء', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لايوجد رابط ارسل ↫ ضع رابط او ارسل ↫ انشاء رابط للانشاء', 1, 'md')
 end  
 end      
 end,nil)
@@ -3836,7 +3836,7 @@ if ChatType == 'sp' or ChatType == 'gp'  then
 if text == 'بوت' or text == 'بوتت' then 
 local DRagon = {"❤️‍🔥","🏌🏼","🦋","🍧","🥲","🍇","🥲♥️","♥️","🍧🍇",""} 
 local ⁦DevId = DRagon[math.random(#DRagon)]
-NameBot = (Dev Ahme:get(ANUBIS..' Ahme:NameBot') or 'انوبيس')
+NameBot = (Dev SOFI:get(ANUBIS..' SOFI:NameBot') or 'انوبيس')
 local DraGoN = {
     "لتڪول بۅٛت اسَميہ "..NameBot.." "..⁦DevId.."",
     "اسميہ ألقمـيل "..NameBot.." "..⁦DevId.."",
@@ -3846,27 +3846,27 @@ local DraGoN = {
     "شتࢪيَد ضَݪـ؏ـييہ "..⁦DevId.."",
     "ههآآه يـڕﯢحٰ "..NameBot.." "..⁦DevId.."",
 } 
-Dev Ahme2 = math.random(#DraGoN) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN[Dev Ahme2] , 1, 'html') 
+Dev SOFI2 = math.random(#DraGoN) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN[Dev SOFI2] , 1, 'html') 
 return false
 end
 if text == 'اسم البوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
 local DRagon = {"❤️‍🔥","🏌🏼","🦋","🍧","🥲","🍇","🥲♥️","♥️","🍧🍇",""} 
 local ⁦DevId = DRagon[math.random(#DRagon)]
-NameBot = (Dev Ahme:get(ANUBIS..' Ahme:NameBot') or 'انوبيس') 
+NameBot = (Dev SOFI:get(ANUBIS..' SOFI:NameBot') or 'انوبيس') 
 local DraGoN = {
     "آسميہ ألقمـيل "..NameBot.." "..⁦DevId.."",
     'ڪول - حبيبي اﻧـييہ '..NameBot..' '..⁦DevId..'',
     "هلآآ ؏ـمـريـہٰ. وياڪك "..NameBot.." "..⁦DevId..""
 } 
-Dev Ahme2 = math.random(#DraGoN) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN[Dev Ahme2] , 1, 'html') 
+Dev SOFI2 = math.random(#DraGoN) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN[Dev SOFI2] , 1, 'html') 
 return false
 end
-if text and text == (Dev Ahme:get(ANUBIS..' Ahme:NameBot') or 'انوبيس') then 
+if text and text == (Dev SOFI:get(ANUBIS..' SOFI:NameBot') or 'انوبيس') then 
 local DRagon = {"❤️‍🔥","🏌🏼","🦋","🍧","🥲","🍇","🥲♥️","♥️","🍧🍇",""} 
 local ⁦DevId = DRagon[math.random(#DRagon)]
-NameBot = (Dev Ahme:get(ANUBIS..' Ahme:NameBot') or 'انوبيس')
+NameBot = (Dev SOFI:get(ANUBIS..' SOFI:NameBot') or 'انوبيس')
 local namebot = {
     'هلآآ ڪـلبي وياڪك '..NameBot..' تفضـࢦ'..⁦DevId..'',
     'تࢪۿ مَصختَها آحچيَ شتࢪيد '..⁦DevId..'',
@@ -3875,29 +3875,29 @@ local namebot = {
     'خبصتَ آمڼهہ شتࢪيَد عاآد '..⁦DevId..''
 } 
 name = math.random(#namebot) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, namebot[name] , 1, 'html') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, namebot[name] , 1, 'html') 
 return false 
 end
 if text =='نقاطي' and ChCheck(msg) then 
-if tonumber((Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙لم تربح اي نقطه\n⌯︙ارسل ↫ الالعاب للعب', 1, 'md')
+if tonumber((Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙لم تربح اي نقطه\n⌯︙ارسل ↫ الالعاب للعب', 1, 'md')
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙عدد النقاط التي ربحتها ↫ '..(Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_)), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙عدد النقاط التي ربحتها ↫ '..(Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_)), 1, 'md')
 end
 end
-if text ==  'حذف رسائلي' and ChCheck(msg) or text ==  'مسح رسائلي' and ChCheck(msg) then Dev Ahme:del(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_) Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف جميع رسائلك', 1, 'md') end
-if text ==  'حذف نقاطي' and ChCheck(msg) or text ==  'مسح نقاطي' and ChCheck(msg) then Dev Ahme:del(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_) Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف جميع نقاطك', 1, 'md') end
+if text ==  'حذف رسائلي' and ChCheck(msg) or text ==  'مسح رسائلي' and ChCheck(msg) then Dev SOFI:del(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_) Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف جميع رسائلك', 1, 'md') end
+if text ==  'حذف نقاطي' and ChCheck(msg) or text ==  'مسح نقاطي' and ChCheck(msg) then Dev SOFI:del(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_) Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف جميع نقاطك', 1, 'md') end
 --     Source ANUBIS     --
 if text == 'جهاته' and tonumber(msg.reply_to_message_id_) > 0 and ChCheck(msg) then 
 function ContactNumber_by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-local Add_Mem = Dev Ahme:get(ANUBIS.." Ahme:ContactNumber"..msg.chat_id_..":"..data.id_) or 0
+local Add_Mem = Dev SOFI:get(ANUBIS.." SOFI:ContactNumber"..msg.chat_id_..":"..data.id_) or 0
 if Add_Mem == 0 then 
 Text = "⌯︙ هو لم يقم باضافه اي جهات الئ المجموعة هذا"
 else
 Text = "⌯︙ عدد الجهات التي قام باضافتها هي *~ ( "..Add_Mem.." ) ~ جهات *"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,Text, 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,Text, 1, 'md') 
 end,nil)   
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, ContactNumber_by_reply, nil)
@@ -3906,13 +3906,13 @@ end
 if text == 'رسائله' and tonumber(msg.reply_to_message_id_) > 0 and ChCheck(msg) then 
 function NumMsg_by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-local NumMsg = Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..data.id_) or 0
+local NumMsg = Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..data.id_) or 0
 if NumMsg == 0 then 
 Text = "⌯︙ هذا الشخص لم يقم بارسال ولا حتئ رسأله واحده"
 else
 Text = "⌯︙ عدد الرسائل التي قام بارسألها هنا *~ ❨ "..NumMsg.." ❩ ~ رساله *"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,Text, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,Text, 1, 'md')
 end,nil)   
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, NumMsg_by_reply, nil)
@@ -3921,13 +3921,13 @@ end
 if text == 'سحكاته' and tonumber(msg.reply_to_message_id_) > 0 and ChCheck(msg) then 
 function EditMsg_by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-local EditMsg = Dev Ahme:get(ANUBIS..' Ahme:EditMsg'..msg.chat_id_..data.id_) or 0
+local EditMsg = Dev SOFI:get(ANUBIS..' SOFI:EditMsg'..msg.chat_id_..data.id_) or 0
 if EditMsg == 0 then 
 Text = "⌯︙ العب غيرها حبيبي هذا سيبويه باللغة العربيه"
 else
 Text = "⌯︙ عدد السحكات للمصرين الي سحكهم *~ ❨ "..EditMsg.." ❩ ~ سحكه *"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,Text, 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,Text, 1, 'md') 
 end,nil)   
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, EditMsg_by_reply, nil)
@@ -3936,13 +3936,13 @@ end
 if text == 'نقاطه' and tonumber(msg.reply_to_message_id_) > 0 and ChCheck(msg) then 
 function GamesNumber_by_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-local Num = tonumber(Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..data.id_) or 0)
+local Num = tonumber(Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..data.id_) or 0)
 if Num == 0 then 
 Text = "⌯︙ هو لم يلعب اي لعبه للحصول على النقاط"
 else
 Text = "⌯︙ عدد النقاط التي ربحها هي *~ ( "..Num.." ) ~ نقطه *"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,Text, 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,Text, 1, 'md') 
 end,nil)   
 end
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, GamesNumber_by_reply, nil)
@@ -3950,11 +3950,11 @@ return false
 end
 --     Source ANUBIS     --
 if text == 'سمايلات' and ChCheck(msg) or text == 'السمايلات' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme2 = {'🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🍠','🥐','🍞','🥖','🥨','🧀','🥚','🍳','🥞','🥓','🥩','🍗','🍖','🌭','🍔','🍟','🍕','🥪','🥙','🍼','☕️','🍵','🥤','🍶','🍺','🍻','🏀','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','🎰','🎮','🎳','🎯','🏆','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🛎','📤','🎗','🏵','🎖','🏆','🥌','🛷','🚕','🚗','🚙','🚌','🚎','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔️','🛡','🔮','🌡','💣','⏱','🛢','📓','📗','📂','📅','📪','📫','📬','📭','⏰','📺','🎚','☎️','📡'}
-name = Dev Ahme2[math.random(#Dev Ahme2)]
-Dev Ahme:set(ANUBIS..' Ahme:GameNum'..msg.chat_id_,name)
-Dev Ahme:del(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_)
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI2 = {'🍏','🍎','🍐','🍊','🍋','🍌','🍉','🍇','🍓','🍈','🍒','🍑','🍍','🥥','🥝','🍅','🍆','🥑','🥦','🥒','🌶','🌽','🥕','🥔','🍠','🥐','🍞','🥖','🥨','🧀','🥚','🍳','🥞','🥓','🥩','🍗','🍖','🌭','🍔','🍟','🍕','🥪','🥙','🍼','☕️','🍵','🥤','🍶','🍺','🍻','🏀','⚽️','🏈','⚾️','🎾','🏐','🏉','🎱','🏓','🏸','🥅','🎰','🎮','🎳','🎯','🏆','🎻','🎸','🎺','🥁','🎹','🎼','🎧','🎤','🎬','🎨','🎭','🎪','🛎','📤','🎗','🏵','🎖','🏆','🥌','🛷','🚕','🚗','🚙','🚌','🚎','🏎','🚓','🚑','🚚','🚛','🚜','🇮🇶','⚔️','🛡','🔮','🌡','💣','⏱','🛢','📓','📗','📂','📅','📪','📫','📬','📭','⏰','📺','🎚','☎️','📡'}
+name = Dev SOFI2[math.random(#Dev SOFI2)]
+Dev SOFI:set(ANUBIS..' SOFI:GameNum'..msg.chat_id_,name)
+Dev SOFI:del(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'🍞','🍞')
 name = string.gsub(name,'🥖','🥖')
 name = string.gsub(name,'🥨','🥨')
@@ -4072,23 +4072,23 @@ name = string.gsub(name,'📺','📺')
 name = string.gsub(name,'🎚','🎚')
 name = string.gsub(name,'☎️','☎️')
 DraGoN = '⌯︙اول واحد يدز هذا السمايل يربح ↫ '..name
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 return false
 end end
-if text == Dev Ahme:get(ANUBIS..' Ahme:GameNum'..msg.chat_id_) and not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then 
+if text == Dev SOFI:get(ANUBIS..' SOFI:GameNum'..msg.chat_id_) and not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then 
 DraGoN = '⌯︙مبروك لقد ربحت في اللعبه \n⌯︙ارسل ↫ سمايلات للعب مره اخرى'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-Dev Ahme:set(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_,true)
 end
 if text == 'ترتيب' and ChCheck(msg) or text == 'الترتيب' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme2 = {'سحور','سياره','استقبال','قنفه','ايفون','بزونه','مطبخ','كرستيانو','دجاجه','مدرسه','الوان','غرفه','ثلاجه','كهوه','سفينه','العراق','محطه','طياره','رادار','منزل','مستشفى','كهرباء','تفاحه','اخطبوط','سلمون','فرنسا','برتقاله','تفاح','مطرقه','بتيته','لهانه','شباك','باص','سمكه','ذباب','تلفاز','حاسوب','انترنيت','ساحه','جسر'};
-name = Dev Ahme2[math.random(#Dev Ahme2)]
-Dev Ahme:set(ANUBIS..' Ahme:GameNum'..msg.chat_id_,name)
-Dev Ahme:del(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_)
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI2 = {'سحور','سياره','استقبال','قنفه','ايفون','بزونه','مطبخ','كرستيانو','دجاجه','مدرسه','الوان','غرفه','ثلاجه','كهوه','سفينه','العراق','محطه','طياره','رادار','منزل','مستشفى','كهرباء','تفاحه','اخطبوط','سلمون','فرنسا','برتقاله','تفاح','مطرقه','بتيته','لهانه','شباك','باص','سمكه','ذباب','تلفاز','حاسوب','انترنيت','ساحه','جسر'};
+name = Dev SOFI2[math.random(#Dev SOFI2)]
+Dev SOFI:set(ANUBIS..' SOFI:GameNum'..msg.chat_id_,name)
+Dev SOFI:del(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'سحور','س ر و ح')
 name = string.gsub(name,'سياره','ه ر س ي ا')
 name = string.gsub(name,'استقبال','ل ب ا ت ق س ا')
@@ -4130,21 +4130,21 @@ name = string.gsub(name,'انترنيت','ا ت ن ر ن ي ت')
 name = string.gsub(name,'ساحه','ح ا ه س')
 name = string.gsub(name,'جسر','ر ج س')
 DraGoN = '⌯︙اول واحد يرتبها يربح ↫ '..name
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 return false
 end end
-if text == Dev Ahme:get(ANUBIS..' Ahme:GameNum'..msg.chat_id_) and not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then 
+if text == Dev SOFI:get(ANUBIS..' SOFI:GameNum'..msg.chat_id_) and not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then 
 DraGoN = '⌯︙مبروك لقد ربحت في اللعبه \n⌯︙ارسل ↫ ترتيب للعب مره اخرى'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-Dev Ahme:set(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_,true)
 end
 if text == 'محيبس' and ChCheck(msg) or text == 'بات' and ChCheck(msg) or text == 'المحيبس' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
 Num = math.random(1,6)
-Dev Ahme:set(ANUBIS.."GAMES"..msg.chat_id_,Num) 
+Dev SOFI:set(ANUBIS.."GAMES"..msg.chat_id_,Num) 
 TEST = [[
 ➀     ➁     ➂     ➃     ➄     ➅
 ↓     ↓     ↓     ↓     ↓     ↓
@@ -4153,16 +4153,16 @@ TEST = [[
 ⌯︙اختر رقم لاستخراج المحيبس
 ⌯︙الفائز يحصل على (5) نقاط
 ]]
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, TEST, 1, "md") 
-Dev Ahme:setex(ANUBIS.."SET:GAME"..msg.chat_id_, 100, true)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, TEST, 1, "md") 
+Dev SOFI:setex(ANUBIS.."SET:GAME"..msg.chat_id_, 100, true)  
 return false  
 end end
 if text == 'حزوره' and ChCheck(msg) or text == 'الحزوره' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme2 = {'الجرس','عقرب الساعه','السمك','المطر','5','الكتاب','البسمار','7','الكعبه','بيت الشعر','لهانه','انا','امي','الابره','الساعه','22','غلط','كم الساعه','البيتنجان','البيض','المرايه','الضوء','الهواء','الضل','العمر','القلم','المشط','الحفره','البحر','الثلج','الاسفنج','الصوت','بلم'};
-name = Dev Ahme2[math.random(#Dev Ahme2)]
-Dev Ahme:set(ANUBIS..' Ahme:GameNum'..msg.chat_id_,name)
-Dev Ahme:del(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_)
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI2 = {'الجرس','عقرب الساعه','السمك','المطر','5','الكتاب','البسمار','7','الكعبه','بيت الشعر','لهانه','انا','امي','الابره','الساعه','22','غلط','كم الساعه','البيتنجان','البيض','المرايه','الضوء','الهواء','الضل','العمر','القلم','المشط','الحفره','البحر','الثلج','الاسفنج','الصوت','بلم'};
+name = Dev SOFI2[math.random(#Dev SOFI2)]
+Dev SOFI:set(ANUBIS..' SOFI:GameNum'..msg.chat_id_,name)
+Dev SOFI:del(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'الجرس','شيئ اذا لمسته صرخ ما هوه ؟')
 name = string.gsub(name,'عقرب الساعه','اخوان لا يستطيعان تمضيه اكثر من دقيقه معا فما هما ؟')
 name = string.gsub(name,'السمك','ما هو الحيوان الذي لم يصعد الى سفينة نوح عليه السلام ؟')
@@ -4197,23 +4197,23 @@ name = string.gsub(name,'الاسفنج','كلي ثقوب ومع ذالك احف
 name = string.gsub(name,'الصوت','اسير بلا رجلين ولا ادخل الا بالاذنين فمن انا ؟')
 name = string.gsub(name,'بلم','حامل ومحمول نصف ناشف ونصف مبلول فمن اكون ؟ ')
 DraGoN = '⌯︙اول واحد يحلها يربح ↫ '..name
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 return false
 end end
-if text == Dev Ahme:get(ANUBIS..' Ahme:GameNum'..msg.chat_id_) and not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then 
+if text == Dev SOFI:get(ANUBIS..' SOFI:GameNum'..msg.chat_id_) and not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then 
 DraGoN = '⌯︙مبروك لقد ربحت في اللعبه \n⌯︙ارسل ↫ حزوره للعب مره اخرى'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-Dev Ahme:set(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_,true)
 end 
 if text == 'المعاني' and ChCheck(msg) or text == 'معاني' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme2 = {'قرد','دجاجه','بطريق','ضفدع','بومه','نحله','ديك','جمل','بقره','دولفين','تمساح','قرش','نمر','اخطبوط','سمكه','خفاش','اسد','فأر','ذئب','فراشه','عقرب','زرافه','قنفذ','تفاحه','باذنجان'}
-name = Dev Ahme2[math.random(#Dev Ahme2)]
-Dev Ahme:set(ANUBIS..' Ahme:GameNum2'..msg.chat_id_,name)
-Dev Ahme:del(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_)
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI2 = {'قرد','دجاجه','بطريق','ضفدع','بومه','نحله','ديك','جمل','بقره','دولفين','تمساح','قرش','نمر','اخطبوط','سمكه','خفاش','اسد','فأر','ذئب','فراشه','عقرب','زرافه','قنفذ','تفاحه','باذنجان'}
+name = Dev SOFI2[math.random(#Dev SOFI2)]
+Dev SOFI:set(ANUBIS..' SOFI:GameNum2'..msg.chat_id_,name)
+Dev SOFI:del(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'قرد','🐒')
 name = string.gsub(name,'دجاجه','🐔')
 name = string.gsub(name,'بطريق','🐧')
@@ -4240,23 +4240,23 @@ name = string.gsub(name,'قنفذ','🦔')
 name = string.gsub(name,'تفاحه','🍎')
 name = string.gsub(name,'باذنجان','🍆')
 DraGoN = '⌯︙ما معنى هذا السمايل :؟ ↫ '..name
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 return false
 end end
-if text == Dev Ahme:get(ANUBIS..' Ahme:GameNum2'..msg.chat_id_) and not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then 
+if text == Dev SOFI:get(ANUBIS..' SOFI:GameNum2'..msg.chat_id_) and not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then 
 DraGoN = '⌯︙مبروك لقد ربحت في اللعبه \n⌯︙ارسل ↫ المعاني للعب مره اخرى'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-Dev Ahme:set(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_,true)
 end 
 if text == 'العكس' and ChCheck(msg) or text == 'عكس' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme2 = {'باي','فهمت','موزين','اسمعك','احبك','موحلو','نضيف','حاره','ناصي','جوه','سريع','ونسه','طويل','سمين','ضعيف','شريف','شجاع','رحت','عدل','نشيط','شبعان','موعطشان','خوش ولد','اني','هادئ'}
-name = Dev Ahme2[math.random(#Dev Ahme2)]
-Dev Ahme:set(ANUBIS..' Ahme:GameNum3'..msg.chat_id_,name)
-Dev Ahme:del(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_)
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI2 = {'باي','فهمت','موزين','اسمعك','احبك','موحلو','نضيف','حاره','ناصي','جوه','سريع','ونسه','طويل','سمين','ضعيف','شريف','شجاع','رحت','عدل','نشيط','شبعان','موعطشان','خوش ولد','اني','هادئ'}
+name = Dev SOFI2[math.random(#Dev SOFI2)]
+Dev SOFI:set(ANUBIS..' SOFI:GameNum3'..msg.chat_id_,name)
+Dev SOFI:del(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'باي','هلو')
 name = string.gsub(name,'فهمت','مافهمت')
 name = string.gsub(name,'موزين','زين')
@@ -4283,23 +4283,23 @@ name = string.gsub(name,'خوش ولد','موخوش ولد')
 name = string.gsub(name,'اني','مطي')
 name = string.gsub(name,'هادئ','عصبي')
 DraGoN = '⌯︙ما هو عكس كلمة ↫ '..name
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 return false
 end end
-if text == Dev Ahme:get(ANUBIS..' Ahme:GameNum3'..msg.chat_id_) and not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then 
+if text == Dev SOFI:get(ANUBIS..' SOFI:GameNum3'..msg.chat_id_) and not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then 
 DraGoN = '⌯︙مبروك لقد ربحت في اللعبه \n⌯︙ارسل ↫ العكس للعب مره اخرى'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-Dev Ahme:set(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_,true)
 end 
 if text == 'المختلف' and ChCheck(msg) or text == 'مختلف' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme2 = {'😸','☠','🐼','🐇','🌑','🌚','⭐️','📥','⛈','🌥','⛄️','👨‍🔬','👨‍💻','👨‍🔧','👩‍🍳','🧚‍♀','🧚‍♂️','🧝‍♂','🙍‍♂','🧖‍♂','👬','👨‍👨‍👧','🕓','🕤','⌛️','📅','👩‍⚖️','👨‍🎨'};
-name = Dev Ahme2[math.random(#Dev Ahme2)]
-Dev Ahme:set(ANUBIS..' Ahme:GameNum4'..msg.chat_id_,name)
-Dev Ahme:del(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_)
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI2 = {'😸','☠','🐼','🐇','🌑','🌚','⭐️','📥','⛈','🌥','⛄️','👨‍🔬','👨‍💻','👨‍🔧','👩‍🍳','🧚‍♀','🧚‍♂️','🧝‍♂','🙍‍♂','🧖‍♂','👬','👨‍👨‍👧','🕓','🕤','⌛️','📅','👩‍⚖️','👨‍🎨'};
+name = Dev SOFI2[math.random(#Dev SOFI2)]
+Dev SOFI:set(ANUBIS..' SOFI:GameNum4'..msg.chat_id_,name)
+Dev SOFI:del(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'😸','😹😹😹😸😹😹😹😹')
 name = string.gsub(name,'☠️','💀💀💀☠️💀💀💀💀')
 name = string.gsub(name,'🐼','👻👻👻👻👻👻👻🐼')
@@ -4329,25 +4329,25 @@ name = string.gsub(name,'📅','📆📆📆📆📆📅📆📆')
 name = string.gsub(name,'👩‍⚖️','👨‍⚖️👨‍⚖️👨‍⚖️👨‍⚖️👨‍⚖️👩‍⚖️👨‍⚖️👨‍⚖️')
 name = string.gsub(name,'👨‍🎨','👩‍🎨👩‍🎨👨‍🎨👩‍🎨👩‍🎨👩‍🎨👩‍🎨👩‍🎨')
 DraGoN = '⌯︙اول واحد يطلع المختلف يربح\n{'..name..'} '
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 return false
 end end
-if text == Dev Ahme:get(ANUBIS..' Ahme:GameNum4'..msg.chat_id_) and not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then 
+if text == Dev SOFI:get(ANUBIS..' SOFI:GameNum4'..msg.chat_id_) and not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then 
 DraGoN = '⌯︙مبروك لقد ربحت في اللعبه \n⌯︙ارسل ↫ المختلف للعب مره اخرى'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
 end
-Dev Ahme:set(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_,true)
 end  
 if text == 'امثله' and ChCheck(msg) or text == 'الامثله' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme2 = {
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI2 = {
 'جوز','ضراطه','الحبل','الحافي','شقره','بيدك','سلايه','النخله','الخيل','حداد','المبلل','يركص','قرد','العنب','العمه','الخبز','بالحصاد','شهر','شكه','يكحله',
 };
-name = Dev Ahme2[math.random(#Dev Ahme2)]
-Dev Ahme:set(ANUBIS..' Ahme:GameNum5'..msg.chat_id_,name)
-Dev Ahme:del(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_)
+name = Dev SOFI2[math.random(#Dev SOFI2)]
+Dev SOFI:set(ANUBIS..' SOFI:GameNum5'..msg.chat_id_,name)
+Dev SOFI:del(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'جوز','ينطي ___ للماعنده سنون')
 name = string.gsub(name,'ضراطه','الي يسوق المطي يتحمل ___ ')
 name = string.gsub(name,'بيدك','اكل ___ محد يفيدك')
@@ -4369,24 +4369,24 @@ name = string.gsub(name,'شكه','يامن تعب يامن ___ يا من على 
 name = string.gsub(name,'القرد',' ___ بعين امه غزال')
 name = string.gsub(name,'يكحله','اجه ___ عماها')
 DraGoN = '⌯︙اكمل المثال التالي ↫ ['..name..']'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 return false
 end end
-if text == Dev Ahme:get(ANUBIS..' Ahme:GameNum5'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then 
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
-Dev Ahme:del(ANUBIS..' Ahme:GameNum5'..msg.chat_id_)
+if text == Dev SOFI:get(ANUBIS..' SOFI:GameNum5'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then 
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+Dev SOFI:del(ANUBIS..' SOFI:GameNum5'..msg.chat_id_)
 DraGoN = '⌯︙مبروك لقد ربحت في اللعبه \n⌯︙ارسل ↫ امثله للعب مره اخرى'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 end
-Dev Ahme:set(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_,true)
 end  
 if text == 'رياضيات' and ChCheck(msg) or text == 'الرياضيات' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme2 = {'9','46','2','9','5','4','25','10','17','15','39','5','16',};
-name = Dev Ahme2[math.random(#Dev Ahme2)]
-Dev Ahme:set(ANUBIS..' Ahme:GameNum6'..msg.chat_id_,name)
-Dev Ahme:del(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_)
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI2 = {'9','46','2','9','5','4','25','10','17','15','39','5','16',};
+name = Dev SOFI2[math.random(#Dev SOFI2)]
+Dev SOFI:set(ANUBIS..' SOFI:GameNum6'..msg.chat_id_,name)
+Dev SOFI:del(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'9','7 + 2 = ?')
 name = string.gsub(name,'46','41 + 5 = ?')
 name = string.gsub(name,'2','5 - 3 = ?')
@@ -4401,24 +4401,24 @@ name = string.gsub(name,'39','44 - 5 = ?')
 name = string.gsub(name,'5','12 + 1 - 8 = ?')
 name = string.gsub(name,'16','16 + 16 - 16 = ?')
 DraGoN = '⌯︙اكمل المعادله التاليه ↫ ⤈\n{'..name..'} '
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 return false
 end end
-if text == Dev Ahme:get(ANUBIS..' Ahme:GameNum6'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then 
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
-Dev Ahme:del(ANUBIS..' Ahme:GameNum6'..msg.chat_id_)
+if text == Dev SOFI:get(ANUBIS..' SOFI:GameNum6'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then 
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+Dev SOFI:del(ANUBIS..' SOFI:GameNum6'..msg.chat_id_)
 DraGoN = '⌯︙مبروك لقد ربحت في اللعبه \n⌯︙ارسل ↫ رياضيات للعب مره اخرى'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 end
-Dev Ahme:set(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_,true)
 end  
 if text == 'الانكليزي' and ChCheck(msg) or text == 'الانجليزيه' and ChCheck(msg) or text == 'انكليزيه' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme2 = {'معلومات','قنوات','مجموعات','كتاب','تفاحه','سدني','نقود','اعلم','ذئب','تمساح','ذكي','شاطئ','غبي',};
-name = Dev Ahme2[math.random(#Dev Ahme2)]
-Dev Ahme:set(ANUBIS..' Ahme:GameNum7'..msg.chat_id_,name)
-Dev Ahme:del(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_)
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI2 = {'معلومات','قنوات','مجموعات','كتاب','تفاحه','سدني','نقود','اعلم','ذئب','تمساح','ذكي','شاطئ','غبي',};
+name = Dev SOFI2[math.random(#Dev SOFI2)]
+Dev SOFI:set(ANUBIS..' SOFI:GameNum7'..msg.chat_id_,name)
+Dev SOFI:del(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'ذئب','Wolf')
 name = string.gsub(name,'معلومات','Information')
 name = string.gsub(name,'قنوات','Channels')
@@ -4432,25 +4432,25 @@ name = string.gsub(name,'شاطئ','Beach')
 name = string.gsub(name,'غبي','Stupid')
 name = string.gsub(name,'صداقه','Friendchip')
 DraGoN = '⌯︙ما معنى كلمة ↫ '..name
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 return false
 end end
-if text == Dev Ahme:get(ANUBIS..' Ahme:GameNum7'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then 
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
-Dev Ahme:del(ANUBIS..' Ahme:GameNum7'..msg.chat_id_)
+if text == Dev SOFI:get(ANUBIS..' SOFI:GameNum7'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then 
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+Dev SOFI:del(ANUBIS..' SOFI:GameNum7'..msg.chat_id_)
 DraGoN = '⌯︙مبروك لقد ربحت في اللعبه \n⌯︙ارسل ↫ انكليزيه للعب مره اخرى'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 end
-Dev Ahme:set(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_,true)
 end  
 --     Source ANUBIS     --
 if text == 'اسئله' and ChCheck(msg) or text == 'اختيارات' and ChCheck(msg) or text == 'الاسئله' and ChCheck(msg) or text == 'اساله' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme2 = {'النيل','14','الفم','11','30','بوتين','ستيف جوبر','باريس','10','النمل','حرف الواو','الشعر','سحاب','الاسم','ذهب','حرف الام','العزائم','انسات','المنجنيق','اسيا','6','الاسد','مهر','الدولفين','اوروبا','الزئبق','لندن','الانسان','طوكيو','خديجه',}
-name = Dev Ahme2[math.random(#Dev Ahme2)]
-Dev Ahme:set(ANUBIS..' Ahme:GameNum8'..msg.chat_id_,name)
-Dev Ahme:del(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_)
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI2 = {'النيل','14','الفم','11','30','بوتين','ستيف جوبر','باريس','10','النمل','حرف الواو','الشعر','سحاب','الاسم','ذهب','حرف الام','العزائم','انسات','المنجنيق','اسيا','6','الاسد','مهر','الدولفين','اوروبا','الزئبق','لندن','الانسان','طوكيو','خديجه',}
+name = Dev SOFI2[math.random(#Dev SOFI2)]
+Dev SOFI:set(ANUBIS..' SOFI:GameNum8'..msg.chat_id_,name)
+Dev SOFI:del(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_)
 name = string.gsub(name,'النيل','⌯︙ماهو اطول نهر في العالم ؟\n1- النيل\n2- الفرات\n3- نهر الكونغو')
 name = string.gsub(name,'14','⌯︙ماعدد عظام الوجه ؟\n1- 15\n2- 13\n3- 14')
 name = string.gsub(name,'الفم','⌯︙كراسي بيضاء وجدران ورديه اذا اغلقته اصبح ظلام  فمن اكون ؟\n1- الفم\n2- الاذن\n3- الثلاجه')
@@ -4482,95 +4482,95 @@ name = string.gsub(name,'الانسان','⌯︙ماهو الشئ الذي بر�
 name = string.gsub(name,'طوكيو','⌯︙ماهي عاصمه اليابان ؟\n1- بانكول\n2- نيو دلهي\n3- طوكيو')
 name = string.gsub(name,'خديجه','⌯︙من هي زوجه الرسول الاكبر منه سنآ ؟\n1- حفضه\n2- زينب\n3- خديجه')
 DraGoN = name..'\n⌯︙ارسل الجواب الصحيح فقط'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 return false
 end end
-if text == Dev Ahme:get(ANUBIS..' Ahme:GameNum8'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_) then 
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
-Dev Ahme:del(ANUBIS..' Ahme:GameNum8'..msg.chat_id_)
+if text == Dev SOFI:get(ANUBIS..' SOFI:GameNum8'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_) then 
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_, 1)  
+Dev SOFI:del(ANUBIS..' SOFI:GameNum8'..msg.chat_id_)
 DraGoN = '⌯︙مبروك لقد ربحت في اللعبه \n⌯︙ارسل ↫ الاسئله للعب مره اخرى'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,DraGoN, 1, 'md')
 end
-Dev Ahme:set(ANUBIS..' Ahme:Games:Ids'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Games:Ids'..msg.chat_id_,true)
 end  
 --     Source ANUBIS     --
-if Dev Ahme:get(ANUBIS.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_) then  
+if Dev SOFI:get(ANUBIS.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_) then  
 if text and text:match("^(%d+)$") then
 local NUM = text:match("^(%d+)$")
 if tonumber(NUM) > 20 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,"⌯︙عذرا لا يمكنك تخمين عدد اكبر من الـ20 خمن رقم ما بين الـ1 والـ20", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,"⌯︙عذرا لا يمكنك تخمين عدد اكبر من الـ20 خمن رقم ما بين الـ1 والـ20", 1, 'md')
 return false  end 
-local GETNUM = Dev Ahme:get(ANUBIS.."GAMES:NUM"..msg.chat_id_)
+local GETNUM = Dev SOFI:get(ANUBIS.."GAMES:NUM"..msg.chat_id_)
 if tonumber(NUM) == tonumber(GETNUM) then
-Dev Ahme:del(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
-Dev Ahme:del(ANUBIS.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙*التخمين الصحيح هو* ↫ '..NUM..'\n⌯︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, 'md')
+Dev SOFI:del(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_,5)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙*التخمين الصحيح هو* ↫ '..NUM..'\n⌯︙*مبروك لقد ربحت وحصلت على 5 نقاط يمكنك استبدالها بالرسائل*', 1, 'md')
 elseif tonumber(NUM) ~= tonumber(GETNUM) then
-Dev Ahme:incrby(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_,1)
-if tonumber(Dev Ahme:get(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) >= 3 then
-Dev Ahme:del(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
-Dev Ahme:del(ANUBIS.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙*التخمين الصحيح هو* ↫ '..GETNUM..'\n⌯︙*للاسف لقد خسرت حاول مره اخرى لتخمين الرقم الصحيح*', 1, 'md')
+Dev SOFI:incrby(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_,1)
+if tonumber(Dev SOFI:get(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) >= 3 then
+Dev SOFI:del(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_)   
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙*التخمين الصحيح هو* ↫ '..GETNUM..'\n⌯︙*للاسف لقد خسرت حاول مره اخرى لتخمين الرقم الصحيح*', 1, 'md')
 else
-if tonumber(Dev Ahme:get(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 1 then
+if tonumber(Dev SOFI:get(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 1 then
 SetNum = 'محاولتان فقط'
-elseif tonumber(Dev Ahme:get(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 2 then
+elseif tonumber(Dev SOFI:get(ANUBIS..'Set:Num'..msg.chat_id_..msg.sender_user_id_)) == 2 then
 SetNum = 'محاوله واحده فقط'
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙لقد خمنت الرقم الخطا وتبقى لديك '..SetNum..' ارسل رقم تخمنه مره اخرى للفوز', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙لقد خمنت الرقم الخطا وتبقى لديك '..SetNum..' ارسل رقم تخمنه مره اخرى للفوز', 1, 'md')
 end
 end
 end
 end
 if text == 'خمن' and ChCheck(msg) or text == 'تخمين' and ChCheck(msg) then   
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
 Num = math.random(1,20)
-Dev Ahme:set(ANUBIS.."GAMES:NUM"..msg.chat_id_,Num) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙اهلا بك عزيزي في لعبة التخمين ↫ ⤈\n ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙سيتم تخمين عدد ما بين الـ1 والـ20 اذا تعتقد انك تستطيع الفوز جرب واللعب الان .\n⌯︙ملاحظه لديك ثلاث محاولات فقط فكر قبل ارسال تخمينك !', 1, 'md')
-Dev Ahme:setex(ANUBIS.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_, 100, true)  
+Dev SOFI:set(ANUBIS.."GAMES:NUM"..msg.chat_id_,Num) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙اهلا بك عزيزي في لعبة التخمين ↫ ⤈\n ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙سيتم تخمين عدد ما بين الـ1 والـ20 اذا تعتقد انك تستطيع الفوز جرب واللعب الان .\n⌯︙ملاحظه لديك ثلاث محاولات فقط فكر قبل ارسال تخمينك !', 1, 'md')
+Dev SOFI:setex(ANUBIS.."GAME:TKMEN"..msg.chat_id_.."" .. msg.sender_user_id_, 100, true)  
 return false  
 end
 end
 --     Source ANUBIS     --
 if text == 'روليت' then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev Ahme:del(ANUBIS.." Ahme:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
-Dev Ahme:del(ANUBIS..' Ahme:ListRolet'..msg.chat_id_)  
-Dev Ahme:setex(ANUBIS.." Ahme:StartRolet"..msg.chat_id_..msg.sender_user_id_,3600,true)  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙حسنا لنلعب , ارسل عدد اللاعبين للروليت .', 1, 'md')
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev SOFI:del(ANUBIS.." SOFI:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:ListRolet'..msg.chat_id_)  
+Dev SOFI:setex(ANUBIS.." SOFI:StartRolet"..msg.chat_id_..msg.sender_user_id_,3600,true)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙حسنا لنلعب , ارسل عدد اللاعبين للروليت .', 1, 'md')
 return false  
 end
 end
-if text and text:match("^(%d+)$") and Dev Ahme:get(ANUBIS.." Ahme:StartRolet"..msg.chat_id_..msg.sender_user_id_) then
+if text and text:match("^(%d+)$") and Dev SOFI:get(ANUBIS.." SOFI:StartRolet"..msg.chat_id_..msg.sender_user_id_) then
 if text == "1" then
 Text = "⌯︙لا استطيع بدء اللعبه بلاعب واحد فقط"
 else
-Dev Ahme:set(ANUBIS.." Ahme:NumRolet"..msg.chat_id_..msg.sender_user_id_,text)  
+Dev SOFI:set(ANUBIS.." SOFI:NumRolet"..msg.chat_id_..msg.sender_user_id_,text)  
 Text = '⌯︙تم بدء تسجيل اللسته يرجى ارسال المعرفات \n⌯︙الفائز يحصل على 5 نقاط عدد المطلوبين ↫ '..text..' لاعب'
 end
-Dev Ahme:del(ANUBIS.." Ahme:StartRolet"..msg.chat_id_..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.." SOFI:StartRolet"..msg.chat_id_..msg.sender_user_id_)
 send(msg.chat_id_,msg.id_,Text)
 return false
 end
-if text and text:match('^(@[%a%d_]+)$') and Dev Ahme:get(ANUBIS.." Ahme:NumRolet"..msg.chat_id_..msg.sender_user_id_) then 
-if Dev Ahme:sismember(ANUBIS..' Ahme:ListRolet'..msg.chat_id_,text) then
+if text and text:match('^(@[%a%d_]+)$') and Dev SOFI:get(ANUBIS.." SOFI:NumRolet"..msg.chat_id_..msg.sender_user_id_) then 
+if Dev SOFI:sismember(ANUBIS..' SOFI:ListRolet'..msg.chat_id_,text) then
 send(msg.chat_id_,msg.id_,'⌯︙المعرف ↫ ['..text..'] موجود اساسا')
 return false
 end
 tdcli_function ({ID = "SearchPublicChat",username_ = text},function(extra, res, success) 
 if res and res.message_ and res.message_ == "USERNAME_NOT_OCCUPIED" then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙المعرف غير صحيح يرجى ارسال معرف صحيح', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙المعرف غير صحيح يرجى ارسال معرف صحيح', 1, 'md')
 return false 
 end
-Dev Ahme:sadd(ANUBIS..' Ahme:ListRolet'..msg.chat_id_,text)
-local CountAdd = Dev Ahme:get(ANUBIS.." Ahme:NumRolet"..msg.chat_id_..msg.sender_user_id_)
-local CountAll = Dev Ahme:scard(ANUBIS..' Ahme:ListRolet'..msg.chat_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:ListRolet'..msg.chat_id_,text)
+local CountAdd = Dev SOFI:get(ANUBIS.." SOFI:NumRolet"..msg.chat_id_..msg.sender_user_id_)
+local CountAll = Dev SOFI:scard(ANUBIS..' SOFI:ListRolet'..msg.chat_id_)
 local CountUser = CountAdd - CountAll
 if tonumber(CountAll) == tonumber(CountAdd) then 
-Dev Ahme:del(ANUBIS.." Ahme:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
-Dev Ahme:setex(ANUBIS.." Ahme:WittingStartRolet"..msg.chat_id_..msg.sender_user_id_,1400,true) 
+Dev SOFI:del(ANUBIS.." SOFI:NumRolet"..msg.chat_id_..msg.sender_user_id_) 
+Dev SOFI:setex(ANUBIS.." SOFI:WittingStartRolet"..msg.chat_id_..msg.sender_user_id_,1400,true) 
 local Text = "⌯︙تم ادخال المعرف ↫ ["..text.."]\n⌯︙وتم اكتمال العدد الكلي هل انت مستعد ؟"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="نعم",callback_data="/YesRolet"},{text="لا",callback_data="/NoRolet"}},{{text="اللاعبين",callback_data="/ListRolet"}}} 
@@ -4586,21 +4586,21 @@ end,nil)
 end
 --     Source ANUBIS     --
 if text == 'كت تويت' and ChCheck(msg) or text == 'كت' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
 local DraGoN = {
 'آخر مرة زرت مدينة الملاهي؟','آخر مرة أكلت أكلتك المفضّلة؟','الوضع الحالي؟\n‏1. سهران\n‏2. ضايج\n‏3. أتأمل','آخر شيء ضاع منك؟','كلمة أخيرة لشاغل البال؟','طريقتك المعتادة في التخلّص من الطاقة السلبية؟','شهر من أشهر العام له ذكرى جميلة معك؟','كلمة غريبة من لهجتك ومعناها؟🤓','‏- شيء سمعته عالق في ذهنك هاليومين؟','متى تكره الشخص الذي أمامك حتى لو كنت مِن أشد معجبينه؟','‏- أبرز صفة حسنة في صديقك المقرب؟','هل تشعر أن هنالك مَن يُحبك؟','اذا اكتشفت أن أعز أصدقائك يضمر لك السوء، موقفك الصريح؟','أجمل شيء حصل معك خلال هاليوم؟','صِف شعورك وأنت تُحب شخص يُحب غيرك؟👀💔','كلمة لشخص غالي اشتقت إليه؟💕','آخر خبر سعيد، متى وصلك؟','أنا آسف على ....؟','أوصف نفسك بكلمة؟','صريح، مشتاق؟','‏- صريح، هل سبق وخذلت أحدهم ولو عن غير قصد؟','‏- ماذا ستختار من الكلمات لتعبر لنا عن حياتك التي عشتها الى الآن؟💭','‏- فنان/ة تود لو يدعوكَ على مائدة عشاء؟😁❤','‏- تخيّل شيء قد يحدث في المستقبل؟','‏- للشباب | آخر مرة وصلك غزل من فتاة؟🌚','شخص أو صاحب عوضك ونساك مُر الحياة ما اسمه ؟','| اذا شفت حد واعجبك وعندك الجرأه انك تروح وتتعرف عليه ، مقدمة الحديث شو راح تكون ؟.','كم مره تسبح باليوم','نسبة النعاس عندك حاليًا؟','لو فقط مسموح شخص واحد تتابعه فالسناب مين بيكون ؟','يهمك ملابسك تكون ماركة ؟','وش الشيء الي تطلع حرتك فيه و زعلت ؟','عندك أخوان او خوات من الرضاعة؟','عندك معجبين ولا محد درا عنك؟',
 'أطول مدة قضيتها بعيد عن أهلك ؟','لو يجي عيد ميلادك تتوقع يجيك هدية؟','يبان عليك الحزن من " صوتك - ملامحك','وين تشوف نفسك بعد سنتين؟','وش يقولون لك لما تغني ؟','عندك حس فكاهي ولا نفسية؟','كيف تتصرف مع الشخص الفضولي ؟','كيف هي أحوال قلبك؟','حاجة تشوف نفسك مبدع فيها ؟','متى حبيت؟','شيء كل م تذكرته تبتسم ...','العلاقه السريه دايماً تكون حلوه؟','صوت مغني م تحبه','لو يجي عيد ميلادك تتوقع يجيك هدية؟','اذا احد سألك عن شيء م تعرفه تقول م اعرف ولا تتفلسف ؟','مع او ضد : النوم افضل حل لـ مشاكل الحياة؟','مساحة فارغة (..............) اكتب اي شيء تبين','اغرب اسم مر عليك ؟','عمرك كلمت فويس احد غير جنسك؟','اذا غلطت وعرفت انك غلطان تحب تعترف ولا تجحد؟','لو عندك فلوس وش السيارة اللي بتشتريها؟','وش اغبى شيء سويته ؟','شيء من صغرك ماتغير فيك؟','وش نوع الأفلام اللي تحب تتابعه؟','وش نوع الأفلام اللي تحب تتابعه؟','تجامل احد على حساب مصلحتك ؟','تتقبل النصيحة من اي شخص؟','كلمه ماسكه معك الفترة هذي ؟','متى لازم تقول لا ؟','اكثر شيء تحس انه مات ف مجتمعنا؟','تؤمن ان في "حُب من أول نظرة" ولا لا ؟.','تؤمن ان في "حُب من أول نظرة" ولا لا ؟.','هل تعتقد أن هنالك من يراقبك بشغف؟','اشياء اذا سويتها لشخص تدل على انك تحبه كثير ؟','اشياء صعب تتقبلها بسرعه ؟','اقتباس لطيف؟','أكثر جملة أثرت بك في حياتك؟','عندك فوبيا من شيء ؟.',
 'اكثر لونين تحبهم مع بعض؟','أجمل بيت شعر سمعته ...','سبق وراودك شعور أنك لم تعد تعرف نفسك؟','تتوقع فيه احد حاقد عليك ويكرهك ؟','أجمل سنة ميلادية مرت عليك ؟','لو فزعت/ي لصديق/ه وقالك مالك دخل وش بتسوي/ين؟','وش تحس انك تحتاج الفترة هاذي ؟','يومك ضاع على؟','@منشن .. شخص تخاف منه اذا عصب ...','فيلم عالق في ذهنك لا تنساه مِن روعته؟','تختار أن تكون غبي أو قبيح؟','الفلوس او الحب ؟','أجمل بلد في قارة آسيا بنظرك؟','ما الذي يشغل بالك في الفترة الحالية؟','احقر الناس هو من ...','وين نلقى السعاده برايك؟','اشياء تفتخر انك م سويتها ؟','تزعلك الدنيا ويرضيك ؟','وش الحب بنظرك؟','افضل هديه ممكن تناسبك؟','كم في حسابك البنكي ؟','كلمة لشخص أسعدك رغم حزنك في يومٍ من الأيام ؟','عمرك انتقمت من أحد ؟!','ما السيء في هذه الحياة ؟','غنية عندك معاها ذكريات🎵🎻','/','أفضل صفة تحبه بنفسك؟','اكثر وقت تحب تنام فيه ...','أطول مدة نمت فيها كم ساعة؟','أصعب قرار ممكن تتخذه ؟','أفضل صفة تحبه بنفسك؟','اكثر وقت تحب تنام فيه ...','أنت محبوب بين الناس؟ ولاكريه؟','إحساسك في هاللحظة؟','اخر شيء اكلته ؟','تشوف الغيره انانيه او حب؟','اذكر موقف ماتنساه بعمرك؟','اكثر مشاكلك بسبب ؟','اول ماتصحى من النوم مين تكلمه؟','آخر مرة ضحكت من كل قلبك؟','لو الجنسية حسب ملامحك وش بتكون جنسيتك؟','اكثر شيء يرفع ضغطك','اذكر موقف ماتنساه بعمرك؟','لو قالوا لك  تناول صنف واحد فقط من الطعام لمدة شهر .',
 'كيف تشوف الجيل ذا؟','ردة فعلك لو مزح معك شخص م تعرفه ؟','احقر الناس هو من ...','تحب ابوك ولا امك','آخر فيلم مسلسل والتقييم🎥؟','أقبح القبحين في العلاقة: الغدر أو الإهمال🤷🏼؟','كلمة لأقرب شخص لقلبك🤍؟','حط@منشن لشخص وقوله "حركتك مالها داعي"😼!','اذا جاك خبر مفرح اول واحد تعلمه فيه مين💃🏽؟','طبع يمكن يخليك تكره شخص حتى لو كنت تُحبه🙅🏻‍♀️؟','افضل ايام الاسبوع عندك🔖؟','يقولون ان الحياة دروس ، ماهو أقوى درس تعلمته من الحياة🏙؟','تاريخ لن تنساه📅؟','تحب الصيف والا الشتاء❄️☀️؟','شخص تحب تستفزه😈؟','شنو ينادونك وانت صغير (عيارتك)👼🏻؟','عقل يفهمك/ج ولا قلب يحبك/ج❤️؟','اول سفره لك وين رح تكون✈️؟','كم عدد اللي معطيهم بلوك👹؟','نوعية من الأشخاص تتجنبهم في حياتك❌؟','شاركنا صورة او فيديو من تصويرك؟📸','كم من عشره تعطي حظك📩؟','اكثر برنامج تواصل اجتماعي تحبه😎؟','من اي دوله انت🌍؟','اكثر دوله ودك تسافر لها🏞؟','مقولة "نكبر وننسى" هل تؤمن بصحتها🧓🏼؟','تعتقد فيه أحد يراقبك👩🏼‍💻؟','لو بيدك تغير الزمن ، تقدمه ولا ترجعه🕰؟','مشروبك المفضل🍹؟','‏قم بلصق آخر اقتباس نسخته؟💭','كم وزنك/ج طولك/ج؟🌚','كم كان عمرك/ج قبل ٨ سنين😈؟','دوله ندمت انك سافرت لها😁؟','لو قالو لك ٣ أمنيات راح تتحقق عالسريع شنو تكون🧞‍♀️؟','‏- نسبة احتياجك للعزلة من 10📊؟','شخص تحبه حظرك بدون سبب واضح، ردة فعلك🧐؟','مبدأ في الحياة تعتمد عليه دائما🕯؟'
 }  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, ''..DraGoN[math.random(#DraGoN)]..'' , 1, 'md')  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, ''..DraGoN[math.random(#DraGoN)]..'' , 1, 'md')  
 return false
 end
 end
 --     Source ANUBIS     --
 if text and (text == 'الالعاب' or text == 'العاب' or text == 'اللعبه') and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,[[
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,[[
 ⌯︙قائمة العاب المجموعه ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
 ⌯︙لعبة التخمين ↫ خمن
@@ -4623,11 +4623,11 @@ Dev_ Ahme(msg.chat_id_, msg.id_, 1,[[
 [🖥┇𝐒𝐎𝐔𝐑𝐂𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 .](t.me/SOURCEANUBIS)➤
 ]], 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عذرا الالعاب معطله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عذرا الالعاب معطله في المجموعه', 1, 'md')
 end
 end
 if text == "الالعاب المتطوره" or text == "الالعاب الاحترافيه" or text == "↫ الالعاب المتطوره ᥀" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Gamesinline'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Gamesinline'..msg.chat_id_) then
 Text =[[
 *⌯︙قائمه الالعاب المتطوره اضغط للعب*
 ]]
@@ -4656,13 +4656,13 @@ return false
 end end
 --     Source ANUBIS     --
 if text == 'بيع نقاطي' and ChCheck(msg) then
-if tonumber((Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙لم تربح اي نقطه\n⌯︙ارسل ↫ الالعاب للعب', 1, 'md')
+if tonumber((Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)) == 0 then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙لم تربح اي نقطه\n⌯︙ارسل ↫ الالعاب للعب', 1, 'md')
 else
-Dev Ahme0 = (Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_) * 50)
-Dev Ahme:incrby(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_,Dev Ahme0)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙تم بيع '..(Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_))..' من نقاطك\n⌯︙كل نقطه تساوي 50 رساله', 'md')
-Dev Ahme:del(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_)
+Dev SOFI0 = (Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_) * 50)
+Dev SOFI:incrby(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_,Dev SOFI0)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙تم بيع '..(Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_))..' من نقاطك\n⌯︙كل نقطه تساوي 50 رساله', 'md')
+Dev SOFI:del(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_)
 end
 end
 --     Source ANUBIS     --
@@ -4672,38 +4672,38 @@ local num = 0
 local admins = SoOoFi.members_  
 for i=0 , #admins do   
 if SoOoFi.members_[i].bot_info_ == false and SoOoFi.members_[i].status_.ID == "ChatMemberStatusEditor" then
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..msg.chat_id_, admins[i].user_id_)   
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..msg.chat_id_, admins[i].user_id_)   
 num = num + 1
 tdcli_function ({ID = "GetUser",user_id_ = admins[i].user_id_},function(arg,dp) 
 if dp.first_name_ == false then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, admins[i].user_id_)   
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, admins[i].user_id_)   
 end
 end,nil)   
 else
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, admins[i].user_id_)   
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, admins[i].user_id_)   
 end 
 if SoOoFi.members_[i].status_.ID == "ChatMemberStatusCreator" then  
 Manager_id = admins[i].user_id_  
-Dev Ahme:sadd(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,Manager_id)  
-Dev Ahme:sadd(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,Manager_id)   
+Dev SOFI:sadd(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,Manager_id)  
+Dev SOFI:sadd(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,Manager_id)   
 end  
 end  
 if num == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لا يوجد ادمنيه ليتم رفعهم\n⌯︙تم رفع مالك المجموعه", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لا يوجد ادمنيه ليتم رفعهم\n⌯︙تم رفع مالك المجموعه", 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم رفع '..num..' من الادمنيه \n⌯︙تم رفع مالك المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم رفع '..num..' من الادمنيه \n⌯︙تم رفع مالك المجموعه', 1, 'md')
 end
 end,nil) 
 end
 --     Source ANUBIS     --
 if text == 'غادر' and SudoBot(msg) then
-if Dev Ahme:get(ANUBIS.." Ahme:Left:Bot"..ANUBIS) and not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_,msg.id_, 1, "⌯︙المغادره معطله من قبل المطور الاساسي", 1, 'md')
+if Dev SOFI:get(ANUBIS.." SOFI:Left:Bot"..ANUBIS) and not SecondSudo(msg) then
+Dev_ SOFI(msg.chat_id_,msg.id_, 1, "⌯︙المغادره معطله من قبل المطور الاساسي", 1, 'md')
 return false  
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم مغادرة المجموعه \n⌯︙تم حذف جميع بياناتها ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم مغادرة المجموعه \n⌯︙تم حذف جميع بياناتها ', 1, 'md')
 ChatLeave(msg.chat_id_, ANUBIS)
-Dev Ahme:srem(ANUBIS.." Ahme:Groups",msg.chat_id_)
+Dev SOFI:srem(ANUBIS.." SOFI:Groups",msg.chat_id_)
 end
 --     Source ANUBIS     --
 if text ==('موقعي') and ChCheck(msg) then
@@ -4715,19 +4715,19 @@ rtpa = 'الادمن'
 elseif da.status_.ID == "ChatMemberStatusMember" then
 rtpa = 'عضو'
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙موقعك ↫ '..rtpa, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙موقعك ↫ '..rtpa, 1, 'md')
 end,nil)
 end
 --     Source ANUBIS     --
 if text == "معلوماتي" and ChCheck(msg) then
 function get_me(extra,result,success)
-local msguser = tonumber(Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_))
-local user_msgs = Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
-local cont = (tonumber(Dev Ahme:get(ANUBIS..' Ahme:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
-local user_nkt = tonumber(Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)
+local msguser = tonumber(Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_))
+local user_msgs = Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
+local cont = (tonumber(Dev SOFI:get(ANUBIS..' SOFI:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
+local user_nkt = tonumber(Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)
 if result.username_ then username = '@'..result.username_ else username = 'لا يوجد' end
 if result.last_name_ then lastname = result.last_name_ else lastname = '' end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙اسمك ↫ ❨ ['..result.first_name_..'] ❩\n⌯︙معرفك ↫ ❨ ['..username..'] ❩\n⌯︙ايديك ↫ ❨ `'..result.id_..'` ❩\n⌯︙نقاطك ↫ ❨ '..user_nkt..' ❩\n⌯︙رسائلك ↫ ❨ '..user_msgs..' ❩\n⌯︙جهاتك ↫ ❨ '..cont..' ❩\n⌯︙تفاعلك ↫ '..formsgs(msguser)..'\n⌯︙رتبتك ↫ '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙اسمك ↫ ❨ ['..result.first_name_..'] ❩\n⌯︙معرفك ↫ ❨ ['..username..'] ❩\n⌯︙ايديك ↫ ❨ `'..result.id_..'` ❩\n⌯︙نقاطك ↫ ❨ '..user_nkt..' ❩\n⌯︙رسائلك ↫ ❨ '..user_msgs..' ❩\n⌯︙جهاتك ↫ ❨ '..cont..' ❩\n⌯︙تفاعلك ↫ '..formsgs(msguser)..'\n⌯︙رتبتك ↫ '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'md')
 end
 getUser(msg.sender_user_id_,get_me)
 end
@@ -4735,23 +4735,23 @@ end
 --     Source ANUBIS     --
 if text == "تعيين قناة الاشتراك" or text == "تغيير قناة الاشتراك" or text == "↫ تعيين قناة الاشتراك ⌯" or text == "تعيين الاشتراك الاجباري" or text == "وضع قناة الاشتراك" then
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-Dev Ahme:setex(ANUBIS..'Dev Ahme4'..msg.sender_user_id_,360,true)
+Dev SOFI:setex(ANUBIS..'Dev SOFI4'..msg.sender_user_id_,360,true)
 send(msg.chat_id_, msg.id_, '⌯︙ارسل لي معرف قناة الاشتراك الان')
 end
 return false  
 end
 if text == "تفعيل الاشتراك الاجباري" then  
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-if Dev Ahme:get(ANUBIS..' Ahme:ChId') then
-local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev Ahme:get(ANUBIS.." Ahme:ChId"))
+if Dev SOFI:get(ANUBIS..' SOFI:ChId') then
+local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev SOFI:get(ANUBIS.." SOFI:ChId"))
 local GetInfo = JSON.decode(Check)
 send(msg.chat_id_, msg.id_,"⌯︙الاشتراك الاجباري مفعل \n⌯︙على القناة ↫ [@"..GetInfo.result.username.."]")
 else
-Dev Ahme:setex(ANUBIS..'Dev Ahme4'..msg.sender_user_id_,360,true)
+Dev SOFI:setex(ANUBIS..'Dev SOFI4'..msg.sender_user_id_,360,true)
 send(msg.chat_id_, msg.id_,"⌯︙لاتوجد قناة لتفعيل الاشتراك\n⌯︙ارسل لي معرف قناة الاشتراك الان")
 end
 end
@@ -4759,25 +4759,25 @@ return false
 end
 if text == "تعطيل الاشتراك الاجباري" then  
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-Dev Ahme:del(ANUBIS..' Ahme:ChId')
+Dev SOFI:del(ANUBIS..' SOFI:ChId')
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل الاشتراك الاجباري\n✓")
 end
 return false  
 end
 if text == "حذف قناة الاشتراك" or text == "حذف قناه الاشتراك" or text == "↫ حذف قناة الاشتراك ⌯" then
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-Dev Ahme:del(ANUBIS..' Ahme:ChId')
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,"⌯︙تم حذف قناة الاشتراك الاجباري", 1, 'md') 
+Dev SOFI:del(ANUBIS..' SOFI:ChId')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,"⌯︙تم حذف قناة الاشتراك الاجباري", 1, 'md') 
 end
 end
 if SecondSudo(msg) then
 if text == 'جلب قناة الاشتراك' or text == 'قناة الاشتراك' or text == 'الاشتراك الاجباري' or text == 'قناة الاشتراك الاجباري' or text == '↫ قناة الاشتراك ⌯' then
-if Dev Ahme:get(ANUBIS..' Ahme:ChId') then
-local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev Ahme:get(ANUBIS.." Ahme:ChId"))
+if Dev SOFI:get(ANUBIS..' SOFI:ChId') then
+local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev SOFI:get(ANUBIS.." SOFI:ChId"))
 local GetInfo = JSON.decode(Check)
 send(msg.chat_id_, msg.id_, "⌯︙قناة الاشتراك ↫ [@"..GetInfo.result.username.."]")
 else
@@ -4789,27 +4789,27 @@ end end
 if SudoBot(msg) then
 if text == 'اذاعه للكل بالتوجيه' and tonumber(msg.reply_to_message_id_) > 0 then
 function DraGoN(extra,result,success)
-if Dev Ahme:get(ANUBIS.." Ahme:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"⌯︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-local GpList = Dev Ahme:smembers(ANUBIS.." Ahme:Groups")
+local GpList = Dev SOFI:smembers(ANUBIS.." SOFI:Groups")
 for k,v in pairs(GpList) do
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = result.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end
-local PvList = Dev Ahme:smembers(ANUBIS.." Ahme:Users")
+local PvList = Dev SOFI:smembers(ANUBIS.." SOFI:Users")
 for k,v in pairs(PvList) do
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = result.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم اذاعة رسالتك بالتوجيه \n⌯︙‏في ↫ ❨ '..#GpList..' ❩ مجموعه \n⌯︙والى ↫ ❨ '..#PvList..' ❩ مشترك \n ✓', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم اذاعة رسالتك بالتوجيه \n⌯︙‏في ↫ ❨ '..#GpList..' ❩ مجموعه \n⌯︙والى ↫ ❨ '..#PvList..' ❩ مشترك \n ✓', 1, 'md')
 end
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),DraGoN)
 end
 end
 --     Source ANUBIS     --
 if text == "مشاهده المنشور" and ChCheck(msg) or text == "مشاهدات المنشور" and ChCheck(msg) or text == "عدد المشاهدات" and ChCheck(msg) then
-Dev Ahme:set(ANUBIS..' Ahme:viewget'..msg.sender_user_id_,true)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙حسنا قم باعادة توجيه للمنشور الذي تريدني حساب مشاهداته', 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:viewget'..msg.sender_user_id_,true)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙حسنا قم باعادة توجيه للمنشور الذي تريدني حساب مشاهداته', 1, 'md')
 end
 --     Source ANUBIS     --
 if text == "السورس" or text == "سورس" or text == "يا سورس" or text == "↫  السورس ⌯" then  
@@ -4851,12 +4851,12 @@ end
 --     Source ANUBIS     --
 if ChatType == 'sp' or ChatType == 'gp'  then
 if text == "اطردني" and ChCheck(msg) or text == "ادفرني" and ChCheck(msg) then
-if Dev Ahme:get(ANUBIS.." Ahme:Kick:Me"..msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عذرا هذه الخاصيه معطله ', 1, 'md')
+if Dev SOFI:get(ANUBIS.." SOFI:Kick:Me"..msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عذرا هذه الخاصيه معطله ', 1, 'md')
 return false
 end
-Dev Ahme:set(ANUBIS..'yes'..msg.sender_user_id_..'', 'delyes')
-Dev Ahme:set(ANUBIS..'no'..msg.sender_user_id_..'', 'delno')
+Dev SOFI:set(ANUBIS..'yes'..msg.sender_user_id_..'', 'delyes')
+Dev SOFI:set(ANUBIS..'no'..msg.sender_user_id_..'', 'delno')
 local ANUBIS = {"⌯︙هل انت متأڪد من المغادࢪه","⌯︙عمࢪي متاڪد تࢪيد اطࢪدك ؟ ♥️","⌯︙مدࢪي شون ينطيني گلبي اطࢪدك متاڪد؟","⌯︙ها يمعود ڪـول غيࢪها تࢪيد اطࢪدك مو ؟؟"} 
 local Text = ANUBIS[math.random(#ANUBIS)]
 local DrAgoN = {"يي 👋🏻","نعم"}
@@ -4870,21 +4870,21 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?cha
 end
 --     Source ANUBIS     --
 if text == 'تعطيل اطردني' and Manager(msg) and ChCheck(msg) then
-Dev Ahme:set(ANUBIS.." Ahme:Kick:Me"..msg.chat_id_, true)
+Dev SOFI:set(ANUBIS.." SOFI:Kick:Me"..msg.chat_id_, true)
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل امر اطردني\n✓")
 end
 if text == 'تفعيل اطردني' and Manager(msg) and ChCheck(msg) then
-Dev Ahme:del(ANUBIS.." Ahme:Kick:Me"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Kick:Me"..msg.chat_id_)
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل امر اطردني\n✓")
 end
 --     Source ANUBIS     --
 if text == "نزلني" and ChCheck(msg) then
-if Dev Ahme:get(ANUBIS.." Ahme:Del:Me"..msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عذرا هذه الخاصيه معطله ', 1, 'md')
+if Dev SOFI:get(ANUBIS.." SOFI:Del:Me"..msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عذرا هذه الخاصيه معطله ', 1, 'md')
 return false
 end
-Dev Ahme:set(ANUBIS..'yesdel'..msg.sender_user_id_..'', 'delyes')
-Dev Ahme:set(ANUBIS..'nodel'..msg.sender_user_id_..'', 'delno')
+Dev SOFI:set(ANUBIS..'yesdel'..msg.sender_user_id_..'', 'delyes')
+Dev SOFI:set(ANUBIS..'nodel'..msg.sender_user_id_..'', 'delno')
 local ANUBIS = {"⌯︙اي مو هيه ڪيه وانزلك 👌🏼😂 متاڪد انزلك ؟؟","⌯︙هل انت متأكد من تنزيلك","⌯︙تره اخذ ڪل الرتب منك !! متاڪد؟","⌯︙عمࢪي متاڪد تࢪيد انزلڪك ؟ ♥️"}
 local Text = ANUBIS[math.random(#ANUBIS)]
 local DrAgoN = {"يي 👋🏻","نعم"}
@@ -4898,37 +4898,37 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?cha
 end
 --     Source ANUBIS     --
 if text == 'تعطيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
-Dev Ahme:set(ANUBIS.." Ahme:Del:Me"..msg.chat_id_, true)
+Dev SOFI:set(ANUBIS.." SOFI:Del:Me"..msg.chat_id_, true)
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل امر نزلني\n✓")
 end
 if text == 'تفعيل نزلني' and BasicConstructor(msg) and ChCheck(msg) then
-Dev Ahme:del(ANUBIS.." Ahme:Del:Me"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Del:Me"..msg.chat_id_)
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل امر نزلني\n✓")
 end
 --     Source ANUBIS     --
 if text and (text == 'تفعيل التاك' or text == 'تفعيل التاك للكل' or text == 'تفعيل تاك للكل') and Admin(msg) and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل امر تاك للكل\n✓")
-Dev Ahme:del(ANUBIS..' Ahme:Lock:TagAll'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:TagAll'..msg.chat_id_)
 end
 if text and (text == 'تعطيل التاك' or text == 'تعطيل التاك للكل' or text == 'تعطيل تاك للكل') and Admin(msg) and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل امر تاك للكل\n✓")
-Dev Ahme:set(ANUBIS..' Ahme:Lock:TagAll'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:TagAll'..msg.chat_id_,true)
 end
 if Admin(msg) then
 if text == "تاك للكل" and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:TagAll'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:TagAll'..msg.chat_id_) then
 function TagAll(dp1,dp2)
 local text = "⌯︙وينكم يالربع \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 i = 0
 for k, v in pairs(dp2.members_) do
 i = i + 1
-if Dev Ahme:get(ANUBIS..'Save:UserName'..v.user_id_) then
-text = text..i.."~ : [@"..Dev Ahme:get(ANUBIS..'Save:UserName'..v.user_id_).."]\n"
+if Dev SOFI:get(ANUBIS..'Save:UserName'..v.user_id_) then
+text = text..i.."~ : [@"..Dev SOFI:get(ANUBIS..'Save:UserName'..v.user_id_).."]\n"
 else
 text = text..i.."~ : "..v.user_id_.."\n"
 end
 end 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 tdcli_function({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID, offset_ = 0,limit_ = 200000},TagAll,nil)
 end
@@ -4936,19 +4936,19 @@ end
 --     Source ANUBIS     --
 if text and text:match("^كللهم (.*)$") and ChCheck(msg) then
 local txt = {string.match(text, "^(كللهم) (.*)$")}
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:TagAll'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:TagAll'..msg.chat_id_) then
 function TagAll(dp1,dp2)
 local text = "⌯︙"..txt[2].." \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 i = 0
 for k, v in pairs(dp2.members_) do
 i = i + 1
-if Dev Ahme:get(ANUBIS..'Save:UserName'..v.user_id_) then
-text = text..i.."~ : [@"..Dev Ahme:get(ANUBIS..'Save:UserName'..v.user_id_).."]\n"
+if Dev SOFI:get(ANUBIS..'Save:UserName'..v.user_id_) then
+text = text..i.."~ : [@"..Dev SOFI:get(ANUBIS..'Save:UserName'..v.user_id_).."]\n"
 else
 text = text..i.."~ : "..v.user_id_.."\n"
 end
 end 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 tdcli_function({ID = "GetChannelMembers",channel_id_ = getChatId(msg.chat_id_).ID, offset_ = 0,limit_ = 200000},TagAll,nil)
 end
@@ -4956,21 +4956,21 @@ end
 end
 --     Source ANUBIS     --
 if text == "رسائلي" and msg.reply_to_message_id_ == 0 and ChCheck(msg) then
-local user_msgs = Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙عدد رسائلك هنا ↫ *❨ "..user_msgs.." ❩*", 1, 'md')
+local user_msgs = Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙عدد رسائلك هنا ↫ *❨ "..user_msgs.." ❩*", 1, 'md')
 end
 if text == "التفاعل" and ChCheck(msg) then
-local EntryNumber = (Dev Ahme:get(ANUBIS..' Ahme:EntryNumber'..msg.chat_id_..':'..os.date('%d')) or 0)
-local ExitNumber = (Dev Ahme:get(ANUBIS..' Ahme:ExitNumber'..msg.chat_id_..':'..os.date('%d')) or 0)
-local MsgNumberDay = (Dev Ahme:get(ANUBIS..' Ahme:MsgNumberDay'..msg.chat_id_..':'..os.date('%d')) or 0)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙انضمام الاعضاء اليوم ↫ *"..EntryNumber.."*\n⌯︙مغادرة الاعضاء اليوم ↫ *"..ExitNumber.."*\n⌯︙عدد الرسائل اليوم ↫ *"..MsgNumberDay.."*\n⌯︙نسبة التفاعل اليوم ↫ *"..math.random(40,100).."%*", 1, 'md')
+local EntryNumber = (Dev SOFI:get(ANUBIS..' SOFI:EntryNumber'..msg.chat_id_..':'..os.date('%d')) or 0)
+local ExitNumber = (Dev SOFI:get(ANUBIS..' SOFI:ExitNumber'..msg.chat_id_..':'..os.date('%d')) or 0)
+local MsgNumberDay = (Dev SOFI:get(ANUBIS..' SOFI:MsgNumberDay'..msg.chat_id_..':'..os.date('%d')) or 0)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙انضمام الاعضاء اليوم ↫ *"..EntryNumber.."*\n⌯︙مغادرة الاعضاء اليوم ↫ *"..ExitNumber.."*\n⌯︙عدد الرسائل اليوم ↫ *"..MsgNumberDay.."*\n⌯︙نسبة التفاعل اليوم ↫ *"..math.random(40,100).."%*", 1, 'md')
 end
 --     Source ANUBIS     --
 if text == "معرفي" and ChCheck(msg) then
 function get_username(extra,result,success)
 text = '⌯︙معرفك ↫ ❨ User ❩'
 local text = text:gsub('User',('@'..result.username_ or ''))
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 getUser(msg.sender_user_id_,get_username)
 end
@@ -4979,27 +4979,27 @@ function get_firstname(extra,result,success)
 text = '⌯︙اسمك ↫ firstname lastname'
 local text = text:gsub('firstname',(result.first_name_ or ''))
 local text = text:gsub('lastname',(result.last_name_ or ''))
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, 'html')
 end
 getUser(msg.sender_user_id_,get_firstname)
 end   
 --     Source ANUBIS     --
---if text == "اهمس" or text == "همسه" or text == "اريد بوت الهمسه" or text == "دزلي بوت الهمسه" or  text == "دزولي بوت الهمسه" then  Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙@U_U_U_Q', 1, 'md') end
+--if text == "اهمس" or text == "همسه" or text == "اريد بوت الهمسه" or text == "دزلي بوت الهمسه" or  text == "دزولي بوت الهمسه" then  Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙@U_U_U_Q', 1, 'md') end
 if text == "رابط حذف" or text == "رابط الحذف" or text == "اريد رابط الحذف" or  text == "شمرلي رابط الحذف" or text == "اريد رابط حذف" then
 local inline = {{{text="• Telegram •",url="https://my.telegram.org/auth?to=delete"}},{{text="• instagram •",url="https://www.instagram.com/accounts/login/?next=/accounts/remove/request/permanent/"}},{{text="• Facebook •",url="https://www.facebook.com/help/deleteaccount"}},{{text="• Snspchat •",url="https://accounts.snapchat.com/accounts/login?continue=https%3A%2F%2Faccounts.snapchat.com%2Faccounts%2Fdeleteaccount"}},{{text="🖨┇𝚂𝙾𝚄𝚁𝙲𝙴𝚂 𝙳𝚁𝙰𝙶𝙾𝙽. ",url="https://t.me/S0DRG"}}} SendInline(msg.chat_id_,'⌯︙رابط الحذف في جميع مواقع التواصل \nفكر قبل لا تتسرع وتروح',nil,inline) return false end
 if text == "بوت الحذف" or text == "اريد بوت الحذف" or text == "اريد بوت حذف" or text == "بوت حذف" or text == "بوت حذف حسابات" or text == "راح احذف" then local inline = {{{text="• del Account 🐉.",url="https://t.me/de0lBOT"}}} SendInline(msg.chat_id_,'⌯︙اضغط للحصول على البوت',nil,inline) return false end
 if text == "بوت حذف الميديا" or text == "اريد بوت الميديا" or text == "اريد بوت ميديا" or text == "بوت امسح" or text == "بوت كلينر " or text == "تنظيف الميديا" then local inline = {{{text="• ANUBIS Cleaner 🐉.",url="https://t.me/drg0bot"}}} SendInline(msg.chat_id_,'⌯︙اضغط للحصول على البوت',nil,inline) return false end
-if text == "جهاتي" and ChCheck(msg) or text == "اضافاتي" and ChCheck(msg) then add = (tonumber(Dev Ahme:get(ANUBIS..' Ahme:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0) Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙عدد جهاتك المضافه ↫ *❨ "..add.." ❩* ", 1, 'md') end
-if text == "تعديلاتي" or text == "سحكاتي" and ChCheck(msg) then local edit_msg = Dev Ahme:get(ANUBIS..' Ahme:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0  Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙عدد تعديلاتك ↫ *❨ "..edit_msg.." ❩* ", 1, 'md') end
-if text == "ايديي" and ChCheck(msg) then Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙ايديك ↫ ❨ `'..msg.sender_user_id_..'` ❩', 1, 'md') end
-if text == "رتبتي" and ChCheck(msg) then Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙رتبتك ↫ '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'html') end
-if text == "ايدي المجموعه" and ChCheck(msg) then Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ايدي المجموعه ↫ `"..msg.chat_id_.."`", 1, 'md') end
-if text == 'مسح سحكاتي' or text == 'مسح تعديلاتي' or text == 'حذف سحكاتي' or text == 'حذف تعديلاتي' then Dev Ahme:del(ANUBIS..' Ahme:EditMsg'..msg.chat_id_..msg.sender_user_id_) Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف جميع تعديلاتك بنجاح' , 1, 'md') end
-if text == 'مسح جهاتي' or text == 'مسح اضافاتي' or text == 'حذف جهاتي' or text == 'حذف اضافاتي' then Dev Ahme:del(ANUBIS..' Ahme:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_) Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف جميع جهاتك المضافه' , 1, 'md') end
+if text == "جهاتي" and ChCheck(msg) or text == "اضافاتي" and ChCheck(msg) then add = (tonumber(Dev SOFI:get(ANUBIS..' SOFI:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0) Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙عدد جهاتك المضافه ↫ *❨ "..add.." ❩* ", 1, 'md') end
+if text == "تعديلاتي" or text == "سحكاتي" and ChCheck(msg) then local edit_msg = Dev SOFI:get(ANUBIS..' SOFI:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0  Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙عدد تعديلاتك ↫ *❨ "..edit_msg.." ❩* ", 1, 'md') end
+if text == "ايديي" and ChCheck(msg) then Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙ايديك ↫ ❨ `'..msg.sender_user_id_..'` ❩', 1, 'md') end
+if text == "رتبتي" and ChCheck(msg) then Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙رتبتك ↫ '..IdRank(msg.sender_user_id_, msg.chat_id_), 1, 'html') end
+if text == "ايدي المجموعه" and ChCheck(msg) then Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ايدي المجموعه ↫ `"..msg.chat_id_.."`", 1, 'md') end
+if text == 'مسح سحكاتي' or text == 'مسح تعديلاتي' or text == 'حذف سحكاتي' or text == 'حذف تعديلاتي' then Dev SOFI:del(ANUBIS..' SOFI:EditMsg'..msg.chat_id_..msg.sender_user_id_) Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف جميع تعديلاتك بنجاح' , 1, 'md') end
+if text == 'مسح جهاتي' or text == 'مسح اضافاتي' or text == 'حذف جهاتي' or text == 'حذف اضافاتي' then Dev SOFI:del(ANUBIS..' SOFI:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_) Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف جميع جهاتك المضافه' , 1, 'md') end
 --     Source ANUBIS     --
 if text == "المطور" then 
-local DevText = Dev Ahme:get(ANUBIS.."DevText")
-if Dev Ahme:get(ANUBIS.." Ahme:ChId") then local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev Ahme:get(ANUBIS.." Ahme:ChId")) local GetInfo = JSON.decode(Check) 
+local DevText = Dev SOFI:get(ANUBIS.."DevText")
+if Dev SOFI:get(ANUBIS.." SOFI:ChId") then local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev SOFI:get(ANUBIS.." SOFI:ChId")) local GetInfo = JSON.decode(Check) 
 local DevCh1 = GetInfo.result.username DevCh = '\n⌯︙*D𝐞𝐯 C𝐡* ↬ [@'..DevCh1..']' else DevCh = '' end
 tdcli_function({ID="GetUser",user_id_=⁦DevId},function(arg,dp) 
 if dp.username_ ~= false then DevUser = '@'..dp.username_ else DevUser = dp.first_name_ end
@@ -5012,7 +5012,7 @@ keyboard.inline_keyboard = {{{text=dp.first_name_,url=("t.me/"..dp.username_ or 
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..SoOoFi.photos_[0].sizes_[1].photo_.persistent_id_..'&caption='..URL.escape(DevText).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'['..DevText..']', 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'['..DevText..']', 1, "md")
 end
 else
 if SoOoFi.photos_[0] then
@@ -5023,7 +5023,7 @@ keyboard.inline_keyboard = {{{text='• '..dp.first_name_..' •',url=("t.me/"..
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id='..msg.chat_id_..'&photo='..SoOoFi.photos_[0].sizes_[1].photo_.persistent_id_..'&caption='..URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, Text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, Text, 1, "md")
 end
 end
 end,nil)
@@ -5039,36 +5039,36 @@ return false
 end
 --     Source ANUBIS     --
 if text and text:match('^هينه @(.*)') and ChCheck(msg) or text and text:match('^هينها @(.*)') then 
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) then
 local username = text:match('^هينه @(.*)') or text:match('^هينها @(.*)') 
 function DraGoN(extra,result,success)
 if tonumber(result.id_) == tonumber(119541395) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'دروح عمي روح لا ضحك العالم عليك لا تندك بمطور السورس😏🔥', 1, 'md')  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'دروح عمي روح لا ضحك العالم عليك لا تندك بمطور السورس😏🔥', 1, 'md')  
 return false  
 end  
 if tonumber(result.id_) == tonumber(1950281200) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'مبرمج انوبيس اهينك ما اهينه😏🖕🏿', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'مبرمج انوبيس اهينك ما اهينه😏🖕🏿', 1, 'md')
 return false  
 end  
 if result.id_ then  
 if tonumber(result.id_) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'شو تمضرط اكو واحد يهين نفسه؟🤔🏌🏼', 1, 'md')  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'شو تمضرط اكو واحد يهين نفسه؟🤔🏌🏼', 1, 'md')  
 return false 
 end  
 if tonumber(result.id_) == tonumber(⁦DevId) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'دي لڪك تريد اهينن تاج راسڪك؟😏🖕🏿', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'دي لڪك تريد اهينن تاج راسڪك؟😏🖕🏿', 1, 'md') 
 return false  
 end  
-if Dev Ahme:sismember(ANUBIS.." Ahme: AhmeConstructor:"..msg.chat_id_,result.id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'دي لڪك تريد اهينن تاج راسڪك؟😏🖕🏿', 1, 'md')
+if Dev SOFI:sismember(ANUBIS.." SOFI: SOFIConstructor:"..msg.chat_id_,result.id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'دي لڪك تريد اهينن تاج راسڪك؟😏🖕🏿', 1, 'md')
 return false
 end 
 local DraGoN = {"صاࢪࢪ ستاذيي 🏃🏻‍♂️♥️","تأمࢪ آمࢪ","دقـيقهۂَ","لـححضهۂ","هسههہ","هَـسۿ ، ثوانيي"} 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
 local DraGoN = { "لڪك جرجف @"..username.." احترم اسيادكك لا اكتلڪك وازربب على كبركك،💩🖐🏿","هشش لڪك فاشل @"..username.." لتضل تمسلت لا اخربط تضاريس وجهك جنه ابط عبده، 😖👌🏿","حبيبي @"..username.." راح احاول احترمكك هالمره بلكي تبطل حيونه، 🤔🔪","دمشي لك @"..username.." ينبوع الفشل مو زين ملفيك ونحجي وياك هي منبوذ 😏🖕🏿","ها الغليض التفس ابو راس المربع @"..username.." متعلملك جم حجايه وجاي تطكطكهن علينه دبطل😒🔪",}
-Dev_ Ahme(msg.chat_id_, result.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'html') 
+Dev_ SOFI(msg.chat_id_, result.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'html') 
 else  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو غير موجود في المجموعه', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو غير موجود في المجموعه', 1, 'md') 
 end 
 end 
 resolve_username(username,DraGoN)
@@ -5076,32 +5076,32 @@ end
 end
 --     Source ANUBIS     --
 if text == ("هينه") or text == ("بعد هينه") or text == ("هينه بعد") or text == ("لك هينه") or text == ("هينها") or text == ("هينهه") or text == ("رزله") or text == ("رزلهه") or text == ("رزلها") then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) then
 function hena(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(119541395) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'دروح عمي روح لا ضحك العالم عليك لا تندك بمطور السورس😏🖕🏿', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'دروح عمي روح لا ضحك العالم عليك لا تندك بمطور السورس😏🖕🏿', 1, 'md') 
 return false
 end 
 if tonumber(result.sender_user_id_) == tonumber(1950281200) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'مبرمج انوبيس اهينك ما اهينه😏🖕🏿', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'مبرمج انوبيس اهينك ما اهينه😏🖕🏿', 1, 'md')
 return false
 end 
 if tonumber(result.sender_user_id_) == tonumber(ANUBIS) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'شو تمضرط اكو واحد يهين نفسه؟🤔👌🏿', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'شو تمضرط اكو واحد يهين نفسه؟🤔👌🏿', 1, 'md') 
 return false  
 end  
 if tonumber(result.sender_user_id_) == tonumber(⁦DevId) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'دي لڪك تريد اهينن تاج راسڪك؟😏🖕🏿', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'دي لڪك تريد اهينن تاج راسڪك؟😏🖕🏿', 1, 'md')
 return false
 end 
-if Dev Ahme:sismember(ANUBIS.." Ahme: AhmeConstructor:"..msg.chat_id_,result.sender_user_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'دي لڪك تريد اهينن تاج راسڪك؟😏🖕🏿', 1, 'md')
+if Dev SOFI:sismember(ANUBIS.." SOFI: SOFIConstructor:"..msg.chat_id_,result.sender_user_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'دي لڪك تريد اهينن تاج راسڪك؟😏🖕🏿', 1, 'md')
 return false
 end 
 local DraGoN = {"صاࢪࢪ ستاذيي 🏃🏻‍♂️♥️","تأمࢪ آمࢪ","دقـيقهۂَ","لـححضهۂ","هسههہ","هَـسۿ ، ثوانيي"} 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
 local DraGoN = {"لڪك جرجف احترم اسيادكك لا اكتلڪك وازربب على كبركك،💩🖐🏿","هشش فاشل لتضل تمسلت لا اخربط تضاريس وجهك جنه ابط عبده، 😖👌🏿","دمشي لك ينبوع الفشل مو زين ملفيك ونحجي وياك هي منبوذ 😏🖕🏿","ها الغليض التفس ابو راس المربع متعلملك جم حجايه وجاي تطكطكهن علينه دبطل😒🔪","حبيبي راح احاول احترمكك هالمره بلكي تبطل حيونه، 🤔🔪"} 
-Dev_ Ahme(msg.chat_id_, result.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, result.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
 end 
 if tonumber(msg.reply_to_message_id_) == 0 then
 else 
@@ -5110,24 +5110,24 @@ end
 end
 end
 if text == ("بوسه") or text == ("بعد بوسه") or text == ("ضل بوس") or text == ("بوسه بعد") or text == ("بوسها") or text == ("بعد بوسها") or text == ("ضل بوس") or text == ("بوسها بعد") or text == ("بوسهه") then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) then
 function bosh(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(ANUBIS) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح ابوس نفسيي؟😶💔', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح ابوس نفسيي؟😶💔', 1, 'md') 
 return false  
 end  
 if tonumber(result.sender_user_id_) == tonumber(119541395) then  
-Dev_ Ahme(msg.chat_id_, result.id_, 1, 'امصه مص مو بس ابوسه هذا مواححح 👅 💋', 1, 'html')
+Dev_ SOFI(msg.chat_id_, result.id_, 1, 'امصه مص مو بس ابوسه هذا مواححح 👅 💋', 1, 'html')
 return false
 end 
 if tonumber(result.sender_user_id_) == tonumber(⁦DevId) then  
-Dev_ Ahme(msg.chat_id_, result.id_, 1, 'مواححح احلاا بوسةة المطوريي😻🔥💗', 1, 'html')
+Dev_ SOFI(msg.chat_id_, result.id_, 1, 'مواححح احلاا بوسةة المطوريي😻🔥💗', 1, 'html')
 return false
 end 
 local DraGoN = {"صاࢪࢪ ستاذيي 🏃🏻‍♂️♥️","تأمࢪ آمࢪ","وفـبسہ🤤","؏ـمـريـہٰ تدلل","هسههہ ابوسس","هَـسۿ ، פـياتيہ"} 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
 local DraGoN = {"مواححح افيش عافيههه😍🔥💗","امممووااهحح شهلعسل🥺🍯💘","مواححح،ءوفف اذوب🤤💗"} 
-Dev_ Ahme(msg.chat_id_, result.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, result.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
 end 
 if tonumber(msg.reply_to_message_id_) == 0 then
 else 
@@ -5136,24 +5136,24 @@ end
 end
 end
 if text == ("صيحه") or text == ("صيحها") or text == ("صيحهه") or text == ("صيح") then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) then
 function seha(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(ANUBIS) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح اصيح نفسيي؟😶💔', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح اصيح نفسيي؟😶💔', 1, 'md') 
 return false  
 end  
 if tonumber(result.sender_user_id_) == tonumber(119541395) then  
-Dev_ Ahme(msg.chat_id_, result.id_, 1, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️', 1, 'html')
+Dev_ SOFI(msg.chat_id_, result.id_, 1, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️', 1, 'html')
 return false
 end 
 if tonumber(result.sender_user_id_) == tonumber(⁦DevId) then  
-Dev_ Ahme(msg.chat_id_, result.id_, 1, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️', 1, 'html')
+Dev_ SOFI(msg.chat_id_, result.id_, 1, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️', 1, 'html')
 return false
 end 
 local DraGoN = {"صاࢪࢪ ستاذيي 🏃🏻‍♂️♥️","تأمࢪ آمࢪ","؏ـمـريـہٰ تدلل","شسالفهہ هسههہ اصيحه","هَـسۿ ، פـياتيہ"} 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
 local DraGoN = {"تتعال ححب محتاجيك🙂🍭","تعال يولل استاذكك ايريدككك😒🔪","يمعوود تعاال يريدوكك🤕♥️","تعال لڪك ديصيحوك😐🖤"} 
-Dev_ Ahme(msg.chat_id_, result.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, result.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
 end 
 if tonumber(msg.reply_to_message_id_) == 0 then
 else 
@@ -5163,28 +5163,28 @@ end
 end
 --     Source ANUBIS     --
 if text and text:match('^صيحه @(.*)') and ChCheck(msg) or text and text:match('^صيح @(.*)') and ChCheck(msg) then 
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) then
 local username = text:match('^صيحه @(.*)') or text:match('^صيح @(.*)') 
 function DraGoN(extra,result,success)
 if result.id_ then  
 if tonumber(result.id_) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح اصيح نفسيي؟😶💔', 1, 'md')  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'فهمنيي شلوون راحح اصيح نفسيي؟😶💔', 1, 'md')  
 return false 
 end  
 if tonumber(result.id_) == tonumber(119541395) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️ @'..username, 1, 'html') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️ @'..username, 1, 'html') 
 return false  
 end 
 if tonumber(result.id_) == tonumber(⁦DevId) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️ @'..username, 1, 'html') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'تعال مطوريي محتاجيكك🏃🏻‍♂️♥️ @'..username, 1, 'html') 
 return false  
 end  
 local DraGoN = {"صاࢪࢪ ستاذيي 🏃🏻‍♂️♥️","تأمࢪ آمࢪ","؏ـمـريـہٰ تدلل","شسالفهہ هسههہ اصيحه","هَـسۿ ، פـياتيہ"} 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'md') 
 local DraGoN = { "تتعال ححب @"..username.." محتاجيك🙂🍭","تعال يولل @"..username.." استاذكك ايريدككك😒🔪","يمعوود @"..username.." تعاال يريدوكك🤕♥️","تعال لڪك @"..username.." ديصيحوك😐🖤",}
-Dev_ Ahme(msg.chat_id_, result.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'html') 
+Dev_ SOFI(msg.chat_id_, result.id_, 1,''..DraGoN[math.random(#DraGoN)]..'', 1, 'html') 
 else  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العضو غير موجود في المجموعه', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العضو غير موجود في المجموعه', 1, 'md') 
 end 
 end 
 resolve_username(username,DraGoN)
@@ -5195,32 +5195,32 @@ end
 if text == ("تنزيل الكل") and msg.reply_to_message_id_ ~= 0 and Manager(msg) and ChCheck(msg) then 
 function promote_by_reply(extra, result, success)
 if SudoId(result.sender_user_id_) == true then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لاتستطيع تنزيل المطور الاساسي", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لاتستطيع تنزيل المطور الاساسي", 1, 'md')
 return false 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:',result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:',result.sender_user_id_) then
 secondsudo = 'المطورين الثانويين • ' else secondsudo = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SudoBot:',result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:SudoBot:',result.sender_user_id_) then
 sudobot = 'المطورين • ' else sudobot = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:ManagerAll:',result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:ManagerAll:',result.sender_user_id_) then
 managerall = 'المدراء العامين • ' else managerall = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:AdminAll:',result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:AdminAll:',result.sender_user_id_) then
 adminall = 'الادمنيه العامين • ' else adminall = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:VipAll:',result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:VipAll:',result.sender_user_id_) then
 vpall = 'المميزين العامين • ' else vpall = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_, result.sender_user_id_) then
 lordConstructor = 'المالكين • ' else lordConstructor = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_, result.sender_user_id_) then
 basicconstructor = 'المنشئين الاساسيين • ' else basicconstructor = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Constructor:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Constructor:'..msg.chat_id_, result.sender_user_id_) then
 constructor = 'المنشئين • ' else constructor = '' end 
-if Dev Ahme:sismember(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.sender_user_id_) then
 manager = 'المدراء • ' else manager = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.sender_user_id_) then
 admins = 'الادمنيه • ' else admins = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.sender_user_id_) then
 vipmem = 'المميزين • ' else vipmem = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.sender_user_id_) then
 cleaner = 'المنظفين • ' else cleaner = ''
 end
 if RankChecking(result.sender_user_id_,msg.chat_id_) ~= false then
@@ -5228,63 +5228,63 @@ ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من ↫
 else 
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙لم تتم ترقيته مسبقا")  
 end
-if  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudoid' then
-Dev Ahme:srem(ANUBIS..' Ahme:SecondSudo:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:SudoBot:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:ManagerAll:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:AdminAll:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipAll:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.sender_user_id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'secondsudo' then
-Dev Ahme:srem(ANUBIS..' Ahme:SudoBot:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:ManagerAll:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:AdminAll:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipAll:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.sender_user_id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudobot' then
-Dev Ahme:srem(ANUBIS..' Ahme:ManagerAll:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:AdminAll:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipAll:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.sender_user_id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == ' Ahmeconstructor' then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.sender_user_id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'basicconstructor' then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.sender_user_id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'constructor' then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.sender_user_id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'manager' then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.sender_user_id_)
+if  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudoid' then
+Dev SOFI:srem(ANUBIS..' SOFI:SecondSudo:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:SudoBot:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:ManagerAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:AdminAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.sender_user_id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'secondsudo' then
+Dev SOFI:srem(ANUBIS..' SOFI:SudoBot:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:ManagerAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:AdminAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.sender_user_id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudobot' then
+Dev SOFI:srem(ANUBIS..' SOFI:ManagerAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:AdminAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.sender_user_id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == ' SOFIconstructor' then
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.sender_user_id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'basicconstructor' then
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.sender_user_id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'constructor' then
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.sender_user_id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'manager' then
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.sender_user_id_)
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -5294,32 +5294,32 @@ local rem = {string.match(text, "^(تنزيل الكل) @(.*)$")}
 function remm(extra, result, success)
 if result.id_ then
 if SudoId(result.id_) == true then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لاتستطيع تنزيل المطور الاساسي", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لاتستطيع تنزيل المطور الاساسي", 1, 'md')
 return false 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:',result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:',result.id_) then
 secondsudo = 'المطورين الثانويين • ' else secondsudo = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SudoBot:',result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:SudoBot:',result.id_) then
 sudobot = 'المطورين • ' else sudobot = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:ManagerAll:',result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:ManagerAll:',result.id_) then
 managerall = 'المدراء العامين • ' else managerall = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:AdminAll:',result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:AdminAll:',result.id_) then
 adminall = 'الادمنيه العامين • ' else adminall = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:VipAll:',result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:VipAll:',result.id_) then
 vpall = 'المميزين العامين • ' else vpall = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_, result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_, result.id_) then
 lordConstructor = 'المالكين • ' else lordConstructor = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_, result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_, result.id_) then
 basicconstructor = 'المنشئين الاساسيين • ' else basicconstructor = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Constructor:'..msg.chat_id_, result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Constructor:'..msg.chat_id_, result.id_) then
 constructor = 'المنشئين • ' else constructor = '' end 
-if Dev Ahme:sismember(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.id_) then
 manager = 'المدراء • ' else manager = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.id_) then
 admins = 'الادمنيه • ' else admins = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.id_) then
 vipmem = 'المميزين • ' else vipmem = '' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.id_) then
 cleaner = 'المنظفين • ' else cleaner = ''
 end
 if RankChecking(result.id_,msg.chat_id_) ~= false then
@@ -5327,65 +5327,65 @@ ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من ↫ ⤈\n~ ( ".
 else 
 ReplyStatus(msg,result.id_,"Reply","⌯︙لم تتم ترقيته مسبقا")  
 end 
-if  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudoid' then
-Dev Ahme:srem(ANUBIS..' Ahme:SecondSudo:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:SudoBot:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:ManagerAll:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:AdminAll:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipAll:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'secondsudo' then
-Dev Ahme:srem(ANUBIS..' Ahme:SudoBot:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:ManagerAll:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:AdminAll:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipAll:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudobot' then
-Dev Ahme:srem(ANUBIS..' Ahme:ManagerAll:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:AdminAll:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipAll:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == ' Ahmeconstructor' then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'basicconstructor' then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_, result.id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'constructor' then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_, result.id_)
-elseif  AhmeDelAll(msg.sender_user_id_,msg.chat_id_) == 'manager' then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_, result.id_)
+if  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudoid' then
+Dev SOFI:srem(ANUBIS..' SOFI:SecondSudo:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:SudoBot:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:ManagerAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:AdminAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'secondsudo' then
+Dev SOFI:srem(ANUBIS..' SOFI:SudoBot:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:ManagerAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:AdminAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'sudobot' then
+Dev SOFI:srem(ANUBIS..' SOFI:ManagerAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:AdminAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == ' SOFIconstructor' then
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'basicconstructor' then
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_, result.id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'constructor' then
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_, result.id_)
+elseif  SOFIDelAll(msg.sender_user_id_,msg.chat_id_) == 'manager' then
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_, result.id_)
 end
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المعرف غير صحيح*', 1, 'md')
 end
 end
 resolve_username(rem[2],remm)
@@ -5395,7 +5395,7 @@ end
 if Sudo(msg) then
 if text ==('اضف مطور ثانوي') or text ==('رفع مطور ثانوي') and ChCheck(msg) then
 function sudo_reply(extra, result, success)
-Dev Ahme:sadd(ANUBIS..' Ahme:SecondSudo:',result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:SecondSudo:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة المطورين الثانويين\n")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5405,23 +5405,23 @@ if text and (text:match('^اضف مطور ثانوي @(.*)') or text:match('^ر�
 local username = text:match('^اضف مطور ثانوي @(.*)') or text:match('^رفع مطور ثانوي @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:SecondSudo:',result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:SecondSudo:',result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه في قائمة المطورين الثانويين\n✓")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and (text:match('^اضف مطور ثانوي (%d+)') or text:match('^رفع مطور ثانوي (%d+)')) and ChCheck(msg) then
 local user = text:match('اضف مطور ثانوي (%d+)') or text:match('رفع مطور ثانوي (%d+)')
-Dev Ahme:sadd(ANUBIS..' Ahme:SecondSudo:',user)
+Dev SOFI:sadd(ANUBIS..' SOFI:SecondSudo:',user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه في قائمة المطورين الثانويين\n")  
 end
 --     Source ANUBIS     --
 --     Rem SecondSudo     --
 if text ==('حذف مطور ثانوي') or text ==('تنزيل مطور ثانوي') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:SecondSudo:',result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:SecondSudo:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة المطورين الثانويين\n✓")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5431,16 +5431,16 @@ if text and (text:match('^حذف مطور ثانوي @(.*)') or text:match('^ت�
 local username = text:match('^حذف مطور ثانوي @(.*)') or text:match('^تنزيل مطور ثانوي @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:SecondSudo:',result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:SecondSudo:',result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من قائمة المطورين الثانويين\n✓")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and (text:match('^حذف مطور ثانوي (%d+)') or text:match('^تنزيل مطور ثانوي (%d+)')) and ChCheck(msg) then
 local user = text:match('حذف مطور ثانوي (%d+)') or text:match('تنزيل مطور ثانوي (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:SecondSudo:',user)
+Dev SOFI:srem(ANUBIS..' SOFI:SecondSudo:',user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من قائمة المطورين الثانويين\n✓")  
 end end
 --     Source ANUBIS     --
@@ -5448,7 +5448,7 @@ end end
 if SecondSudo(msg) then
 if text ==('اضف مطور') or text ==('رفع مطور') and ChCheck(msg) then
 function sudo_reply(extra, result, success)
-Dev Ahme:sadd(ANUBIS..' Ahme:SudoBot:',result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:SudoBot:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة المطورين\n✓")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5458,23 +5458,23 @@ if text and (text:match('^اضف مطور @(.*)') or text:match('^رفع مطو�
 local username = text:match('^اضف مطور @(.*)') or text:match('^رفع مطور @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:SudoBot:',result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:SudoBot:',result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه في قائمة المطورين\n✓")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and (text:match('^اضف مطور (%d+)') or text:match('^رفع مطور (%d+)')) and ChCheck(msg) then
 local user = text:match('اضف مطور (%d+)') or text:match('رفع مطور (%d+)')
-Dev Ahme:sadd(ANUBIS..' Ahme:SudoBot:',user)
+Dev SOFI:sadd(ANUBIS..' SOFI:SudoBot:',user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه في قائمة المطورين\n✓")  
 end
 --     Source ANUBIS     --
 --       Rem SudoBot      --
 if text ==('حذف مطور') or text ==('تنزيل مطور') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:SudoBot:',result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:SudoBot:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة المطورين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5484,16 +5484,16 @@ if text and (text:match('^حذف مطور @(.*)') or text:match('^تنزيل م�
 local username = text:match('^حذف مطور @(.*)') or text:match('^تنزيل مطور @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:SudoBot:',result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:SudoBot:',result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من قائمة المطورين")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and (text:match('^حذف مطور (%d+)') or text:match('^تنزيل مطور (%d+)')) and ChCheck(msg) then
 local user = text:match('حذف مطور (%d+)') or text:match('تنزيل مطور (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:SudoBot:',user)
+Dev SOFI:srem(ANUBIS..' SOFI:SudoBot:',user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من قائمة المطورين\n✓")  
 end end
 --     Source ANUBIS     --
@@ -5501,7 +5501,7 @@ end end
 if SudoBot(msg) then
 if text ==('رفع مدير عام') and ChCheck(msg) then
 function raf_reply(extra, result, success)
-Dev Ahme:sadd(ANUBIS..' Ahme:ManagerAll:',result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:ManagerAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة المدراء العامين\n✓")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5511,23 +5511,23 @@ if text and text:match('^رفع مدير عام @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مدير عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:ManagerAll:',result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:ManagerAll:',result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه في قائمة المدراء العامين\n✓")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع مدير عام (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مدير عام (%d+)')
-Dev Ahme:sadd(ANUBIS..' Ahme:ManagerAll:',user)
+Dev SOFI:sadd(ANUBIS..' SOFI:ManagerAll:',user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه في قائمة المدراء العامين\n✓")  
 end
 --     Source ANUBIS     --
 --      Rem ManagerAll    --
 if text ==('تنزيل مدير عام') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:ManagerAll:',result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:ManagerAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة المدراء العامين\n✓")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5537,16 +5537,16 @@ if text and text:match('^تنزيل مدير عام @(.*)') and ChCheck(msg) the
 local username = text:match('^تنزيل مدير عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:ManagerAll:',result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:ManagerAll:',result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من قائمة المدراء العامين\n✓")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل مدير عام (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مدير عام (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:ManagerAll:',user)
+Dev SOFI:srem(ANUBIS..' SOFI:ManagerAll:',user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من قائمة المدراء العامين\n✓")  
 end end
 --     Source ANUBIS     --
@@ -5554,7 +5554,7 @@ end end
 if ManagerAll(msg) then
 if text ==('رفع ادمن عام') and ChCheck(msg) then
 function raf_reply(extra, result, success)
-Dev Ahme:sadd(ANUBIS..' Ahme:AdminAll:',result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:AdminAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الادمنيه العامين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5564,23 +5564,23 @@ if text and text:match('^رفع ادمن عام @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع ادمن عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:AdminAll:',result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:AdminAll:',result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه في قائمة الادمنيه العامين")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع ادمن عام (%d+)') and ChCheck(msg) then
 local user = text:match('رفع ادمن عام (%d+)')
-Dev Ahme:sadd(ANUBIS..' Ahme:AdminAll:',user)
+Dev SOFI:sadd(ANUBIS..' SOFI:AdminAll:',user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه في قائمة الادمنيه العامين\n✓")  
 end
 --     Source ANUBIS     --
 --      Rem adminall      --
 if text ==('تنزيل ادمن عام') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:AdminAll:',result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:AdminAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الادمنيه العامين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5590,16 +5590,16 @@ if text and text:match('^تنزيل ادمن عام @(.*)') and ChCheck(msg) the
 local username = text:match('^تنزيل ادمن عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:AdminAll:',result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:AdminAll:',result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من قائمة الادمنيه العامين")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل ادمن عام (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل ادمن عام (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:AdminAll:',user)
+Dev SOFI:srem(ANUBIS..' SOFI:AdminAll:',user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من قائمة الادمنيه العامين\n✓")  
 end end
 --     Source ANUBIS     --
@@ -5607,7 +5607,7 @@ end end
 if AdminAll(msg) then
 if text ==('رفع مميز عام') and ChCheck(msg) then
 function raf_reply(extra, result, success)
-Dev Ahme:sadd(ANUBIS..' Ahme:VipAll:',result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:VipAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة المميزين العام")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5617,23 +5617,23 @@ if text and text:match('^رفع مميز عام @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مميز عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:VipAll:',result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:VipAll:',result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه في قائمة المميزين العام")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع مميز عام (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مميز عام (%d+)')
-Dev Ahme:sadd(ANUBIS..' Ahme:VipAll:',user)
+Dev SOFI:sadd(ANUBIS..' SOFI:VipAll:',user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه في قائمة المميزين العام\n✓")  
 end
 --     Source ANUBIS     --
 --       Rem Vipall       --
 if text ==('تنزيل مميز عام') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:VipAll:',result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipAll:',result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة المميزين العام\n✓")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5643,25 +5643,25 @@ if text and text:match('^تنزيل مميز عام @(.*)') and ChCheck(msg) the
 local username = text:match('^تنزيل مميز عام @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:VipAll:',result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipAll:',result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من قائمة المميزين العام\n✓")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل مميز عام (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مميز عام (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:VipAll:',user)
+Dev SOFI:srem(ANUBIS..' SOFI:VipAll:',user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من قائمة المميزين العام")  
 end end
 --     Source ANUBIS     --
---   Set  AhmeConstructor   --
+--   Set  SOFIConstructor   --
 if ChatType == 'sp' or ChatType == 'gp'  then
 if SudoBot(msg) then
 if text ==('رفع مالك') and ChCheck(msg) then
 function raf_reply(extra, result, success)
-Dev Ahme:sadd(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه مالك\n✓")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5671,20 +5671,20 @@ if text and text:match('^رفع مالك @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مالك @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه مالك\n✓")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع مالك (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مالك (%d+)')
-Dev Ahme:sadd(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,user)
+Dev SOFI:sadd(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه مالك\n✓")  
 end
 --     Source ANUBIS     --
---   Rem  AhmeConstructor   --
+--   Rem  SOFIConstructor   --
 if text ==('تنزيل مالك') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,data) 
@@ -5692,9 +5692,9 @@ local admins = data.members_
 for i=0 , #admins do
 if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 if tonumber(result.sender_user_id_) == tonumber(admins[i].user_id_) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا يمكن تنزيل المالك الاساسي', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا يمكن تنزيل المالك الاساسي', 1, 'md')
 else
-Dev Ahme:srem(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من المالكين\n✓")  
 end end end
 end,nil)
@@ -5712,14 +5712,14 @@ local admins = data.members_
 for i=0 , #admins do
 if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 if tonumber(result.id_) == tonumber(admins[i].user_id_) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا يمكن تنزيل المالك الاساسي', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا يمكن تنزيل المالك الاساسي', 1, 'md')
 else
-Dev Ahme:srem(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من المالكين")  
 end end end
 end,nil)
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
@@ -5730,19 +5730,19 @@ local admins = data.members_
 for i=0 , #admins do
 if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 if tonumber(user) == tonumber(admins[i].user_id_) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا يمكن تنزيل المالك الاساسي', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا يمكن تنزيل المالك الاساسي', 1, 'md')
 else
-Dev Ahme:srem(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_,user)
+Dev SOFI:srem(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من المالكين")  
 end end end
 end,nil)
 end end
 --     Source ANUBIS     --
 --  Set BasicConstructor  --
-if  AhmeConstructor(msg) then
+if  SOFIConstructor(msg) then
 if text ==('رفع منشئ اساسي') and ChCheck(msg) then
 function raf_reply(extra, result, success)
-Dev Ahme:sadd(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه منشئ اساسي")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5752,23 +5752,23 @@ if text and text:match('^رفع منشئ اساسي @(.*)') and ChCheck(msg) the
 local username = text:match('^رفع منشئ اساسي @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه منشئ اساسي")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع منشئ اساسي (%d+)') and ChCheck(msg) then
 local user = text:match('رفع منشئ اساسي (%d+)')
-Dev Ahme:sadd(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,user)
+Dev SOFI:sadd(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه منشئ اساسي")  
 end
 --     Source ANUBIS     --
 --  Rem BasicConstructor  --
 if text ==('تنزيل منشئ اساسي') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله منشئ اساسي")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5778,27 +5778,27 @@ if text and text:match('^تنزيل منشئ اساسي @(.*)') and ChCheck(msg)
 local username = text:match('^تنزيل منشئ اساسي @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله منشئ اساسي")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل منشئ اساسي (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل منشئ اساسي (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_,user)
+Dev SOFI:srem(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله منشئ اساسي")  
 end end
-if text ==('رفع منشئ اساسي') and not  AhmeConstructor(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر للمالكين والمطورين فقط', 1, 'md')
+if text ==('رفع منشئ اساسي') and not  SOFIConstructor(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر للمالكين والمطورين فقط', 1, 'md')
 end
 --     Source ANUBIS     --
 --    Set  Constructor    --
 if BasicConstructor(msg) then
 if text ==('رفع منشئ') and ChCheck(msg) then
 function raf_reply(extra, result, success)
-Dev Ahme:sadd(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة المنشئين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5808,23 +5808,23 @@ if text and text:match('^رفع منشئ @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع منشئ @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه في قائمة المنشئين")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع منشئ (%d+)') and ChCheck(msg) then
 local user = text:match('رفع منشئ (%d+)')
-Dev Ahme:sadd(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,user)
+Dev SOFI:sadd(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه في قائمة المنشئين")  
 end
 --     Source ANUBIS     --
 --    Rem  Constructor    --
 if text ==('تنزيل منشئ') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة المنشئين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5834,16 +5834,16 @@ if text and text:match('^تنزيل منشئ @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل منشئ @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من قائمة المنشئين")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل منشئ (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل منشئ (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:Constructor:'..msg.chat_id_,user)
+Dev SOFI:srem(ANUBIS..' SOFI:Constructor:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من قائمة المنشئين")  
 end 
 end
@@ -5852,7 +5852,7 @@ end
 if Constructor(msg) then
 if text ==('رفع مدير') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:sadd(ANUBIS..' Ahme:Managers:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Managers:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة المدراء")  
 end  
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5862,23 +5862,23 @@ if text and text:match('^رفع مدير @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مدير @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:Managers:'..msg.chat_id_,result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Managers:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه في قائمة المدراء")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end 
 if text and text:match('^رفع مدير (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مدير (%d+)')
-Dev Ahme:sadd(ANUBIS..' Ahme:Managers:'..msg.chat_id_,user)
+Dev SOFI:sadd(ANUBIS..' SOFI:Managers:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه في قائمة المدراء")  
 end
 --     Source ANUBIS     --
 --       Rem Manager      --
 if text ==('تنزيل مدير') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة المدراء")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5888,23 +5888,23 @@ if text and text:match('^تنزيل مدير @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل مدير @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من قائمة المدراء")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل مدير (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مدير (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:Managers:'..msg.chat_id_,user)
+Dev SOFI:srem(ANUBIS..' SOFI:Managers:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من قائمة المدراء")  
 end 
 --     Source ANUBIS     --
 --       Set Cleaner      --
 if text ==('رفع منظف') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:sadd(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة المنظفين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5914,23 +5914,23 @@ if text and text:match('^رفع منظف @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع منظف @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_,result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه في قائمة المنظفين")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع منظف (%d+)') and ChCheck(msg) then
 local user = text:match('رفع منظف (%d+)')
-Dev Ahme:sadd(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_,user)
+Dev SOFI:sadd(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه في قائمة المنظفين")  
 end
 --     Source ANUBIS     --
 --       Rem Cleaner      --
 if text ==('تنزيل منظف') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة المنظفين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5940,16 +5940,16 @@ if text and text:match('^تنزيل منظف @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل منظف @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من قائمة المنظفين")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل منظف (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل منظف (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_,user)
+Dev SOFI:srem(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من قائمة المنظفين")  
 end end
 --     Source ANUBIS     --
@@ -5957,11 +5957,11 @@ end end
 if Manager(msg) then
 if text ==('رفع ادمن') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-if not BasicConstructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:ProSet"..msg.chat_id_) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+if not BasicConstructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:ProSet"..msg.chat_id_) then 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الادمنيه")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -5970,32 +5970,32 @@ end end
 if text and text:match('^رفع ادمن @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع ادمن @(.*)')
 function promreply(extra,result,success)
-if not BasicConstructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:ProSet"..msg.chat_id_) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+if not BasicConstructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:ProSet"..msg.chat_id_) then 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..msg.chat_id_,result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه في قائمة الادمنيه")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع ادمن (%d+)') and ChCheck(msg) then
 local user = text:match('رفع ادمن (%d+)')
-if not BasicConstructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:ProSet"..msg.chat_id_) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+if not BasicConstructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:ProSet"..msg.chat_id_) then 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..msg.chat_id_,user)
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه في قائمة الادمنيه")  
 end
 --     Source ANUBIS     --
 --        Rem admin       --
 if text ==('تنزيل ادمن') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الادمنيه")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -6005,16 +6005,16 @@ if text and text:match('^تنزيل ادمن @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل ادمن @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من قائمة الادمنيه")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل ادمن (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل ادمن (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_,user)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من قائمة الادمنيه")  
 end end
 --     Source ANUBIS     --
@@ -6022,11 +6022,11 @@ end end
 if Admin(msg) then
 if text ==('رفع مميز') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-if not BasicConstructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:ProSet"..msg.chat_id_) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+if not BasicConstructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:ProSet"..msg.chat_id_) then 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
-Dev Ahme:sadd(ANUBIS..' Ahme:VipMem:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:VipMem:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة المميزين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -6035,32 +6035,32 @@ end end
 if text and text:match('^رفع مميز @(.*)') and ChCheck(msg) then
 local username = text:match('^رفع مميز @(.*)')
 function promreply(extra,result,success)
-if not BasicConstructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:ProSet"..msg.chat_id_) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+if not BasicConstructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:ProSet"..msg.chat_id_) then 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:VipMem:'..msg.chat_id_,result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:VipMem:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفعه في قائمة المميزين")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^رفع مميز (%d+)') and ChCheck(msg) then
 local user = text:match('رفع مميز (%d+)')
-if not BasicConstructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:ProSet"..msg.chat_id_) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
+if not BasicConstructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:ProSet"..msg.chat_id_) then 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙لاتستطيع رفع احد وذالك بسبب تعطيل الرفع من قبل المنشئيين', 1, 'md')
 return false
 end
-Dev Ahme:sadd(ANUBIS..' Ahme:VipMem:'..msg.chat_id_,user)
+Dev SOFI:sadd(ANUBIS..' SOFI:VipMem:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم رفعه في قائمة المميزين")  
 end
 --     Source ANUBIS     --
 --       Rem Vipmem       --
 if text ==('تنزيل مميز') and ChCheck(msg) then
 function prom_reply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_,result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_,result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة المميزين")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -6070,16 +6070,16 @@ if text and text:match('^تنزيل مميز @(.*)') and ChCheck(msg) then
 local username = text:match('^تنزيل مميز @(.*)')
 function promreply(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_,result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_,result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تنزيله من قائمة المميزين")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,promreply)
 end
 if text and text:match('^تنزيل مميز (%d+)') and ChCheck(msg) then
 local user = text:match('تنزيل مميز (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:VipMem:'..msg.chat_id_,user)
+Dev SOFI:srem(ANUBIS..' SOFI:VipMem:'..msg.chat_id_,user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تنزيله من قائمة المميزين")  
 end end 
 --     Source ANUBIS     --
@@ -6088,17 +6088,17 @@ if text ==('رفع رتبه') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,dp) 
 if dp.first_name_ == false then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙الحساب محذوف", 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙الحساب محذوف", 1, "md")
 return false  
 end
 local Text = ' ⌯︙قم باستعمال الازرار لرفع العضو ↫ ⤈\n⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n✓'
 if Sudo(msg) then
-inline = {{{text="رفع مميز",callback_data=msg.sender_user_id_..":SetMem:"..result.sender_user_id_},{text="رفع ادمن",callback_data=msg.sender_user_id_..":SetAdmin:"..result.sender_user_id_}},{{text="رفع منشئ",callback_data=msg.sender_user_id_..":SetConstructor:"..result.sender_user_id_},{text="رفع مدير",callback_data=msg.sender_user_id_..":SetManager:"..result.sender_user_id_}},{{text="رفع منظف",callback_data=msg.sender_user_id_..":SetCleaner:"..result.sender_user_id_},{text="رفع منشئ اساسي",callback_data=msg.sender_user_id_..":SetBasicConstructor:"..result.sender_user_id_}},{{text="رفع مالك",callback_data=msg.sender_user_id_..":Set AhmeConstructor:"..result.sender_user_id_},{text="رفع مطور",callback_data=msg.sender_user_id_..":SetSudoBot:"..result.sender_user_id_}},{{text="رفع مطور ثانوي",callback_data=msg.sender_user_id_..":SetSecondSudo:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+inline = {{{text="رفع مميز",callback_data=msg.sender_user_id_..":SetMem:"..result.sender_user_id_},{text="رفع ادمن",callback_data=msg.sender_user_id_..":SetAdmin:"..result.sender_user_id_}},{{text="رفع منشئ",callback_data=msg.sender_user_id_..":SetConstructor:"..result.sender_user_id_},{text="رفع مدير",callback_data=msg.sender_user_id_..":SetManager:"..result.sender_user_id_}},{{text="رفع منظف",callback_data=msg.sender_user_id_..":SetCleaner:"..result.sender_user_id_},{text="رفع منشئ اساسي",callback_data=msg.sender_user_id_..":SetBasicConstructor:"..result.sender_user_id_}},{{text="رفع مالك",callback_data=msg.sender_user_id_..":Set SOFIConstructor:"..result.sender_user_id_},{text="رفع مطور",callback_data=msg.sender_user_id_..":SetSudoBot:"..result.sender_user_id_}},{{text="رفع مطور ثانوي",callback_data=msg.sender_user_id_..":SetSecondSudo:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif SecondSudo(msg) then
-inline = {{{text="رفع مميز",callback_data=msg.sender_user_id_..":SetMem:"..result.sender_user_id_},{text="رفع ادمن",callback_data=msg.sender_user_id_..":SetAdmin:"..result.sender_user_id_}},{{text="رفع منشئ",callback_data=msg.sender_user_id_..":SetConstructor:"..result.sender_user_id_},{text="رفع مدير",callback_data=msg.sender_user_id_..":SetManager:"..result.sender_user_id_}},{{text="رفع منظف",callback_data=msg.sender_user_id_..":SetCleaner:"..result.sender_user_id_},{text="رفع منشئ اساسي",callback_data=msg.sender_user_id_..":SetBasicConstructor:"..result.sender_user_id_}},{{text="رفع مالك",callback_data=msg.sender_user_id_..":Set AhmeConstructor:"..result.sender_user_id_},{text="رفع مطور",callback_data=msg.sender_user_id_..":SetSudoBot:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+inline = {{{text="رفع مميز",callback_data=msg.sender_user_id_..":SetMem:"..result.sender_user_id_},{text="رفع ادمن",callback_data=msg.sender_user_id_..":SetAdmin:"..result.sender_user_id_}},{{text="رفع منشئ",callback_data=msg.sender_user_id_..":SetConstructor:"..result.sender_user_id_},{text="رفع مدير",callback_data=msg.sender_user_id_..":SetManager:"..result.sender_user_id_}},{{text="رفع منظف",callback_data=msg.sender_user_id_..":SetCleaner:"..result.sender_user_id_},{text="رفع منشئ اساسي",callback_data=msg.sender_user_id_..":SetBasicConstructor:"..result.sender_user_id_}},{{text="رفع مالك",callback_data=msg.sender_user_id_..":Set SOFIConstructor:"..result.sender_user_id_},{text="رفع مطور",callback_data=msg.sender_user_id_..":SetSudoBot:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif SudoBot(msg) then
-inline = {{{text="رفع مميز",callback_data=msg.sender_user_id_..":SetMem:"..result.sender_user_id_},{text="رفع ادمن",callback_data=msg.sender_user_id_..":SetAdmin:"..result.sender_user_id_}},{{text="رفع منشئ",callback_data=msg.sender_user_id_..":SetConstructor:"..result.sender_user_id_},{text="رفع مدير",callback_data=msg.sender_user_id_..":SetManager:"..result.sender_user_id_}},{{text="رفع منظف",callback_data=msg.sender_user_id_..":SetCleaner:"..result.sender_user_id_},{text="رفع منشئ اساسي",callback_data=msg.sender_user_id_..":SetBasicConstructor:"..result.sender_user_id_}},{{text="رفع مالك",callback_data=msg.sender_user_id_..":Set AhmeConstructor:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
-elseif  AhmeConstructor(msg) then
+inline = {{{text="رفع مميز",callback_data=msg.sender_user_id_..":SetMem:"..result.sender_user_id_},{text="رفع ادمن",callback_data=msg.sender_user_id_..":SetAdmin:"..result.sender_user_id_}},{{text="رفع منشئ",callback_data=msg.sender_user_id_..":SetConstructor:"..result.sender_user_id_},{text="رفع مدير",callback_data=msg.sender_user_id_..":SetManager:"..result.sender_user_id_}},{{text="رفع منظف",callback_data=msg.sender_user_id_..":SetCleaner:"..result.sender_user_id_},{text="رفع منشئ اساسي",callback_data=msg.sender_user_id_..":SetBasicConstructor:"..result.sender_user_id_}},{{text="رفع مالك",callback_data=msg.sender_user_id_..":Set SOFIConstructor:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+elseif  SOFIConstructor(msg) then
 inline = {{{text="رفع مميز",callback_data=msg.sender_user_id_..":SetMem:"..result.sender_user_id_},{text="رفع ادمن",callback_data=msg.sender_user_id_..":SetAdmin:"..result.sender_user_id_}},{{text="رفع منشئ",callback_data=msg.sender_user_id_..":SetConstructor:"..result.sender_user_id_},{text="رفع مدير",callback_data=msg.sender_user_id_..":SetManager:"..result.sender_user_id_}},{{text="رفع منظف",callback_data=msg.sender_user_id_..":SetCleaner:"..result.sender_user_id_},{text="رفع منشئ اساسي",callback_data=msg.sender_user_id_..":SetBasicConstructor:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif BasicConstructor(msg) then
 inline = {{{text="رفع مميز",callback_data=msg.sender_user_id_..":SetMem:"..result.sender_user_id_},{text="رفع ادمن",callback_data=msg.sender_user_id_..":SetAdmin:"..result.sender_user_id_}},{{text="رفع منشئ",callback_data=msg.sender_user_id_..":SetConstructor:"..result.sender_user_id_},{text="رفع مدير",callback_data=msg.sender_user_id_..":SetManager:"..result.sender_user_id_}},{{text="رفع منظف",callback_data=msg.sender_user_id_..":SetCleaner:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
@@ -6122,17 +6122,17 @@ if text ==('تنزيل رتبه') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,dp) 
 if dp.first_name_ == false then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙الحساب محذوف", 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙الحساب محذوف", 1, "md")
 return false  
 end
 local Text = ' ⌯︙قم باستعمال الازرار لتنزيل العضو ↫ ⤈\n⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n✓'
 if Sudo(msg) then
-inline = {{{text="تنزيل مميز",callback_data=msg.sender_user_id_..":RemMem:"..result.sender_user_id_},{text="تنزيل ادمن",callback_data=msg.sender_user_id_..":RemAdmin:"..result.sender_user_id_}},{{text="تنزيل منشئ",callback_data=msg.sender_user_id_..":RemConstructor:"..result.sender_user_id_},{text="تنزيل مدير",callback_data=msg.sender_user_id_..":RemManager:"..result.sender_user_id_}},{{text="تنزيل منظف",callback_data=msg.sender_user_id_..":RemCleaner:"..result.sender_user_id_},{text="تنزيل منشئ اساسي",callback_data=msg.sender_user_id_..":RemBasicConstructor:"..result.sender_user_id_}},{{text="تنزيل مالك",callback_data=msg.sender_user_id_..":Rem AhmeConstructor:"..result.sender_user_id_},{text="تنزيل مطور",callback_data=msg.sender_user_id_..":RemSudoBot:"..result.sender_user_id_}},{{text="تنزيل مطور ثانوي",callback_data=msg.sender_user_id_..":RemSecondSudo:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+inline = {{{text="تنزيل مميز",callback_data=msg.sender_user_id_..":RemMem:"..result.sender_user_id_},{text="تنزيل ادمن",callback_data=msg.sender_user_id_..":RemAdmin:"..result.sender_user_id_}},{{text="تنزيل منشئ",callback_data=msg.sender_user_id_..":RemConstructor:"..result.sender_user_id_},{text="تنزيل مدير",callback_data=msg.sender_user_id_..":RemManager:"..result.sender_user_id_}},{{text="تنزيل منظف",callback_data=msg.sender_user_id_..":RemCleaner:"..result.sender_user_id_},{text="تنزيل منشئ اساسي",callback_data=msg.sender_user_id_..":RemBasicConstructor:"..result.sender_user_id_}},{{text="تنزيل مالك",callback_data=msg.sender_user_id_..":Rem SOFIConstructor:"..result.sender_user_id_},{text="تنزيل مطور",callback_data=msg.sender_user_id_..":RemSudoBot:"..result.sender_user_id_}},{{text="تنزيل مطور ثانوي",callback_data=msg.sender_user_id_..":RemSecondSudo:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif SecondSudo(msg) then
-inline = {{{text="تنزيل مميز",callback_data=msg.sender_user_id_..":RemMem:"..result.sender_user_id_},{text="تنزيل ادمن",callback_data=msg.sender_user_id_..":RemAdmin:"..result.sender_user_id_}},{{text="تنزيل منشئ",callback_data=msg.sender_user_id_..":RemConstructor:"..result.sender_user_id_},{text="تنزيل مدير",callback_data=msg.sender_user_id_..":RemManager:"..result.sender_user_id_}},{{text="تنزيل منظف",callback_data=msg.sender_user_id_..":RemCleaner:"..result.sender_user_id_},{text="تنزيل منشئ اساسي",callback_data=msg.sender_user_id_..":RemBasicConstructor:"..result.sender_user_id_}},{{text="تنزيل مالك",callback_data=msg.sender_user_id_..":Rem AhmeConstructor:"..result.sender_user_id_},{text="تنزيل مطور",callback_data=msg.sender_user_id_..":RemSudoBot:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+inline = {{{text="تنزيل مميز",callback_data=msg.sender_user_id_..":RemMem:"..result.sender_user_id_},{text="تنزيل ادمن",callback_data=msg.sender_user_id_..":RemAdmin:"..result.sender_user_id_}},{{text="تنزيل منشئ",callback_data=msg.sender_user_id_..":RemConstructor:"..result.sender_user_id_},{text="تنزيل مدير",callback_data=msg.sender_user_id_..":RemManager:"..result.sender_user_id_}},{{text="تنزيل منظف",callback_data=msg.sender_user_id_..":RemCleaner:"..result.sender_user_id_},{text="تنزيل منشئ اساسي",callback_data=msg.sender_user_id_..":RemBasicConstructor:"..result.sender_user_id_}},{{text="تنزيل مالك",callback_data=msg.sender_user_id_..":Rem SOFIConstructor:"..result.sender_user_id_},{text="تنزيل مطور",callback_data=msg.sender_user_id_..":RemSudoBot:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif SudoBot(msg) then
-inline = {{{text="تنزيل مميز",callback_data=msg.sender_user_id_..":RemMem:"..result.sender_user_id_},{text="تنزيل ادمن",callback_data=msg.sender_user_id_..":RemAdmin:"..result.sender_user_id_}},{{text="تنزيل منشئ",callback_data=msg.sender_user_id_..":RemConstructor:"..result.sender_user_id_},{text="تنزيل مدير",callback_data=msg.sender_user_id_..":RemManager:"..result.sender_user_id_}},{{text="تنزيل منظف",callback_data=msg.sender_user_id_..":RemCleaner:"..result.sender_user_id_},{text="تنزيل منشئ اساسي",callback_data=msg.sender_user_id_..":RemBasicConstructor:"..result.sender_user_id_}},{{text="تنزيل مالك",callback_data=msg.sender_user_id_..":Rem AhmeConstructor:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
-elseif  AhmeConstructor(msg) then
+inline = {{{text="تنزيل مميز",callback_data=msg.sender_user_id_..":RemMem:"..result.sender_user_id_},{text="تنزيل ادمن",callback_data=msg.sender_user_id_..":RemAdmin:"..result.sender_user_id_}},{{text="تنزيل منشئ",callback_data=msg.sender_user_id_..":RemConstructor:"..result.sender_user_id_},{text="تنزيل مدير",callback_data=msg.sender_user_id_..":RemManager:"..result.sender_user_id_}},{{text="تنزيل منظف",callback_data=msg.sender_user_id_..":RemCleaner:"..result.sender_user_id_},{text="تنزيل منشئ اساسي",callback_data=msg.sender_user_id_..":RemBasicConstructor:"..result.sender_user_id_}},{{text="تنزيل مالك",callback_data=msg.sender_user_id_..":Rem SOFIConstructor:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
+elseif  SOFIConstructor(msg) then
 inline = {{{text="تنزيل مميز",callback_data=msg.sender_user_id_..":RemMem:"..result.sender_user_id_},{text="تنزيل ادمن",callback_data=msg.sender_user_id_..":RemAdmin:"..result.sender_user_id_}},{{text="تنزيل منشئ",callback_data=msg.sender_user_id_..":RemConstructor:"..result.sender_user_id_},{text="تنزيل مدير",callback_data=msg.sender_user_id_..":RemManager:"..result.sender_user_id_}},{{text="تنزيل منظف",callback_data=msg.sender_user_id_..":RemCleaner:"..result.sender_user_id_},{text="تنزيل منشئ اساسي",callback_data=msg.sender_user_id_..":RemBasicConstructor:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
 elseif BasicConstructor(msg) then
 inline = {{{text="تنزيل مميز",callback_data=msg.sender_user_id_..":RemMem:"..result.sender_user_id_},{text="تنزيل ادمن",callback_data=msg.sender_user_id_..":RemAdmin:"..result.sender_user_id_}},{{text="تنزيل منشئ",callback_data=msg.sender_user_id_..":RemConstructor:"..result.sender_user_id_},{text="تنزيل مدير",callback_data=msg.sender_user_id_..":RemManager:"..result.sender_user_id_}},{{text="تنزيل منظف",callback_data=msg.sender_user_id_..":RemCleaner:"..result.sender_user_id_}},{{text = '• سـوࢪس دࢪاڪـون •',url="t.me/SOURCEANUBIS"}}}
@@ -6155,7 +6155,7 @@ if text ==('تحكم') and ChCheck(msg) then
 function prom_reply(extra, result, success)
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,dp) 
 if dp.first_name_ == false then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙الحساب محذوف", 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙الحساب محذوف", 1, "md")
 return false  
 end
 local Text = ' ⌯︙قم باستعمال الازرار للتحكم العضو ↫ ⤈\n⌯︙العضو ↫ ['..dp.first_name_..'](t.me/'..(dp.username_ or 'SOURCEANUBIS')..')\n✓'
@@ -6183,7 +6183,7 @@ if GetInfo.result.can_promote_members == true then
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=false")
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه مشرف في المجموعه")  
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -6196,7 +6196,7 @@ if GetInfo.result.can_promote_members == true then
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=false&can_restrict_members=false&can_pin_messages=false&can_promote_members=false")
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من مشرفين المجموعه")  
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
@@ -6209,22 +6209,22 @@ if GetInfo.result.can_promote_members == true then
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&can_change_info=True&can_delete_messages=True&can_invite_users=True&can_restrict_members=True&can_pin_messages=True&can_promote_members=True")
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه مشرف في جميع الصلاحيات")  
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
 end
 end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,promote_by_reply)
 end
 if text and (text:match("^وضع لقب (.*)$") or text:match("^رفع مشرف (.*)$") or text:match("^ضع لقب (.*)$")) and ChCheck(msg) then
-local  Ahme = text:match("^وضع لقب (.*)$") or text:match("^رفع مشرف (.*)$") or text:match("^ضع لقب (.*)$")
+local  SOFI = text:match("^وضع لقب (.*)$") or text:match("^رفع مشرف (.*)$") or text:match("^ضع لقب (.*)$")
 function ReplySet(extra, result, success)
 local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChatMember?chat_id='..msg.chat_id_..'&user_id='..ANUBIS)
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.can_promote_members == true then 
 https.request("https://api.telegram.org/bot"..TokenBot.."/promoteChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&can_change_info=false&can_delete_messages=false&can_invite_users=True&can_restrict_members=false&can_pin_messages=True&can_promote_members=false")
-ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم اضافة ↫ ".. Ahme.." كلقب له")  
-https.request("https://api.telegram.org/bot"..TokenBot.."/setChatAdministratorCustomTitle?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&custom_title=".. Ahme)
+ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم اضافة ↫ ".. SOFI.." كلقب له")  
+https.request("https://api.telegram.org/bot"..TokenBot.."/setChatAdministratorCustomTitle?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.."&custom_title=".. SOFI)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙ليست لدي صلاحية اضافة مشرفين جدد يرجى التحقق من الصلاحيات', 1, 'md')
 end
 end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -6253,14 +6253,14 @@ end
 end
 if text == "تفعيل نبذتي" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل امر نبذتي بنجاح")
-Dev Ahme:del(ANUBIS..' Ahme:Bio: Ahme'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Bio: SOFI'..msg.chat_id_) 
 end
 if text == "تعطيل نبذتي" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل امر نبذتي بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:Bio: Ahme'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Bio: SOFI'..msg.chat_id_,true)  
 end
 if text == 'نبذتي' or text == 'بايو' then
-if not Dev Ahme:get(ANUBIS..' Ahme:Bio: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Bio: SOFI'..msg.chat_id_) then
 send(msg.chat_id_, msg.id_,'['..GetBio(msg.sender_user_id_)..']')
 end
 if text == "راسلني" then
@@ -6286,7 +6286,7 @@ function ValidityUser(extra,result,success)
 if result.id_ then
 Validity(msg,result.id_) 
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,ValidityUser)
 end
@@ -6304,30 +6304,30 @@ end end end
 --     Source ANUBIS     --
 if Constructor(msg) then
 if text == "تفعيل الحظر" and ChCheck(msg) or text == "تفعيل الطرد" and ChCheck(msg) then
-Dev Ahme:del(ANUBIS.." Ahme:Lock:KickBan"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Lock:KickBan"..msg.chat_id_)
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل امر الطرد و الحظر")
 end
 if text == "تعطيل الحظر" and ChCheck(msg) or text == "تعطيل الطرد" and ChCheck(msg) then
-Dev Ahme:set(ANUBIS.." Ahme:Lock:KickBan"..msg.chat_id_,"true")
+Dev SOFI:set(ANUBIS.." SOFI:Lock:KickBan"..msg.chat_id_,"true")
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل امر الطرد و الحظر")
 end
 if text == "تفعيل الكتم" and ChCheck(msg) or text == "تفعيل التقييد" and ChCheck(msg) then
-Dev Ahme:del(ANUBIS.." Ahme:Lock:MuteTked"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Lock:MuteTked"..msg.chat_id_)
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل امر الكتم و التقيد")
 end
 if text == "تعطيل الكتم" and ChCheck(msg) or text == "تعطيل التقييد" and ChCheck(msg) then
-Dev Ahme:set(ANUBIS.." Ahme:Lock:MuteTked"..msg.chat_id_,"true")
+Dev SOFI:set(ANUBIS.." SOFI:Lock:MuteTked"..msg.chat_id_,"true")
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل امر الكتم و التقيد")
 end
 end
 if BasicConstructor(msg) then
 if text == "تفعيل الرفع" and ChCheck(msg) or text == "تفعيل الترقيه" and ChCheck(msg) then
-Dev Ahme:del(ANUBIS.." Ahme:Lock:ProSet"..msg.chat_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم تفعيل رفع ↫ الادمن • المميز', 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Lock:ProSet"..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم تفعيل رفع ↫ الادمن • المميز', 1, 'md')
 end
 if text == "تعطيل الرفع" and ChCheck(msg) or text == "تعطيل الترقيه" and ChCheck(msg) then
-Dev Ahme:set(ANUBIS.." Ahme:Lock:ProSet"..msg.chat_id_,"true")
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم تعطيل رفع ↫ الادمن • المميز', 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:Lock:ProSet"..msg.chat_id_,"true")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم تعطيل رفع ↫ الادمن • المميز', 1, 'md')
 end
 end
 --     Source ANUBIS     --
@@ -6335,12 +6335,12 @@ end
 if Admin(msg) then
 if text ==('طرد') and ChCheck(msg) then
 function KickReply(extra, result, success)
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:KickBan"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:KickBan"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع طرد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع طرد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.sender_user_id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -6362,13 +6362,13 @@ end end
 if text and text:match('^طرد @(.*)') and ChCheck(msg) then
 local username = text:match('^طرد @(.*)')
 function KickUser(extra,result,success)
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:KickBan"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:KickBan"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع طرد ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع طرد ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -6384,18 +6384,18 @@ ReplyStatus(msg,result.id_,"Reply","⌯︙تم طرده من المجموعه")
 end,nil)
 end
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,KickUser)
 end
 if text and text:match('^طرد (%d+)') and ChCheck(msg) then
 local user = text:match('طرد (%d+)')
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:KickBan"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:KickBan"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع طرد ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع طرد ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=user,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -6417,12 +6417,12 @@ end
 if Admin(msg) then
 if text ==('حضر') or text ==('حظر') and ChCheck(msg) then
 function BanReply(extra, result, success)
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:KickBan"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:KickBan"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع حظر ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع حظر ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.sender_user_id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -6434,7 +6434,7 @@ send(msg.chat_id_,msg.id_,"⌯︙لا استطيع حظر مشرفين المج�
 return false  
 end
 ChatKick(result.chat_id_, result.sender_user_id_)
-Dev Ahme:sadd(ANUBIS..' Ahme:Ban:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Ban:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم حظره من المجموعه") 
 end,nil) 
 end 
@@ -6445,13 +6445,13 @@ end end
 if text and (text:match('^حضر @(.*)') or text:match('^حظر @(.*)')) and ChCheck(msg) then
 local username = text:match('^حضر @(.*)') or text:match('^حظر @(.*)')
 function BanUser(extra,result,success)
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:KickBan"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:KickBan"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع حظر ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع حظر ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=result.id_,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -6463,23 +6463,23 @@ send(msg.chat_id_,msg.id_,"⌯︙لا استطيع حظر مشرفين المج�
 return false  
 end
 ChatKick(msg.chat_id_, result.id_)
-Dev Ahme:sadd(ANUBIS..' Ahme:Ban:'..msg.chat_id_, result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Ban:'..msg.chat_id_, result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم حظره من المجموعه")  
 end,nil) 
 end
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,BanUser)
 end
 if text and (text:match('^حضر (%d+)') or text:match('^حظر (%d+)')) and ChCheck(msg) then
 local user = text:match('حضر (%d+)') or text:match('حظر (%d+)')
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:KickBan"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:KickBan"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الطرد والحظر من قبل المنشئين')
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع حظر ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع حظر ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 tdcli_function({ID="ChangeChatMemberStatus",chat_id_=msg.chat_id_,user_id_=user,status_={ID="ChatMemberStatusKicked"},},function(arg,dp) 
 if (dp and dp.code_ and dp.code_ == 400 and dp.message_ == "CHAT_ADMIN_REQUIRED") then 
@@ -6491,7 +6491,7 @@ send(msg.chat_id_,msg.id_,"⌯︙لا استطيع حظر مشرفين المج�
 return false  
 end
 ChatKick(msg.chat_id_, user)
-Dev Ahme:sadd(ANUBIS..' Ahme:Ban:'..msg.chat_id_, user)
+Dev SOFI:sadd(ANUBIS..' SOFI:Ban:'..msg.chat_id_, user)
 ReplyStatus(msg,user,"Reply","⌯︙تم حظره من المجموعه")  
 end,nil) 
 end
@@ -6500,7 +6500,7 @@ end
 --         UnBan          --
 if text ==('الغاء الحظر') or text ==('الغاء حظر') and ChCheck(msg) then
 function UnBanReply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:Ban:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Ban:'..msg.chat_id_, result.sender_user_id_)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.sender_user_id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم الغاء حظره من المجموعه")  
 end 
@@ -6511,17 +6511,17 @@ if text and (text:match('^الغاء الحظر @(.*)') or text:match('^الغا
 local username = text:match('^الغاء الحظر @(.*)') or text:match('^الغاء حظر @(.*)')
 function UnBanUser(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:Ban:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Ban:'..msg.chat_id_, result.id_)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = result.id_, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم الغاء حظره من المجموعه")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,UnBanUser)
 end
 if text and (text:match('^الغاء الحظر (%d+)') or text:match('^الغاء حظر (%d+)')) and ChCheck(msg) then
 local user = text:match('الغاء الحظر (%d+)') or text:match('الغاء حظر (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:Ban:'..msg.chat_id_, user)
+Dev SOFI:srem(ANUBIS..' SOFI:Ban:'..msg.chat_id_, user)
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = user, status_ = { ID = "ChatMemberStatusLeft" },},function(arg,ban) end,nil)   
 ReplyStatus(msg,user,"Reply","⌯︙تم الغاء حظره من المجموعه")  
 end 
@@ -6531,17 +6531,17 @@ end
 if Admin(msg) then
 if text ==('كتم') and ChCheck(msg) then
 function MuteReply(extra, result, success)
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:MuteTked"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:MuteTked"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع كتم ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع كتم ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
-if Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو بالفعل مكتوم من المجموعه")  
 else
-Dev Ahme:sadd(ANUBIS..' Ahme:Muted:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Muted:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم كتمه من المجموعه")  
 end 
 end
@@ -6552,39 +6552,39 @@ end end
 if text and text:match('^كتم @(.*)') and ChCheck(msg) then
 local username = text:match('^كتم @(.*)')
 function MuteUser(extra,result,success)
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:MuteTked"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:MuteTked"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع كتم ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع كتم ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
-if Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_, result.id_) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_, result.id_) then
 ReplyStatus(msg,result.id_,"Reply","⌯︙هو بالفعل مكتوم من المجموعه")  
 else
-Dev Ahme:sadd(ANUBIS..' Ahme:Muted:'..msg.chat_id_, result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Muted:'..msg.chat_id_, result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم كتمه من المجموعه")  
 end
 end
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,MuteUser)
 end
 if text and text:match('^كتم (%d+)') and ChCheck(msg) then
 local user = text:match('كتم (%d+)')
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:MuteTked"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:MuteTked"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع كتم ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع كتم ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
 else
-if Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_, user) then
+if Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_, user) then
 ReplyStatus(msg,user,"Reply","⌯︙هو بالفعل مكتوم من المجموعه")  
 else
-Dev Ahme:sadd(ANUBIS..' Ahme:Muted:'..msg.chat_id_, user)
+Dev SOFI:sadd(ANUBIS..' SOFI:Muted:'..msg.chat_id_, user)
 ReplyStatus(msg,user,"Reply","⌯︙تم كتمه من المجموعه")  
 end
 end
@@ -6593,10 +6593,10 @@ end
 --         UnMute         --
 if text ==('الغاء الكتم') or text ==('الغاء كتم') and ChCheck(msg) then
 function UnMuteReply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو ليس مكتوم لالغاء كتمه")  
 else
-Dev Ahme:srem(ANUBIS..' Ahme:Muted:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Muted:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم الغاء كتمه من المجموعه")  
 end
 end 
@@ -6607,23 +6607,23 @@ if text and (text:match('^الغاء الكتم @(.*)') or text:match('^الغا
 local username = text:match('^الغاء الكتم @(.*)') or text:match('^الغاء كتم @(.*)')
 function UnMuteUser(extra,result,success)
 if result.id_ then
-if not Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_, result.id_) then
+if not Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_, result.id_) then
 ReplyStatus(msg,result.id_,"Reply","⌯︙هو ليس مكتوم لالغاء كتمه")  
 else
-Dev Ahme:srem(ANUBIS..' Ahme:Muted:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Muted:'..msg.chat_id_, result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم الغاء كتمه من المجموعه")  
 end
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,UnMuteUser)
 end
 if text and (text:match('^الغاء الكتم (%d+)') or text:match('^الغاء كتم (%d+)')) and ChCheck(msg) then
 local user = text:match('الغاء الكتم (%d+)') or text:match('الغاء كتم (%d+)')
-if not Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_, user) then
+if not Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_, user) then
 ReplyStatus(msg,user,"Reply","⌯︙هو ليس مكتوم لالغاء كتمه")  
 else
-Dev Ahme:srem(ANUBIS..' Ahme:Muted:'..msg.chat_id_, user)
+Dev SOFI:srem(ANUBIS..' SOFI:Muted:'..msg.chat_id_, user)
 ReplyStatus(msg,user,"Reply","⌯︙تم الغاء كتمه من المجموعه")  
 end
 end 
@@ -6633,15 +6633,15 @@ end
 if Admin(msg) then
 if text ==('تقييد') or text ==('تقيد') and ChCheck(msg) then
 function TkeedReply(extra, result, success)
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:MuteTked"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:MuteTked"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if RankChecking(result.sender_user_id_, result.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_)
-Dev Ahme:sadd(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تقيده من المجموعه")  
 end
 end 
@@ -6651,34 +6651,34 @@ end end
 if text and (text:match('^تقييد @(.*)') or text:match('^تقيد @(.*)')) and ChCheck(msg) then
 local username = text:match('^تقييد @(.*)') or text:match('^تقيد @(.*)')
 function TkeedUser(extra,result,success)
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:MuteTked"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:MuteTked"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if result.id_ then
 if RankChecking(result.id_, msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(result.id_, msg.chat_id_), 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.id_)
-Dev Ahme:sadd(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم تقيده من المجموعه")  
 end
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,TkeedUser)
 end
 if text and (text:match('^تقييد (%d+)') or text:match('^تقيد (%d+)')) and ChCheck(msg) then
 local user = text:match('تقييد (%d+)') or text:match('تقيد (%d+)')
-if not Constructor(msg) and Dev Ahme:get(ANUBIS.." Ahme:Lock:MuteTked"..msg.chat_id_) then 
+if not Constructor(msg) and Dev SOFI:get(ANUBIS.." SOFI:Lock:MuteTked"..msg.chat_id_) then 
 send(msg.chat_id_, msg.id_,'⌯︙لقد تم تعطيل الكتم والتقيد من قبل المنشئين')
 return false
 end
 if RankChecking(user, msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(user, msg.chat_id_), 1, 'md')
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..user)
-Dev Ahme:sadd(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, user)
+Dev SOFI:sadd(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, user)
 ReplyStatus(msg,user,"Reply","⌯︙تم تقيده من المجموعه")  
 end
 end
@@ -6687,7 +6687,7 @@ end
 if text ==('الغاء تقييد') or text ==('الغاء تقيد') and ChCheck(msg) then
 function UnTkeedReply(extra, result, success)
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم الغاء تقيده من المجموعه")  
 end
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -6698,17 +6698,17 @@ local username = text:match('^الغاء تقييد @(.*)') or text:match('^ال
 function UnTkeedUser(extra,result,success)
 if result.id_ then
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.id_.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم الغاء تقيده من المجموعه")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,UnTkeedUser)
 end
 if text and (text:match('^الغاء تقييد (%d+)') or text:match('^الغاء تقيد (%d+)')) and ChCheck(msg) then
 local user = text:match('الغاء تقييد (%d+)') or text:match('الغاء تقيد (%d+)')
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..user.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, user)
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, user)
 ReplyStatus(msg,user,"Reply","⌯︙تم الغاء تقيده من المجموعه")  
 end
 end 
@@ -6719,19 +6719,19 @@ if SecondSudo(msg) then
 if text ==('حضر عام') or text ==('حظر عام') then
 function BanAllReply(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر البوت عام*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(result.sender_user_id_) == true then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
 return false 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:',result.sender_user_id_) and not Sudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الثانوي*", 1, 'md')
+if Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:',result.sender_user_id_) and not Sudo(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الثانوي*", 1, 'md')
 return false 
 end
 ChatKick(result.chat_id_, result.sender_user_id_)
-Dev Ahme:sadd(ANUBIS..' Ahme:BanAll:', result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:BanAll:', result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم حظره عام من المجموعات")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -6741,42 +6741,42 @@ if text and (text:match('^حضر عام @(.*)') or text:match('^حظر عام @(
 local username = text:match('^حضر عام @(.*)') or text:match('^حظر عام @(.*)')
 function BanAllUser(extra,result,success)
 if tonumber(result.id_) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر البوت عام*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(result.id_) == true then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
 return false 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:',result.id_) and not Sudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الثانوي*", 1, 'md')
+if Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:',result.id_) and not Sudo(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الثانوي*", 1, 'md')
 return false 
 end
 if result.id_ then
 ChatKick(msg.chat_id_, result.id_)
-Dev Ahme:sadd(ANUBIS..' Ahme:BanAll:', result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:BanAll:', result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم حظره عام من المجموعات")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,BanAllUser)
 end
 if text and (text:match('^حضر عام (%d+)') or text:match('^حظر عام (%d+)')) then
 local user = text:match('حضر عام (%d+)') or text:match('حظر عام (%d+)')
 if tonumber(user) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر البوت عام*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(tonumber(user)) == true then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الاساسي*", 1, 'md')
 return false 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:',user) and not Sudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الثانوي*", 1, 'md')
+if Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:',user) and not Sudo(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع حظر المطور الثانوي*", 1, 'md')
 return false 
 end
 ChatKick(msg.chat_id_, user)
-Dev Ahme:sadd(ANUBIS..' Ahme:BanAll:', user)
+Dev SOFI:sadd(ANUBIS..' SOFI:BanAll:', user)
 ReplyStatus(msg,user,"Reply","⌯︙تم حظره عام من المجموعات")  
 end
 --     Source ANUBIS     --
@@ -6784,18 +6784,18 @@ end
 if text ==('كتم عام') then
 function MuteAllReply(extra, result, success)
 if tonumber(result.sender_user_id_) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم البوت عام*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(result.sender_user_id_) == true then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
 return false 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:',result.sender_user_id_) and not Sudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الثانوي*", 1, 'md')
+if Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:',result.sender_user_id_) and not Sudo(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الثانوي*", 1, 'md')
 return false 
 end
-Dev Ahme:sadd(ANUBIS..' Ahme:MuteAll:', result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:MuteAll:', result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم كتمه عام من المجموعات")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -6805,48 +6805,48 @@ if text and text:match('^كتم عام @(.*)') then
 local username = text:match('^كتم عام @(.*)')
 function MuteAllUser(extra,result,success)
 if tonumber(result.id_) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم البوت عام*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(result.id_) == true then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
 return false 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:',result.id_) and not Sudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الثانوي*", 1, 'md')
+if Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:',result.id_) and not Sudo(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الثانوي*", 1, 'md')
 return false 
 end
 if result.id_ then
-Dev Ahme:sadd(ANUBIS..' Ahme:MuteAll:', result.id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:MuteAll:', result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم كتمه عام من المجموعات")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,MuteAllUser)
 end
 if text and text:match('^كتم عام (%d+)') then
 local user = text:match('كتم عام (%d+)')
 if tonumber(user) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم البوت عام*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم البوت عام*", 1, 'md')
 return false 
 end
 if SudoId(tonumber(user)) == true then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الاساسي*", 1, 'md')
 return false 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SecondSudo:',user) and not Sudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الثانوي*", 1, 'md')
+if Dev SOFI:sismember(ANUBIS..' SOFI:SecondSudo:',user) and not Sudo(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتستطيع كتم المطور الثانوي*", 1, 'md')
 return false 
 end
-Dev Ahme:sadd(ANUBIS..' Ahme:MuteAll:', user)
+Dev SOFI:sadd(ANUBIS..' SOFI:MuteAll:', user)
 ReplyStatus(msg,user,"Reply","⌯︙تم كتمه عام من المجموعات")  
 end
 --     Source ANUBIS     --
 --         UnAll          --
 if text ==('الغاء عام') or text ==('الغاء العام') then
 function UnAllReply(extra, result, success)
-Dev Ahme:srem(ANUBIS..' Ahme:BanAll:', result.sender_user_id_)
-Dev Ahme:srem(ANUBIS..' Ahme:MuteAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BanAll:', result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:MuteAll:', result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم الغاء (الحظر • الكتم) عام من المجموعات")  
 end 
 if tonumber(tonumber(msg.reply_to_message_id_)) > 0 then
@@ -6856,18 +6856,18 @@ if text and (text:match('^الغاء عام @(.*)') or text:match('^الغاء �
 local username = text:match('^الغاء عام @(.*)') or text:match('^الغاء العام @(.*)')
 function UnAllUser(extra,result,success)
 if result.id_ then
-Dev Ahme:srem(ANUBIS..' Ahme:BanAll:', result.id_)
-Dev Ahme:srem(ANUBIS..' Ahme:MuteAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:BanAll:', result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:MuteAll:', result.id_)
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم الغاء (الحظر • الكتم) عام من المجموعات")  
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')
 end end 
 resolve_username(username,UnAllUser)
 end
 if text and (text:match('^الغاء عام (%d+)') or text:match('^الغاء العام (%d+)')) then
 local user = text:match('الغاء عام (%d+)') or text:match('الغاء العام (%d+)')
-Dev Ahme:srem(ANUBIS..' Ahme:BanAll:', user)
-Dev Ahme:srem(ANUBIS..' Ahme:MuteAll:', user)
+Dev SOFI:srem(ANUBIS..' SOFI:BanAll:', user)
+Dev SOFI:srem(ANUBIS..' SOFI:MuteAll:', user)
 ReplyStatus(msg,user,"Reply","⌯︙تم الغاء (الحظر • الكتم) عام من المجموعات")  
 end
 end
@@ -6875,19 +6875,19 @@ end
 --     Source ANUBIS     --
 if (text == "تغير المطور الاساسي" or text == "نقل ملكيه البوت" or text == "تغيير المطور الاساسي" or text == "↫ تغير المطور الاساسي ⌯") and msg.reply_to_message_id_ == 0 and Sudo(msg) then 
 send(msg.chat_id_, msg.id_,'⌯︙يجب التاكد ان المطور الجديد ارسل start لخاص البوت بعد ذلك يمكنك ارسال ايدي المطور')
-Dev Ahme:setex(ANUBIS.." Ahme:EditDev"..msg.sender_user_id_,300,true)
+Dev SOFI:setex(ANUBIS.." SOFI:EditDev"..msg.sender_user_id_,300,true)
 end
-if Dev Ahme:get(ANUBIS.." Ahme:EditDev"..msg.sender_user_id_) then
+if Dev SOFI:get(ANUBIS.." SOFI:EditDev"..msg.sender_user_id_) then
 if text and text:match("^الغاء$") then 
 send(msg.chat_id_, msg.id_,'⌯︙تم الغاء امر تغير المطور الاساسي')
-Dev Ahme:del(ANUBIS.." Ahme:EditDev"..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.." SOFI:EditDev"..msg.sender_user_id_)
 return false
 end
 if text and text:match("^(%d+)$") then 
 tdcli_function ({ID = "GetUser",user_id_ = text},function(arg,dp) 
 if dp.first_name_ ~= false then
-Dev Ahme:del(ANUBIS.." Ahme:EditDev"..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS.." Ahme:NewDev"..msg.sender_user_id_,dp.id_)
+Dev SOFI:del(ANUBIS.." SOFI:EditDev"..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS.." SOFI:NewDev"..msg.sender_user_id_,dp.id_)
 if dp.username_ ~= false then DevUser = '\n⌯︙المعرف ↫ [@'..dp.username_..']' else DevUser = '' end
 local Text = '⌯︙الايدي ↫ '..dp.id_..DevUser..'\n⌯︙الاسم ↫ ['..dp.first_name_..'](tg://user?id='..dp.id_..')\n⌯︙تم حفظ المعلومات بنجاح\n⌯︙استخدم الازرار للتاكيد ↫ ⤈'
 keyboard = {} 
@@ -6896,7 +6896,7 @@ Msg_id = msg.id_/2097152/0.5
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 else
 send(msg.chat_id_, msg.id_,"⌯︙المعلومات خاطئه قم بالتاكد واعد المحاوله")
-Dev Ahme:del(ANUBIS.." Ahme:EditDev"..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS.." SOFI:EditDev"..msg.sender_user_id_)
 end
 end,nil)
 return false
@@ -6904,264 +6904,264 @@ end
 end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع مطي$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع مطي$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function donky_by_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:Donky:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Donky:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو مطي شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة المطايه\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:Donky:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:Donky:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,donky_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل مطي$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل مطي$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function donky_by_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:Donky:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:Donky:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو ليس مطي ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:Donky:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Donky:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة المطايه\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,donky_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع حاته$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع حاته$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function HaTa_by_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:HaTa:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:HaTa:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هي حاته شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الحاتات\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:HaTa:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:HaTa:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,HaTa_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل حاته$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل حاته$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function HaTa_by_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:HaTa:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:HaTa:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هي ليس حاته ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:HaTa:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:HaTa:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الحاتات\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,HaTa_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع صاك$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع صاك$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function hlo_by_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:hlo:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:hlo:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو صاك شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الصاكين\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:hlo:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:hlo:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,hlo_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل صاك$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل صاك$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function hlo_by_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:hlo:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:hlo:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو ليس صاك ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:hlo:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:hlo:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الصاكين\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,hlo_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع صخل$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع صخل$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Sakl_by_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:Sakl:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Sakl:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو صخل شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الصخوله\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:Sakl:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:Sakl:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Sakl_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل صخل$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل صخل$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Sakl_by_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:Sakl:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:Sakl:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو ليس صخل ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:Sakl:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Sakl:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الصخوله\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Sakl_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع جلب$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع جلب$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Dog_by_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:Dog:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Dog:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو جلب شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الجلاب\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:Dog:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:Dog:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Dog_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل جلب$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل جلب$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Dog_by_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:Dog:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:Dog:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو ليس جلب ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:Dog:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Dog:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الجلاب\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Dog_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع ضلعه$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع ضلعه$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Bro_Gir_lby_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:Bro:Girl'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Bro:Girl'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هي ضلعه شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الضلعات\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:Bro:Girl'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:Bro:Girl'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Bro_Gir_lby_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل ضلعه$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل ضلعه$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Bro_Gir_lby_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:Bro:Girl'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:Bro:Girl'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هي ليست ضلعه ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:Bro:Girl'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Bro:Girl'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الضلعات\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Bro_Gir_lby_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع ضلع$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع ضلع$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Bro_by_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:Bro:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Bro:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو ضلع شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الضلوع\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:Bro:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:Bro:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Bro_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل ضلع$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل ضلع$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Bro_by_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:Bro:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:Bro:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو ليس ضلع ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:Bro:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Bro:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الضلوع\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Bro_by_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع بقره$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع بقره$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Bakra_lby_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:Bakra:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Bakra:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هي بقره شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الهوايش\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:Bakra:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:Bakra:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Bakra_lby_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل بقره$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل بقره$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Bakra_lby_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:Bakra:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:Bakra:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هي ليست بقره ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:Bakra:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Bakra:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الهوايش\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Bakra_lby_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع طلي$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع طلي$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Tale_lby_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:Tale:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Tale:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو طلي شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الطليان\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:Tale:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:Tale:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Tale_lby_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل طلي$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل طلي$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Tale_lby_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:Tale:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:Tale:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو ليس طلي ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:Tale:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Tale:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الطليان\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Tale_lby_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع زاحف$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع زاحف$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Zahf_lby_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:Zahf:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Zahf:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو زاحف شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الزواحف\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:Zahf:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:Zahf:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Zahf_lby_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل زاحف$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل زاحف$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Zahf_lby_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:Zahf:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:Zahf:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو ليس زاحف ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:Zahf:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Zahf:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الزواحف\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Zahf_lby_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0 then
-if text and text:match("^رفع جريذي$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^رفع جريذي$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Jred_lby_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..'User:Jred:'..msg.chat_id_, result.sender_user_id_) then
+if Dev SOFI:sismember(ANUBIS..'User:Jred:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو جريذي شرفع منه بعد😹💔") 
 else
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفعه في قائمة الجريذيه\n✓") 
-Dev Ahme:sadd(ANUBIS..'User:Jred:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..'User:Jred:'..msg.chat_id_, result.sender_user_id_)
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Jred_lby_reply)
 end end
 --     Source ANUBIS     --
 if msg.reply_to_message_id_ ~= 0  then
-if text and text:match("^تنزيل جريذي$") and not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
+if text and text:match("^تنزيل جريذي$") and not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_) and ChCheck(msg) then
 function Jred_lby_reply(extra, result, success)
-if not Dev Ahme:sismember(ANUBIS..'User:Jred:'..msg.chat_id_, result.sender_user_id_) then
+if not Dev SOFI:sismember(ANUBIS..'User:Jred:'..msg.chat_id_, result.sender_user_id_) then
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙هو ليس جريذي ليتم تنزيله") 
 else
-Dev Ahme:srem(ANUBIS..'User:Jred:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..'User:Jred:'..msg.chat_id_, result.sender_user_id_)
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تنزيله من قائمة الجريذيه\n✓") 
 end end
 getMessage(msg.chat_id_, msg.reply_to_message_id_,Jred_lby_reply)
@@ -7174,11 +7174,11 @@ local mutept = text:match('^تقييد دقيقه (%d+)$') or text:match('^كت�
 local Minutes = string.gsub(mutept, 'm', '')
 local num1 = tonumber(Minutes) * 60 
 if RankChecking(result.sender_user_id_, msg.chat_id_) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
 else 
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_..'&until_date='..tonumber(msg.date_+num1))
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تقيده لمدة ↫ "..mutept.." د") 
-Dev Ahme:sadd(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 end end 
 if tonumber(msg.reply_to_message_id_) == 0 then else
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, mut_time,nil) end 
@@ -7189,11 +7189,11 @@ local mutept = text:match('^تقييد ساعه (%d+)$') or text:match('^كتم 
 local hour = string.gsub(mutept, 'h', '')
 local num1 = tonumber(hour) * 3600 
 if RankChecking(result.sender_user_id_, msg.chat_id_) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
 else 
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_..'&until_date='..tonumber(msg.date_+num1))
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تقيده لمدة ↫ "..mutept.." س") 
-Dev Ahme:sadd(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 end end
 if tonumber(msg.reply_to_message_id_) == 0 then else
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, mut_time,nil) end 
@@ -7204,11 +7204,11 @@ local mutept = text:match('^تقييد يوم (%d+)$') or text:match('^كتم ي
 local day = string.gsub(mutept, 'd', '')
 local num1 = tonumber(day) * 86400 
 if RankChecking(result.sender_user_id_, msg.chat_id_) then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا تستطيع تقيد ↫ '..IdRank(result.sender_user_id_, msg.chat_id_), 1, 'md') 
 else 
 https.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..result.sender_user_id_..'&until_date='..tonumber(msg.date_+num1))
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم تقيده لمدة ↫ "..mutept.." ي") 
-Dev Ahme:sadd(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, result.sender_user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, result.sender_user_id_)
 end end
 if tonumber(msg.reply_to_message_id_) == 0 then else
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.reply_to_message_id_)}, mut_time,nil) end 
@@ -7218,20 +7218,20 @@ end
 if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_ == 0 and ChCheck(msg) then  
 if Constructor(msg) then
 TXT = text:match("^اضف رسائل (%d+)$")
-Dev Ahme:set('DraGoN:'..ANUBIS..'id:user'..msg.chat_id_,TXT)  
-Dev Ahme:setex('DraGoN:'..ANUBIS.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_, 300, true)  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل عدد الرسائل الان \n⌯︙ارسل الغاء لالغاء الامر ", 1, "md")
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,numd, 1, 'md') 
+Dev SOFI:set('DraGoN:'..ANUBIS..'id:user'..msg.chat_id_,TXT)  
+Dev SOFI:setex('DraGoN:'..ANUBIS.."numadd:user"..msg.chat_id_.."" .. msg.sender_user_id_, 300, true)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل عدد الرسائل الان \n⌯︙ارسل الغاء لالغاء الامر ", 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,numd, 1, 'md') 
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر للمنشئين فقط', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر للمنشئين فقط', 1, 'md') 
 end 
 end 
 if text and text:match("^اضف رسائل (%d+)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
 local Num = text:match("^اضف رسائل (%d+)$")
 function Reply(extra, result, success)
-Dev Ahme:del(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..result.sender_user_id_) 
-Dev Ahme:incrby(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..result.sender_user_id_,Num) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم اضافة "..Num..' رساله', 1, 'md') 
+Dev SOFI:del(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..result.sender_user_id_) 
+Dev SOFI:incrby(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..result.sender_user_id_,Num) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم اضافة "..Num..' رساله', 1, 'md') 
 end
 tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(msg.reply_to_message_id_)},Reply, nil)
 return false
@@ -7239,42 +7239,42 @@ end
 if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ == 0 and ChCheck(msg) then  
 if Constructor(msg) then
 TXT = text:match("^اضف نقاط (%d+)$")
-Dev Ahme:set('DraGoN:'..ANUBIS..'ids:user'..msg.chat_id_,TXT)  
-Dev Ahme:setex('DraGoN:'..ANUBIS.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_, 300, true)  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل عدد النقاط الان \n⌯︙ارسل الغاء لالغاء الامر ", 1, "md")
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,numd, 1, 'md') 
+Dev SOFI:set('DraGoN:'..ANUBIS..'ids:user'..msg.chat_id_,TXT)  
+Dev SOFI:setex('DraGoN:'..ANUBIS.."nmadd:user"..msg.chat_id_.."" .. msg.sender_user_id_, 300, true)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل عدد النقاط الان \n⌯︙ارسل الغاء لالغاء الامر ", 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,numd, 1, 'md') 
 else 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر للمنشئين فقط', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر للمنشئين فقط', 1, 'md') 
 end 
 end 
 if text and text:match("^اضف نقاط (%d+)$") and msg.reply_to_message_id_ ~= 0 and Constructor(msg) then
 local Num = text:match("^اضف نقاط (%d+)$")
 function Reply(extra, result, success)
-Dev Ahme:incrby(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..result.sender_user_id_,Num) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم اضافة "..Num..' نقطه', 1, 'md') 
+Dev SOFI:incrby(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..result.sender_user_id_,Num) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم اضافة "..Num..' نقطه', 1, 'md') 
 end
 tdcli_function ({ID = "GetMessage",chat_id_=msg.chat_id_,message_id_=tonumber(msg.reply_to_message_id_)},Reply, nil)
 return false
 end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Clean'..msg.chat_id_) then if msg.content_.video_ or msg.content_.document_ or msg.content_.sticker_ or msg.content_.photo_ or msg.content_.animation_ then if msg.reply_to_message_id_ ~= 0 then Dev Ahme:sadd(ANUBIS.." Ahme:cleaner"..msg.chat_id_, msg.id_) else Dev Ahme:sadd(ANUBIS.." Ahme:cleaner"..msg.chat_id_, msg.id_) end end end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Clean'..msg.chat_id_) then if msg.content_.video_ or msg.content_.document_ or msg.content_.sticker_ or msg.content_.photo_ or msg.content_.animation_ then if msg.reply_to_message_id_ ~= 0 then Dev SOFI:sadd(ANUBIS.." SOFI:cleaner"..msg.chat_id_, msg.id_) else Dev SOFI:sadd(ANUBIS.." SOFI:cleaner"..msg.chat_id_, msg.id_) end end end
 if Manager(msg) and msg.reply_to_message_id_ ~= 0 then
 if text and text:match("^تثبيت$") and ChCheck(msg) then 
-if Dev Ahme:sismember(ANUBIS.." Ahme:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
-Dev_ Ahme(msg.chat_id_,msg.id_, 1, "⌯︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
+if Dev SOFI:sismember(ANUBIS.." SOFI:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
+Dev_ SOFI(msg.chat_id_,msg.id_, 1, "⌯︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
 return false  
 end
 tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub("-100",""),message_id_ = msg.reply_to_message_id_,disable_notification_ = 1},function(arg,data) 
 if data.ID == "Ok" then
-Dev Ahme:set(ANUBIS..' Ahme:PinnedMsg'..msg.chat_id_,msg.reply_to_message_id_)
+Dev SOFI:set(ANUBIS..' SOFI:PinnedMsg'..msg.chat_id_,msg.reply_to_message_id_)
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تثبيت الرسالة")
 return false  
 end
 if data.code_ == 6 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙البوت ليس ادمن هنا !', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙البوت ليس ادمن هنا !', 1, 'md')
 return false  
 end
 if data.message_ == "CHAT_ADMIN_REQUIRED" then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙ليست لدي صلاحية التثبيت يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙ليست لدي صلاحية التثبيت يرجى التحقق من الصلاحيات', 1, 'md')
 return false  
 end
 end,nil)
@@ -7283,10 +7283,10 @@ end
 --     Source ANUBIS     --
 if Admin(msg) then
 if text == "المميزين" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:VipMem:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:VipMem:'..msg.chat_id_)
 text = "⌯︙قائمة المميزين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7295,16 +7295,16 @@ end end
 if #List == 0 then 
 text = "⌯︙*لا يوجد مميزين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end end 
 --     Source ANUBIS     --
 if Manager(msg) then
 if text == "الادمنيه" and ChCheck(msg) or text == "الادمنية" and ChCheck(msg) then 
-local  Ahme =  ' Ahme:Admins:'..msg.chat_id_
-local List = Dev Ahme:smembers(ANUBIS.. Ahme)
+local  SOFI =  ' SOFI:Admins:'..msg.chat_id_
+local List = Dev SOFI:smembers(ANUBIS.. SOFI)
 text = "⌯︙قائمة الادمنيه ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7313,15 +7313,15 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد ادمنيه*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end end
 --     Source ANUBIS     -- 
 if Constructor(msg) then
 if text == "المدراء" and ChCheck(msg) or text == "مدراء" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Managers:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Managers:'..msg.chat_id_)
 text = "⌯︙قائمة المدراء ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7330,13 +7330,13 @@ end end
 if #List == 0 then 
 text = "⌯︙*لا يوجد مدراء*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "المنظفين" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_)
 text = "⌯︙قائمة المنظفين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7345,15 +7345,15 @@ end end
 if #List == 0 then 
 text = "⌯︙*لا يوجد منظفين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end end 
 --     Source ANUBIS     --
 if BasicConstructor(msg) then
 if text == "المنشئين" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Constructor:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Constructor:'..msg.chat_id_)
 text = "⌯︙قائمة المنشئين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7362,15 +7362,15 @@ end end
 if #List == 0 then 
 text = "⌯︙*لا يوجد منشئين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end end 
 --     Source ANUBIS     --
-if  AhmeConstructor(msg) then
+if  SOFIConstructor(msg) then
 if text == "المالكين" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_)
 text = "⌯︙قائمة المالكين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7379,13 +7379,13 @@ end end
 if #List == 0 then 
 text = "⌯︙*لا يوجد مالكين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "المنشئين الاساسيين" and ChCheck(msg) or text == "منشئين اساسيين" and ChCheck(msg) or text == "المنشئين الاساسين" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_)
 text = "⌯︙قائمة المنشئين الاساسيين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7394,7 +7394,7 @@ end end
 if #List == 0 then 
 text = "⌯︙*لا يوجد منشئين اساسيين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 end 
 if text ==("المنشئ") and ChCheck(msg) or text ==("المالك") and ChCheck(msg) then
@@ -7405,7 +7405,7 @@ if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 Manager_id = admins[i].user_id_
 tdcli_function ({ID = "GetUser",user_id_ = Manager_id},function(arg,dp) 
 if dp.first_name_ == false then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙حساب المنشئ محذوف", 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙حساب المنشئ محذوف", 1, "md")
 return false  
 end
 tdcli_function ({ID = "GetUserProfilePhotos",user_id_ = dp.id_,offset_ = 0,limit_ = 1},function(extra,SoOoFi,success) 
@@ -7429,10 +7429,10 @@ end
 --     Source ANUBIS     --
 if Admin(msg) then
 if text == "المكتومين" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Muted:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Muted:'..msg.chat_id_)
 text = "⌯︙قائمة المكتومين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7441,14 +7441,14 @@ end end
 if #List == 0 then 
 text = "⌯︙*لا يوجد مكتومين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 --     Source ANUBIS     --
 if text == "المقيدين" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_)
 text = "⌯︙قائمة المقيدين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7457,14 +7457,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد مقيدين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 --     Source ANUBIS     --
 if text == "المحظورين" and ChCheck(msg) or text == "المحضورين" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Ban:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Ban:'..msg.chat_id_)
 text = "⌯︙قائمة المحظورين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7473,10 +7473,10 @@ end end
 if #List == 0 then 
 text = "⌯︙*لا يوجد محظورين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 if text == "قائمه المنع" and ChCheck(msg) then
-local List = Dev Ahme:hkeys(ANUBIS..' Ahme:Filters:'..msg.chat_id_)
+local List = Dev SOFI:hkeys(ANUBIS..' SOFI:Filters:'..msg.chat_id_)
 text = "⌯︙قائمة المنع ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k, v in pairs(List) do
 text = text..k..'~ ❨ '..v..' ❩\n'
@@ -7484,15 +7484,15 @@ end
 if #List == 0 then
 text = "⌯︙لا توجد كلمات ممنوعه"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, 'md')
 end
 end 
 --     Source ANUBIS     --
 if text == "المطايه" and ChCheck(msg) or text == "المطاية" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:Donky:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:Donky:'..msg.chat_id_)
 text = "⌯︙قائمة مطاية المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7501,14 +7501,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد مطايه كلها اوادم* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "الحاتات" and ChCheck(msg) or text == "حاتات" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:HaTa:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:HaTa:'..msg.chat_id_)
 text = "⌯︙قائمة حاتات المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7517,14 +7517,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد حاتات كلهن محلوات* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "الصاكين" and ChCheck(msg) or text == "صاكين" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:hlo:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:hlo:'..msg.chat_id_)
 text = "⌯︙قائمة صاكين المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7533,14 +7533,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد صاكين كلهم جكمين* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "الصخوله" and ChCheck(msg) or text == "صخولة" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:Sakl:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:Sakl:'..msg.chat_id_)
 text = "⌯︙قائمة الصخوله المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7549,14 +7549,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد الصخوله كلهم جكمين* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "الجلاب" and ChCheck(msg) or text == "جلاب" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:Dog:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:Dog:'..msg.chat_id_)
 text = "⌯︙قائمة الجلاب المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7565,14 +7565,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد جلاب كلهم ملقحين* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "القورده" and ChCheck(msg) or text == "قروده" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:Monkey:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:Monkey:'..msg.chat_id_)
 text = "⌯︙قائمة القورده المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7581,14 +7581,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد قروده كلهم مؤدبين* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "الضلوع" and ChCheck(msg) or text == "ضلوعي" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:Bro:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:Bro:'..msg.chat_id_)
 text = "⌯︙قائمة الضلوع المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7597,14 +7597,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد ضلوع راحو وي الطيبين* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "الضلعات" and ChCheck(msg) or text == "ضلعاتي" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:Bro:Girl'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:Bro:Girl'..msg.chat_id_)
 text = "⌯︙قائمة الضلعات المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7613,14 +7613,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد ضلعات كلهن برابيك* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "الهوايش" and ChCheck(msg) or text == "البقرات" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:Bakra:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:Bakra:'..msg.chat_id_)
 text = "⌯︙قائمة البقرات المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7629,14 +7629,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد بقرات كلهن ضعيفات ومبيهن حليب* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "الطليان" and ChCheck(msg) or text == "طليان" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:Tale:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:Tale:'..msg.chat_id_)
 text = "⌯︙قائمة طليان المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7645,14 +7645,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد طليان كلهم نغوله مينقطون* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "الزواحف" and ChCheck(msg) or text == "زواحف" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:Zahf:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:Zahf:'..msg.chat_id_)
 text = "⌯︙قائمة زواحف المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7661,14 +7661,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد زواحف كلهم ثكال* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "الجريذيه" and ChCheck(msg) or text == "جريذيه" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..'User:Jred:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..'User:Jred:'..msg.chat_id_)
 text = "⌯︙قائمة الجريذيه المجموعه 😹💔 ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..""..k.."~ : [@"..username.."]\n"
 else
@@ -7677,14 +7677,14 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد جريذيه* 😹💔"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "المطورين الثانويين" and SecondSudo(msg) or text == "الثانويين" and SecondSudo(msg) or text == "↫ الثانويين ⌯" and SecondSudo(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:SecondSudo:')
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:SecondSudo:')
 text = "⌯︙قائمة المطورين الثانويين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7693,17 +7693,17 @@ end end
 if #List == 0 then
 text = "⌯︙*عذرا لم يتم رفع اي مطورين ثانويين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 --     Source ANUBIS     --
 if SudoBot(msg) then
 if text == "قائمه العام" and ChCheck(msg) or text == "المحظورين عام" and ChCheck(msg) or text == "المكتومين عام" and ChCheck(msg) or text == "↫ قائمه العام ⌯" and ChCheck(msg) then 
-local BanAll = Dev Ahme:smembers(ANUBIS..' Ahme:BanAll:')
-local MuteAll = Dev Ahme:smembers(ANUBIS..' Ahme:MuteAll:')
+local BanAll = Dev SOFI:smembers(ANUBIS..' SOFI:BanAll:')
+local MuteAll = Dev SOFI:smembers(ANUBIS..' SOFI:MuteAll:')
 if #BanAll ~= 0 then 
 text = "⌯︙قائمة المحظورين عام ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(BanAll) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7715,7 +7715,7 @@ end
 if #MuteAll ~= 0 then 
 text = text.."⌯︙قائمة المكتومين عام ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(MuteAll) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7729,15 +7729,15 @@ text = text
 else
 text = "⌯︙*لم يتم حظر او كتم اي عضو*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 --     Source ANUBIS     --
 if text == "المطورين" and ChCheck(msg) or text == "↫ المطورين  ⌯" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:SudoBot:')
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:SudoBot:')
 text = "⌯︙قائمة المطورين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local sudouser = Dev Ahme:get(ANUBIS..' Ahme:Sudos'..v) 
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local sudouser = Dev SOFI:get(ANUBIS..' SOFI:Sudos'..v) 
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."] ↬ Gps : "..(sudouser or 0).."\n"
 else
@@ -7746,14 +7746,14 @@ end end
 if #List == 0 then
 text = "⌯︙*عذرا لم يتم رفع اي مطورين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 --     Source ANUBIS     --
 if text == "المدراء العامين" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:ManagerAll:')
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:ManagerAll:')
 text = "⌯︙قائمة المدراء العامين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7762,14 +7762,14 @@ end end
 if #List == 0 then 
 text = "⌯︙*لا يوجد مدراء عامين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end
 --     Source ANUBIS     --
 if text == "المميزين عام" and ChCheck(msg) or text == "المميزين العامين" and ChCheck(msg) then 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:VipAll:')
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:VipAll:')
 text = "⌯︙قائمة المميزين العام ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7778,15 +7778,15 @@ end end
 if #List == 0 then 
 text = "⌯︙*لا يوجد مميزين عام*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end 
 --     Source ANUBIS     -- 
 if text == "الادمنيه العامين" and ChCheck(msg) then 
-local  Ahme =  ' Ahme:AdminAll:'
-local List = Dev Ahme:smembers(ANUBIS.. Ahme)
+local  SOFI =  ' SOFI:AdminAll:'
+local List = Dev SOFI:smembers(ANUBIS.. SOFI)
 text = "⌯︙قائمة الادمنيه العامين ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local username = Dev Ahme:get(ANUBIS..'Save:UserName'..v)
+local username = Dev SOFI:get(ANUBIS..'Save:UserName'..v)
 if username then
 text = text..k.."~ : [@"..username.."]\n"
 else
@@ -7795,7 +7795,7 @@ end end
 if #List == 0 then
 text = "⌯︙*لا يوجد ادمنيه عامين*"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text, 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text, 1, "md")
 end  
 --     Source ANUBIS     --
 if text ==("رفع المنشئ") and ChCheck(msg) or text ==("رفع المالك") and ChCheck(msg) then 
@@ -7808,12 +7808,12 @@ end
 end
 tdcli_function ({ID = "GetUser",user_id_ = Manager_id},function(arg,dp) 
 if dp.first_name_ == false then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙حساب المنشئ محذوف", 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙حساب المنشئ محذوف", 1, "md")
 return false  
 end
 local UserName = (dp.username_ or "SOURCEANUBIS")
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم رفع مالك المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md") 
-Dev Ahme:sadd(ANUBIS.." Ahme: AhmeConstructor:"..msg.chat_id_,dp.id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم رفع مالك المجموعه ↫ ["..dp.first_name_.."](T.me/"..UserName..")", 1, "md") 
+Dev SOFI:sadd(ANUBIS.." SOFI: SOFIConstructor:"..msg.chat_id_,dp.id_)
 end,nil)   
 end,nil)   
 end
@@ -7824,20 +7824,20 @@ if text == 'منع' and tonumber(msg.reply_to_message_id_) > 0 and ChCheck(msg) 
 function filter_by_reply(extra, result, success) 
 if result.content_.sticker_ then
 local idsticker = result.content_.sticker_.sticker_.persistent_id_
-Dev Ahme:sadd(ANUBIS.." Ahme:FilterSteckr"..msg.chat_id_,idsticker)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم منع الملصق بنجاح لن يتم ارساله مجددا', 1, 'md')
+Dev SOFI:sadd(ANUBIS.." SOFI:FilterSteckr"..msg.chat_id_,idsticker)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم منع الملصق بنجاح لن يتم ارساله مجددا', 1, 'md')
 return false
 end
 if result.content_.ID == "MessagePhoto" then
 local photo = result.content_.photo_.id_
-Dev Ahme:sadd(ANUBIS.." Ahme:FilterPhoto"..msg.chat_id_,photo)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم منع الصوره بنجاح لن يتم ارسالها مجددا', 1, 'md')
+Dev SOFI:sadd(ANUBIS.." SOFI:FilterPhoto"..msg.chat_id_,photo)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم منع الصوره بنجاح لن يتم ارسالها مجددا', 1, 'md')
 return false
 end
 if result.content_.animation_ then
 local idanimation = result.content_.animation_.animation_.persistent_id_
-Dev Ahme:sadd(ANUBIS.." Ahme:FilterAnimation"..msg.chat_id_,idanimation)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم منع المتحركه بنجاح لن يتم ارسالها مجددا', 1, 'md')
+Dev SOFI:sadd(ANUBIS.." SOFI:FilterAnimation"..msg.chat_id_,idanimation)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم منع المتحركه بنجاح لن يتم ارسالها مجددا', 1, 'md')
 return false
 end
 end
@@ -7848,20 +7848,20 @@ if text == 'الغاء منع' and tonumber(msg.reply_to_message_id_) > 0 and Ch
 function unfilter_by_reply(extra, result, success) 
 if result.content_.sticker_ then
 local idsticker = result.content_.sticker_.sticker_.persistent_id_
-Dev Ahme:srem(ANUBIS.." Ahme:FilterSteckr"..msg.chat_id_,idsticker)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء منع الملصق يمكنهم ارساله الان', 1, 'md')
+Dev SOFI:srem(ANUBIS.." SOFI:FilterSteckr"..msg.chat_id_,idsticker)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء منع الملصق يمكنهم ارساله الان', 1, 'md')
 return false
 end
 if result.content_.ID == "MessagePhoto" then
 local photo = result.content_.photo_.id_
-Dev Ahme:srem(ANUBIS.." Ahme:FilterPhoto"..msg.chat_id_,photo)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء منع الصوره يمكنهم ارسالها الان', 1, 'md')
+Dev SOFI:srem(ANUBIS.." SOFI:FilterPhoto"..msg.chat_id_,photo)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء منع الصوره يمكنهم ارسالها الان', 1, 'md')
 return false
 end
 if result.content_.animation_.animation_ then
 local idanimation = result.content_.animation_.animation_.persistent_id_
-Dev Ahme:srem(ANUBIS.." Ahme:FilterAnimation"..msg.chat_id_,idanimation)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء منع المتحركه يمكنهم ارسالها الان', 1, 'md')
+Dev SOFI:srem(ANUBIS.." SOFI:FilterAnimation"..msg.chat_id_,idanimation)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء منع المتحركه يمكنهم ارسالها الان', 1, 'md')
 return false
 end
 end
@@ -7871,36 +7871,36 @@ end
 --     Source ANUBIS     --
 if text and (text == "تفعيل تحويل الصيغ" or text == "تفعيل التحويل") and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل تحويل الصيغ")
-Dev Ahme:del(ANUBIS..' Ahme:Thwel: Ahme'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Thwel: SOFI'..msg.chat_id_) 
 end
 if text and (text == "تعطيل تحويل الصيغ" or text == "تعطيل التحويل") and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل تحويل الصيغ")
-Dev Ahme:set(ANUBIS..' Ahme:Thwel: Ahme'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Thwel: SOFI'..msg.chat_id_,true)  
 end
-if text == 'تحويل' and not Dev Ahme:get(ANUBIS..' Ahme:Thwel: Ahme'..msg.chat_id_) and ChCheck(msg) then  
+if text == 'تحويل' and not Dev SOFI:get(ANUBIS..' SOFI:Thwel: SOFI'..msg.chat_id_) and ChCheck(msg) then  
 if tonumber(msg.reply_to_message_id_) > 0 then 
 function ThwelByReply(extra, result, success)
 if result.content_.photo_ then 
-local  Ahme = json:decode(https.request('https://api.telegram.org/bot'.. TokenBot..'/getfile?file_id='..result.content_.photo_.sizes_[1].photo_.persistent_id_)) 
-download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'.. Ahme.result.file_path,msg.sender_user_id_..'.png') 
+local  SOFI = json:decode(https.request('https://api.telegram.org/bot'.. TokenBot..'/getfile?file_id='..result.content_.photo_.sizes_[1].photo_.persistent_id_)) 
+download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'.. SOFI.result.file_path,msg.sender_user_id_..'.png') 
 sendSticker(msg.chat_id_, msg.id_, 0, 1,nil, './'..msg.sender_user_id_..'.png')
 os.execute('rm -rf ./'..msg.sender_user_id_..'.png') 
 end   
 if result.content_.sticker_ then 
-local  Ahme = json:decode(https.request('https://api.telegram.org/bot'.. TokenBot..'/getfile?file_id='..result.content_.sticker_.sticker_.persistent_id_)) 
-download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'.. Ahme.result.file_path,msg.sender_user_id_..'.jpg') 
+local  SOFI = json:decode(https.request('https://api.telegram.org/bot'.. TokenBot..'/getfile?file_id='..result.content_.sticker_.sticker_.persistent_id_)) 
+download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'.. SOFI.result.file_path,msg.sender_user_id_..'.jpg') 
 sendPhoto(msg.chat_id_, msg.id_, 0, 1,nil, './'..msg.sender_user_id_..'.jpg','⌯︙تم تحويل الملصق الى صوره')     
 os.execute('rm -rf ./'..msg.sender_user_id_..'.jpg') 
 end
 if result.content_.audio_ then 
-local  Ahme = json:decode(https.request('https://api.telegram.org/bot'.. TokenBot..'/getfile?file_id='..result.content_.audio_.audio_.persistent_id_)) 
-download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'.. Ahme.result.file_path,msg.sender_user_id_..'.ogg') 
+local  SOFI = json:decode(https.request('https://api.telegram.org/bot'.. TokenBot..'/getfile?file_id='..result.content_.audio_.audio_.persistent_id_)) 
+download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'.. SOFI.result.file_path,msg.sender_user_id_..'.ogg') 
 sendVoice(msg.chat_id_, msg.id_, 0, 1,nil, './'..msg.sender_user_id_..'.ogg',"⌯︙تم تحويل الـMp3 الى بصمه")
 os.execute('rm -rf ./'..msg.sender_user_id_..'.ogg') 
 end   
 if result.content_.voice_ then 
-local  Ahme = json:decode(https.request('https://api.telegram.org/bot'.. TokenBot..'/getfile?file_id='..result.content_.voice_.voice_.persistent_id_)) 
-download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'.. Ahme.result.file_path,msg.sender_user_id_..'.mp3') 
+local  SOFI = json:decode(https.request('https://api.telegram.org/bot'.. TokenBot..'/getfile?file_id='..result.content_.voice_.voice_.persistent_id_)) 
+download_to_file('https://api.telegram.org/file/bot'..TokenBot..'/'.. SOFI.result.file_path,msg.sender_user_id_..'.mp3') 
 sendAudio(msg.chat_id_, msg.id_, 0, 1,nil, './'..msg.sender_user_id_..'.mp3')  
 os.execute('rm -rf ./'..msg.sender_user_id_..'.mp3') 
 end
@@ -7912,17 +7912,17 @@ end
 if text ==("كشف") and msg.reply_to_message_id_ ~= 0 and ChCheck(msg) or text ==("ايدي") and msg.reply_to_message_id_ ~= 0 and ChCheck(msg) then 
 function id_by_reply(extra, result, success) 
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,data) 
-local user_msgs = Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..data.id_) or 0
-local user_nkt = tonumber(Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..data.id_) or 0)
-if Dev Ahme:sismember(ANUBIS..' Ahme:BanAll:',result.sender_user_id_) then
+local user_msgs = Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..data.id_) or 0
+local user_nkt = tonumber(Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..data.id_) or 0)
+if Dev SOFI:sismember(ANUBIS..' SOFI:BanAll:',result.sender_user_id_) then
 Tkeed = 'محظور عام'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:MuteAll:',result.sender_user_id_) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:MuteAll:',result.sender_user_id_) then
 Tkeed = 'مكتوم عام'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Ban:'..msg.chat_id_,result.sender_user_id_) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Ban:'..msg.chat_id_,result.sender_user_id_) then
 Tkeed = 'محظور'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_,result.sender_user_id_) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_,result.sender_user_id_) then
 Tkeed = 'مكتوم'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_,result.sender_user_id_) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_,result.sender_user_id_) then
 Tkeed = 'مقيد'
 else
 Tkeed = false
@@ -7932,8 +7932,8 @@ Tked = '\n⌯︙القيود ↫ '..Tkeed
 else 
 Tked = '' 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SudoBot:',result.sender_user_id_) and SudoBot(msg) then
-sudobot = '\n⌯︙عدد الكروبات ↫ '..(Dev Ahme:get(ANUBIS..' Ahme:Sudos'..result.sender_user_id_) or 0)..'' 
+if Dev SOFI:sismember(ANUBIS..' SOFI:SudoBot:',result.sender_user_id_) and SudoBot(msg) then
+sudobot = '\n⌯︙عدد الكروبات ↫ '..(Dev SOFI:get(ANUBIS..' SOFI:Sudos'..result.sender_user_id_) or 0)..'' 
 else 
 sudobot = '' 
 end
@@ -7943,13 +7943,13 @@ else
 CustomTitle = '' 
 end
 if data.first_name_ == false then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙الحساب محذوف', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙الحساب محذوف', 1, 'md')
 return false  end
 if data.username_ == false then
 Text = '⌯︙اسمه ↫ ['..data.first_name_..'](tg://user?id='..result.sender_user_id_..')\n⌯︙ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⌯︙رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..sudobot..'\n⌯︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌯︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌯︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked
 SendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙معرفه ↫ [@'..data.username_..']\n⌯︙ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⌯︙رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..sudobot..'\n⌯︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌯︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌯︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙معرفه ↫ [@'..data.username_..']\n⌯︙ايديه ↫ ❨ `'..result.sender_user_id_..'` ❩\n⌯︙رتبته ↫ '..IdRank(result.sender_user_id_, msg.chat_id_)..sudobot..'\n⌯︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌯︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌯︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end
 end,nil)
 end 
@@ -7959,32 +7959,32 @@ if text and text:match('^كشف @(.*)') and ChCheck(msg) or text and text:match(
 local username = text:match('^كشف @(.*)') or text:match('^ايدي @(.*)')
 tdcli_function ({ID = "SearchPublicChat",username_ = username},function(extra, res, success) 
 if res and res.message_ and res.message_ == "USERNAME_NOT_OCCUPIED" then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙*المعرف غير صحيح*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙*المعرف غير صحيح*', 1, 'md')
 return false  end
 if res.type_.ID == "ChannelChatInfo" then 
 if res.type_.channel_.is_supergroup_ == false then
 local ch = 'قناة'
 local chn = '⌯︙نوع الحساب ↫ ❨ '..ch..' ❩\n⌯︙الايدي ↫ ❨ `'..res.id_..'` ❩\n⌯︙المعرف ↫ ❨ [@'..username..'] ❩\n⌯︙الاسم ↫ ❨ ['..res.title_..'] ❩'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,chn, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,chn, 1, 'md')
 else
 local gr = 'مجموعه'
 local grr = '⌯︙نوع الحساب ↫ ❨ '..gr..' ❩\n⌯︙الايدي ↫ ❨ '..res.id_..' ❩\n⌯︙المعرف ↫ ❨ [@'..username..'] ❩\n⌯︙الاسم ↫ ❨ ['..res.title_..'] ❩'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,grr, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,grr, 1, 'md')
 end
 return false  end
 if res.id_ then  
 tdcli_function ({ID = "GetUser",user_id_ = res.id_},function(arg,data) 
-local user_msgs = Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..res.id_) or 0
-local user_nkt = tonumber(Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..res.id_) or 0)
-if Dev Ahme:sismember(ANUBIS..' Ahme:BanAll:',res.id_) then
+local user_msgs = Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..res.id_) or 0
+local user_nkt = tonumber(Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..res.id_) or 0)
+if Dev SOFI:sismember(ANUBIS..' SOFI:BanAll:',res.id_) then
 Tkeed = 'محظور عام'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:MuteAll:',res.id_) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:MuteAll:',res.id_) then
 Tkeed = 'مكتوم عام'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Ban:'..msg.chat_id_,res.id_) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Ban:'..msg.chat_id_,res.id_) then
 Tkeed = 'محظور'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_,res.id_) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_,res.id_) then
 Tkeed = 'مكتوم'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_,res.id_) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_,res.id_) then
 Tkeed = 'مقيد'
 else
 Tkeed = false
@@ -7994,8 +7994,8 @@ Tked = '\n⌯︙القيود ↫ '..Tkeed
 else 
 Tked = '' 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SudoBot:',res.id_) and SudoBot(msg) then
-sudobot = '\n⌯︙عدد الكروبات ↫ '..(Dev Ahme:get(ANUBIS..' Ahme:Sudos'..res.id_) or 0)..'' 
+if Dev SOFI:sismember(ANUBIS..' SOFI:SudoBot:',res.id_) and SudoBot(msg) then
+sudobot = '\n⌯︙عدد الكروبات ↫ '..(Dev SOFI:get(ANUBIS..' SOFI:Sudos'..res.id_) or 0)..'' 
 else 
 sudobot = '' 
 end
@@ -8005,9 +8005,9 @@ else
 CustomTitle = '' 
 end
 if data.first_name_ == false then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙الحساب محذوف', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙الحساب محذوف', 1, 'md')
 return false  end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙معرفه ↫ [@'..data.username_..']\n⌯︙ايديه ↫ ❨ `'..res.id_..'` ❩\n⌯︙رتبته ↫ '..IdRank(res.id_, msg.chat_id_)..sudobot..'\n⌯︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌯︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌯︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙معرفه ↫ [@'..data.username_..']\n⌯︙ايديه ↫ ❨ `'..res.id_..'` ❩\n⌯︙رتبته ↫ '..IdRank(res.id_, msg.chat_id_)..sudobot..'\n⌯︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌯︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌯︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end,nil)
 end 
 end,nil)
@@ -8017,20 +8017,20 @@ if text and text:match('كشف (%d+)') and ChCheck(msg) or text and text:match('
 local iduser = text:match('كشف (%d+)') or text:match('ايدي (%d+)')  
 tdcli_function ({ID = "GetUser",user_id_ = iduser},function(arg,data) 
 if data.message_ == "User not found" then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙لم يتم التعرف على الحساب', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙لم يتم التعرف على الحساب', 1, 'md')
 return false  
 end
-local user_msgs = Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..iduser) or 0
-local user_nkt = tonumber(Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..iduser) or 0)
-if Dev Ahme:sismember(ANUBIS..' Ahme:BanAll:',iduser) then
+local user_msgs = Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..iduser) or 0
+local user_nkt = tonumber(Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..iduser) or 0)
+if Dev SOFI:sismember(ANUBIS..' SOFI:BanAll:',iduser) then
 Tkeed = 'محظور عام'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:MuteAll:',iduser) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:MuteAll:',iduser) then
 Tkeed = 'مكتوم عام'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Ban:'..msg.chat_id_,iduser) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Ban:'..msg.chat_id_,iduser) then
 Tkeed = 'محظور'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_,iduser) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_,iduser) then
 Tkeed = 'مكتوم'
-elseif Dev Ahme:sismember(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_,iduser) then
+elseif Dev SOFI:sismember(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_,iduser) then
 Tkeed = 'مقيد'
 else
 Tkeed = false
@@ -8040,8 +8040,8 @@ Tked = '\n⌯︙القيود ↫ '..Tkeed
 else 
 Tked = '' 
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:SudoBot:',iduser) and SudoBot(msg) then
-sudobot = '\n⌯︙عدد الكروبات ↫ '..(Dev Ahme:get(ANUBIS..' Ahme:Sudos'..iduser) or 0)..'' 
+if Dev SOFI:sismember(ANUBIS..' SOFI:SudoBot:',iduser) and SudoBot(msg) then
+sudobot = '\n⌯︙عدد الكروبات ↫ '..(Dev SOFI:get(ANUBIS..' SOFI:Sudos'..iduser) or 0)..'' 
 else 
 sudobot = '' 
 end
@@ -8051,13 +8051,13 @@ else
 CustomTitle = '' 
 end
 if data.first_name_ == false then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙الحساب محذوف', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙الحساب محذوف', 1, 'md')
 return false  end
 if data.username_ == false then
 Text = '⌯︙اسمه ↫ ['..data.first_name_..'](tg://user?id='..iduser..')\n⌯︙ايديه ↫ ❨ `'..iduser..'` ❩\n⌯︙رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..sudobot..'\n⌯︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌯︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌯︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked
 SendText(msg.chat_id_,Text,msg.id_/2097152/0.5,'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙معرفه ↫ [@'..data.username_..']\n⌯︙ايديه ↫ ❨ `'..iduser..'` ❩\n⌯︙رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..sudobot..'\n⌯︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌯︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌯︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙معرفه ↫ [@'..data.username_..']\n⌯︙ايديه ↫ ❨ `'..iduser..'` ❩\n⌯︙رتبته ↫ '..IdRank(data.id_, msg.chat_id_)..sudobot..'\n⌯︙رسائله ↫ ❨ '..user_msgs..' ❩\n⌯︙تفاعله ↫ '..formsgs(user_msgs)..CustomTitle..'\n⌯︙نقاطه ↫ ❨ '..user_nkt..' ❩'..Tked, 1, 'md')
 end
 end,nil)
 return false 
@@ -8065,12 +8065,12 @@ end
 --     Source ANUBIS     --
 if text == 'كشف القيود' and tonumber(msg.reply_to_message_id_) > 0 and Admin(msg) and ChCheck(msg) then 
 function kshf_by_reply(extra, result, success)
-if Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_,result.sender_user_id_) then muted = 'مكتوم' else muted = 'غير مكتوم' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Ban:'..msg.chat_id_,result.sender_user_id_) then banned = 'محظور' else banned = 'غير محظور' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:BanAll:',result.sender_user_id_) then banall = 'محظور عام' else banall = 'غير محظور عام' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:MuteAll:',result.sender_user_id_) then muteall = 'مكتوم عام' else muteall = 'غير مكتوم عام' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Tkeed:',result.sender_user_id_) then tkeed = 'مقيد' else tkeed = 'غير مقيد' end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الحظر العام ↫ '..banall..'\n⌯︙الكتم العام ↫ '..muteall..'\n⌯︙الحظر ↫ '..banned..'\n⌯︙الكتم ↫ '..muted..'\n⌯︙التقيد ↫ '..tkeed, 1, 'md')  
+if Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_,result.sender_user_id_) then muted = 'مكتوم' else muted = 'غير مكتوم' end
+if Dev SOFI:sismember(ANUBIS..' SOFI:Ban:'..msg.chat_id_,result.sender_user_id_) then banned = 'محظور' else banned = 'غير محظور' end
+if Dev SOFI:sismember(ANUBIS..' SOFI:BanAll:',result.sender_user_id_) then banall = 'محظور عام' else banall = 'غير محظور عام' end
+if Dev SOFI:sismember(ANUBIS..' SOFI:MuteAll:',result.sender_user_id_) then muteall = 'مكتوم عام' else muteall = 'غير مكتوم عام' end
+if Dev SOFI:sismember(ANUBIS..' SOFI:Tkeed:',result.sender_user_id_) then tkeed = 'مقيد' else tkeed = 'غير مقيد' end
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الحظر العام ↫ '..banall..'\n⌯︙الكتم العام ↫ '..muteall..'\n⌯︙الحظر ↫ '..banned..'\n⌯︙الكتم ↫ '..muted..'\n⌯︙التقيد ↫ '..tkeed, 1, 'md')  
 end
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),kshf_by_reply) 
 end
@@ -8078,14 +8078,14 @@ if text and text:match('^كشف القيود @(.*)') and Admin(msg) and ChCheck(
 local username = text:match('^كشف القيود @(.*)') 
 function kshf_by_username(extra, result, success)
 if result.id_ then
-if Dev Ahme:sismember(ANUBIS..' Ahme:Muted:'..msg.chat_id_,result.id_) then muted = 'مكتوم' else muted = 'غير مكتوم' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Ban:'..msg.chat_id_,result.id_) then banned = 'محظور' else banned = 'غير محظور' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:BanAll:',result.id_) then banall = 'محظور عام' else banall = 'غير محظور عام' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:MuteAll:',result.id_) then muteall = 'مكتوم عام' else muteall = 'غير مكتوم عام' end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Tkeed:',result.id_) then tkeed = 'مقيد' else tkeed = 'غير مقيد' end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الحظر العام ↫ '..banall..'\n⌯︙الكتم العام ↫ '..muteall..'\n⌯︙الحظر ↫ '..banned..'\n⌯︙الكتم ↫ '..muted..'\n⌯︙التقيد ↫ '..tkeed, 1, 'md')  
+if Dev SOFI:sismember(ANUBIS..' SOFI:Muted:'..msg.chat_id_,result.id_) then muted = 'مكتوم' else muted = 'غير مكتوم' end
+if Dev SOFI:sismember(ANUBIS..' SOFI:Ban:'..msg.chat_id_,result.id_) then banned = 'محظور' else banned = 'غير محظور' end
+if Dev SOFI:sismember(ANUBIS..' SOFI:BanAll:',result.id_) then banall = 'محظور عام' else banall = 'غير محظور عام' end
+if Dev SOFI:sismember(ANUBIS..' SOFI:MuteAll:',result.id_) then muteall = 'مكتوم عام' else muteall = 'غير مكتوم عام' end
+if Dev SOFI:sismember(ANUBIS..' SOFI:Tkeed:',result.id_) then tkeed = 'مقيد' else tkeed = 'غير مقيد' end
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الحظر العام ↫ '..banall..'\n⌯︙الكتم العام ↫ '..muteall..'\n⌯︙الحظر ↫ '..banned..'\n⌯︙الكتم ↫ '..muted..'\n⌯︙التقيد ↫ '..tkeed, 1, 'md')  
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')  
 end
 end
 resolve_username(username,kshf_by_username) 
@@ -8093,16 +8093,16 @@ end
 if text == 'رفع القيود' and tonumber(msg.reply_to_message_id_) > 0 and Admin(msg) and ChCheck(msg) then 
 function unbanreply(extra, result, success) 
 if tonumber(result.sender_user_id_) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙انا البوت وليس لدي قيود', 1, 'md')  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙انا البوت وليس لدي قيود', 1, 'md')  
 return false  
 end 
 ReplyStatus(msg,result.sender_user_id_,"Reply","⌯︙تم رفع قيوده") 
 if SecondSudo(msg) then
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_,result.sender_user_id_) Dev Ahme:srem(ANUBIS..' Ahme:Ban:'..msg.chat_id_,result.sender_user_id_) Dev Ahme:srem(ANUBIS..' Ahme:Muted:'..msg.chat_id_,result.sender_user_id_) Dev Ahme:srem(ANUBIS..' Ahme:BanAll:',result.sender_user_id_) Dev Ahme:srem(ANUBIS..' Ahme:MuteAll:',result.sender_user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_,result.sender_user_id_) Dev SOFI:srem(ANUBIS..' SOFI:Ban:'..msg.chat_id_,result.sender_user_id_) Dev SOFI:srem(ANUBIS..' SOFI:Muted:'..msg.chat_id_,result.sender_user_id_) Dev SOFI:srem(ANUBIS..' SOFI:BanAll:',result.sender_user_id_) Dev SOFI:srem(ANUBIS..' SOFI:MuteAll:',result.sender_user_id_)
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.sender_user_id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_,result.sender_user_id_) Dev Ahme:srem(ANUBIS..' Ahme:Ban:'..msg.chat_id_,result.sender_user_id_) Dev Ahme:srem(ANUBIS..' Ahme:Muted:'..msg.chat_id_,result.sender_user_id_) 
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_,result.sender_user_id_) Dev SOFI:srem(ANUBIS..' SOFI:Ban:'..msg.chat_id_,result.sender_user_id_) Dev SOFI:srem(ANUBIS..' SOFI:Muted:'..msg.chat_id_,result.sender_user_id_) 
 end
 end
 getMessage(msg.chat_id_, tonumber(msg.reply_to_message_id_),unbanreply) 
@@ -8110,21 +8110,21 @@ end
 if text and text:match('^رفع القيود (%d+)') and Admin(msg) and ChCheck(msg) then 
 local user = text:match('رفع القيود (%d+)') 
 if tonumber(user) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙انا البوت وليس لدي قيود', 1, 'md')  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙انا البوت وليس لدي قيود', 1, 'md')  
 return false  
 end 
 tdcli_function ({ID = "GetUser",user_id_ = user},function(arg,data) 
 if data and data.code_ and data.code_ == 6 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لم استطع استخراج المعلومات', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لم استطع استخراج المعلومات', 1, 'md') 
 return false  
 end
 ReplyStatus(msg,user,"Reply","⌯︙تم رفع قيوده") 
 if SecondSudo(msg) then
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..user.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_,user) Dev Ahme:srem(ANUBIS..' Ahme:Ban:'..msg.chat_id_,user) Dev Ahme:srem(ANUBIS..' Ahme:Muted:'..msg.chat_id_,user) Dev Ahme:srem(ANUBIS..' Ahme:BanAll:',user) Dev Ahme:srem(ANUBIS..' Ahme:MuteAll:',user)
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_,user) Dev SOFI:srem(ANUBIS..' SOFI:Ban:'..msg.chat_id_,user) Dev SOFI:srem(ANUBIS..' SOFI:Muted:'..msg.chat_id_,user) Dev SOFI:srem(ANUBIS..' SOFI:BanAll:',user) Dev SOFI:srem(ANUBIS..' SOFI:MuteAll:',user)
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..user.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_,user) Dev Ahme:srem(ANUBIS..' Ahme:Ban:'..msg.chat_id_,user) Dev Ahme:srem(ANUBIS..' Ahme:Muted:'..msg.chat_id_,user) 
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_,user) Dev SOFI:srem(ANUBIS..' SOFI:Ban:'..msg.chat_id_,user) Dev SOFI:srem(ANUBIS..' SOFI:Muted:'..msg.chat_id_,user) 
 end  
 end,nil)  
 end
@@ -8132,29 +8132,29 @@ if text and text:match('^رفع القيود @(.*)') and Admin(msg) and ChCheck(
 local username = text:match('رفع القيود @(.*)')  
 function unbanusername(extra,result,success)  
 if result and result.message_ and result.message_ == "USERNAME_NOT_OCCUPIED" then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*المعرف غير صحيح*', 1, 'md')  
 return false  
 end
 if result and result.type_ and result.type_.channel_ and result.type_.channel_.ID == "Channel" then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙هذا معرف قناة وليس معرف حساب', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙هذا معرف قناة وليس معرف حساب', 1, 'md') 
 return false  
 end
 if tonumber(result.id_) == tonumber(ANUBIS) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙انا البوت وليس لدي قيود', 1, 'md')  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙انا البوت وليس لدي قيود', 1, 'md')  
 return false  
 end 
 tdcli_function ({ID = "GetUser",user_id_ = result.id_},function(arg,data) 
 if data and data.code_ and data.code_ == 6 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لم استطع استخراج المعلومات', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لم استطع استخراج المعلومات', 1, 'md') 
 return false  
 end
 ReplyStatus(msg,result.id_,"Reply","⌯︙تم رفع قيوده") 
 if SecondSudo(msg) then
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_,result.id_) Dev Ahme:srem(ANUBIS..' Ahme:Ban:'..msg.chat_id_,result.id_) Dev Ahme:srem(ANUBIS..' Ahme:Muted:'..msg.chat_id_,result.id_) Dev Ahme:srem(ANUBIS..' Ahme:BanAll:',result.id_) Dev Ahme:srem(ANUBIS..' Ahme:MuteAll:',result.id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_,result.id_) Dev SOFI:srem(ANUBIS..' SOFI:Ban:'..msg.chat_id_,result.id_) Dev SOFI:srem(ANUBIS..' SOFI:Muted:'..msg.chat_id_,result.id_) Dev SOFI:srem(ANUBIS..' SOFI:BanAll:',result.id_) Dev SOFI:srem(ANUBIS..' SOFI:MuteAll:',result.id_)
 else
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id=" ..result.id_.. "&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True")  
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_,result.id_) Dev Ahme:srem(ANUBIS..' Ahme:Ban:'..msg.chat_id_,result.id_) Dev Ahme:srem(ANUBIS..' Ahme:Muted:'..msg.chat_id_,result.id_) 
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_,result.id_) Dev SOFI:srem(ANUBIS..' SOFI:Ban:'..msg.chat_id_,result.id_) Dev SOFI:srem(ANUBIS..' SOFI:Muted:'..msg.chat_id_,result.id_) 
 end
 end,nil)   
 end  
@@ -8411,52 +8411,52 @@ local List = {
 金 - 𝓶𝓼𝓰𝓼 . #msgs ⸙
 ]]}
 local Text_Rand = List[math.random(#List)]
-Dev Ahme:set(ANUBIS.." Ahme:GpIds:Text"..msg.chat_id_,Text_Rand)
+Dev SOFI:set(ANUBIS.." SOFI:GpIds:Text"..msg.chat_id_,Text_Rand)
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم تغير كليشة الايدي")  
 end
 --     Source ANUBIS     --
 if SecondSudo(msg) then
 if text and text:match("^تعيين الايدي العام$") or text and text:match("^تعين الايدي العام$") or text and text:match("^تعيين كليشة الايدي$") then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙رجائا اتبع التعليمات للتعيين \n⌯︙لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#CustomTitle` ↬ لطبع اللقب \n `#bio` ↬ لطبع البايو \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ', 1, 'md')
-Dev Ahme:set("ANUBIS:New:id:"..ANUBIS..msg.sender_user_id_,'DraGoN')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙رجائا اتبع التعليمات للتعيين \n⌯︙لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#CustomTitle` ↬ لطبع اللقب \n `#bio` ↬ لطبع البايو \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ', 1, 'md')
+Dev SOFI:set("ANUBIS:New:id:"..ANUBIS..msg.sender_user_id_,'DraGoN')
 return "DraGoN"
 end
-if text and Dev Ahme:get("ANUBIS:New:id:"..ANUBIS..msg.sender_user_id_) then 
+if text and Dev SOFI:get("ANUBIS:New:id:"..ANUBIS..msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ كليشة الايدي', 1, 'md')
-Dev Ahme:del("ANUBIS:New:id:"..ANUBIS..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ كليشة الايدي', 1, 'md')
+Dev SOFI:del("ANUBIS:New:id:"..ANUBIS..msg.sender_user_id_)
 return false
 end
-Dev Ahme:del("ANUBIS:New:id:"..ANUBIS..msg.sender_user_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ كليشة الايدي العامه', 1, 'md')
-Dev Ahme:set(ANUBIS.." Ahme:AllIds:Text",text)
+Dev SOFI:del("ANUBIS:New:id:"..ANUBIS..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ كليشة الايدي العامه', 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:AllIds:Text",text)
 return false
 end
 if text and text:match("^حذف الايدي العام$") or text and text:match("^مسح الايدي العام$") or text and text:match("^حذف كليشة الايدي$") then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف كليشة الايدي العامه")  
-Dev Ahme:del(ANUBIS.." Ahme:AllIds:Text")
+Dev SOFI:del(ANUBIS.." SOFI:AllIds:Text")
 end
 end
 --     Source ANUBIS     --
 if text and text:match("^تعيين الايدي$") and ChCheck(msg) or text and text:match("^تعين الايدي$") and ChCheck(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙رجائا اتبع التعليمات للتعيين \n⌯︙لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#CustomTitle` ↬ لطبع اللقب \n `#bio` ↬ لطبع البايو \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ', 1, 'md')
-Dev Ahme:set("ANUBIS:New:id:"..ANUBIS..msg.chat_id_..msg.sender_user_id_,'DraGoN')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙رجائا اتبع التعليمات للتعيين \n⌯︙لطبع كليشة الايدي ارسل كليشه تحتوي على النصوص التي باللغه الانجليزيه ادناه ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n `#username` ↬ لطبع المعرف\n `#id` ↬ لطبع الايدي \n `#photos` ↬ لطبع عدد الصور \n `#stast` ↬ لطبع الرتب \n `#msgs` ↬ لطبع عدد الرسائل \n `#msgday` ↬ لطبع الرسائل اليوميه \n `#CustomTitle` ↬ لطبع اللقب \n `#bio` ↬ لطبع البايو \n `#auto` ↬ لطبع التفاعل \n `#game` ↬ لطبع عدد النقاط \n `#cont` ↬ لطبع عدد الجهات \n `#edit` ↬ لطبع عدد السحكات \n `#Description` ↬ لطبع تعليق الصور\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ', 1, 'md')
+Dev SOFI:set("ANUBIS:New:id:"..ANUBIS..msg.chat_id_..msg.sender_user_id_,'DraGoN')
 return "DraGoN"
 end
-if text and Manager(msg) and Dev Ahme:get("ANUBIS:New:id:"..ANUBIS..msg.chat_id_..msg.sender_user_id_) then 
+if text and Manager(msg) and Dev SOFI:get("ANUBIS:New:id:"..ANUBIS..msg.chat_id_..msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ كليشة الايدي', 1, 'md')
-Dev Ahme:del("ANUBIS:New:id:"..ANUBIS..msg.chat_id_..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ كليشة الايدي', 1, 'md')
+Dev SOFI:del("ANUBIS:New:id:"..ANUBIS..msg.chat_id_..msg.sender_user_id_)
 return false
 end
-Dev Ahme:del("ANUBIS:New:id:"..ANUBIS..msg.chat_id_..msg.sender_user_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ الكليشه الجديده', 1, 'md')
-Dev Ahme:set(ANUBIS.." Ahme:GpIds:Text"..msg.chat_id_,text)
+Dev SOFI:del("ANUBIS:New:id:"..ANUBIS..msg.chat_id_..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ الكليشه الجديده', 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:GpIds:Text"..msg.chat_id_,text)
 return false
 end
 if text and text:match("^حذف الايدي$") and ChCheck(msg) or text and text:match("^مسح الايدي$") and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف كليشة الايدي")  
-Dev Ahme:del(ANUBIS.." Ahme:GpIds:Text"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:GpIds:Text"..msg.chat_id_)
 end
 end
 --     Source ANUBIS     --
@@ -8468,19 +8468,19 @@ function DraGoN(extra,SoOoFi,success)
 if SoOoFi.username_ then username = '@'..SoOoFi.username_ else username = 'لا يوجد' end
 if GetCustomTitle(msg.sender_user_id_,msg.chat_id_) ~= false then CustomTitle = GetCustomTitle(msg.sender_user_id_,msg.chat_id_) else CustomTitle = 'لا يوجد' end
 local function getpro(extra, SoOoFi, success) 
-local msgsday = Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..ANUBIS..os.date('%d')..':'..msg.chat_id_..':'..msg.sender_user_id_) or 0
-local edit_msg = Dev Ahme:get(ANUBIS..' Ahme:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0
-local user_msgs = Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
-local user_nkt = tonumber(Dev Ahme:get(ANUBIS..' Ahme:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)
-local cont = (tonumber(Dev Ahme:get(ANUBIS..' Ahme:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
-local msguser = tonumber(Dev Ahme:get(ANUBIS..' Ahme:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_))
+local msgsday = Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..ANUBIS..os.date('%d')..':'..msg.chat_id_..':'..msg.sender_user_id_) or 0
+local edit_msg = Dev SOFI:get(ANUBIS..' SOFI:EditMsg'..msg.chat_id_..msg.sender_user_id_) or 0
+local user_msgs = Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_)
+local user_nkt = tonumber(Dev SOFI:get(ANUBIS..' SOFI:GamesNumber'..msg.chat_id_..msg.sender_user_id_) or 0)
+local cont = (tonumber(Dev SOFI:get(ANUBIS..' SOFI:ContactNumber'..msg.chat_id_..':'..msg.sender_user_id_)) or 0)
+local msguser = tonumber(Dev SOFI:get(ANUBIS..' SOFI:UsersMsgs'..msg.chat_id_..':'..msg.sender_user_id_))
 local Texting = {"مو صوره ظيم بالنبي ،🤤💞","مقتنع بصورتك !؟ 😹🖤","ملاك وناسيك بكروبنه ،🤤💞","وفالله ،🤤💞","كشخه برب ،😉🤍","لزكت بيها دغيرها عاد ،😒😕","صورتك مامرتاحلها ،🙄😶","حلغوم والله ،🥺💘","مو صوره غنبله براسها ٦٠ حظ ،😹🤍"}
 local Description = Texting[math.random(#Texting)]
 if SoOoFi.photos_[0] then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Id'..msg.chat_id_) then 
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Id:Photo'..msg.chat_id_) then 
-if Dev Ahme:get(ANUBIS.." Ahme:AllIds:Text") then
-newpicid = Dev Ahme:get(ANUBIS.." Ahme:AllIds:Text")
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Id'..msg.chat_id_) then 
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Id:Photo'..msg.chat_id_) then 
+if Dev SOFI:get(ANUBIS.." SOFI:AllIds:Text") then
+newpicid = Dev SOFI:get(ANUBIS.." SOFI:AllIds:Text")
 newpicid = newpicid:gsub('#username',(username or 'لا يوجد'))
 newpicid = newpicid:gsub('#CustomTitle',(CustomTitle or 'لا يوجد'))
 newpicid = newpicid:gsub('#bio',(GetBio(msg.sender_user_id_) or 'لا يوجد'))
@@ -8497,10 +8497,10 @@ newpicid = newpicid:gsub('#Description',(Description or 'لا يوجد'))
 else
 newpicid = "⌯︙"..Description.."\n⌯︙معرفك ↫ ❨ "..username.." ❩\n⌯︙ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⌯︙رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⌯︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⌯︙سحكاتك ↫ ❨ "..edit_msg.." ❩\n⌯︙تفاعلك ↫ "..formsgs(msguser).."\n⌯︙نقاطك ↫ ❨ "..user_nkt.." ❩\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 end 
-if not Dev Ahme:get(ANUBIS.." Ahme:GpIds:Text"..msg.chat_id_) then 
+if not Dev SOFI:get(ANUBIS.." SOFI:GpIds:Text"..msg.chat_id_) then 
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, SoOoFi.photos_[0].sizes_[1].photo_.persistent_id_,newpicid,msg.id_,msg.id_.."")
 else 
-local new_id = Dev Ahme:get(ANUBIS.." Ahme:GpIds:Text"..msg.chat_id_)
+local new_id = Dev SOFI:get(ANUBIS.." SOFI:GpIds:Text"..msg.chat_id_)
 local new_id = new_id:gsub('#username',(username or 'لا يوجد'))
 local new_id = new_id:gsub('#CustomTitle',(CustomTitle or 'لا يوجد'))
 local new_id = new_id:gsub('#bio',(GetBio(msg.sender_user_id_) or 'لا يوجد'))
@@ -8517,8 +8517,8 @@ local new_id = new_id:gsub('#Description',(Description or 'لا يوجد'))
 sendPhoto(msg.chat_id_, msg.id_, 0, 1, nil, SoOoFi.photos_[0].sizes_[1].photo_.persistent_id_,new_id,msg.id_,msg.id_.."")
 end
 else
-if Dev Ahme:get(ANUBIS.." Ahme:AllIds:Text") then
-newallid = Dev Ahme:get(ANUBIS.." Ahme:AllIds:Text")
+if Dev SOFI:get(ANUBIS.." SOFI:AllIds:Text") then
+newallid = Dev SOFI:get(ANUBIS.." SOFI:AllIds:Text")
 newallid = newallid:gsub('#username',(username or 'لا يوجد'))
 newallid = newallid:gsub('#CustomTitle',(CustomTitle or 'لا يوجد'))
 newallid = newallid:gsub('#bio',(GetBio(msg.sender_user_id_) or 'لا يوجد'))
@@ -8535,10 +8535,10 @@ newallid = newallid:gsub('#Description',(Description or 'لا يوجد'))
 else
 newallid = "⌯︙معرفك ↫ ❨ "..username.." ❩\n⌯︙ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⌯︙رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⌯︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⌯︙سحكاتك ↫ ❨ "..edit_msg.." ❩\n⌯︙تفاعلك ↫ "..formsgs(msguser).."\n⌯︙نقاطك ↫ ❨ "..user_nkt.." ❩"
 end 
-if not Dev Ahme:get(ANUBIS.." Ahme:GpIds:Text"..msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, newallid, 1, 'html')
+if not Dev SOFI:get(ANUBIS.." SOFI:GpIds:Text"..msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, newallid, 1, 'html')
 else
-local new_id = Dev Ahme:get(ANUBIS.." Ahme:GpIds:Text"..msg.chat_id_)
+local new_id = Dev SOFI:get(ANUBIS.." SOFI:GpIds:Text"..msg.chat_id_)
 local new_id = new_id:gsub('#username',(username or 'لا يوجد'))
 local new_id = new_id:gsub('#CustomTitle',(CustomTitle or 'لا يوجد'))
 local new_id = new_id:gsub('#bio',(GetBio(msg.sender_user_id_) or 'لا يوجد'))
@@ -8552,15 +8552,15 @@ local new_id = new_id:gsub('#id',(msg.sender_user_id_ or 'لا يوجد'))
 local new_id = new_id:gsub('#auto',(formsgs(msguser) or 'لا يوجد'))
 local new_id = new_id:gsub('#stast',(IdRank(msg.sender_user_id_, msg.chat_id_) or 'لا يوجد'))
 local new_id = new_id:gsub('#Description',(Description or 'لا يوجد'))
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, new_id, 1, 'html')  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, new_id, 1, 'html')  
 end
 end
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عذرا الايدي معطل ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عذرا الايدي معطل ', 1, 'md')
 end
 else
-if Dev Ahme:get(ANUBIS.." Ahme:AllIds:Text") then
-notpicid = Dev Ahme:get(ANUBIS.." Ahme:AllIds:Text")
+if Dev SOFI:get(ANUBIS.." SOFI:AllIds:Text") then
+notpicid = Dev SOFI:get(ANUBIS.." SOFI:AllIds:Text")
 notpicid = notpicid:gsub('#username',(username or 'لا يوجد'))
 notpicid = notpicid:gsub('#CustomTitle',(CustomTitle or 'لا يوجد'))
 notpicid = notpicid:gsub('#bio',(GetBio(msg.sender_user_id_) or 'لا يوجد'))
@@ -8577,14 +8577,14 @@ notpicid = notpicid:gsub('#Description',(Description or 'لا يوجد'))
 else
 notpicid = "⌯︙لا استطيع عرض صورتك لانك قمت بحظر البوت او انك لاتمتلك صوره في بروفايلك\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙معرفك ↫ ❨ "..username.." ❩\n⌯︙ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⌯︙رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⌯︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⌯︙سحكاتك ↫ ❨ "..edit_msg.." ❩\n⌯︙تفاعلك ↫ "..formsgs(msguser).."\n⌯︙نقاطك ↫ ❨ "..user_nkt.." ❩\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 end 
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Id'..msg.chat_id_) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Id:Photo'..msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, notpicid, 1, 'html')
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Id'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Id:Photo'..msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, notpicid, 1, 'html')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙معرفك ↫ ❨ "..username.." ❩\n⌯︙ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⌯︙رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⌯︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⌯︙سحكاتك ↫ ❨ "..edit_msg.." ❩\n⌯︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⌯︙تفاعلك ↫ "..formsgs(msguser).."\n⌯︙نقاطك ↫ ❨ "..user_nkt.." ❩", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙معرفك ↫ ❨ "..username.." ❩\n⌯︙ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n⌯︙رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n⌯︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⌯︙سحكاتك ↫ ❨ "..edit_msg.." ❩\n⌯︙رسائلك ↫ ❨ "..user_msgs.." ❩\n⌯︙تفاعلك ↫ "..formsgs(msguser).."\n⌯︙نقاطك ↫ ❨ "..user_nkt.." ❩", 1, 'md')
 end
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عذرا الايدي معطل', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عذرا الايدي معطل', 1, 'md')
 end end end
 tdcli_function ({ ID = "GetUserProfilePhotos", user_id_ = msg.sender_user_id_, offset_ = 0, limit_ = 1 }, getpro, nil)
 end
@@ -8597,98 +8597,98 @@ if Admin(msg) then
 if text and text:match("^قفل (.*)$") then
 local LockText = {string.match(text, "^(قفل) (.*)$")}
 if LockText[2] == "التعديل" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل التعديل")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙التعديل بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙التعديل بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "التعديل الميديا" or LockText[2] == "تعديل الميديا" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل تعديل الميديا")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تعديل الميديا بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تعديل الميديا بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الفارسيه" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Farsi'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Farsi'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الفارسيه")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Farsi'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Farsi'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الفارسيه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الفارسيه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الفشار" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Fshar'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Fshar'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الفشار")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Fshar'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Fshar'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الفشار بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الفشار بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الطائفيه" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Taf'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Taf'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الطائفيه")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Taf'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Taf'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الطائفيه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الطائفيه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الكفر" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Kfr'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Kfr'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الكفر")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Kfr'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Kfr'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الكفر بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الكفر بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الفارسيه بالطرد" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:FarsiBan'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:FarsiBan'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الفارسيه بالطرد")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:FarsiBan'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:FarsiBan'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الفارسيه بالطرد بالفعل مقفله ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الفارسيه بالطرد بالفعل مقفله ', 1, 'md')
 end
 end
 if LockText[2] == "البوتات" or LockText[2] == "البوتات بالحذف" then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل البوتات بالحذف")  
-Dev Ahme:set(ANUBIS.." Ahme:Lock:Bots"..msg.chat_id_,"del")  
+Dev SOFI:set(ANUBIS.." SOFI:Lock:Bots"..msg.chat_id_,"del")  
 end
 if LockText[2] == "البوتات بالطرد" then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل البوتات بالطرد")  
-Dev Ahme:set(ANUBIS.." Ahme:Lock:Bots"..msg.chat_id_,"kick")  
+Dev SOFI:set(ANUBIS.." SOFI:Lock:Bots"..msg.chat_id_,"kick")  
 end
 if LockText[2] == "البوتات بالتقييد" or LockText[2] == "البوتات بالتقيد" then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل البوتات بالتقيد")  
-Dev Ahme:set(ANUBIS.." Ahme:Lock:Bots"..msg.chat_id_,"ked")  
+Dev SOFI:set(ANUBIS.." SOFI:Lock:Bots"..msg.chat_id_,"ked")  
 end
 if LockText[2] == "التكرار" or LockText[2] == "التكرار بالحذف" then 
-Dev Ahme:hset(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Spam:User","del")  
+Dev SOFI:hset(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Spam:User","del")  
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل التكرار بالحذف")  
 end
 if LockText[2] == "التكرار بالطرد" then 
-Dev Ahme:hset(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Spam:User","kick")  
+Dev SOFI:hset(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Spam:User","kick")  
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل التكرار بالطرد")  
 end
 if LockText[2] == "التكرار بالتقيد" or LockText[2] == "التكرار بالتقييد" then 
-Dev Ahme:hset(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Spam:User","keed")  
+Dev SOFI:hset(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Spam:User","keed")  
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل التكرار بالتقيد")  
 end
 if LockText[2] == "التكرار بالكتم" then 
-Dev Ahme:hset(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Spam:User","mute")  
+Dev SOFI:hset(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Spam:User","mute")  
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل التكرار بالكتم")  
 end
 if BasicConstructor(msg) then
 if LockText[2] == "التثبيت" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Pin'..msg.chat_id_) then
-tdcli_function ({ ID = "GetChannelFull",  channel_id_ = msg.chat_id_:gsub("-100","") }, function(arg,data)  Dev Ahme:set(ANUBIS.." Ahme:PinnedMsg"..msg.chat_id_,data.pinned_message_id_)  end,nil)
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Pin'..msg.chat_id_) then
+tdcli_function ({ ID = "GetChannelFull",  channel_id_ = msg.chat_id_:gsub("-100","") }, function(arg,data)  Dev SOFI:set(ANUBIS.." SOFI:PinnedMsg"..msg.chat_id_,data.pinned_message_id_)  end,nil)
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل التثبيت")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Pin'..msg.chat_id_,true)
-Dev Ahme:sadd(ANUBIS.." Ahme:Lock:Pinpin",msg.chat_id_) 
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Pin'..msg.chat_id_,true)
+Dev SOFI:sadd(ANUBIS.." SOFI:Lock:Pinpin",msg.chat_id_) 
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙التثبيت بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙التثبيت بالفعل مقفل في المجموعه', 1, 'md')
 end end end
 end
 end
@@ -8698,67 +8698,67 @@ if Admin(msg) then
 if text and (text:match("^ضع تكرار (%d+)$") or text:match("^وضع تكرار (%d+)$")) then   
 local TextSpam = text:match("ضع تكرار (%d+)$") or text:match("وضع تكرار (%d+)$")
 if tonumber(TextSpam) < 2 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙قم بتحديد عدد اكبر من 2 للتكرار', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙قم بتحديد عدد اكبر من 2 للتكرار', 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم وضع عدد التكرار ↫ '..TextSpam, 1, 'md')
-Dev Ahme:hset(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Num:Spam" ,TextSpam) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم وضع عدد التكرار ↫ '..TextSpam, 1, 'md')
+Dev SOFI:hset(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Num:Spam" ,TextSpam) 
 end
 end
 if text and (text:match("^ضع زمن التكرار (%d+)$") or text:match("^وضع زمن التكرار (%d+)$")) then  
 local TextSpam = text:match("ضع زمن التكرار (%d+)$") or text:match("وضع زمن التكرار (%d+)$")
-Dev Ahme:hset(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Num:Spam:Time" ,TextSpam) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم وضع زمن التكرار ↫ '..TextSpam, 1, 'md')
+Dev SOFI:hset(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Num:Spam:Time" ,TextSpam) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم وضع زمن التكرار ↫ '..TextSpam, 1, 'md')
 end
 --     Source ANUBIS     --
 if Manager(msg) then
 if text and text == 'تفعيل الايدي بالصوره' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Id:Photo'..msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الايدي بالصوره بالتاكيد مفعل', 1, 'md')
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Id:Photo'..msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الايدي بالصوره بالتاكيد مفعل', 1, 'md')
 else
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل الايدي بـ الصوره")
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Id:Photo'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Id:Photo'..msg.chat_id_)
 end end
 if text and text == 'تعطيل الايدي بالصوره' and ChCheck(msg) then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Id:Photo'..msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الايدي بالصوره بالتاكيد معطل', 1, 'md')
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Id:Photo'..msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الايدي بالصوره بالتاكيد معطل', 1, 'md')
 else
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل الايدي بـ الصوره")
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Id:Photo'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Id:Photo'..msg.chat_id_,true)
 end end 
 
 if text and text == 'تفعيل الايدي' and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Id'..msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الايدي بالتاكيد مفعل ', 1, 'md')
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Id'..msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الايدي بالتاكيد مفعل ', 1, 'md')
 else
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل الايدي بنجاح")
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Id'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Id'..msg.chat_id_)
 end end 
 if text and text == 'تعطيل الايدي' and ChCheck(msg) then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Id'..msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الايدي بالتاكيد معطل ', 1, 'md')
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Id'..msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الايدي بالتاكيد معطل ', 1, 'md')
 else
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل الايدي بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Id'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Id'..msg.chat_id_,true)
 end end
 end
 --     Source ANUBIS     --
 if text == 'ضع رابط' or text == 'وضع رابط' or text == 'ضع الرابط' or text == 'وضع الرابط' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙ارسل رابط المجموعه او رابط قناة المجموعه', 1, 'md')
-Dev Ahme:setex(ANUBIS.." Ahme:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_,300,true) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙ارسل رابط المجموعه او رابط قناة المجموعه', 1, 'md')
+Dev SOFI:setex(ANUBIS.." SOFI:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_,300,true) 
 end
 if text == 'انشاء رابط' or text == 'انشاء الرابط' then
 local LinkGp = json:decode(https.request('https://api.telegram.org/bot'..TokenBot..'/exportChatInviteLink?chat_id='..msg.chat_id_))
-if not Dev Ahme:get(ANUBIS.." Ahme:Groups:Links"..msg.chat_id_)  then 
+if not Dev SOFI:get(ANUBIS.." SOFI:Groups:Links"..msg.chat_id_)  then 
 if LinkGp.ok == true then 
 LinkGroup = LinkGp.result
-Dev Ahme:set(ANUBIS.." Ahme:Groups:Links"..msg.chat_id_,LinkGroup) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم انشاء رابط جديد ارسل ↫ الرابط', 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:Groups:Links"..msg.chat_id_,LinkGroup) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم انشاء رابط جديد ارسل ↫ الرابط', 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙ليست لدي صلاحية دعوة المستخدمين عبر الرابط يرجى التحقق من الصلاحيات', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙ليست لدي صلاحية دعوة المستخدمين عبر الرابط يرجى التحقق من الصلاحيات', 1, 'md')
 end
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙ارسل رابط المجموعه او رابط قناة المجموعه', 1, 'md')
-Dev Ahme:setex(ANUBIS.." Ahme:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_,300,true) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙ارسل رابط المجموعه او رابط قناة المجموعه', 1, 'md')
+Dev SOFI:setex(ANUBIS.." SOFI:Set:Groups:Links"..msg.chat_id_..msg.sender_user_id_,300,true) 
 end
 end
 end
@@ -8766,106 +8766,106 @@ end
 if Admin(msg) then
 if text and text:match("^تفعيل الترحيب$") and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل الترحيب بنجاح")
-Dev Ahme:set(ANUBIS.." Ahme:Lock:Welcome"..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS.." SOFI:Lock:Welcome"..msg.chat_id_,true)
 end
 if text and text:match("^تعطيل الترحيب$") and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل الترحيب بنجاح")
-Dev Ahme:del(ANUBIS.." Ahme:Lock:Welcome"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Lock:Welcome"..msg.chat_id_)
 end
-if Dev Ahme:get(ANUBIS..' Ahme:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_) then 
+if Dev SOFI:get(ANUBIS..' SOFI:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_) then 
 if text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ كليشة الترحيب', 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ كليشة الترحيب', 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_)
 return false  
 end 
-Dev Ahme:del(ANUBIS..' Ahme:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS..' SOFI:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_)
 Welcomes = text:gsub('"',"") Welcomes = text:gsub("'","") Welcomes = text:gsub(",","") Welcomes = text:gsub("*","") Welcomes = text:gsub(";","") Welcomes = text:gsub("`","") Welcomes = text:gsub("{","") Welcomes = text:gsub("}","") 
-Dev Ahme:set(ANUBIS..' Ahme:Groups:Welcomes'..msg.chat_id_,Welcomes)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ كليشة الترحيب', 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:Groups:Welcomes'..msg.chat_id_,Welcomes)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ كليشة الترحيب', 1, 'md')
 return false   
 end
 if text and text:match("^ضع ترحيب$") and ChCheck(msg) or text and text:match("^وضع ترحيب$") and ChCheck(msg) or text and text:match("^اضف ترحيب$") and ChCheck(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي الترحيب الان\n⌯︙تستطيع اضافة مايلي ↫ ⤈\n⌯︙دالة عرض الاسم ↫ firstname\n⌯︙دالة عرض المعرف ↫ username', 1, 'md')
-Dev Ahme:set(ANUBIS..' Ahme:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_,true)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي الترحيب الان\n⌯︙تستطيع اضافة مايلي ↫ ⤈\n⌯︙دالة عرض الاسم ↫ firstname\n⌯︙دالة عرض المعرف ↫ username', 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:setwelcome'..msg.chat_id_..':'..msg.sender_user_id_,true)
 end
 if text and text:match("^حذف الترحيب$") and ChCheck(msg) or text and text:match("^حذف ترحيب$") and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف الترحيب")  
-Dev Ahme:del(ANUBIS..' Ahme:Groups:Welcomes'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Groups:Welcomes'..msg.chat_id_)
 end
 if text and text:match("^جلب الترحيب$") and ChCheck(msg) or text and text:match("^جلب ترحيب$") and ChCheck(msg) or text and text:match("^الترحيب$") and ChCheck(msg) then
-local Welcomes = Dev Ahme:get(ANUBIS..' Ahme:Groups:Welcomes'..msg.chat_id_)
+local Welcomes = Dev SOFI:get(ANUBIS..' SOFI:Groups:Welcomes'..msg.chat_id_)
 if Welcomes then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, Welcomes, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, Welcomes, 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لم يتم وضع الترحيب \n⌯︙ارسل ↫ ضع ترحيب للحفظ ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لم يتم وضع الترحيب \n⌯︙ارسل ↫ ضع ترحيب للحفظ ', 1, 'md')
 end
 end
 --     Source ANUBIS     --
-if Dev Ahme:get(ANUBIS..' Ahme:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_) then  
+if Dev SOFI:get(ANUBIS..' SOFI:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_) then  
 if text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء حفظ الوصف", 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء حفظ الوصف", 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_)
 return false  
 end 
-Dev Ahme:del(ANUBIS..' Ahme:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS..' SOFI:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_)
 https.request('https://api.telegram.org/bot'..TokenBot..'/setChatDescription?chat_id='..msg.chat_id_..'&description='..text) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم تغيير وصف المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم تغيير وصف المجموعه', 1, 'md')
 return false  
 end 
 if text and text:match("^ضع وصف$") and ChCheck(msg) or text and text:match("^وضع وصف$") and ChCheck(msg) then  
-Dev Ahme:set(ANUBIS..' Ahme:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_,true)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي الوصف الان', 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:SetDescription'..msg.chat_id_..':'..msg.sender_user_id_,true)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي الوصف الان', 1, 'md')
 end
 --     Source ANUBIS     --
 if text and text == "منع" and msg.reply_to_message_id_ == 0 and ChCheck(msg) then       
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل لي الكلمه الان", 1, 'md') 
-Dev Ahme:set(ANUBIS.." Ahme:SetFilters"..msg.sender_user_id_..msg.chat_id_,"add")  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل لي الكلمه الان", 1, 'md') 
+Dev SOFI:set(ANUBIS.." SOFI:SetFilters"..msg.sender_user_id_..msg.chat_id_,"add")  
 return false  
 end    
-if Dev Ahme:get(ANUBIS.." Ahme:SetFilters"..msg.sender_user_id_..msg.chat_id_) == "add" then
+if Dev SOFI:get(ANUBIS.." SOFI:SetFilters"..msg.sender_user_id_..msg.chat_id_) == "add" then
 if text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر المنع', 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر المنع', 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 return false  
 end   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم منع الكلمه ↫ "..text, 1, 'html')
-Dev Ahme:del(ANUBIS.." Ahme:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
-Dev Ahme:hset(ANUBIS..' Ahme:Filters:'..msg.chat_id_, text,'newword')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم منع الكلمه ↫ "..text, 1, 'html')
+Dev SOFI:del(ANUBIS.." SOFI:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
+Dev SOFI:hset(ANUBIS..' SOFI:Filters:'..msg.chat_id_, text,'newword')
 return false
 end
 if text and text == "الغاء منع" and msg.reply_to_message_id_ == 0 and ChCheck(msg) then       
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل لي الكلمه الان", 1, 'md') 
-Dev Ahme:set(ANUBIS.." Ahme:SetFilters"..msg.sender_user_id_..msg.chat_id_,"del")  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل لي الكلمه الان", 1, 'md') 
+Dev SOFI:set(ANUBIS.." SOFI:SetFilters"..msg.sender_user_id_..msg.chat_id_,"del")  
 return false  
 end    
-if Dev Ahme:get(ANUBIS.." Ahme:SetFilters"..msg.sender_user_id_..msg.chat_id_) == "del" then   
+if Dev SOFI:get(ANUBIS.." SOFI:SetFilters"..msg.sender_user_id_..msg.chat_id_) == "del" then   
 if text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر الغاء المنع', 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر الغاء المنع', 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 return false  
 end   
-if not Dev Ahme:hget(ANUBIS..' Ahme:Filters:'..msg.chat_id_, text) then  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙الكلمه ↫ "..text.." غير ممنوعه", 1, 'html')
-Dev Ahme:del(ANUBIS.." Ahme:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
+if not Dev SOFI:hget(ANUBIS..' SOFI:Filters:'..msg.chat_id_, text) then  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙الكلمه ↫ "..text.." غير ممنوعه", 1, 'html')
+Dev SOFI:del(ANUBIS.." SOFI:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 else
-Dev Ahme:hdel(ANUBIS..' Ahme:Filters:'..msg.chat_id_, text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙الكلمه ↫ "..text.." تم الغاء منعها", 1, 'html')
-Dev Ahme:del(ANUBIS.." Ahme:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
+Dev SOFI:hdel(ANUBIS..' SOFI:Filters:'..msg.chat_id_, text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙الكلمه ↫ "..text.." تم الغاء منعها", 1, 'html')
+Dev SOFI:del(ANUBIS.." SOFI:SetFilters"..msg.sender_user_id_..msg.chat_id_)  
 end
 return false
 end
 --     Source ANUBIS     --
 if SudoBot(msg) then
 if text and text == "الاحصائيات" and ChCheck(msg) or text and text == "↫  الاحصائيات ⌯" then
-local gps = Dev Ahme:scard(ANUBIS.." Ahme:Groups") local users = Dev Ahme:scard(ANUBIS.." Ahme:Users") 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙احصائيات البوت ↫ ⤈\n⌯︙عدد المشتركين ↫ ❨ '..users..' ❩\n⌯︙عدد المجموعات ↫ ❨ '..gps..' ❩', 1, 'md')
+local gps = Dev SOFI:scard(ANUBIS.." SOFI:Groups") local users = Dev SOFI:scard(ANUBIS.." SOFI:Users") 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙احصائيات البوت ↫ ⤈\n⌯︙عدد المشتركين ↫ ❨ '..users..' ❩\n⌯︙عدد المجموعات ↫ ❨ '..gps..' ❩', 1, 'md')
 end
 --     Source ANUBIS     --
 if text and text == 'المجموعات' and ChCheck(msg) or text and text == '↫ المجموعات ⌯' then
 if not SudoBot(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطورين فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطورين فقط ', 1, 'md')
 else
-local List = Dev Ahme:smembers(ANUBIS.." Ahme:Groups")
+local List = Dev SOFI:smembers(ANUBIS.." SOFI:Groups")
 local t = '⌯︙مجموعات البوت ↫ ⤈ \n'
 for k,v in pairs(List) do
 t = t..k.."~ : `"..v.."`\n" 
@@ -8873,23 +8873,23 @@ end
 if #List == 0 then
 t = '⌯︙لا يوجد مجموعات مفعله'
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,t, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,t, 1, 'md')
 end end
 if text and text == "المشتركين" and ChCheck(msg) or text and text == "↫ المشتركين ⌯" then
-local users = Dev Ahme:scard(ANUBIS.." Ahme:Users")
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عدد المشتركين ↫ ❨ '..users..' ❩', 1, 'md')
+local users = Dev SOFI:scard(ANUBIS.." SOFI:Users")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عدد المشتركين ↫ ❨ '..users..' ❩', 1, 'md')
 end
 if text and text == "المجموعات" and ChCheck(msg) or text and text == "↫ المجموعات ⌯" then
-local gps = Dev Ahme:scard(ANUBIS.." Ahme:Groups")
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عدد المجموعات ↫ ❨ '..gps..' ❩', 1, 'md')
+local gps = Dev SOFI:scard(ANUBIS.." SOFI:Groups")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عدد المجموعات ↫ ❨ '..gps..' ❩', 1, 'md')
 end
 end
 --     Source ANUBIS     --
 if text and text:match('^تنظيف (%d+)$') and ChCheck(msg) then  
-if not Dev Ahme:get(ANUBIS..'Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then  
+if not Dev SOFI:get(ANUBIS..'Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_) then  
 local Number = tonumber(text:match('^تنظيف (%d+)$')) 
 if Number > 1000 then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لاتستطيع تنظيف اكثر من 1000 رساله', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لاتستطيع تنظيف اكثر من 1000 رساله', 1, 'md')
 return false  
 end  
 local Message = msg.id_
@@ -8897,12 +8897,12 @@ for i=1,tonumber(Number) do
 DeleteMessage(msg.chat_id_,{[0]=Message})
 Message = Message - 1048576 
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم تنظيف *'..Number..'* من الرسائل', 1, 'md')
-Dev Ahme:setex(ANUBIS..'Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم تنظيف *'..Number..'* من الرسائل', 1, 'md')
+Dev SOFI:setex(ANUBIS..'Delete:Time'..msg.chat_id_..':'..msg.sender_user_id_,300,true)
 end 
 end
 if text == "تنظيف المشتركين" and SecondSudo(msg) and ChCheck(msg) or text == "↫ تنظيف المشتركين ⌯" and SecondSudo(msg) and ChCheck(msg) then 
-local pv = Dev Ahme:smembers(ANUBIS.." Ahme:Users")
+local pv = Dev SOFI:smembers(ANUBIS.." SOFI:Users")
 local sendok = 0
 for i = 1, #pv do
 tdcli_function({ID='GetChat',chat_id_ = pv[i]},function(arg,dataq)
@@ -8911,15 +8911,15 @@ chat_id_ = pv[i], action_ = {  ID = "SendMessageTypingAction", progress_ = 100}
 },function(arg,data) 
 if data.ID and data.ID == "Ok" then
 else
-Dev Ahme:srem(ANUBIS.." Ahme:Users",pv[i])
+Dev SOFI:srem(ANUBIS.." SOFI:Users",pv[i])
 sendok = sendok + 1
 end
 if #pv == i then 
 if sendok == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙*لا يوجد مشتركين وهميين*', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙*لا يوجد مشتركين وهميين*', 1, 'md')
 else
 local ok = #pv - sendok
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عدد المشتركين الان ↫ { '..#pv..' }\n⌯︙تم حذف ↫ { '..sendok..' } من المشتركين\n⌯︙العدد الحقيقي الان  ↫ ( '..ok..' ) \n', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عدد المشتركين الان ↫ { '..#pv..' }\n⌯︙تم حذف ↫ { '..sendok..' } من المشتركين\n⌯︙العدد الحقيقي الان  ↫ ( '..ok..' ) \n', 1, 'md')
 end
 end
 end,nil)
@@ -8929,31 +8929,31 @@ return false
 end
 --     Source ANUBIS     --
 if text == "تنظيف الكروبات" and SecondSudo(msg) and ChCheck(msg) or text == "تنظيف المجموعات" and SecondSudo(msg) and ChCheck(msg) or text == "↫ تنظيف المجموعات ⌯" and SecondSudo(msg) and ChCheck(msg) then 
-local group = Dev Ahme:smembers(ANUBIS.." Ahme:Groups")
+local group = Dev SOFI:smembers(ANUBIS.." SOFI:Groups")
 local w = 0
 local q = 0
 for i = 1, #group do
 tdcli_function({ID='GetChat',chat_id_ = group[i]},function(arg,data)
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusMember" then
-Dev Ahme:srem(ANUBIS.." Ahme:Groups",group[i]) 
+Dev SOFI:srem(ANUBIS.." SOFI:Groups",group[i]) 
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = group[i], user_id_ = ANUBIS, status_ = { ID = "ChatMemberStatusLeft" }, }, dl_cb, nil)
 w = w + 1
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusLeft" then
-Dev Ahme:srem(ANUBIS.." Ahme:Groups",group[i]) 
+Dev SOFI:srem(ANUBIS.." SOFI:Groups",group[i]) 
 q = q + 1
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusKicked" then
-Dev Ahme:srem(ANUBIS.." Ahme:Groups",group[i]) 
+Dev SOFI:srem(ANUBIS.." SOFI:Groups",group[i]) 
 q = q + 1
 end
 if data and data.code_ and data.code_ == 400 then
-Dev Ahme:srem(ANUBIS.." Ahme:Groups",group[i]) 
+Dev SOFI:srem(ANUBIS.." SOFI:Groups",group[i]) 
 w = w + 1
 end
 if #group == i then 
 if (w + q) == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙*لاتوجد مجموعات وهميه*', 1, 'md')   
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙*لاتوجد مجموعات وهميه*', 1, 'md')   
 else
 local ANUBISgp2 = (w + q)
 local ANUBISgp3 = #group - ANUBISgp2
@@ -8967,7 +8967,7 @@ ANUBISgp1 = ''
 else
 ANUBISgp1 = '\n⌯︙تم حذف ↫ { '..w..' } مجموعه بسبب تنزيل البوت الى عضو'
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,'⌯︙عدد الكروبات الان ↫ { '..#group..' }'..ANUBISgp1..ANUBISgp2..'\n⌯︙العدد الحقيقي الان  ↫ ( '..ANUBISgp3..' ) \n ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,'⌯︙عدد الكروبات الان ↫ { '..#group..' }'..ANUBISgp1..ANUBISgp2..'\n⌯︙العدد الحقيقي الان  ↫ ( '..ANUBISgp3..' ) \n ', 1, 'md')
 end end
 end,nil)
 end
@@ -8977,24 +8977,24 @@ end
 --     Source ANUBIS     --
 if text and (text == "تفعيل امسح" or text == "تفعيل المسح التلقائي" or text == "تفعيل الحذف التلقائي") and Constructor(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل امسح بنجاح \n⌯︙مع ميزة الحذف التلقائي للميديا\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ")
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Clean'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Clean'..msg.chat_id_,true)  
 end
 if text and (text == "تعطيل امسح" or text == "تعطيل المسح التلقائي" or text == "تعطيل الحذف التلقائي") and Constructor(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل امسح بنجاح \n⌯︙مع ميزة الحذف التلقائي للميديا\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ")
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Clean'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Clean'..msg.chat_id_) 
 end
 if text and (text:match("^تعين عدد المسح (%d+)$") or text:match("^تعيين عدد المسح (%d+)$") or text:match("^تعين عدد الحذف (%d+)$") or text:match("^تعيين عدد الحذف (%d+)$")) and Constructor(msg) then   
 local Num = text:match("تعين عدد المسح (%d+)$") or text:match("تعيين عدد المسح (%d+)$") or text:match("تعين عدد الحذف (%d+)$") or text:match("تعيين عدد الحذف (%d+)$")
 if tonumber(Num) < 20 or tonumber(Num) > 1000 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙قم بتحديد عدد اكبر من 20 واصغر من 1000 للحذف التلقائي', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙قم بتحديد عدد اكبر من 20 واصغر من 1000 للحذف التلقائي', 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم وضع ↫ *'..Num..'* من الميديا للحذف التلقائي', 1, 'md')
-Dev Ahme:set(ANUBIS..' Ahme:CleanNum'..msg.chat_id_,Num) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم وضع ↫ *'..Num..'* من الميديا للحذف التلقائي', 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:CleanNum'..msg.chat_id_,Num) 
 end end 
-if msg and Dev Ahme:get(ANUBIS..' Ahme:Lock:Clean'..msg.chat_id_) then
-if Dev Ahme:get(ANUBIS..' Ahme:CleanNum'..msg.chat_id_) then CleanNum = Dev Ahme:get(ANUBIS..' Ahme:CleanNum'..msg.chat_id_) else CleanNum = 200 end
-if Dev Ahme:scard(ANUBIS.." Ahme:cleaner"..msg.chat_id_) >= tonumber(CleanNum) then 
-local List = Dev Ahme:smembers(ANUBIS.." Ahme:cleaner"..msg.chat_id_)
+if msg and Dev SOFI:get(ANUBIS..' SOFI:Lock:Clean'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:CleanNum'..msg.chat_id_) then CleanNum = Dev SOFI:get(ANUBIS..' SOFI:CleanNum'..msg.chat_id_) else CleanNum = 200 end
+if Dev SOFI:scard(ANUBIS.." SOFI:cleaner"..msg.chat_id_) >= tonumber(CleanNum) then 
+local List = Dev SOFI:smembers(ANUBIS.." SOFI:cleaner"..msg.chat_id_)
 local Del = 0
 for k,v in pairs(List) do
 Del = (Del + 1)
@@ -9002,20 +9002,20 @@ local Message = v
 DeleteMessage(msg.chat_id_,{[0]=Message})
 end
 SendText(msg.chat_id_,"⌯︙تم حذف "..Del.." من الميديا تلقائيا",0,'md') 
-Dev Ahme:del(ANUBIS.." Ahme:cleaner"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:cleaner"..msg.chat_id_)
 end 
 end 
 if Cleaner(msg) then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Clean'..msg.chat_id_) then 
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Clean'..msg.chat_id_) then 
 if text == "الميديا" and ChCheck(msg) or text == "عدد الميديا" and ChCheck(msg) then 
-local M = Dev Ahme:scard(ANUBIS.." Ahme:cleaner"..msg.chat_id_)
+local M = Dev SOFI:scard(ANUBIS.." SOFI:cleaner"..msg.chat_id_)
 if M ~= 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙عدد الميديا ↫ "..M.."\n⌯︙الحذف التلقائي ↫ "..(Dev Ahme:get(ANUBIS..' Ahme:CleanNum'..msg.chat_id_) or 200), 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙عدد الميديا ↫ "..M.."\n⌯︙الحذف التلقائي ↫ "..(Dev SOFI:get(ANUBIS..' SOFI:CleanNum'..msg.chat_id_) or 200), 1, 'md') 
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لاتوجد ميديا هنا", 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لاتوجد ميديا هنا", 1, 'md') 
 end end
 if text == "امسح" and ChCheck(msg) or text == "احذف" and ChCheck(msg) or text == "تنظيف ميديا" and ChCheck(msg) or text == "تنظيف الميديا" and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS.." Ahme:cleaner"..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS.." SOFI:cleaner"..msg.chat_id_)
 local Del = 0
 for k,v in pairs(List) do
 Del = (Del + 1)
@@ -9023,34 +9023,34 @@ local Message = v
 DeleteMessage(msg.chat_id_,{[0]=Message})
 end
 if Del ~= 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف "..Del.." من الميديا", 1, 'md') 
-Dev Ahme:del(ANUBIS.." Ahme:cleaner"..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف "..Del.." من الميديا", 1, 'md') 
+Dev SOFI:del(ANUBIS.." SOFI:cleaner"..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لاتوجد ميديا هنا", 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لاتوجد ميديا هنا", 1, 'md') 
 end end 
 end
 end
 --     Source ANUBIS     --
 if Admin(msg) then
 if text == "تنظيف تعديل" or text == "تنظيف التعديل" and ChCheck(msg) then   
- Ahme_Del = {[0]= msg.id_}
+ SOFI_Del = {[0]= msg.id_}
 local Message = msg.id_
 for i=1,100 do
 Message = Message - 1048576
- Ahme_Del[i] = Message
+ SOFI_Del[i] = Message
 end
-tdcli_function({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ =  Ahme_Del},function(arg,data)
+tdcli_function({ID = "GetMessages",chat_id_ = msg.chat_id_,message_ids_ =  SOFI_Del},function(arg,data)
 new = 0
- Ahme_Del2 = {}
+ SOFI_Del2 = {}
 for i=0 ,data.total_count_ do
 if data.messages_[i] and (not data.messages_[i].edit_date_ or data.messages_[i].edit_date_ ~= 0) then
- Ahme_Del2[new] = data.messages_[i].id_
+ SOFI_Del2[new] = data.messages_[i].id_
 new = new + 1
 end
 end
-DeleteMessage(msg.chat_id_, Ahme_Del2)
+DeleteMessage(msg.chat_id_, SOFI_Del2)
 end,nil)  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم تنظيف 100 من الرسائل المعدله', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم تنظيف 100 من الرسائل المعدله', 1, 'md')
 end
 --     Source ANUBIS     --
 if ChatType == 'sp' or ChatType == 'gp'  then
@@ -9058,77 +9058,77 @@ if BasicConstructor(msg) then
 if text and text:match("^فتح (.*)$") then
 local UnLockText = {string.match(text, "^(فتح) (.*)$")}
 if UnLockText[2] == "التعديل" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح التعديل")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙التعديل بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙التعديل بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "التعديل الميديا" or UnLockText[2] == "تعديل الميديا" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح تعديل الميديا")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تعديل الميديا بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تعديل الميديا بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الفارسيه" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Farsi'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Farsi'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الفارسيه")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Farsi'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Farsi'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الفارسيه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الفارسيه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الفشار" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Fshar'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Fshar'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الفشار")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Fshar'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Fshar'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الفشار بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الفشار بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الطائفيه" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Taf'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Taf'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الطائفيه")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Taf'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Taf'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الطائفيه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الطائفيه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الكفر" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Kfr'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Kfr'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الكفر")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Kfr'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Kfr'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الكفر بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الكفر بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الفارسيه بالطرد" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:FarsiBan'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:FarsiBan'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الفارسيه بالطرد")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:FarsiBan'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:FarsiBan'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الفارسيه بالطرد بالفعل مفتوحه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الفارسيه بالطرد بالفعل مفتوحه', 1, 'md')
 end
 end
 if UnLockText[2] == "البوتات" or UnLockText[2] == "البوتات بالطرد" or UnLockText[2] == "البوتات بالتقييد" or UnLockText[2] == "البوتات بالتقيد" then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح البوتات")  
-Dev Ahme:del(ANUBIS.." Ahme:Lock:Bots"..msg.chat_id_)  
+Dev SOFI:del(ANUBIS.." SOFI:Lock:Bots"..msg.chat_id_)  
 end
 if UnLockText[2] == "التكرار" then 
-Dev Ahme:hdel(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Spam:User")  
+Dev SOFI:hdel(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Spam:User")  
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح التكرار")  
 end
 if BasicConstructor(msg) then
 if UnLockText[2] == "التثبيت" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Pin'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Pin'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح التثبيت")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Pin'..msg.chat_id_)
-Dev Ahme:srem(ANUBIS.." Ahme:Lock:Pinpin",msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Pin'..msg.chat_id_)
+Dev SOFI:srem(ANUBIS.." SOFI:Lock:Pinpin",msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙التثبيت بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙التثبيت بالفعل مفتوح في المجموعه', 1, 'md')
 end end end
 end
 end
@@ -9137,187 +9137,187 @@ if Admin(msg) then
 if text and text:match("^قفل (.*)$") then
 local LockText = {string.match(text, "^(قفل) (.*)$")}
 if LockText[2] == "الدردشه" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Text'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Text'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الدردشه")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Text'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Text'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الدردشه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الدردشه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الاونلاين" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Inline'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Inline'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الاونلاين")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Inline'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Inline'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الاونلاين بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الاونلاين بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الصور" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Photo'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Photo'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الصور")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Photo'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Photo'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الصور بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الصور بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الكلايش" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Spam'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Spam'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الكلايش")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Spam'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Spam'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الكلايش بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الكلايش بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الدخول" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Join'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Join'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الدخول")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Join'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Join'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الدخول بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الدخول بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الفيديو" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Videos'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Videos'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الفيديو")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Videos'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Videos'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الفيديو بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الفيديو بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "المتحركه" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Gifs'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Gifs'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل المتحركه")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Gifs'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Gifs'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المتحركه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المتحركه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الاغاني" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Music'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Music'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الاغاني")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Music'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Music'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الاغاني بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الاغاني بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الصوت" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Voice'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Voice'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الصوت")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Voice'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Voice'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الصوت بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الصوت بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الروابط" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الروابط")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الروابط بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الروابط بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "المواقع" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Location'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Location'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل المواقع")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Location'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Location'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المواقع بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المواقع بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "المعرف" or LockText[2] == "المعرفات" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل المعرفات")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المعرفات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المعرفات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الملفات" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Document'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Document'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الملفات")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Document'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Document'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الملفات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الملفات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الهاشتاك" or LockText[2] == "التاك" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الهاشتاك")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الهاشتاك بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الهاشتاك بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الجهات" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Contact'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Contact'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الجهات")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Contact'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Contact'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '️⌯︙الجهات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '️⌯︙الجهات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الشبكات" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الشبكات")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_,true) 
+Dev SOFI:set(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_,true) 
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الشبكات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الشبكات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "العربيه" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل العربيه")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العربيه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العربيه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الانكليزيه" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الانكليزيه")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:English'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:English'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الانكليزيه بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الانكليزيه بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الملصقات" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Stickers'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Stickers'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الملصقات")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Stickers'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Stickers'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الملصقات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الملصقات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الماركداون" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Markdown'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Markdown'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الماركداون")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Markdown'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Markdown'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الماركداون بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الماركداون بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الاشعارات" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:TagServr'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:TagServr'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل الاشعارات")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:TagServr'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:TagServr'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الاشعارات بالفعل مقفله في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الاشعارات بالفعل مقفله في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "التوجيه" then
-if not Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل التوجيه")  
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_,true)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙التوجيه بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙التوجيه بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 if LockText[2] == "الاباحي" then
-if not Dev Ahme:get(ANUBIS..' Ahme: Ahme:Lock:Xn'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI: SOFI:Lock:Xn'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفـل الاباحي")  
-Dev Ahme:set(ANUBIS..' Ahme: Ahme:Lock:Xn'..msg.chat_id_,"del")
+Dev SOFI:set(ANUBIS..' SOFI: SOFI:Lock:Xn'..msg.chat_id_,"del")
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الاباحي بالفعل مقفل في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الاباحي بالفعل مقفل في المجموعه', 1, 'md')
 end
 end
 end
@@ -9328,211 +9328,211 @@ if BasicConstructor(msg) then
 if text and text:match("^فتح (.*)$") then
 local UnLockText = {string.match(text, "^(فتح) (.*)$")}
 if UnLockText[2] == "الدردشه" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Text'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Text'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الدردشه")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Text'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Text'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الدردشه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الدردشه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الصور" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Photo'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Photo'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الصور")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Photo'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Photo'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الصور بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الصور بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الكلايش" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Spam'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Spam'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الكلايش")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Spam'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Spam'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الكلايش بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الكلايش بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الدخول" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Join'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Join'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الدخول")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Join'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Join'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الدخول بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الدخول بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الفيديو" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Videos'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Videos'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الفيديو")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Videos'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Videos'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الفيديو بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الفيديو بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الملفات" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Document'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Document'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الملفات")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Document'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Document'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الملفات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الملفات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الاونلاين" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Inline'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Inline'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الاونلاين")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Inline'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Inline'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الاونلاين بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الاونلاين بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الماركداون" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Markdown'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Markdown'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الماركداون")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Markdown'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Markdown'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الماركداون بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الماركداون بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "المتحركه" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Gifs'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Gifs'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح المتحركه")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Gifs'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Gifs'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المتحركه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المتحركه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الاغاني" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Music'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Music'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الاغاني")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Music'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Music'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الاغاني بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الاغاني بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الصوت" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Voice'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Voice'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الصوت")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Voice'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Voice'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الصوت بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الصوت بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الروابط" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الروابط")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الروابط بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الروابط بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "المواقع" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Location'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Location'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح المواقع")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Location'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Location'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المواقع بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المواقع بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "المعرف" or UnLockText[2] == "المعرفات" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح المعرفات")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المعرفات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المعرفات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الهاشتاك" or UnLockText[2] == "التاك" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الهاشتاك")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الهاشتاك بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الهاشتاك بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الجهات" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Contact'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Contact'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الجهات")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Contact'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Contact'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الجهات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الجهات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الشبكات" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الشبكات")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الشبكات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الشبكات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "العربيه" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح العربيه")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙العربيه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙العربيه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الانكليزيه" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الانكليزيه")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:English'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:English'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الانكليزيه بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الانكليزيه بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الاشعارات" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:TagServr'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:TagServr'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الاشعارات")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:TagServr'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:TagServr'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الاشعارات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الاشعارات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الملصقات" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Stickers'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Stickers'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الملصقات")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Stickers'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Stickers'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الملصقات بالفعل مفتوحه في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الملصقات بالفعل مفتوحه في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "التوجيه" then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح التوجيه")  
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙التوجيه بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙التوجيه بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 if UnLockText[2] == "الاباحي" then
-if Dev Ahme:get(ANUBIS..' Ahme: Ahme:Lock:Xn'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI: SOFI:Lock:Xn'..msg.chat_id_) then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح الاباحي")  
-Dev Ahme:del(ANUBIS..' Ahme: Ahme:Lock:Xn'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI: SOFI:Lock:Xn'..msg.chat_id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙الاباحي بالفعل مفتوح في المجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙الاباحي بالفعل مفتوح في المجموعه', 1, 'md')
 end
 end
 end
 --     Source ANUBIS     --
 if text and text:match("^قفل التفليش$") or text and text:match("^تفعيل الحمايه القصوى$") then
 if not Constructor(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمنشئين فقط', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمنشئين فقط', 1, 'md')
 else
-Dev Ahme:set(ANUBIS.." Ahme:Lock:Bots"..msg.chat_id_,"del") Dev Ahme:hset(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Spam:User","keed") 
-LockList ={' Ahme:Lock:Links',' Ahme:Lock:Contact',' Ahme:Lock:Forwards',' Ahme:Lock:Videos',' Ahme:Lock:Gifs',' Ahme:Lock:EditMsgs',' Ahme:Lock:Stickers',' Ahme:Lock:Farsi',' Ahme:Lock:Spam',' Ahme:Lock:WebLinks',' Ahme:Lock:Photo'}
+Dev SOFI:set(ANUBIS.." SOFI:Lock:Bots"..msg.chat_id_,"del") Dev SOFI:hset(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Spam:User","keed") 
+LockList ={' SOFI:Lock:Links',' SOFI:Lock:Contact',' SOFI:Lock:Forwards',' SOFI:Lock:Videos',' SOFI:Lock:Gifs',' SOFI:Lock:EditMsgs',' SOFI:Lock:Stickers',' SOFI:Lock:Farsi',' SOFI:Lock:Spam',' SOFI:Lock:WebLinks',' SOFI:Lock:Photo'}
 for i,Lock in pairs(LockList) do
-Dev Ahme:set(ANUBIS..Lock..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..Lock..msg.chat_id_,true)
 end
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل التفليش")  
 end
 end
 if text and text:match("^فتح التفليش$") then
 if not Constructor(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمنشئين فقط', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمنشئين فقط', 1, 'md')
 else
-Dev Ahme:hdel(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Spam:User") 
-UnLockList ={' Ahme:Lock:Links',' Ahme:Lock:Contact',' Ahme:Lock:Forwards',' Ahme:Lock:Videos',' Ahme:Lock:Gifs',' Ahme:Lock:EditMsgs',' Ahme:Lock:Stickers',' Ahme:Lock:Farsi',' Ahme:Lock:Spam',' Ahme:Lock:WebLinks',' Ahme:Lock:Photo'}
+Dev SOFI:hdel(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Spam:User") 
+UnLockList ={' SOFI:Lock:Links',' SOFI:Lock:Contact',' SOFI:Lock:Forwards',' SOFI:Lock:Videos',' SOFI:Lock:Gifs',' SOFI:Lock:EditMsgs',' SOFI:Lock:Stickers',' SOFI:Lock:Farsi',' SOFI:Lock:Spam',' SOFI:Lock:WebLinks',' SOFI:Lock:Photo'}
 for i,UnLock in pairs(UnLockList) do
-Dev Ahme:del(ANUBIS..UnLock..msg.chat_id_)
+Dev SOFI:del(ANUBIS..UnLock..msg.chat_id_)
 end
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح التفليش")  
 end
@@ -9540,25 +9540,25 @@ end
 --     Source ANUBIS     --
 if text and text:match("^قفل الكل$") then
 if not BasicConstructor(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'للمنشئين الاساسين فقط', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'للمنشئين الاساسين فقط', 1, 'md')
 else
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Fshar'..msg.chat_id_) Dev Ahme:del(ANUBIS..' Ahme:Lock:Taf'..msg.chat_id_) Dev Ahme:del(ANUBIS..' Ahme:Lock:Kfr'..msg.chat_id_) 
-Dev Ahme:set(ANUBIS.." Ahme:Lock:Bots"..msg.chat_id_,"del") Dev Ahme:hset(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Spam:User","keed") 
-LockList ={' Ahme:Lock:EditMsgs',' Ahme:Lock:Farsi',' Ahme:Lock:TagServr',' Ahme:Lock:Inline',' Ahme:Lock:Photo',' Ahme:Lock:Spam',' Ahme:Lock:Videos',' Ahme:Lock:Gifs',' Ahme:Lock:Music',' Ahme:Lock:Voice',' Ahme:Lock:Links',' Ahme:Lock:Location',' Ahme:Lock:Tags',' Ahme:Lock:Stickers',' Ahme:Lock:Markdown',' Ahme:Lock:Forwards',' Ahme:Lock:Document',' Ahme:Lock:Contact',' Ahme:Lock:Hashtak',' Ahme:Lock:WebLinks'}
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Fshar'..msg.chat_id_) Dev SOFI:del(ANUBIS..' SOFI:Lock:Taf'..msg.chat_id_) Dev SOFI:del(ANUBIS..' SOFI:Lock:Kfr'..msg.chat_id_) 
+Dev SOFI:set(ANUBIS.." SOFI:Lock:Bots"..msg.chat_id_,"del") Dev SOFI:hset(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Spam:User","keed") 
+LockList ={' SOFI:Lock:EditMsgs',' SOFI:Lock:Farsi',' SOFI:Lock:TagServr',' SOFI:Lock:Inline',' SOFI:Lock:Photo',' SOFI:Lock:Spam',' SOFI:Lock:Videos',' SOFI:Lock:Gifs',' SOFI:Lock:Music',' SOFI:Lock:Voice',' SOFI:Lock:Links',' SOFI:Lock:Location',' SOFI:Lock:Tags',' SOFI:Lock:Stickers',' SOFI:Lock:Markdown',' SOFI:Lock:Forwards',' SOFI:Lock:Document',' SOFI:Lock:Contact',' SOFI:Lock:Hashtak',' SOFI:Lock:WebLinks'}
 for i,Lock in pairs(LockList) do
-Dev Ahme:set(ANUBIS..Lock..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..Lock..msg.chat_id_,true)
 end
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم قفل جميع الاوامر")  
 end
 end
 if text and text:match("^فتح الكل$") then
 if not BasicConstructor(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, 'للمنشئين الاساسين فقط', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, 'للمنشئين الاساسين فقط', 1, 'md')
 else
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Fshar'..msg.chat_id_,true) Dev Ahme:set(ANUBIS..' Ahme:Lock:Taf'..msg.chat_id_,true) Dev Ahme:set(ANUBIS..' Ahme:Lock:Kfr'..msg.chat_id_,true) Dev Ahme:hdel(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_ ,"Spam:User") 
-UnLockList ={' Ahme:Lock:EditMsgs',' Ahme:Lock:Text',' Ahme:Lock:Arabic',' Ahme:Lock:English',' Ahme:Lock:Join',' Ahme:Lock:Bots',' Ahme:Lock:Farsi',' Ahme:Lock:FarsiBan',' Ahme:Lock:TagServr',' Ahme:Lock:Inline',' Ahme:Lock:Photo',' Ahme:Lock:Spam',' Ahme:Lock:Videos',' Ahme:Lock:Gifs',' Ahme:Lock:Music',' Ahme:Lock:Voice',' Ahme:Lock:Links',' Ahme:Lock:Location',' Ahme:Lock:Tags',' Ahme:Lock:Stickers',' Ahme:Lock:Markdown',' Ahme:Lock:Forwards',' Ahme:Lock:Document',' Ahme:Lock:Contact',' Ahme:Lock:Hashtak',' Ahme:Lock:WebLinks'}
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Fshar'..msg.chat_id_,true) Dev SOFI:set(ANUBIS..' SOFI:Lock:Taf'..msg.chat_id_,true) Dev SOFI:set(ANUBIS..' SOFI:Lock:Kfr'..msg.chat_id_,true) Dev SOFI:hdel(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_ ,"Spam:User") 
+UnLockList ={' SOFI:Lock:EditMsgs',' SOFI:Lock:Text',' SOFI:Lock:Arabic',' SOFI:Lock:English',' SOFI:Lock:Join',' SOFI:Lock:Bots',' SOFI:Lock:Farsi',' SOFI:Lock:FarsiBan',' SOFI:Lock:TagServr',' SOFI:Lock:Inline',' SOFI:Lock:Photo',' SOFI:Lock:Spam',' SOFI:Lock:Videos',' SOFI:Lock:Gifs',' SOFI:Lock:Music',' SOFI:Lock:Voice',' SOFI:Lock:Links',' SOFI:Lock:Location',' SOFI:Lock:Tags',' SOFI:Lock:Stickers',' SOFI:Lock:Markdown',' SOFI:Lock:Forwards',' SOFI:Lock:Document',' SOFI:Lock:Contact',' SOFI:Lock:Hashtak',' SOFI:Lock:WebLinks'}
 for i,UnLock in pairs(UnLockList) do
-Dev Ahme:del(ANUBIS..UnLock..msg.chat_id_)
+Dev SOFI:del(ANUBIS..UnLock..msg.chat_id_)
 end
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم فتح جميع الاوامر")  
 end
@@ -9568,10 +9568,10 @@ if BasicConstructor(msg) then
 if text and (text:match("^ضع سبام (%d+)$") or text:match("^وضع سبام (%d+)$")) then
 local SetSpam = text:match("ضع سبام (%d+)$") or text:match("وضع سبام (%d+)$")
 if tonumber(SetSpam) < 40 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙اختر عدد اكبر من 40 حرف ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙اختر عدد اكبر من 40 حرف ', 1, 'md')
 else
-Dev Ahme:set(ANUBIS..' Ahme:Spam:Text'..msg.chat_id_,SetSpam)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم وضع عدد السبام ↫'..SetSpam, 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:Spam:Text'..msg.chat_id_,SetSpam)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم وضع عدد السبام ↫'..SetSpam, 1, 'md')
 end
 end
 end
@@ -9587,58 +9587,58 @@ if GetInfo.result.can_invite_users == true then INV = '✔️' else INV = '✖�
 if GetInfo.result.can_pin_messages == true then PIN = '✔️' else PIN = '✖️' end
 if GetInfo.result.can_restrict_members == true then BAN = '✔️' else BAN = '✖️' end
 if GetInfo.result.can_promote_members == true then VIP = '✔️' else VIP = '✖️' end 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙صلاحيات البوت هي ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙حذف الرسائل ↫ '..DEL..'\n⌯︙دعوة المستخدمين ↫ '..INV..'\n⌯︙حظر المستخدمين ↫ '..BAN..'\n⌯︙تثبيت الرسائل ↫ '..PIN..'\n⌯︙تغيير المعلومات ↫ '..EDT..'\n⌯︙اضافة مشرفين ↫ '..VIP..'\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙صلاحيات البوت هي ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙حذف الرسائل ↫ '..DEL..'\n⌯︙دعوة المستخدمين ↫ '..INV..'\n⌯︙حظر المستخدمين ↫ '..BAN..'\n⌯︙تثبيت الرسائل ↫ '..PIN..'\n⌯︙تغيير المعلومات ↫ '..EDT..'\n⌯︙اضافة مشرفين ↫ '..VIP..'\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ', 1, 'md')
 end end
 if text and text:match("^تغير رد المطور (.*)$") then
 local Text = text:match("^تغير رد المطور (.*)$") 
-Dev Ahme:set(ANUBIS.." Ahme:SudoBot:Rd"..msg.chat_id_,Text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المطور الى ↫ "..Text, 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:SudoBot:Rd"..msg.chat_id_,Text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المطور الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد منشئ الاساسي (.*)$") then
 local Text = text:match("^تغير رد منشئ الاساسي (.*)$") 
-Dev Ahme:set(ANUBIS.." Ahme:BasicConstructor:Rd"..msg.chat_id_,Text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المنشئ الاساسي الى ↫ "..Text, 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:BasicConstructor:Rd"..msg.chat_id_,Text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المنشئ الاساسي الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المنشئ (.*)$") then
 local Text = text:match("^تغير رد المنشئ (.*)$") 
-Dev Ahme:set(ANUBIS.." Ahme:Constructor:Rd"..msg.chat_id_,Text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المنشئ الى ↫ "..Text, 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:Constructor:Rd"..msg.chat_id_,Text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المنشئ الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المدير (.*)$") then
 local Text = text:match("^تغير رد المدير (.*)$") 
-Dev Ahme:set(ANUBIS.." Ahme:Managers:Rd"..msg.chat_id_,Text) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المدير الى ↫ "..Text, 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:Managers:Rd"..msg.chat_id_,Text) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المدير الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد الادمن (.*)$") then
 local Text = text:match("^تغير رد الادمن (.*)$") 
-Dev Ahme:set(ANUBIS.." Ahme:Admins:Rd"..msg.chat_id_,Text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد الادمن الى ↫ "..Text, 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:Admins:Rd"..msg.chat_id_,Text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد الادمن الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المميز (.*)$") then
 local Text = text:match("^تغير رد المميز (.*)$") 
-Dev Ahme:set(ANUBIS.." Ahme:VipMem:Rd"..msg.chat_id_,Text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المميز الى ↫ "..Text, 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:VipMem:Rd"..msg.chat_id_,Text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المميز الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد المنظف (.*)$") then
 local Text = text:match("^تغير رد المنظف (.*)$") 
-Dev Ahme:set(ANUBIS.." Ahme:Cleaner:Rd"..msg.chat_id_,Text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المنظف الى ↫ "..Text, 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:Cleaner:Rd"..msg.chat_id_,Text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد المنظف الى ↫ "..Text, 1, 'md')
 end
 if text and text:match("^تغير رد العضو (.*)$") then
 local Text = text:match("^تغير رد العضو (.*)$") 
-Dev Ahme:set(ANUBIS.." Ahme:mem:Rd"..msg.chat_id_,Text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد العضو الى ↫ "..Text, 1, 'md')
+Dev SOFI:set(ANUBIS.." SOFI:mem:Rd"..msg.chat_id_,Text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم تغير رد العضو الى ↫ "..Text, 1, 'md')
 end
 if text == "حذف ردود الرتب" or text == "مسح ردود الرتب" then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف جميع ردود الرتب", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:mem:Rd"..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:Cleaner:Rd"..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:VipMem:Rd"..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:Admins:Rd"..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:Managers:Rd"..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:Constructor:Rd"..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:BasicConstructor:Rd"..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:SudoBot:Rd"..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف جميع ردود الرتب", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:mem:Rd"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Cleaner:Rd"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:VipMem:Rd"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Admins:Rd"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Managers:Rd"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Constructor:Rd"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:BasicConstructor:Rd"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:SudoBot:Rd"..msg.chat_id_)
 end
 end
 --     Source ANUBIS     --
@@ -9660,12 +9660,12 @@ ab = ' ✯'
 end
 text = text.."~ [@"..data.username_..']'..ab.."\n"
 if #admins == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتوجد بوتات هنا*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتوجد بوتات هنا*", 1, 'md')
 return false end
 if #admins == i then 
 local a = 'ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙*عدد البوتات هنا* ↫ '..n..'\n'
 local f = '⌯︙*عدد البوتات المرفوعه* ↫ '..t..'\n⌯︙*ملاحضه علامة الـ*✯ *تعني ان البوت ادمن في هذه المجموعه*'
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text..a..f, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text..a..f, 1, 'md')
 end
 end,nil)
 end
@@ -9686,9 +9686,9 @@ end
 c = c + 1
 end     
 if (c - x) == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*لاتوجد بوتات هنا*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*لاتوجد بوتات هنا*", 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙*عدد البوتات هنا* ↫ "..c.."\n⌯︙*عدد البوتات المرفوعه* ↫ "..x.."\n⌯︙*تم طرد* ↫ "..(c - x).." *من البوتات*", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙*عدد البوتات هنا* ↫ "..c.."\n⌯︙*عدد البوتات المرفوعه* ↫ "..x.."\n⌯︙*تم طرد* ↫ "..(c - x).." *من البوتات*", 1, 'md')
 end 
 end,nil)  
 end 
@@ -9701,122 +9701,122 @@ local txts = {string.match(text, "^(حذف) (.*)$")}
 local txtss = {string.match(text, "^(مسح) (.*)$")}
 if Sudo(msg) then 
 if txts[2] == 'الثانويين' or txtss[2] == 'الثانويين' or txts[2] == 'المطورين الثانويين' or txtss[2] == 'المطورين الثانويين' then
-Dev Ahme:del(ANUBIS..' Ahme:SecondSudo:')
+Dev SOFI:del(ANUBIS..' SOFI:SecondSudo:')
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المطورين الثانويين")  
 end
 end
 if SecondSudo(msg) then 
 if txts[2] == 'المطورين' or txtss[2] == 'المطورين' then
-Dev Ahme:del(ANUBIS..' Ahme:SudoBot:')
+Dev SOFI:del(ANUBIS..' SOFI:SudoBot:')
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المطورين")  
 end
 if txts[2] == 'قائمه العام' or txtss[2] == 'قائمه العام' then
-Dev Ahme:del(ANUBIS..' Ahme:BanAll:')
-Dev Ahme:del(ANUBIS..' Ahme:MuteAll:')
+Dev SOFI:del(ANUBIS..' SOFI:BanAll:')
+Dev SOFI:del(ANUBIS..' SOFI:MuteAll:')
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف قائمة العام")  
 end
 end
 if SudoBot(msg) then
 if txts[2] == 'الادمنيه العامين' or txts[2] == 'الادمنيه العام' or txtss[2] == 'الادمنيه العامين' or txtss[2] == 'الادمنيه العام' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف الادمنيه العامين")  
-Dev Ahme:del(ANUBIS..' Ahme:AdminAll:')
+Dev SOFI:del(ANUBIS..' SOFI:AdminAll:')
 end
 if txts[2] == 'المميزين عام' or txts[2] == 'المميزين العامين' or txtss[2] == 'المميزين عام' or txtss[2] == 'المميزين العامين' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المميزين عام")  
-Dev Ahme:del(ANUBIS..' Ahme:VipAll:')
+Dev SOFI:del(ANUBIS..' SOFI:VipAll:')
 end
 if txts[2] == 'المدراء العامين' or txts[2] == 'المدراء العام' or txtss[2] == 'المدراء العامين' or txtss[2] == 'المدراء العام' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المدراء العامين")  
-Dev Ahme:del(ANUBIS..' Ahme:ManagerAll:')
+Dev SOFI:del(ANUBIS..' SOFI:ManagerAll:')
 end
 if txts[2] == 'المالكين' or txtss[2] == 'المالكين' then
-Dev Ahme:del(ANUBIS..' Ahme: AhmeConstructor:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI: SOFIConstructor:'..msg.chat_id_)
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,dp) 
 local admins = dp.members_
 for i=0 , #admins do
 if dp.members_[i].status_.ID == "ChatMemberStatusCreator" then
-Dev Ahme:sadd(ANUBIS.." Ahme: AhmeConstructor:"..msg.chat_id_,admins[i].user_id_)
+Dev SOFI:sadd(ANUBIS.." SOFI: SOFIConstructor:"..msg.chat_id_,admins[i].user_id_)
 end 
 end  
 end,nil)
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المالكين\n✓")  
 end
 end
-if  AhmeConstructor(msg) then
+if  SOFIConstructor(msg) then
 if txts[2] == 'المنشئين الاساسيين' or txtss[2] == 'المنشئين الاساسيين' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المنشئين الاساسيين\n✓")  
-Dev Ahme:del(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_)
 end
 end
 if BasicConstructor(msg) then
 if txts[2] == 'المنشئين' or txtss[2] == 'المنشئين' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المنشئين\n✓")  
-Dev Ahme:del(ANUBIS..' Ahme:Constructor:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Constructor:'..msg.chat_id_)
 end end
 if Constructor(msg) then
 if txts[2] == 'المدراء' or txtss[2] == 'المدراء' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المدراء\n✓")  
-Dev Ahme:del(ANUBIS..' Ahme:Managers:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Managers:'..msg.chat_id_)
 end 
 if txts[2] == 'المنظفين' or txtss[2] == 'المنظفين' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المنظفين\n✓")  
-Dev Ahme:del(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_)
 end end
 if Manager(msg) then
 if txts[2] == 'الادمنيه' or txtss[2] == 'الادمنيه' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف الادمنيه\n✓")  
-Dev Ahme:del(ANUBIS..' Ahme:Admins:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Admins:'..msg.chat_id_)
 end
 end
 if txts[2] == 'قوانين' or txtss[2] == 'قوانين' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف القوانين\n✓")  
-Dev Ahme:del(ANUBIS..' Ahme:rules'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:rules'..msg.chat_id_)
 end
 if txts[2] == 'المطايه' or txtss[2] == 'المطايه' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المطايه\n✓")  
-Dev Ahme:del(ANUBIS..'User:Donky:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Donky:'..msg.chat_id_)
 end
 if txts[2] == 'الرابط' or txtss[2] == 'الرابط' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف رابط المجموعه\n✓")  
-Dev Ahme:del(ANUBIS.." Ahme:Groups:Links"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Groups:Links"..msg.chat_id_)
 end
 if txts[2] == 'المميزين' or txtss[2] == 'المميزين' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المميزين\n✓")  
-Dev Ahme:del(ANUBIS..' Ahme:VipMem:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:VipMem:'..msg.chat_id_)
 end
 if txts[2] == 'المكتومين' or txtss[2] == 'المكتومين' then
-Dev Ahme:del(ANUBIS..' Ahme:Muted:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Muted:'..msg.chat_id_)
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المكتومين\n✓")  
 end
 if txts[2] == 'المقيدين' or txtss[2] == 'المقيدين' then     
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_)
 for k,v in pairs(List) do   
 HTTPS.request("https://api.telegram.org/bot"..TokenBot.."/restrictChatMember?chat_id="..msg.chat_id_.."&user_id="..v.."&can_send_messages=True&can_send_media_messages=True&can_send_other_messages=True&can_add_web_page_previews=True") 
-Dev Ahme:srem(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_, v)
+Dev SOFI:srem(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_, v)
 end 
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المقيدين\n✓")  
 end
 if txts[2] == 'قائمه المنع' or txtss[2] == 'قائمه المنع' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف قائمة المنع\n✓")  
-Dev Ahme:del(ANUBIS..' Ahme:Filters:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Filters:'..msg.chat_id_)
 end
 if txts[2] == 'قوائم المنع' or txtss[2] == 'قوائم المنع' then
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف قوائم المنع\n✓")  
-Dev Ahme:del(ANUBIS..' Ahme:Filters:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:FilterAnimation"..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:FilterPhoto"..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:FilterSteckr"..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Filters:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:FilterAnimation"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:FilterPhoto"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:FilterSteckr"..msg.chat_id_)
 end
 if txts[2] == 'قائمه منع المتحركات' or txtss[2] == 'قائمه منع المتحركات' then     
-Dev Ahme:del(ANUBIS.." Ahme:FilterAnimation"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:FilterAnimation"..msg.chat_id_)
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف قائمة منع المتحركات\n✓")  
 end
 if txts[2] == 'قائمه منع الصور' or txtss[2] == 'قائمه منع الصور' then     
-Dev Ahme:del(ANUBIS.." Ahme:FilterPhoto"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:FilterPhoto"..msg.chat_id_)
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف قائمة منع الصور\n✓")  
 end
 if txts[2] == 'قائمه منع الملصقات' or txtss[2] == 'قائمه منع الملصقات' then     
-Dev Ahme:del(ANUBIS.." Ahme:FilterSteckr"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:FilterSteckr"..msg.chat_id_)
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف قائمة منع الملصقات\n✓")  
 end
 end
@@ -9824,24 +9824,24 @@ end
 --     Source ANUBIS     --
 if text and text:match("^حذف القوائم$") and ChCheck(msg) or text and text:match("^مسح القوائم$") and ChCheck(msg) then
 if not BasicConstructor(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمنشئ الاساسي فقط', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمنشئ الاساسي فقط', 1, 'md')
 else
-local Ban = Dev Ahme:smembers(ANUBIS..' Ahme:Ban:'..msg.chat_id_)
-local Muted = Dev Ahme:smembers(ANUBIS..' Ahme:Muted:'..msg.chat_id_)
-local Tkeed = Dev Ahme:smembers(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_)
-local Filters = Dev Ahme:smembers(ANUBIS..' Ahme:Filters:'..msg.chat_id_)
-local donky = Dev Ahme:smembers(ANUBIS..'User:Donky:'..msg.chat_id_)
-local HaTa = Dev Ahme:smembers(ANUBIS..'User:HaTa:'..msg.chat_id_)
-local hlo = Dev Ahme:smembers(ANUBIS..'User:hlo:'..msg.chat_id_)
-local Sakl = Dev Ahme:smembers(ANUBIS..'User:Sakl:'..msg.chat_id_)
-local Dog = Dev Ahme:smembers(ANUBIS..'User:Dog:'..msg.chat_id_)
-local Monkey = Dev Ahme:smembers(ANUBIS..'User:Monkey:'..msg.chat_id_)
-local Bakra = Dev Ahme:smembers(ANUBIS..'User:Bakra:'..msg.chat_id_)
-local Tale = Dev Ahme:smembers(ANUBIS..'User:Tale:'..msg.chat_id_)
-local Zahf = Dev Ahme:smembers(ANUBIS..'User:Zahf:'..msg.chat_id_)
-local Jred = Dev Ahme:smembers(ANUBIS..'User:Jred:'..msg.chat_id_)
-local Bro = Dev Ahme:smembers(ANUBIS..'User:Bro:'..msg.chat_id_)
-local Girl = Dev Ahme:smembers(ANUBIS..'User:Bro:Girl'..msg.chat_id_)
+local Ban = Dev SOFI:smembers(ANUBIS..' SOFI:Ban:'..msg.chat_id_)
+local Muted = Dev SOFI:smembers(ANUBIS..' SOFI:Muted:'..msg.chat_id_)
+local Tkeed = Dev SOFI:smembers(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_)
+local Filters = Dev SOFI:smembers(ANUBIS..' SOFI:Filters:'..msg.chat_id_)
+local donky = Dev SOFI:smembers(ANUBIS..'User:Donky:'..msg.chat_id_)
+local HaTa = Dev SOFI:smembers(ANUBIS..'User:HaTa:'..msg.chat_id_)
+local hlo = Dev SOFI:smembers(ANUBIS..'User:hlo:'..msg.chat_id_)
+local Sakl = Dev SOFI:smembers(ANUBIS..'User:Sakl:'..msg.chat_id_)
+local Dog = Dev SOFI:smembers(ANUBIS..'User:Dog:'..msg.chat_id_)
+local Monkey = Dev SOFI:smembers(ANUBIS..'User:Monkey:'..msg.chat_id_)
+local Bakra = Dev SOFI:smembers(ANUBIS..'User:Bakra:'..msg.chat_id_)
+local Tale = Dev SOFI:smembers(ANUBIS..'User:Tale:'..msg.chat_id_)
+local Zahf = Dev SOFI:smembers(ANUBIS..'User:Zahf:'..msg.chat_id_)
+local Jred = Dev SOFI:smembers(ANUBIS..'User:Jred:'..msg.chat_id_)
+local Bro = Dev SOFI:smembers(ANUBIS..'User:Bro:'..msg.chat_id_)
+local Girl = Dev SOFI:smembers(ANUBIS..'User:Bro:Girl'..msg.chat_id_)
 if #Ban ~= 0 then Bant = 'المحظورين • ' else Bant = '' end
 if #Muted ~= 0 then Mutedt = 'المكتومين • ' else Mutedt = '' end
 if #Tkeed ~= 0 then Tkeedt = 'المقيدين • ' else Tkeedt = '' end
@@ -9859,52 +9859,52 @@ if #Jred ~= 0 then Jredt = 'الجريذيه • ' else Jredt = '' end
 if #Bro ~= 0 then Brot = 'الضلوع • ' else Brot = '' end
 if #Girl ~= 0 then Girlt = 'الضلعات • ' else Girlt = '' end
 if #Ban ~= 0 or #Muted ~= 0 or #Tkeed ~= 0 or #Filters ~= 0 or #donky ~= 0 or #HaTa ~= 0 or #hlo ~= 0 or #Sakl ~= 0 or #Dog ~= 0 or #Monkey ~= 0 or #Bakra ~= 0 or #Tale ~= 0 or #Zahf ~= 0 or #Jred ~= 0 or #Bro ~= 0 or #Girl ~= 0 then 
-Dev Ahme:del(ANUBIS..' Ahme:Ban:'..msg.chat_id_) 
-Dev Ahme:del(ANUBIS..' Ahme:Filters:'..msg.chat_id_) 
-Dev Ahme:del(ANUBIS..' Ahme:Muted:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Tkeed:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Donky:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:HaTa:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:hlo:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Sakl:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Dog:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Monkey:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Bakra:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Tale:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Zahf:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Jred:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Bro:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Bro:Girl'..msg.chat_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف جميع القوائم التاليه ↫ ❨ "..Bant..''..Mutedt..''..Tkeedt..''..Filterst..''..donkyt..''..HaTat..''..hlot..''..Saklt..''..Dogt..''..Monkeyt..''..Bakrat..''..Talet..''..Zahft..''..Jredt..''..Brot..''..Girlt.." ❩ بنجاح \n ✓", 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Ban:'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Filters:'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Muted:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Tkeed:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Donky:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:HaTa:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:hlo:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Sakl:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Dog:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Monkey:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Bakra:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Tale:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Zahf:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Jred:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Bro:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Bro:Girl'..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف جميع القوائم التاليه ↫ ❨ "..Bant..''..Mutedt..''..Tkeedt..''..Filterst..''..donkyt..''..HaTat..''..hlot..''..Saklt..''..Dogt..''..Monkeyt..''..Bakrat..''..Talet..''..Zahft..''..Jredt..''..Brot..''..Girlt.." ❩ بنجاح \n ✓", 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لاتوجد قوائم هنا", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لاتوجد قوائم هنا", 1, 'md')
 end 
 end
 end
 --     Source ANUBIS     --
 if text and text:match("^حذف جميع الرتب$") and ChCheck(msg) or text and text:match("^مسح جميع الرتب$") and ChCheck(msg) or text and text:match("^تنزيل جميع الرتب$") and ChCheck(msg) then
-if not  AhmeConstructor(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمالكين فقط', 1, 'md')
+if not  SOFIConstructor(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمالكين فقط', 1, 'md')
 else
-local basicconstructor = Dev Ahme:smembers(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_)
-local constructor = Dev Ahme:smembers(ANUBIS..' Ahme:Constructor:'..msg.chat_id_)
-local Managers = Dev Ahme:smembers(ANUBIS..' Ahme:Managers:'..msg.chat_id_)
-local admins = Dev Ahme:smembers(ANUBIS..' Ahme:Admins:'..msg.chat_id_)
-local vipmem = Dev Ahme:smembers(ANUBIS..' Ahme:VipMem:'..msg.chat_id_)
-local cleaner = Dev Ahme:smembers(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_)
-local donky = Dev Ahme:smembers(ANUBIS..'User:Donky:'..msg.chat_id_)
-local HaTa = Dev Ahme:smembers(ANUBIS..'User:HaTa:'..msg.chat_id_)
-local hlo = Dev Ahme:smembers(ANUBIS..'User:hlo:'..msg.chat_id_)
-local Sakl = Dev Ahme:smembers(ANUBIS..'User:Sakl:'..msg.chat_id_)
-local Dog = Dev Ahme:smembers(ANUBIS..'User:Dog:'..msg.chat_id_)
-local Monkey = Dev Ahme:smembers(ANUBIS..'User:Monkey:'..msg.chat_id_)
-local Bakra = Dev Ahme:smembers(ANUBIS..'User:Bakra:'..msg.chat_id_)
-local Tale = Dev Ahme:smembers(ANUBIS..'User:Tale:'..msg.chat_id_)
-local Zahf = Dev Ahme:smembers(ANUBIS..'User:Zahf:'..msg.chat_id_)
-local Jred = Dev Ahme:smembers(ANUBIS..'User:Jred:'..msg.chat_id_)
-local Bro = Dev Ahme:smembers(ANUBIS..'User:Bro:'..msg.chat_id_)
-local Girl = Dev Ahme:smembers(ANUBIS..'User:Bro:Girl'..msg.chat_id_)
+local basicconstructor = Dev SOFI:smembers(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_)
+local constructor = Dev SOFI:smembers(ANUBIS..' SOFI:Constructor:'..msg.chat_id_)
+local Managers = Dev SOFI:smembers(ANUBIS..' SOFI:Managers:'..msg.chat_id_)
+local admins = Dev SOFI:smembers(ANUBIS..' SOFI:Admins:'..msg.chat_id_)
+local vipmem = Dev SOFI:smembers(ANUBIS..' SOFI:VipMem:'..msg.chat_id_)
+local cleaner = Dev SOFI:smembers(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_)
+local donky = Dev SOFI:smembers(ANUBIS..'User:Donky:'..msg.chat_id_)
+local HaTa = Dev SOFI:smembers(ANUBIS..'User:HaTa:'..msg.chat_id_)
+local hlo = Dev SOFI:smembers(ANUBIS..'User:hlo:'..msg.chat_id_)
+local Sakl = Dev SOFI:smembers(ANUBIS..'User:Sakl:'..msg.chat_id_)
+local Dog = Dev SOFI:smembers(ANUBIS..'User:Dog:'..msg.chat_id_)
+local Monkey = Dev SOFI:smembers(ANUBIS..'User:Monkey:'..msg.chat_id_)
+local Bakra = Dev SOFI:smembers(ANUBIS..'User:Bakra:'..msg.chat_id_)
+local Tale = Dev SOFI:smembers(ANUBIS..'User:Tale:'..msg.chat_id_)
+local Zahf = Dev SOFI:smembers(ANUBIS..'User:Zahf:'..msg.chat_id_)
+local Jred = Dev SOFI:smembers(ANUBIS..'User:Jred:'..msg.chat_id_)
+local Bro = Dev SOFI:smembers(ANUBIS..'User:Bro:'..msg.chat_id_)
+local Girl = Dev SOFI:smembers(ANUBIS..'User:Bro:Girl'..msg.chat_id_)
 if #basicconstructor ~= 0 then basicconstructort = 'المنشئين الاساسيين • ' else basicconstructort = '' end
 if #constructor ~= 0 then constructort = 'المنشئين • ' else constructort = '' end
 if #Managers ~= 0 then Managerst = 'المدراء • ' else Managerst = '' end
@@ -9924,95 +9924,95 @@ if #Jred ~= 0 then Jredt = 'الجريذيه • ' else Jredt = '' end
 if #Bro ~= 0 then Brot = 'الضلوع • ' else Brot = '' end
 if #Girl ~= 0 then Girlt = 'الضلعات • ' else Girlt = '' end
 if #basicconstructor ~= 0 or #constructor ~= 0 or #Managers ~= 0 or #admins ~= 0 or #vipmem ~= 0 or #cleaner ~= 0 or #donky ~= 0 or #HaTa ~= 0 or #hlo ~= 0 or #Sakl ~= 0 or #Dog ~= 0 or #Monkey ~= 0 or #Bakra ~= 0 or #Tale ~= 0 or #Zahf ~= 0 or #Jred ~= 0 or #Bro ~= 0 or #Girl ~= 0 then 
-Dev Ahme:del(ANUBIS..' Ahme:BasicConstructor:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Constructor:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Managers:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Admins:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:VipMem:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Cleaner:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Donky:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:HaTa:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:hlo:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Sakl:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Dog:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Monkey:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Bakra:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Tale:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Zahf:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Jred:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Bro:'..msg.chat_id_)
-Dev Ahme:del(ANUBIS..'User:Bro:Girl'..msg.chat_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف جميع الرتب التاليه ↫ ❨ "..basicconstructort..''..constructort..''..Managerst..''..adminst..''..vipmemt..''..cleanert..''..donkyt..''..HaTat..''..hlot..''..Saklt..''..Dogt..''..Monkeyt..''..Bakrat..''..Talet..''..Zahft..''..Jredt..''..Brot..''..Girlt.." ❩ بنجاح \n ✓", 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:BasicConstructor:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Constructor:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Managers:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Admins:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:VipMem:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Cleaner:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Donky:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:HaTa:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:hlo:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Sakl:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Dog:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Monkey:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Bakra:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Tale:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Zahf:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Jred:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Bro:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..'User:Bro:Girl'..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف جميع الرتب التاليه ↫ ❨ "..basicconstructort..''..constructort..''..Managerst..''..adminst..''..vipmemt..''..cleanert..''..donkyt..''..HaTat..''..hlot..''..Saklt..''..Dogt..''..Monkeyt..''..Bakrat..''..Talet..''..Zahft..''..Jredt..''..Brot..''..Girlt.." ❩ بنجاح \n ✓", 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لاتوجد رتب هنا", 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لاتوجد رتب هنا", 1, 'md')
 end 
 end 
 end
 --     Source ANUBIS     --
 if Admin(msg) then 
 if text and text:match("^الاعدادات$") and ChCheck(msg) then
-if not Dev Ahme:get(ANUBIS..' Ahme:Spam:Text'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Spam:Text'..msg.chat_id_) then
 spam_c = 400
 else
-spam_c = Dev Ahme:get(ANUBIS..' Ahme:Spam:Text'..msg.chat_id_)
+spam_c = Dev SOFI:get(ANUBIS..' SOFI:Spam:Text'..msg.chat_id_)
 end
 --     Source ANUBIS     --
-if Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_, "Spam:User") == "kick" then     
+if Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_, "Spam:User") == "kick" then     
 flood = "بالطرد"     
-elseif Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Spam:User") == "keed" then     
+elseif Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Spam:User") == "keed" then     
 flood = "بالتقيد"     
-elseif Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Spam:User") == "mute" then     
+elseif Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Spam:User") == "mute" then     
 flood = "بالكتم"           
-elseif Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Spam:User") == "del" then     
+elseif Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Spam:User") == "del" then     
 flood = "بالحذف"
 else     
 flood = "مفتوح"     
 end
 --     Source ANUBIS     --
-if Dev Ahme:get(ANUBIS.." Ahme:Lock:Bots"..msg.chat_id_) == "del" then
+if Dev SOFI:get(ANUBIS.." SOFI:Lock:Bots"..msg.chat_id_) == "del" then
 lock_bots = "بالحذف"
-elseif Dev Ahme:get(ANUBIS.." Ahme:Lock:Bots"..msg.chat_id_) == "ked" then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Lock:Bots"..msg.chat_id_) == "ked" then
 lock_bots = "بالتقيد"   
-elseif Dev Ahme:get(ANUBIS.." Ahme:Lock:Bots"..msg.chat_id_) == "kick" then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Lock:Bots"..msg.chat_id_) == "kick" then
 lock_bots = "بالطرد"    
 else
 lock_bots = "مفتوحه"    
 end
 --     Source ANUBIS     --
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Text'..msg.chat_id_) then mute_text = 'مقفله' else mute_text = 'مفتوحه'end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Photo'..msg.chat_id_) then mute_photo = 'مقفله' else mute_photo = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Videos'..msg.chat_id_) then mute_video = 'مقفله' else mute_video = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Gifs'..msg.chat_id_) then mute_gifs = 'مقفله' else mute_gifs = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Music'..msg.chat_id_) then mute_music = 'مقفله' else mute_music = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Inline'..msg.chat_id_) then mute_in = 'مقفله' else mute_in = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Voice'..msg.chat_id_) then mute_voice = 'مقفله' else mute_voice = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_) then mute_edit = 'مقفله' else mute_edit = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then mute_links = 'مقفله' else mute_links = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Pin'..msg.chat_id_) then lock_pin = 'مقفله' else lock_pin = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Stickers'..msg.chat_id_) then lock_sticker = 'مقفله' else lock_sticker = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:TagServr'..msg.chat_id_) then lock_tgservice = 'مقفله' else lock_tgservice = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then lock_wp = 'مقفله' else lock_wp = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then lock_htag = 'مقفله' else lock_htag = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then lock_tag = 'مقفله' else lock_tag = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Location'..msg.chat_id_) then lock_location = 'مقفله' else lock_location = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Contact'..msg.chat_id_) then lock_contact = 'مقفله' else lock_contact = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then lock_english = 'مقفله' else lock_english = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then lock_arabic = 'مقفله' else lock_arabic = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then lock_forward = 'مقفله' else lock_forward = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Document'..msg.chat_id_) then lock_file = 'مقفله' else lock_file = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Markdown'..msg.chat_id_) then markdown = 'مقفله' else markdown = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Spam'..msg.chat_id_) then lock_spam = 'مقفله' else lock_spam = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Join'..msg.chat_id_) then lock_Join = 'مقفل' else lock_Join = 'مفتوح' end
-if Dev Ahme:get(ANUBIS.." Ahme:Lock:Welcome"..msg.chat_id_) then send_welcome = 'مقفله' else send_welcome = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Fshar'..msg.chat_id_) then lock_fshar = 'مفتوح' else lock_fshar = 'مقفل' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Kfr'..msg.chat_id_) then lock_kaf = 'مفتوح' else lock_kaf = 'مقفل' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Taf'..msg.chat_id_) then lock_taf = 'مفتوحه' else lock_taf = 'مقفله' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Farsi'..msg.chat_id_) then lock_farsi = 'مقفله' else lock_farsi = 'مفتوحه' end
-if Dev Ahme:get(ANUBIS..' Ahme: Ahme:Lock:Xn'..msg.chat_id_) then lock_xn = 'مفتوحه' else lock_xn = 'مقفله' end
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:Clean'..msg.chat_id_) then lock_Clean = 'مفعله' else lock_Clean = 'معطله' end
-local Flood_Num = Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Num:Spam") or 5
-local Flood_Num_Time = Dev Ahme:hget(ANUBIS.." Ahme:Spam:Group:User"..msg.chat_id_,"Num:Spam:Time") or 5
-local Clean_Num = Dev Ahme:get(ANUBIS.." Ahme:CleanNum"..msg.chat_id_,Num) or 200
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Text'..msg.chat_id_) then mute_text = 'مقفله' else mute_text = 'مفتوحه'end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Photo'..msg.chat_id_) then mute_photo = 'مقفله' else mute_photo = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Videos'..msg.chat_id_) then mute_video = 'مقفله' else mute_video = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Gifs'..msg.chat_id_) then mute_gifs = 'مقفله' else mute_gifs = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Music'..msg.chat_id_) then mute_music = 'مقفله' else mute_music = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Inline'..msg.chat_id_) then mute_in = 'مقفله' else mute_in = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Voice'..msg.chat_id_) then mute_voice = 'مقفله' else mute_voice = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_) then mute_edit = 'مقفله' else mute_edit = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then mute_links = 'مقفله' else mute_links = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Pin'..msg.chat_id_) then lock_pin = 'مقفله' else lock_pin = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Stickers'..msg.chat_id_) then lock_sticker = 'مقفله' else lock_sticker = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:TagServr'..msg.chat_id_) then lock_tgservice = 'مقفله' else lock_tgservice = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then lock_wp = 'مقفله' else lock_wp = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then lock_htag = 'مقفله' else lock_htag = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then lock_tag = 'مقفله' else lock_tag = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Location'..msg.chat_id_) then lock_location = 'مقفله' else lock_location = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Contact'..msg.chat_id_) then lock_contact = 'مقفله' else lock_contact = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then lock_english = 'مقفله' else lock_english = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then lock_arabic = 'مقفله' else lock_arabic = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then lock_forward = 'مقفله' else lock_forward = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Document'..msg.chat_id_) then lock_file = 'مقفله' else lock_file = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Markdown'..msg.chat_id_) then markdown = 'مقفله' else markdown = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Spam'..msg.chat_id_) then lock_spam = 'مقفله' else lock_spam = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Join'..msg.chat_id_) then lock_Join = 'مقفل' else lock_Join = 'مفتوح' end
+if Dev SOFI:get(ANUBIS.." SOFI:Lock:Welcome"..msg.chat_id_) then send_welcome = 'مقفله' else send_welcome = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Fshar'..msg.chat_id_) then lock_fshar = 'مفتوح' else lock_fshar = 'مقفل' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Kfr'..msg.chat_id_) then lock_kaf = 'مفتوح' else lock_kaf = 'مقفل' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Taf'..msg.chat_id_) then lock_taf = 'مفتوحه' else lock_taf = 'مقفله' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Farsi'..msg.chat_id_) then lock_farsi = 'مقفله' else lock_farsi = 'مفتوحه' end
+if Dev SOFI:get(ANUBIS..' SOFI: SOFI:Lock:Xn'..msg.chat_id_) then lock_xn = 'مفتوحه' else lock_xn = 'مقفله' end
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:Clean'..msg.chat_id_) then lock_Clean = 'مفعله' else lock_Clean = 'معطله' end
+local Flood_Num = Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Num:Spam") or 5
+local Flood_Num_Time = Dev SOFI:hget(ANUBIS.." SOFI:Spam:Group:User"..msg.chat_id_,"Num:Spam:Time") or 5
+local Clean_Num = Dev SOFI:get(ANUBIS.." SOFI:CleanNum"..msg.chat_id_,Num) or 200
 --     Source ANUBIS     --
 local TXTE = "⌯︙اعدادات المجموعه ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n"
 .."⌯︙الروابط ↫ "..mute_links.."\n"
@@ -10060,37 +10060,37 @@ end
 --     Source ANUBIS     --
 if text == "تفعيل كول" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل امر كول بنجاح")
-Dev Ahme:del(ANUBIS..' Ahme:spech: Ahme'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:spech: SOFI'..msg.chat_id_) 
 end
 if text == "تعطيل كول" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل امر كول بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:spech: Ahme'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:spech: SOFI'..msg.chat_id_,true)  
 end
-if text and text:match("^كول (.*)$") and not Dev Ahme:get(ANUBIS..' Ahme:spech: Ahme'..msg.chat_id_) then
+if text and text:match("^كول (.*)$") and not Dev SOFI:get(ANUBIS..' SOFI:spech: SOFI'..msg.chat_id_) then
 local txt = {string.match(text, "^(كول) (.*)$")}
-Dev_ Ahme(msg.chat_id_,0, 1, txt[2], 1, 'md')
+Dev_ SOFI(msg.chat_id_,0, 1, txt[2], 1, 'md')
 DeleteMessage(msg.chat_id_,{[0] = msg.id_})
 end
 --     Source ANUBIS     --
-if Dev Ahme:get(ANUBIS..' Ahme:setrules'..msg.chat_id_..':'..msg.sender_user_id_) then 
+if Dev SOFI:get(ANUBIS..' SOFI:setrules'..msg.chat_id_..':'..msg.sender_user_id_) then 
 if text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ قوانين المجموعه', 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:setrules'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء حفظ قوانين المجموعه', 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:setrules'..msg.chat_id_..':'..msg.sender_user_id_)
 return false  
 end 
-Dev Ahme:del(ANUBIS..' Ahme:setrules'..msg.chat_id_..':'..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS..' Ahme:rules'..msg.chat_id_,text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ قوانين المجموعه', 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:setrules'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS..' SOFI:rules'..msg.chat_id_,text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حفظ قوانين المجموعه', 1, 'md')
 return false   
 end
 if text and text:match("^ضع قوانين$") and ChCheck(msg) or text and text:match("^وضع قوانين$") and ChCheck(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي القوانين الان', 1, 'md')
-Dev Ahme:set(ANUBIS..' Ahme:setrules'..msg.chat_id_..':'..msg.sender_user_id_,true)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي القوانين الان', 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:setrules'..msg.chat_id_..':'..msg.sender_user_id_,true)
 end
 end
 if text and text:match("^القوانين$") then
-local rules = Dev Ahme:get(ANUBIS..' Ahme:rules'..msg.chat_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, rules, 1, nil)
+local rules = Dev SOFI:get(ANUBIS..' SOFI:rules'..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, rules, 1, nil)
 end
 --     Source ANUBIS     --
 if text == 'رقمي' and ChCheck(msg) then
@@ -10106,14 +10106,14 @@ end
 --     Source ANUBIS     --
 if text == "تفعيل انطق" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل ميزة انطق")
-Dev Ahme:del(ANUBIS..' Ahme:Antk: Ahme'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Antk: SOFI'..msg.chat_id_) 
 end
 if text == "تعطيل انطق" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل ميزة انطق")
-Dev Ahme:set(ANUBIS..' Ahme:Antk: Ahme'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Antk: SOFI'..msg.chat_id_,true)  
 end
-if text and text:match("^انطق (.*)$") and not Dev Ahme:get(ANUBIS..' Ahme:Antk: Ahme'..msg.chat_id_) and ChCheck(msg) then
-local UrlAntk = https.request('https://apiabs.ml/Antk.php? Ahme='..URL.escape(text:match("^انطق (.*)$")))
+if text and text:match("^انطق (.*)$") and not Dev SOFI:get(ANUBIS..' SOFI:Antk: SOFI'..msg.chat_id_) and ChCheck(msg) then
+local UrlAntk = https.request('https://apiabs.ml/Antk.php? SOFI='..URL.escape(text:match("^انطق (.*)$")))
 Antk = JSON.decode(UrlAntk)
 if UrlAntk.ok ~= false then
 download_to_file("https://translate"..Antk.result.google..Antk.result.code.."UTF-8"..Antk.result.utf..Antk.result.translate.."&tl=ar-IN",Antk.result.translate..'.mp3') 
@@ -10124,19 +10124,19 @@ end
 --     Source ANUBIS     --
 if text == "تفعيل الزخرفه" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل الزخرفه بنجاح")
-Dev Ahme:del(ANUBIS..' Ahme:Zrf: Ahme'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Zrf: SOFI'..msg.chat_id_) 
 end
 if text == "تعطيل الزخرفه" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل الزخرفه بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:Zrf: Ahme'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Zrf: SOFI'..msg.chat_id_,true)  
 end
-if Dev Ahme:get(ANUBIS..'Zrf: Ahme'..msg.chat_id_..msg.sender_user_id_) then 
+if Dev SOFI:get(ANUBIS..'Zrf: SOFI'..msg.chat_id_..msg.sender_user_id_) then 
 if text and text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر الزخرفه', 1, 'md')
-Dev Ahme:del(ANUBIS..'Zrf: Ahme'..msg.chat_id_..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر الزخرفه', 1, 'md')
+Dev SOFI:del(ANUBIS..'Zrf: SOFI'..msg.chat_id_..msg.sender_user_id_)
 return false  
 end 
-UrlZrf = https.request('https://apiabs.ml/zrf.php? Ahme='..URL.escape(text)) 
+UrlZrf = https.request('https://apiabs.ml/zrf.php? SOFI='..URL.escape(text)) 
 Zrf = JSON.decode(UrlZrf) 
 t = "⌯︙قائمة الزخرفه ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 i = 0
@@ -10144,20 +10144,20 @@ for k,v in pairs(Zrf.ok) do
 i = i + 1
 t = t..i.."~ `"..v.."` \n"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, t, 1, 'md')
-Dev Ahme:del(ANUBIS..'Zrf: Ahme'..msg.chat_id_..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, t, 1, 'md')
+Dev SOFI:del(ANUBIS..'Zrf: SOFI'..msg.chat_id_..msg.sender_user_id_)
 return false   
 end
-if not Dev Ahme:get(ANUBIS..' Ahme:Zrf: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Zrf: SOFI'..msg.chat_id_) then
 if text == 'زخرفه' and ChCheck(msg) or text == 'الزخرفه' and ChCheck(msg) then  
-Dev Ahme:setex(ANUBIS.."Zrf: Ahme"..msg.chat_id_..msg.sender_user_id_,300,true)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي الكلمه لزخرفتها \nيمكنك الزخرفة باللغه { en } ~ { ar } ', 1, 'md')
+Dev SOFI:setex(ANUBIS.."Zrf: SOFI"..msg.chat_id_..msg.sender_user_id_,300,true)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي الكلمه لزخرفتها \nيمكنك الزخرفة باللغه { en } ~ { ar } ', 1, 'md')
 end
 end
-if not Dev Ahme:get(ANUBIS..' Ahme:Zrf: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Zrf: SOFI'..msg.chat_id_) then
 if text and text:match("^زخرفه (.*)$") and ChCheck(msg) or text and text:match("^زخرف (.*)$") and ChCheck(msg) then 
 local TextZrf = text:match("^زخرفه (.*)$") or text:match("^زخرف (.*)$") 
-UrlZrf = https.request('https://apiabs.ml/zrf.php? Ahme='..URL.escape(TextZrf)) 
+UrlZrf = https.request('https://apiabs.ml/zrf.php? SOFI='..URL.escape(TextZrf)) 
 Zrf = JSON.decode(UrlZrf) 
 t = "⌯︙قائمة الزخرفه ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 i = 0
@@ -10165,167 +10165,167 @@ for k,v in pairs(Zrf.ok) do
 i = i + 1
 t = t..i.."~ `"..v.."` \n"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, t, 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, t, 1, 'md')
 end
 end
 --     Source ANUBIS     --
 if text == "تفعيل الابراج" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل الابراج بنجاح")
-Dev Ahme:del(ANUBIS..' Ahme:Brg: Ahme'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Brg: SOFI'..msg.chat_id_) 
 end
 if text == "تعطيل الابراج" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل الابراج بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:Brg: Ahme'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Brg: SOFI'..msg.chat_id_,true)  
 end
-if not Dev Ahme:get(ANUBIS..' Ahme:Brg: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Brg: SOFI'..msg.chat_id_) then
 if text and text:match("^برج (.*)$") and ChCheck(msg) or text and text:match("^برجي (.*)$") and ChCheck(msg) then 
 local TextBrg = text:match("^برج (.*)$") or text:match("^برجي (.*)$") 
 UrlBrg = https.request('https://apiabs.ml/brg.php?brg='..URL.escape(TextBrg)) 
 Brg = JSON.decode(UrlBrg) 
 t = Brg.ok.abs:gsub( "⌁", "⌯" ):gsub( "┉ ≈ ┉ ≈ ┉ ≈ ┉ ≈ ┉", "ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ" )
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, t, 1, 'html')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, t, 1, 'html')
 end
 end
 --     Source ANUBIS     --
 if text and (text == "تفعيل اوامر النسب" or text == "تفعيل نسبه الحب" or text == "تفعيل نسبه الكره" or text == "تفعيل نسبه الرجوله" or text == "تفعيل نسبه الانوثه" or text == "تفعيل نسبه الغباء") and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل اوامر النسب بنجاح")
-Dev Ahme:del(ANUBIS..' Ahme:Nsba: Ahme'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Nsba: SOFI'..msg.chat_id_) 
 end
 if text and (text == "تعطيل اوامر النسب" or text == "تعطيل نسبه الحب" or text == "تعطيل نسبه الكره" or text == "تعطيل نسبه الرجوله" or text == "تعطيل نسبه الانوثه" or text == "تعطيل نسبه الغباء") and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل اوامر النسب بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:Nsba: Ahme'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Nsba: SOFI'..msg.chat_id_,true)  
 end
-if not Dev Ahme:get(ANUBIS..' Ahme:Nsba: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Nsba: SOFI'..msg.chat_id_) then
 if text == "نسبه الحب" and ChCheck(msg) or text == "نسبة الحب" and ChCheck(msg) then
-Dev Ahme:set(ANUBIS..'LoveNsba: Ahme'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙قم بارسل اسمين لحساب نسبة الحب بينهما كمثال ↫ جاك وروز', 1, 'md')
+Dev SOFI:set(ANUBIS..'LoveNsba: SOFI'..msg.chat_id_..msg.sender_user_id_,true) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙قم بارسل اسمين لحساب نسبة الحب بينهما كمثال ↫ جاك وروز', 1, 'md')
 end
 end
-if text and text ~= "نسبه الحب" and text ~= "نسبة الحب" and Dev Ahme:get(ANUBIS..'LoveNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) then
+if text and text ~= "نسبه الحب" and text ~= "نسبة الحب" and Dev SOFI:get(ANUBIS..'LoveNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) then
 if text and text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر نسبة الحب ', 1, 'md')
-Dev Ahme:del(ANUBIS..'LoveNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر نسبة الحب ', 1, 'md')
+Dev SOFI:del(ANUBIS..'LoveNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end 
- Ahme = math.random(0,100);
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙نسبة الحب بين '..text..' هي : '.. Ahme..'%', 1, 'md')
-Dev Ahme:del(ANUBIS..'LoveNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) 
+ SOFI = math.random(0,100);
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙نسبة الحب بين '..text..' هي : '.. SOFI..'%', 1, 'md')
+Dev SOFI:del(ANUBIS..'LoveNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
-if not Dev Ahme:get(ANUBIS..' Ahme:Nsba: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Nsba: SOFI'..msg.chat_id_) then
 if text == "نسبه الكره" and ChCheck(msg) or text == "نسبة الكره" and ChCheck(msg) then
-Dev Ahme:set(ANUBIS..'HataNsba: Ahme'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙قم بارسل اسمين لحساب نسبة الكره بينهما كمثال ↫ جاك وروز', 1, 'md')
+Dev SOFI:set(ANUBIS..'HataNsba: SOFI'..msg.chat_id_..msg.sender_user_id_,true) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙قم بارسل اسمين لحساب نسبة الكره بينهما كمثال ↫ جاك وروز', 1, 'md')
 end
 end
-if text and text ~= "نسبه الكره" and text ~= "نسبة الكره" and Dev Ahme:get(ANUBIS..'HataNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) then
+if text and text ~= "نسبه الكره" and text ~= "نسبة الكره" and Dev SOFI:get(ANUBIS..'HataNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) then
 if text and text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر نسبة الكره ', 1, 'md')
-Dev Ahme:del(ANUBIS..'HataNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر نسبة الكره ', 1, 'md')
+Dev SOFI:del(ANUBIS..'HataNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end 
- Ahme = math.random(0,100);
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙نسبة الكره بين '..text..' هي : '.. Ahme..'%', 1, 'md')
-Dev Ahme:del(ANUBIS..'HataNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) 
+ SOFI = math.random(0,100);
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙نسبة الكره بين '..text..' هي : '.. SOFI..'%', 1, 'md')
+Dev SOFI:del(ANUBIS..'HataNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
-if not Dev Ahme:get(ANUBIS..' Ahme:Nsba: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Nsba: SOFI'..msg.chat_id_) then
 if text and (text == "نسبه الرجوله" or text == "نسبة الرجوله" or text == "نسبه رجوله" or text == "نسبة رجوله") and ChCheck(msg) then
-Dev Ahme:set(ANUBIS..'RjolaNsba: Ahme'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙قم بارسل اسم الشخص لقياس نسبة رجولته كمثال ↫ جاك', 1, 'md')
+Dev SOFI:set(ANUBIS..'RjolaNsba: SOFI'..msg.chat_id_..msg.sender_user_id_,true) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙قم بارسل اسم الشخص لقياس نسبة رجولته كمثال ↫ جاك', 1, 'md')
 end
 end
-if text and text ~= "نسبه الرجوله" and text ~= "نسبة الرجوله" and text ~= "نسبه رجوله" and text ~= "نسبة رجوله" and Dev Ahme:get(ANUBIS..'RjolaNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) then
+if text and text ~= "نسبه الرجوله" and text ~= "نسبة الرجوله" and text ~= "نسبه رجوله" and text ~= "نسبة رجوله" and Dev SOFI:get(ANUBIS..'RjolaNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) then
 if text and text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر نسبة الرجوله ', 1, 'md')
-Dev Ahme:del(ANUBIS..'RjolaNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر نسبة الرجوله ', 1, 'md')
+Dev SOFI:del(ANUBIS..'RjolaNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end 
- Ahme = math.random(0,100);
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙نسبة رجولة '..text..' هي : '.. Ahme..'%', 1, 'md')
-Dev Ahme:del(ANUBIS..'RjolaNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) 
+ SOFI = math.random(0,100);
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙نسبة رجولة '..text..' هي : '.. SOFI..'%', 1, 'md')
+Dev SOFI:del(ANUBIS..'RjolaNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
-if not Dev Ahme:get(ANUBIS..' Ahme:Nsba: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Nsba: SOFI'..msg.chat_id_) then
 if text and (text == "نسبه الانوثه" or text == "نسبة الانوثه" or text == "نسبه انوثه" or text == "نسبة انوثه") and ChCheck(msg) then
-Dev Ahme:set(ANUBIS..'AnothaNsba: Ahme'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙قم بارسل اسم الشخص لقياس نسبة انوثته كمثال ↫ روز', 1, 'md')
+Dev SOFI:set(ANUBIS..'AnothaNsba: SOFI'..msg.chat_id_..msg.sender_user_id_,true) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙قم بارسل اسم الشخص لقياس نسبة انوثته كمثال ↫ روز', 1, 'md')
 end
 end
-if text and text ~= "نسبه الانوثه" and text ~= "نسبة الانوثه" and text ~= "نسبه انوثه" and text ~= "نسبة انوثه" and Dev Ahme:get(ANUBIS..'AnothaNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) then
+if text and text ~= "نسبه الانوثه" and text ~= "نسبة الانوثه" and text ~= "نسبه انوثه" and text ~= "نسبة انوثه" and Dev SOFI:get(ANUBIS..'AnothaNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) then
 if text and text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر نسبة الانوثه ', 1, 'md')
-Dev Ahme:del(ANUBIS..'AnothaNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر نسبة الانوثه ', 1, 'md')
+Dev SOFI:del(ANUBIS..'AnothaNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end 
- Ahme = math.random(0,100);
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙نسبة انوثة '..text..' هي : '.. Ahme..'%', 1, 'md')
-Dev Ahme:del(ANUBIS..'AnothaNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) 
+ SOFI = math.random(0,100);
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙نسبة انوثة '..text..' هي : '.. SOFI..'%', 1, 'md')
+Dev SOFI:del(ANUBIS..'AnothaNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
-if not Dev Ahme:get(ANUBIS..' Ahme:Nsba: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Nsba: SOFI'..msg.chat_id_) then
 if text and (text == "نسبه الغباء" or text == "نسبة الغباء") and ChCheck(msg) then
-Dev Ahme:set(ANUBIS..'StupidNsba: Ahme'..msg.chat_id_..msg.sender_user_id_,true) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙قم بارسل اسم الشخص لقياس نسبة غبائه كمثال ↫ جاك او روز', 1, 'md')
+Dev SOFI:set(ANUBIS..'StupidNsba: SOFI'..msg.chat_id_..msg.sender_user_id_,true) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙قم بارسل اسم الشخص لقياس نسبة غبائه كمثال ↫ جاك او روز', 1, 'md')
 end
 end
-if text and text ~= "نسبه الغباء" and text ~= "نسبة الغباء" and Dev Ahme:get(ANUBIS..'StupidNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) then
+if text and text ~= "نسبه الغباء" and text ~= "نسبة الغباء" and Dev SOFI:get(ANUBIS..'StupidNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) then
 if text and text == 'الغاء' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر نسبة الغباء ', 1, 'md')
-Dev Ahme:del(ANUBIS..'StupidNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم الغاء امر نسبة الغباء ', 1, 'md')
+Dev SOFI:del(ANUBIS..'StupidNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end 
- Ahme = math.random(0,100);
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙نسبة غباء '..text..' هي : '.. Ahme..'%', 1, 'md')
-Dev Ahme:del(ANUBIS..'StupidNsba: Ahme'..msg.chat_id_..msg.sender_user_id_) 
+ SOFI = math.random(0,100);
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙نسبة غباء '..text..' هي : '.. SOFI..'%', 1, 'md')
+Dev SOFI:del(ANUBIS..'StupidNsba: SOFI'..msg.chat_id_..msg.sender_user_id_) 
 return false 
 end
 --     Source ANUBIS     --
 if text == "تفعيل حساب العمر" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل حساب العمر بنجاح")
-Dev Ahme:del(ANUBIS..' Ahme:Age: Ahme'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Age: SOFI'..msg.chat_id_) 
 end
 if text == "تعطيل حساب العمر" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل حساب العمر بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:Age: Ahme'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Age: SOFI'..msg.chat_id_,true)  
 end
-if not Dev Ahme:get(ANUBIS..' Ahme:Age: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Age: SOFI'..msg.chat_id_) then
 if text and text:match("^احسب (.*)$") and ChCheck(msg) or text and text:match("^عمري (.*)$") and ChCheck(msg) then 
 local TextAge = text:match("^احسب (.*)$") or text:match("^عمري (.*)$") 
 UrlAge = https.request('https://apiabs.ml/age.php?age='..URL.escape(TextAge)) 
 Age = JSON.decode(UrlAge) 
-t = Age.ok. Ahme
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, t, 1, 'html')
+t = Age.ok. SOFI
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, t, 1, 'html')
 end
 end
 --     Source ANUBIS     --
 if text == "تفعيل معاني الاسماء" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل معاني الاسماء")
-Dev Ahme:del(ANUBIS..' Ahme:Mean: Ahme'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Mean: SOFI'..msg.chat_id_) 
 end
 if text == "تعطيل معاني الاسماء" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل التحقق بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:Mean: Ahme'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Mean: SOFI'..msg.chat_id_,true)  
 end
-if not Dev Ahme:get(ANUBIS..' Ahme:Mean: Ahme'..msg.chat_id_) then
+if not Dev SOFI:get(ANUBIS..' SOFI:Mean: SOFI'..msg.chat_id_) then
 if text and text:match("^معنى الاسم (.*)$") and ChCheck(msg) or text and text:match("^معنى اسم (.*)$") and ChCheck(msg) then 
 local TextMean = text:match("^معنى الاسم (.*)$") or text:match("^معنى اسم (.*)$") 
-UrlMean = https.request('https://apiabs.ml/Mean.php? Ahme='..URL.escape(TextMean)) 
+UrlMean = https.request('https://apiabs.ml/Mean.php? SOFI='..URL.escape(TextMean)) 
 Mean = JSON.decode(UrlMean) 
-t = Mean.ok. Ahme
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, t, 1, 'html')
+t = Mean.ok. SOFI
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, t, 1, 'html')
 end
 end
 --     Source ANUBIS     --
 if text == "تفعيل غنيلي" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل امر غنيلي بنجاح")
-Dev Ahme:del(ANUBIS..' Ahme:Audios: Ahme'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Audios: SOFI'..msg.chat_id_) 
 end
 if text == "تعطيل غنيلي" and Manager(msg) and ChCheck(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل امر غنيلي بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:Audios: Ahme'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Audios: SOFI'..msg.chat_id_,true)  
 end
-if text == "غنيلي" and not Dev Ahme:get(ANUBIS..' Ahme:Audios: Ahme'..msg.chat_id_) and ChCheck(msg) then
+if text == "غنيلي" and not Dev SOFI:get(ANUBIS..' SOFI:Audios: SOFI'..msg.chat_id_) and ChCheck(msg) then
 data,res = https.request('https://apiabs.ml/Audios.php')
 if res == 200 then
 Audios = json:decode(data)
@@ -10342,96 +10342,96 @@ end
 end
 --     Source ANUBIS     --
 if Admin(msg) then
-if Dev Ahme:get(ANUBIS..' Ahme:LockSettings'..msg.chat_id_) then 
-if text == "الروابط" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Links'..msg.chat_id_) then mute_links = 'مقفله' else mute_links = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الروابط ↫ "..mute_links.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "المعرف" or text == "المعرفات" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Tags'..msg.chat_id_) then lock_tag = 'مقفوله' else lock_tag = 'مفتوحه' end local DraGoN = "\n" .."⌯︙المعرف ↫ "..lock_tag.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "المتحركه" or text == "الملصقات المتحركه" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Gifs'..msg.chat_id_) then mute_gifs = 'مقفوله' else mute_gifs = 'مفتوحه' end local DraGoN = "\n" .."⌯︙المتحركه ↫ "..mute_gifs.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الملصقات" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Stickers'..msg.chat_id_) then lock_sticker = 'مقفوله' else lock_sticker = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الملصقات ↫ "..lock_sticker.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الصور" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Photo'..msg.chat_id_) then mute_photo = 'مقفوله' else mute_photo = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الصور ↫ "..mute_photo.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الفيديو" or text == "الفيديوهات" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Videos'..msg.chat_id_) then mute_video = 'مقفوله' else mute_video = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الفيديو ↫ "..mute_video.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الاونلاين" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Inline'..msg.chat_id_) then mute_in = 'مقفل' else mute_in = 'مفتوح' end local DraGoN = "\n" .."⌯︙الاونلاين ↫ "..mute_in.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الدردشه" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Text'..msg.chat_id_) then mute_text = 'مقفله' else mute_text = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الدردشه ↫ "..mute_text.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "التوجيه" or text == "اعاده التوجيه" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Forwards'..msg.chat_id_) then lock_forward = 'مقفل' else lock_forward = 'مفتوح' end local DraGoN = "\n" .."⌯︙التوجيه ↫ "..lock_forward.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الاغاني" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Music'..msg.chat_id_) then mute_music = 'مقفوله' else mute_music = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الاغاني ↫ "..mute_music.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الصوت" or text == "الصوتيات" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Voice'..msg.chat_id_) then mute_voice = 'مقفول' else mute_voice = 'مفتوح' end local DraGoN = "\n" .."⌯︙الصوت ↫ "..mute_voice.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الجهات" or text == "جهات الاتصال" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Contact'..msg.chat_id_) then lock_contact = 'مقفوله' else lock_contact = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الجهات ↫ "..lock_contact.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الماركداون" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Markdown'..msg.chat_id_) then markdown = 'مقفل' else markdown = 'مفتوح' end local DraGoN = "\n" .."⌯︙الماركداون ↫ "..markdown.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الهاشتاك" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Hashtak'..msg.chat_id_) then lock_htag = 'مقفل' else lock_htag = 'مفتوح' end local DraGoN = "\n" .."⌯︙الهاشتاك ↫ "..lock_htag.."\n"Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "التعديل" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_) then mute_edit = 'مقفل' else mute_edit = 'مفتوح' end local DraGoN = "\n" .."⌯︙التعديل ↫ "..mute_edit.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "التثبيت" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Pin'..msg.chat_id_) then lock_pin = 'مقفل' else lock_pin = 'مفتوح' end local DraGoN = "\n" .."⌯︙التثبيت ↫ "..lock_pin.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الاشعارات" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:TagServr'..msg.chat_id_) then lock_tgservice = 'مقفوله' else lock_tgservice = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الاشعارات ↫ "..lock_tgservice.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الكلايش" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Spam'..msg.chat_id_) then lock_spam = 'مقفوله' else lock_spam = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الكلايش ↫ "..lock_spam.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الدخول" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Join'..msg.chat_id_) then lock_Join = 'مقفول' else lock_Join = 'مفتوح' end local DraGoN = "\n" .."⌯︙الدخول ↫ "..lock_Join.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الشبكات" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:WebLinks'..msg.chat_id_) then lock_wp = 'مقفوله' else lock_wp = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الشبكات ↫ "..lock_wp.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "المواقع" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Location'..msg.chat_id_) then lock_location = 'مقفوله' else lock_location = 'مفتوحه' end local DraGoN = "\n" .."⌯︙المواقع ↫ "..lock_location.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "العربيه" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Arabic'..msg.chat_id_) then lock_arabic = 'مقفوله' else lock_arabic = 'مفتوحه' end local DraGoN = "\n" .."⌯︙العربيه ↫ "..lock_arabic.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الانكليزيه" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:English'..msg.chat_id_) then lock_english = 'مقفوله' else lock_english = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الانكليزيه ↫ "..lock_english.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الكفر" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Kfr'..msg.chat_id_) then lock_kaf = 'مفتوح' else lock_kaf = 'مقفل' end local DraGoN = "\n" .."⌯︙الكفر ↫ "..lock_kaf.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الفشار" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Fshar'..msg.chat_id_) then lock_fshar = 'مفتوح' else lock_fshar = 'مقفل' end local DraGoN = "\n" .."⌯︙الفشار ↫ "..lock_fshar.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
-if text == "الطائفيه" then if Dev Ahme:get(ANUBIS..' Ahme:Lock:Taf'..msg.chat_id_) then lock_taf = 'مفتوحه' else lock_taf = 'مقفله' end local DraGoN = "\n" .."⌯︙الطائفيه ↫ "..lock_taf.."\n" Dev_ Ahme(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if Dev SOFI:get(ANUBIS..' SOFI:LockSettings'..msg.chat_id_) then 
+if text == "الروابط" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Links'..msg.chat_id_) then mute_links = 'مقفله' else mute_links = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الروابط ↫ "..mute_links.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "المعرف" or text == "المعرفات" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Tags'..msg.chat_id_) then lock_tag = 'مقفوله' else lock_tag = 'مفتوحه' end local DraGoN = "\n" .."⌯︙المعرف ↫ "..lock_tag.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "المتحركه" or text == "الملصقات المتحركه" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Gifs'..msg.chat_id_) then mute_gifs = 'مقفوله' else mute_gifs = 'مفتوحه' end local DraGoN = "\n" .."⌯︙المتحركه ↫ "..mute_gifs.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الملصقات" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Stickers'..msg.chat_id_) then lock_sticker = 'مقفوله' else lock_sticker = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الملصقات ↫ "..lock_sticker.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الصور" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Photo'..msg.chat_id_) then mute_photo = 'مقفوله' else mute_photo = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الصور ↫ "..mute_photo.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الفيديو" or text == "الفيديوهات" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Videos'..msg.chat_id_) then mute_video = 'مقفوله' else mute_video = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الفيديو ↫ "..mute_video.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الاونلاين" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Inline'..msg.chat_id_) then mute_in = 'مقفل' else mute_in = 'مفتوح' end local DraGoN = "\n" .."⌯︙الاونلاين ↫ "..mute_in.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الدردشه" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Text'..msg.chat_id_) then mute_text = 'مقفله' else mute_text = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الدردشه ↫ "..mute_text.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "التوجيه" or text == "اعاده التوجيه" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Forwards'..msg.chat_id_) then lock_forward = 'مقفل' else lock_forward = 'مفتوح' end local DraGoN = "\n" .."⌯︙التوجيه ↫ "..lock_forward.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الاغاني" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Music'..msg.chat_id_) then mute_music = 'مقفوله' else mute_music = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الاغاني ↫ "..mute_music.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الصوت" or text == "الصوتيات" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Voice'..msg.chat_id_) then mute_voice = 'مقفول' else mute_voice = 'مفتوح' end local DraGoN = "\n" .."⌯︙الصوت ↫ "..mute_voice.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الجهات" or text == "جهات الاتصال" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Contact'..msg.chat_id_) then lock_contact = 'مقفوله' else lock_contact = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الجهات ↫ "..lock_contact.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الماركداون" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Markdown'..msg.chat_id_) then markdown = 'مقفل' else markdown = 'مفتوح' end local DraGoN = "\n" .."⌯︙الماركداون ↫ "..markdown.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الهاشتاك" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Hashtak'..msg.chat_id_) then lock_htag = 'مقفل' else lock_htag = 'مفتوح' end local DraGoN = "\n" .."⌯︙الهاشتاك ↫ "..lock_htag.."\n"Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "التعديل" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_) then mute_edit = 'مقفل' else mute_edit = 'مفتوح' end local DraGoN = "\n" .."⌯︙التعديل ↫ "..mute_edit.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "التثبيت" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Pin'..msg.chat_id_) then lock_pin = 'مقفل' else lock_pin = 'مفتوح' end local DraGoN = "\n" .."⌯︙التثبيت ↫ "..lock_pin.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الاشعارات" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:TagServr'..msg.chat_id_) then lock_tgservice = 'مقفوله' else lock_tgservice = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الاشعارات ↫ "..lock_tgservice.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الكلايش" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Spam'..msg.chat_id_) then lock_spam = 'مقفوله' else lock_spam = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الكلايش ↫ "..lock_spam.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الدخول" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Join'..msg.chat_id_) then lock_Join = 'مقفول' else lock_Join = 'مفتوح' end local DraGoN = "\n" .."⌯︙الدخول ↫ "..lock_Join.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الشبكات" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:WebLinks'..msg.chat_id_) then lock_wp = 'مقفوله' else lock_wp = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الشبكات ↫ "..lock_wp.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "المواقع" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Location'..msg.chat_id_) then lock_location = 'مقفوله' else lock_location = 'مفتوحه' end local DraGoN = "\n" .."⌯︙المواقع ↫ "..lock_location.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "العربيه" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Arabic'..msg.chat_id_) then lock_arabic = 'مقفوله' else lock_arabic = 'مفتوحه' end local DraGoN = "\n" .."⌯︙العربيه ↫ "..lock_arabic.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الانكليزيه" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:English'..msg.chat_id_) then lock_english = 'مقفوله' else lock_english = 'مفتوحه' end local DraGoN = "\n" .."⌯︙الانكليزيه ↫ "..lock_english.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الكفر" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Kfr'..msg.chat_id_) then lock_kaf = 'مفتوح' else lock_kaf = 'مقفل' end local DraGoN = "\n" .."⌯︙الكفر ↫ "..lock_kaf.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الفشار" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Fshar'..msg.chat_id_) then lock_fshar = 'مفتوح' else lock_fshar = 'مقفل' end local DraGoN = "\n" .."⌯︙الفشار ↫ "..lock_fshar.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
+if text == "الطائفيه" then if Dev SOFI:get(ANUBIS..' SOFI:Lock:Taf'..msg.chat_id_) then lock_taf = 'مفتوحه' else lock_taf = 'مقفله' end local DraGoN = "\n" .."⌯︙الطائفيه ↫ "..lock_taf.."\n" Dev_ SOFI(msg.chat_id_, msg.id_, 1, DraGoN, 1, 'md') end
 end
 --     Source ANUBIS     --
 if text == 'تفعيل كشف الاعدادات' and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل كشف الاعدادات بنجاح\n✓")
-Dev Ahme:set(ANUBIS..' Ahme:LockSettings'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:LockSettings'..msg.chat_id_,true)  
 end
 if text == 'تعطيل كشف الاعدادات' and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل كشف الاعدادات بنجاح\n✓")
-Dev Ahme:del(ANUBIS..' Ahme:LockSettings'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:LockSettings'..msg.chat_id_) 
 end
 --     Source ANUBIS     --
 if text == 'تفعيل اوامر التحشيش' and Manager(msg) and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل اوامر التحشيش بنجاح\n✓")
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_)
 end
 if text == 'تعطيل اوامر التحشيش' and Manager(msg) and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل اوامر التحشيش بنجاح\n✓")
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Stupid'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Stupid'..msg.chat_id_,true)
 end
 --     Source ANUBIS     --
 if text and (text == 'تعطيل التحقق' or text == 'قفل التحقق' or text == 'تعطيل تنبيه الدخول') and Manager(msg) and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل التحقق بنجاح\n✓")
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Robot'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Robot'..msg.chat_id_)
 end
 if text and (text == 'تفعيل التحقق' or text == 'فتح التحقق' or text == 'تفعيل تنبيه الدخول') and Manager(msg) and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل التحقق بنجاح\n✓")
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Robot'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Robot'..msg.chat_id_,true)
 end
 --     Source ANUBIS     --
 if text == 'تفعيل ردود المدير' and Manager(msg) and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل ردود المدير بنجاح\n✓")
-Dev Ahme:del(ANUBIS..' Ahme:Lock:GpRed'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:GpRed'..msg.chat_id_)
 end
 if text == 'تعطيل ردود المدير' and Manager(msg) and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل ردود المدير بنجاح\n✓")
-Dev Ahme:set(ANUBIS..' Ahme:Lock:GpRed'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:GpRed'..msg.chat_id_,true)
 end
 --     Source ANUBIS     --
 if text == 'تفعيل ردود المطور' and Manager(msg) and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل ردود المطور بنجاح\n✓")
-Dev Ahme:del(ANUBIS..' Ahme:Lock:AllRed'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Lock:AllRed'..msg.chat_id_)
 end
 if text == 'تعطيل ردود المطور' and Manager(msg) and ChCheck(msg) then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل ردود المطور بنجاح\n✓")
-Dev Ahme:set(ANUBIS..' Ahme:Lock:AllRed'..msg.chat_id_,true)
+Dev SOFI:set(ANUBIS..' SOFI:Lock:AllRed'..msg.chat_id_,true)
 end
 --     Source ANUBIS     --
 if SecondSudo(msg) then
 if text == 'تفعيل المغادره' or text == '↫ تفعيل المغادره ⌯' then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل المغادره بنجاح\n✓")
-Dev Ahme:del(ANUBIS.." Ahme:Left:Bot"..ANUBIS)
+Dev SOFI:del(ANUBIS.." SOFI:Left:Bot"..ANUBIS)
 end
 if text == 'تعطيل المغادره' or text == '↫ تعطيل المغادره ⌯' then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل المغادره بنجاح\n✓")
-Dev Ahme:set(ANUBIS.." Ahme:Left:Bot"..ANUBIS,true) 
+Dev SOFI:set(ANUBIS.." SOFI:Left:Bot"..ANUBIS,true) 
 end 
 if text == 'تفعيل الاذاعه' or text == '↫ تفعيل الاذاعه ⌯' then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل الاذاعه بنجاح\n✓")
-Dev Ahme:del(ANUBIS.." Ahme:Send:Bot"..ANUBIS)
+Dev SOFI:del(ANUBIS.." SOFI:Send:Bot"..ANUBIS)
 end
 if text == 'تعطيل الاذاعه' or text == '↫ تعطيل الاذاعه ⌯' then 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل الاذاعه بنجاح\n✓")
-Dev Ahme:set(ANUBIS.." Ahme:Send:Bot"..ANUBIS,true) 
+Dev SOFI:set(ANUBIS.." SOFI:Send:Bot"..ANUBIS,true) 
 end
 end
 --     Source ANUBIS     --
@@ -10451,7 +10451,7 @@ end,nil)
 end
 --     Source ANUBIS     --
 if msg.content_.photo_ then
-if Dev Ahme:get(ANUBIS..' Ahme:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_) then
 if msg.content_.photo_.sizes_[3] then
 photo_id = msg.content_.photo_.sizes_[3].photo_.persistent_id_
 else
@@ -10460,21 +10460,21 @@ end
 tdcli_function ({ID = "ChangeChatPhoto",chat_id_ = msg.chat_id_,photo_ = getInputFile(photo_id) }, function(arg,data)   
 if data.code_ == 3 then
 send(msg.chat_id_, msg.id_,"⌯︙عذرا البوت ليس ادمن يرجى ترقيتي والمحاوله لاحقا") 
-Dev Ahme:del(ANUBIS..' Ahme:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS..' SOFI:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_)
 return false  end
 if data.message_ == "CHAT_ADMIN_REQUIRED" then 
 send(msg.chat_id_, msg.id_,"⌯︙ليست لدي صلاحية تغير معلومات المجموعه يرجى التحقق من الصلاحيات") 
-Dev Ahme:del(ANUBIS..' Ahme:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS..' SOFI:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_)
 else
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تغير صوره المجموعة بنجاح\n✓")
 end
 end,nil) 
-Dev Ahme:del(ANUBIS..' Ahme:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_)
+Dev SOFI:del(ANUBIS..' SOFI:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_)
 end 
 end
 if text and text:match("^ضع صوره$") and ChCheck(msg) or text and text:match("^وضع صوره$") and ChCheck(msg) then
-Dev_ Ahme(msg.chat_id_,msg.id_, 1, '⌯︙ارسل صورة المجموعه الان', 1, 'md')
-Dev Ahme:set(ANUBIS..' Ahme:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_,true)
+Dev_ SOFI(msg.chat_id_,msg.id_, 1, '⌯︙ارسل صورة المجموعه الان', 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:SetPhoto'..msg.chat_id_..':'..msg.sender_user_id_,true)
 end
 --     Source ANUBIS     --
 if text and text:match("^حذف الصوره$") and ChCheck(msg) or text and text:match("^مسح الصوره$") and ChCheck(msg) then
@@ -10485,13 +10485,13 @@ end
 --     Source ANUBIS     --
 if Manager(msg) then
 if text and text:match("^الغاء تثبيت$") and ChCheck(msg) or text and text:match("^الغاء التثبيت$") and ChCheck(msg) then
-if Dev Ahme:sismember(ANUBIS.." Ahme:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
-Dev_ Ahme(msg.chat_id_,msg.id_, 1, "⌯︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
+if Dev SOFI:sismember(ANUBIS.." SOFI:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
+Dev_ SOFI(msg.chat_id_,msg.id_, 1, "⌯︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
 return false  
 end
 tdcli_function({ID="UnpinChannelMessage",channel_id_ = msg.chat_id_:gsub("-100","")},function(arg,data) 
 if data.ID == "Ok" then
-Dev Ahme:del(ANUBIS..' Ahme:PinnedMsg'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:PinnedMsg'..msg.chat_id_)
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم الغاء تثبيت الرسالة بنجاح\n✓")
 return false  
 end
@@ -10507,15 +10507,15 @@ end,nil)
 end
 --     Source ANUBIS     --
 if text and text:match("^الغاء تثبيت الكل$") then  
-if Dev Ahme:sismember(ANUBIS.." Ahme:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
-Dev_ Ahme(msg.chat_id_,msg.id_, 1, "⌯︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
+if Dev SOFI:sismember(ANUBIS.." SOFI:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
+Dev_ SOFI(msg.chat_id_,msg.id_, 1, "⌯︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
 return false  
 end
 tdcli_function({ID="UnpinChannelMessage",channel_id_ = msg.chat_id_:gsub("-100","")},function(arg,data) 
 if data.ID == "Ok" then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم الغاء تثبيت الكل بنجاح")
 https.request('https://api.telegram.org/bot'..TokenBot..'/unpinAllChatMessages?chat_id='..msg.chat_id_)
-Dev Ahme:del(ANUBIS.." Ahme:PinnedMsg"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:PinnedMsg"..msg.chat_id_)
 return false  
 end
 if data.code_ == 6 then
@@ -10530,11 +10530,11 @@ end,nil)
 end
 --     Source ANUBIS     --
 if text and text:match("^اعاده تثبيت$") and ChCheck(msg) or text and text:match("^اعاده التثبيت$") and ChCheck(msg) or text and text:match("^اعادة التثبيت$") and ChCheck(msg) then
-if Dev Ahme:sismember(ANUBIS.." Ahme:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
-Dev_ Ahme(msg.chat_id_,msg.id_, 1, "⌯︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
+if Dev SOFI:sismember(ANUBIS.." SOFI:Lock:Pinpin",msg.chat_id_) and not BasicConstructor(msg) then
+Dev_ SOFI(msg.chat_id_,msg.id_, 1, "⌯︙التثبيت والغاء واعادة التثبيت تم قفله من قبل المنشئين الاساسيين", 1, 'md')
 return false  
 end
-local PinId = Dev Ahme:get(ANUBIS..' Ahme:PinnedMsg'..msg.chat_id_)
+local PinId = Dev SOFI:get(ANUBIS..' SOFI:PinnedMsg'..msg.chat_id_)
 if PinId then
 Pin(msg.chat_id_,PinId,0)
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم اعاده تثبيت الرسالة بنجاح\n✓")
@@ -10557,13 +10557,13 @@ end
 if text and text:match("^مسح المحظورين$") or text and text:match("^حذف المحظورين$") and ChCheck(msg) or text and text:match("^مسح المطرودين$") or text and text:match("^حذف المطرودين$") and ChCheck(msg) then
 local function RemoveBlockList(extra, result)
 if tonumber(result.total_count_) == 0 then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 0,'⌯︙*لا يوجد محظورين*', 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Ban:'..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 0,'⌯︙*لا يوجد محظورين*', 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Ban:'..msg.chat_id_)
 else
 local x = 0
 for x,y in pairs(result.members_) do
 tdcli_function ({ ID = "ChangeChatMemberStatus", chat_id_ = msg.chat_id_, user_id_ = y.user_id_, status_ = { ID = "ChatMemberStatusLeft" }, }, dl_cb, nil)
-Dev Ahme:del(ANUBIS..' Ahme:Ban:'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Ban:'..msg.chat_id_)
 x = x + 1
 end
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف المحظورين\n✓")  
@@ -10574,10 +10574,10 @@ end
 end
 --     Source ANUBIS     --
 if text and text:match("^معلومات المجموعه$") and ChCheck(msg) or text and text:match("^عدد الاعضاء$") and ChCheck(msg) or text and text:match("^عدد الكروب$") and ChCheck(msg) or text and text:match("^عدد الادمنيه$") and ChCheck(msg) or text and text:match("^عدد المحظورين$") and ChCheck(msg) then
-local Muted = Dev Ahme:scard(ANUBIS.." Ahme:Muted:"..msg.chat_id_) or "0"
+local Muted = Dev SOFI:scard(ANUBIS.." SOFI:Muted:"..msg.chat_id_) or "0"
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,dp) 
 tdcli_function({ID="GetChannelFull",channel_id_ = msg.chat_id_:gsub("-100","")},function(arg,data) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه ↫ ❨ '..dp.title_..' ❩\n⌯︙الايدي ↫ ❨ '..msg.chat_id_..' ❩\n⌯︙عدد الاعضاء ↫ ❨ *'..data.member_count_..'* ❩\n⌯︙عدد الادمنيه ↫ ❨ *'..data.administrator_count_..'* ❩\n⌯︙عدد المطرودين ↫ ❨ *'..data.kicked_count_..'* ❩\n⌯︙عدد المكتومين ↫ ❨ *'..Muted..'* ❩\n⌯︙عدد رسائل المجموعه ↫ ❨ *'..(msg.id_/2097152/0.5)..'* ❩\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه ↫ ❨ '..dp.title_..' ❩\n⌯︙الايدي ↫ ❨ '..msg.chat_id_..' ❩\n⌯︙عدد الاعضاء ↫ ❨ *'..data.member_count_..'* ❩\n⌯︙عدد الادمنيه ↫ ❨ *'..data.administrator_count_..'* ❩\n⌯︙عدد المطرودين ↫ ❨ *'..data.kicked_count_..'* ❩\n⌯︙عدد المكتومين ↫ ❨ *'..Muted..'* ❩\n⌯︙عدد رسائل المجموعه ↫ ❨ *'..(msg.id_/2097152/0.5)..'* ❩\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n', 1, 'md') 
 end,nil)
 end,nil)
 end
@@ -10585,15 +10585,15 @@ end
 if text and text:match('^كشف (-%d+)') then
 local ChatId = text:match('كشف (-%d+)') 
 if not SudoBot(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطورين فقط', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطورين فقط', 1, 'md')
 else
-local ConstructorList = Dev Ahme:scard(ANUBIS.." Ahme:Constructor:"..ChatId) or 0
-local BanedList = Dev Ahme:scard(ANUBIS.." Ahme:Ban:"..ChatId) or 0
-local ManagerList = Dev Ahme:scard(ANUBIS.." Ahme:Managers:"..ChatId) or 0
-local MutedList = Dev Ahme:scard(ANUBIS.." Ahme:Muted:"..ChatId) or 0
-local TkeedList = Dev Ahme:scard(ANUBIS.." Ahme: Ahme:Tkeed:"..ChatId) or 0
-local AdminsList = Dev Ahme:scard(ANUBIS.." Ahme:Admins:"..ChatId) or 0
-local VipList = Dev Ahme:scard(ANUBIS.." Ahme:VipMem:"..ChatId) or 0
+local ConstructorList = Dev SOFI:scard(ANUBIS.." SOFI:Constructor:"..ChatId) or 0
+local BanedList = Dev SOFI:scard(ANUBIS.." SOFI:Ban:"..ChatId) or 0
+local ManagerList = Dev SOFI:scard(ANUBIS.." SOFI:Managers:"..ChatId) or 0
+local MutedList = Dev SOFI:scard(ANUBIS.." SOFI:Muted:"..ChatId) or 0
+local TkeedList = Dev SOFI:scard(ANUBIS.." SOFI: SOFI:Tkeed:"..ChatId) or 0
+local AdminsList = Dev SOFI:scard(ANUBIS.." SOFI:Admins:"..ChatId) or 0
+local VipList = Dev SOFI:scard(ANUBIS.." SOFI:VipMem:"..ChatId) or 0
 local LinkGp = json:decode(https.request('https://api.telegram.org/bot'..TokenBot..'/exportChatInviteLink?chat_id='..ChatId))
 if LinkGp.ok == true then LinkGroup = LinkGp.result else LinkGroup = 't.me/SOURCEANUBIS' end
 tdcli_function({ID ="GetChat",chat_id_=ChatId},function(arg,dp)
@@ -10603,18 +10603,18 @@ local admins = data.members_
 for i=0 , #admins do
 if data.members_[i].status_.ID == "ChatMemberStatusCreator" then
 Manager_id = admins[i].user_id_
-tdcli_function ({ID = "GetUser",user_id_ = Manager_id},function(arg, Ahme) 
-if  Ahme.first_name_ ~= false then
-Constructor Ahme = "[".. Ahme.first_name_.."](T.me/"..( Ahme.username_ or "SOURCEANUBIS")..")"
+tdcli_function ({ID = "GetUser",user_id_ = Manager_id},function(arg, SOFI) 
+if  SOFI.first_name_ ~= false then
+Constructor SOFI = "[".. SOFI.first_name_.."](T.me/"..( SOFI.username_ or "SOURCEANUBIS")..")"
 else 
-Constructor Ahme = "حساب محذوف"
+Constructor SOFI = "حساب محذوف"
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙المجموعه ↫ ["..dp.title_.."]("..LinkGroup..")\n⌯︙الايدي ↫ ( `"..ChatId.."` )\n⌯︙المنشئ ↫ "..Constructor Ahme.."\n⌯︙عدد المدراء ↫ ( *"..ManagerList.."* )\n⌯︙عدد المنشئين ↫ ( *"..ConstructorList.."* )\n⌯︙عدد الادمنيه ↫ ( *"..AdminsList.."* )\n⌯︙عدد المميزين ↫ ( *"..VipList.."* )\n⌯︙عدد المحظورين ↫ ( *"..BanedList.."* )\n⌯︙عدد المقيدين ↫ ( *"..TkeedList.."* )\n⌯︙عدد المكتومين ↫ ( *"..MutedList.."* )", 1,"md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙المجموعه ↫ ["..dp.title_.."]("..LinkGroup..")\n⌯︙الايدي ↫ ( `"..ChatId.."` )\n⌯︙المنشئ ↫ "..Constructor SOFI.."\n⌯︙عدد المدراء ↫ ( *"..ManagerList.."* )\n⌯︙عدد المنشئين ↫ ( *"..ConstructorList.."* )\n⌯︙عدد الادمنيه ↫ ( *"..AdminsList.."* )\n⌯︙عدد المميزين ↫ ( *"..VipList.."* )\n⌯︙عدد المحظورين ↫ ( *"..BanedList.."* )\n⌯︙عدد المقيدين ↫ ( *"..TkeedList.."* )\n⌯︙عدد المكتومين ↫ ( *"..MutedList.."* )", 1,"md")
 end,nil)
 end
 end
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لم تتم اضافتي بها لاقوم بكشفها", 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لم تتم اضافتي بها لاقوم بكشفها", 1, "md")
 end
 end,nil)
 end,nil)
@@ -10624,16 +10624,16 @@ end
 if text and text:match("^غادر (-%d+)$")  then
 local Text = { string.match(text, "^(غادر) (-%d+)$")}
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط', 1, 'md')
 else 
 tdcli_function({ID ="GetChat",chat_id_=Text[2]},function(arg,dp) 
 if dp.id_ then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙المجموعه ↫ ["..dp.title_.."]\n⌯︙تمت المغادره منها بنجاح", 1, "md")
-Dev_ Ahme(Text[2], 0, 1, "⌯︙بامر المطور تم مغادرة هذه المجموعه ", 1, "md")  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙المجموعه ↫ ["..dp.title_.."]\n⌯︙تمت المغادره منها بنجاح", 1, "md")
+Dev_ SOFI(Text[2], 0, 1, "⌯︙بامر المطور تم مغادرة هذه المجموعه ", 1, "md")  
 ChatLeave(dp.id_, ANUBIS)
-Dev Ahme:srem(ANUBIS.." Ahme:Groups", dp.id_)
+Dev SOFI:srem(ANUBIS.." SOFI:Groups", dp.id_)
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لم تتم اضافتي بها لاقوم بمغادرتها", 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لم تتم اضافتي بها لاقوم بمغادرتها", 1, "md")
 end 
 end,nil)
 end 
@@ -10641,62 +10641,62 @@ end
 --     Source ANUBIS     --
 if text and text:match("^تعين عدد الاعضاء (%d+)$") and SecondSudo(msg) or text and text:match("^تعيين عدد الاعضاء (%d+)$") and SecondSudo(msg) then
 local Num = text:match("تعين عدد الاعضاء (%d+)$") or text:match("تعيين عدد الاعضاء (%d+)$")
-Dev Ahme:set(ANUBIS..' Ahme:Num:Add:Bot',Num) 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم وضع عدد الاعضاء ↫ *'..Num..'* عضو', 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:Num:Add:Bot',Num) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم وضع عدد الاعضاء ↫ *'..Num..'* عضو', 1, 'md')
 end
 --     Source ANUBIS     --
 if text == 'تفعيل البوت الخدمي' or text == '↫ تفعيل البوت الخدمي ⌯' then 
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط', 1, 'md')
 else 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل البوت الخدمي بنجاح")
-Dev Ahme:del(ANUBIS..' Ahme:Lock:FreeBot'..ANUBIS) 
+Dev SOFI:del(ANUBIS..' SOFI:Lock:FreeBot'..ANUBIS) 
 end 
 end
 if text == 'تعطيل البوت الخدمي' or text == '↫ تعطيل البوت الخدمي ⌯' then 
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط', 1, 'md')
 else 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل البوت الخدمي بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:Lock:FreeBot'..ANUBIS,true) 
+Dev SOFI:set(ANUBIS..' SOFI:Lock:FreeBot'..ANUBIS,true) 
 end 
 end
 if ChatType == 'sp' or ChatType == 'gp'  then
 if text == 'تفعيل الالعاب' and Manager(msg) and ChCheck(msg) or text == 'تفعيل اللعبه' and Manager(msg) and ChCheck(msg) then   
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل الالعاب بنجاح")
-Dev Ahme:del(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_) 
+Dev SOFI:del(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_) 
 end
 if text == 'تعطيل الالعاب' and Manager(msg) and ChCheck(msg) or text == 'تعطيل اللعبه' and Manager(msg) and ChCheck(msg) then  
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل الالعاب بنجاح")
-Dev Ahme:set(ANUBIS..' Ahme:Lock:Games'..msg.chat_id_,true)  
+Dev SOFI:set(ANUBIS..' SOFI:Lock:Games'..msg.chat_id_,true)  
 end
 if text == "تفعيل الرابط" or text == "تفعيل جلب الرابط" then 
 if BasicConstructor(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تفعيل جلب رابط المجموعه بنجاح")
-Dev Ahme:set(ANUBIS.." Ahme:Lock:GpLinks"..msg.chat_id_,"ok")
+Dev SOFI:set(ANUBIS.." SOFI:Lock:GpLinks"..msg.chat_id_,"ok")
 return false  
 end
 end
 if text == "تعطيل الرابط" or text == "تعطيل جلب الرابط" then 
 if BasicConstructor(msg) then
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تعطيل جلب رابط المجموعه بنجاح")
-Dev Ahme:del(ANUBIS.." Ahme:Lock:GpLinks"..msg.chat_id_)
+Dev SOFI:del(ANUBIS.." SOFI:Lock:GpLinks"..msg.chat_id_)
 return false  
 end
 end
 --     Source ANUBIS     --
 if text and text:match('^تفعيل$') and SudoBot(msg) and ChCheck(msg) then
 if ChatType ~= 'sp' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه عاديه وليست خارقه لا تستطيع تفعيلي يرجى ان تضع سجل رسائل المجموعه ضاهر وليس مخفي ومن بعدها يمكنك رفعي ادمن ثم تفعيلي', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه عاديه وليست خارقه لا تستطيع تفعيلي يرجى ان تضع سجل رسائل المجموعه ضاهر وليس مخفي ومن بعدها يمكنك رفعي ادمن ثم تفعيلي', 1, 'md')
 return false
 end
 if msg.can_be_deleted_ == false then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙البوت ليس ادمن يرجى ترقيتي !', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙البوت ليس ادمن يرجى ترقيتي !', 1, 'md')
 return false  
 end
 tdcli_function ({ ID = "GetChannelFull", channel_id_ = msg.chat_id_:gsub("-100","")}, function(arg,data)  
-if tonumber(data.member_count_) < tonumber(Dev Ahme:get(ANUBIS..' Ahme:Num:Add:Bot') or 0) and not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙عدد اعضاء المجموعه اقل من ↫ *'..(Dev Ahme:get(ANUBIS..' Ahme:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
+if tonumber(data.member_count_) < tonumber(Dev SOFI:get(ANUBIS..' SOFI:Num:Add:Bot') or 0) and not SecondSudo(msg) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙عدد اعضاء المجموعه اقل من ↫ *'..(Dev SOFI:get(ANUBIS..' SOFI:Num:Add:Bot') or 0)..'* عضو', 1, 'md')
 return false
 end
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
@@ -10705,35 +10705,35 @@ tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100"
 local admins = SoOoFi.members_
 for i=0 , #admins do
 if SoOoFi.members_[i].bot_info_ == false and SoOoFi.members_[i].status_.ID == "ChatMemberStatusEditor" then
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..msg.chat_id_, admins[i].user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..msg.chat_id_, admins[i].user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = admins[i].user_id_},function(arg,ba) 
 if ba.first_name_ == false then
-Dev Ahme:srem(ANUBIS..' Ahme:Admins:'..msg.chat_id_, admins[i].user_id_)
+Dev SOFI:srem(ANUBIS..' SOFI:Admins:'..msg.chat_id_, admins[i].user_id_)
 end
 end,nil)
 else
-Dev Ahme:sadd(ANUBIS..' Ahme:Admins:'..msg.chat_id_, admins[i].user_id_)
+Dev SOFI:sadd(ANUBIS..' SOFI:Admins:'..msg.chat_id_, admins[i].user_id_)
 end
 if SoOoFi.members_[i].status_.ID == "ChatMemberStatusCreator" then
-Dev Ahme:sadd(ANUBIS.." Ahme:BasicConstructor:"..msg.chat_id_,admins[i].user_id_)
-Dev Ahme:sadd(ANUBIS.." Ahme: AhmeConstructor:"..msg.chat_id_,admins[i].user_id_)
+Dev SOFI:sadd(ANUBIS.." SOFI:BasicConstructor:"..msg.chat_id_,admins[i].user_id_)
+Dev SOFI:sadd(ANUBIS.." SOFI: SOFIConstructor:"..msg.chat_id_,admins[i].user_id_)
 tdcli_function ({ID = "GetUser",user_id_ = admins[i].user_id_},function(arg,ba) 
 if ba.first_name_ == false then
-Dev Ahme:srem(ANUBIS.." Ahme:BasicConstructor:"..msg.chat_id_,admins[i].user_id_)
-Dev Ahme:srem(ANUBIS.." Ahme: AhmeConstructor:"..msg.chat_id_,admins[i].user_id_)
+Dev SOFI:srem(ANUBIS.." SOFI:BasicConstructor:"..msg.chat_id_,admins[i].user_id_)
+Dev SOFI:srem(ANUBIS.." SOFI: SOFIConstructor:"..msg.chat_id_,admins[i].user_id_)
 end
 end,nil)  
 end 
 end
 end,nil)
-if Dev Ahme:sismember(ANUBIS..' Ahme:Groups',msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه بالتاكيد مفعله', 1, 'md')
+if Dev SOFI:sismember(ANUBIS..' SOFI:Groups',msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه بالتاكيد مفعله', 1, 'md')
 else
 ReplyStatus(msg,result.id_,"ReplyBy","⌯︙تم تفعيل المجموعه "..dp.title_)  
-Dev Ahme:sadd(ANUBIS.." Ahme:Groups",msg.chat_id_)
-if not Dev Ahme:get(ANUBIS..' Ahme:SudosGp'..msg.sender_user_id_..msg.chat_id_) and not SecondSudo(msg) then 
-Dev Ahme:incrby(ANUBIS..' Ahme:Sudos'..msg.sender_user_id_,1)
-Dev Ahme:set(ANUBIS..' Ahme:SudosGp'..msg.sender_user_id_..msg.chat_id_," Ahme")
+Dev SOFI:sadd(ANUBIS.." SOFI:Groups",msg.chat_id_)
+if not Dev SOFI:get(ANUBIS..' SOFI:SudosGp'..msg.sender_user_id_..msg.chat_id_) and not SecondSudo(msg) then 
+Dev SOFI:incrby(ANUBIS..' SOFI:Sudos'..msg.sender_user_id_,1)
+Dev SOFI:set(ANUBIS..' SOFI:SudosGp'..msg.sender_user_id_..msg.chat_id_," SOFI")
 end
 local Name1 = result.first_name_
 local Name1 = Name1:gsub('"',"") 
@@ -10757,7 +10757,7 @@ LinkGroup = LinkGp.result
 else
 LinkGroup = 'لا يوجد'
 end
-Dev Ahme:set(ANUBIS.." Ahme:Groups:Links"..msg.chat_id_,LinkGroup) 
+Dev SOFI:set(ANUBIS.." SOFI:Groups:Links"..msg.chat_id_,LinkGroup) 
 if not Sudo(msg) then
 SendText(⁦DevId,"⌯︙تم تفعيل مجموعه جديده ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙بواسطة ↫ "..Name.."\n⌯︙اسم المجموعه ↫ ["..NameChat.."]\n⌯︙عدد اعضاء المجموعه ↫ ❨ *"..NumMem.."* ❩\n⌯︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⌯︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙الوقت ↫ "..os.date("%I:%M%p").."\n⌯︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
@@ -10769,11 +10769,11 @@ end
 if text == 'تعطيل' and SudoBot(msg) and ChCheck(msg) then
 tdcli_function ({ID = "GetUser",user_id_ = msg.sender_user_id_},function(extra,result,success)
 tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,dp) 
-if not Dev Ahme:sismember(ANUBIS..' Ahme:Groups',msg.chat_id_) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه بالتاكيد معطله', 1, 'md')
+if not Dev SOFI:sismember(ANUBIS..' SOFI:Groups',msg.chat_id_) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙المجموعه بالتاكيد معطله', 1, 'md')
 else
 ReplyStatus(msg,result.id_,"ReplyBy","⌯︙تم تعطيل المجموعه "..dp.title_)  
-Dev Ahme:srem(ANUBIS.." Ahme:Groups",msg.chat_id_)
+Dev SOFI:srem(ANUBIS.." SOFI:Groups",msg.chat_id_)
 local Name1 = result.first_name_
 local Name1 = Name1:gsub('"',"") 
 local Name1 = Name1:gsub("'","") 
@@ -10795,7 +10795,7 @@ LinkGroup = LinkGp.result
 else
 LinkGroup = 'لا يوجد'
 end
-Dev Ahme:set(ANUBIS.." Ahme:Groups:Links"..msg.chat_id_,LinkGroup) 
+Dev SOFI:set(ANUBIS.." SOFI:Groups:Links"..msg.chat_id_,LinkGroup) 
 if not Sudo(msg) then
 SendText(⁦DevId,"⌯︙تم تعطيل مجموعه جديده ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙بواسطة ↫ "..Name.."\n⌯︙اسم المجموعه ↫ ["..NameChat.."]\n⌯︙ايدي المجموعه ↫ ⤈ \n❨ `"..msg.chat_id_.."` ❩\n⌯︙رابط المجموعه ↫ ⤈\n❨ ["..LinkGroup.."] ❩\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙الوقت ↫ "..os.date("%I:%M%p").."\n⌯︙التاريخ ↫ "..os.date("%Y/%m/%d").."",0,'md')
 end
@@ -10872,18 +10872,18 @@ end
 --     Source ANUBIS     --
 if text == 'روابط الكروبات' or text == 'روابط المجموعات' or text == '↫ روابط المجموعات ⌯' then
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-local List = Dev Ahme:smembers(ANUBIS.." Ahme:Groups")
+local List = Dev SOFI:smembers(ANUBIS.." SOFI:Groups")
 if #List == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لا توجد مجموعات مفعله', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لا توجد مجموعات مفعله', 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙جاري ارسال نسخه تحتوي على ↫ '..#List..' مجموعه', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙جاري ارسال نسخه تحتوي على ↫ '..#List..' مجموعه', 1, 'md')
 local Text = "⌯︙Source ANUBIS\n⌯︙File Bot Groups\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 for k,v in pairs(List) do
-local GroupsManagers = Dev Ahme:scard(ANUBIS.." Ahme:Managers:"..v) or 0
-local GroupsAdmins = Dev Ahme:scard(ANUBIS.." Ahme:Admins:"..v) or 0
-local Groupslink = Dev Ahme:get(ANUBIS.." Ahme:Groups:Links" ..v)
+local GroupsManagers = Dev SOFI:scard(ANUBIS.." SOFI:Managers:"..v) or 0
+local GroupsAdmins = Dev SOFI:scard(ANUBIS.." SOFI:Admins:"..v) or 0
+local Groupslink = Dev SOFI:get(ANUBIS.." SOFI:Groups:Links" ..v)
 Text = Text..k.." ↬ ⤈ \n⌯︙Group ID ↬ "..v.."\n⌯︙Group Link ↬ "..(Groupslink or "Not Found").."\n⌯︙Group Managers ↬ "..GroupsManagers.."\n⌯︙Group Admins ↬ "..GroupsAdmins.."\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n"
 end
 local File = io.open('GroupsBot.txt', 'w')
@@ -10896,24 +10896,24 @@ end
 end
 --     Source ANUBIS     --
 if text == "اذاعه خاص" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه خاص ⌯" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
-if Dev Ahme:get(ANUBIS.." Ahme:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"⌯︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-Dev Ahme:setex(ANUBIS.." Ahme:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
+Dev SOFI:setex(ANUBIS.." SOFI:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙ارسل لي سواء ↫ ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌯︙للخروج ارسل ↫ ( الغاء ) \n ✓")
 return false
 end 
-if Dev Ahme:get(ANUBIS.." Ahme:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false
 end 
-List = Dev Ahme:smembers(ANUBIS..' Ahme:Users') 
+List = Dev SOFI:smembers(ANUBIS..' SOFI:Users') 
 if msg.content_.text_ then
 for k,v in pairs(List) do 
- AhmeText = "الرساله"
+ SOFIText = "الرساله"
 send(v, 0,"["..msg.content_.text_.."]") 
 end
 elseif msg.content_.photo_ then
@@ -10923,63 +10923,63 @@ elseif msg.content_.photo_.sizes_[1] then
 photo = msg.content_.photo_.sizes_[1].photo_.persistent_id_
 end
 for k,v in pairs(List) do 
- AhmeText = "الصوره"
+ SOFIText = "الصوره"
 sendPhoto(v, 0, 0, 1, nil, photo,(msg.content_.caption_ or ''))
 end 
 elseif msg.content_.animation_ then
 for k,v in pairs(List) do 
- AhmeText = "المتحركه"
+ SOFIText = "المتحركه"
 sendDocument(v, 0, 0, 1,nil, msg.content_.animation_.animation_.persistent_id_,(msg.content_.caption_ or ''))    
 end 
 elseif msg.content_.video_ then
 for k,v in pairs(List) do 
- AhmeText = "الفيديو"
+ SOFIText = "الفيديو"
 sendVideo(v, 0, 0, 1, nil, msg.content_.video_.video_.persistent_id_,(msg.content_.caption_ or '')) 
 end 
 elseif msg.content_.voice_ then
 for k,v in pairs(List) do 
- AhmeText = "البصمه"
+ SOFIText = "البصمه"
 sendVoice(v, 0, 0, 1, nil, msg.content_.voice_.voice_.persistent_id_,(msg.content_.caption_ or '')) 
 end 
 elseif msg.content_.audio_ then
 for k,v in pairs(List) do 
- AhmeText = "الصوت"
+ SOFIText = "الصوت"
 sendAudio(v, 0, 0, 1, nil, msg.content_.audio_.audio_.persistent_id_,(msg.content_.caption_ or '')) 
 end 
 elseif msg.content_.document_ then
 for k,v in pairs(List) do 
- AhmeText = "الملف"
+ SOFIText = "الملف"
 sendDocument(v, 0, 0, 1,nil, msg.content_.document_.document_.persistent_id_,(msg.content_.caption_ or ''))    
 end 
 elseif msg.content_.sticker_ then
 for k,v in pairs(List) do 
- AhmeText = "الملصق"
+ SOFIText = "الملصق"
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
 end 
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم اذاعة ".. AhmeText.." بنجاح \n⌯︙‏الى ↫ ❨ "..#List.." ❩ مشترك \n ✓", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم اذاعة ".. SOFIText.." بنجاح \n⌯︙‏الى ↫ ❨ "..#List.." ❩ مشترك \n ✓", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Send:Pv"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source ANUBIS     --
 if text == "اذاعه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه عام ⌯" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
-if Dev Ahme:get(ANUBIS.." Ahme:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"⌯︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-Dev Ahme:setex(ANUBIS.." Ahme:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
+Dev SOFI:setex(ANUBIS.." SOFI:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙ارسل لي سواء ↫ ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌯︙للخروج ارسل ↫ ( الغاء ) \n ✓")
 return false
 end 
-if Dev Ahme:get(ANUBIS.." Ahme:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false
 end 
-List = Dev Ahme:smembers(ANUBIS..' Ahme:Groups') 
+List = Dev SOFI:smembers(ANUBIS..' SOFI:Groups') 
 if msg.content_.text_ then
 for k,v in pairs(List) do 
- AhmeText = "الرساله"
+ SOFIText = "الرساله"
 send(v, 0,"["..msg.content_.text_.."]") 
 end
 elseif msg.content_.photo_ then
@@ -10989,111 +10989,111 @@ elseif msg.content_.photo_.sizes_[1] then
 photo = msg.content_.photo_.sizes_[1].photo_.persistent_id_
 end
 for k,v in pairs(List) do 
- AhmeText = "الصوره"
+ SOFIText = "الصوره"
 sendPhoto(v, 0, 0, 1, nil, photo,(msg.content_.caption_ or ''))
 end 
 elseif msg.content_.animation_ then
 for k,v in pairs(List) do 
- AhmeText = "المتحركه"
+ SOFIText = "المتحركه"
 sendDocument(v, 0, 0, 1,nil, msg.content_.animation_.animation_.persistent_id_,(msg.content_.caption_ or ''))    
 end 
 elseif msg.content_.video_ then
 for k,v in pairs(List) do 
- AhmeText = "الفيديو"
+ SOFIText = "الفيديو"
 sendVideo(v, 0, 0, 1, nil, msg.content_.video_.video_.persistent_id_,(msg.content_.caption_ or '')) 
 end 
 elseif msg.content_.voice_ then
 for k,v in pairs(List) do 
- AhmeText = "البصمه"
+ SOFIText = "البصمه"
 sendVoice(v, 0, 0, 1, nil, msg.content_.voice_.voice_.persistent_id_,(msg.content_.caption_ or '')) 
 end 
 elseif msg.content_.audio_ then
 for k,v in pairs(List) do 
- AhmeText = "الصوت"
+ SOFIText = "الصوت"
 sendAudio(v, 0, 0, 1, nil, msg.content_.audio_.audio_.persistent_id_,(msg.content_.caption_ or '')) 
 end 
 elseif msg.content_.document_ then
 for k,v in pairs(List) do 
- AhmeText = "الملف"
+ SOFIText = "الملف"
 sendDocument(v, 0, 0, 1,nil, msg.content_.document_.document_.persistent_id_,(msg.content_.caption_ or ''))    
 end 
 elseif msg.content_.sticker_ then
 for k,v in pairs(List) do 
- AhmeText = "الملصق"
+ SOFIText = "الملصق"
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
 end 
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم اذاعة ".. AhmeText.." بنجاح \n⌯︙‏في ↫ ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم اذاعة ".. SOFIText.." بنجاح \n⌯︙‏في ↫ ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Send:Gp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source ANUBIS     --
 if text == "اذاعه بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه عام بالتوجيه ⌯" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
-if Dev Ahme:get(ANUBIS.." Ahme:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"⌯︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-Dev Ahme:setex(ANUBIS.." Ahme:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
+Dev SOFI:setex(ANUBIS.." SOFI:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙ارسل الرساله الان لتوجيها \n⌯︙للخروج ارسل ↫ ( الغاء ) \n ✓")
 return false
 end 
-if Dev Ahme:get(ANUBIS.." Ahme:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false  
 end 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Groups')   
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Groups')   
 for k,v in pairs(List) do  
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = msg.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم اذاعة رسالتك بالتوجيه \n⌯︙‏في ↫ ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم اذاعة رسالتك بالتوجيه \n⌯︙‏في ↫ ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Send:FwdGp"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source ANUBIS     --
 if text == "اذاعه خاص بالتوجيه" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه خاص بالتوجيه ⌯" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
-if Dev Ahme:get(ANUBIS.." Ahme:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"⌯︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-Dev Ahme:setex(ANUBIS.." Ahme:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
+Dev SOFI:setex(ANUBIS.." SOFI:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙ارسل الرساله الان لتوجيها \n⌯︙للخروج ارسل ↫ ( الغاء ) \n ✓")
 return false
 end 
-if Dev Ahme:get(ANUBIS.." Ahme:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_) then 
 if text == 'الغاء' then   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false  
 end 
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Users')   
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Users')   
 for k,v in pairs(List) do  
 tdcli_function({ID="ForwardMessages", chat_id_ = v, from_chat_id_ = msg.chat_id_, message_ids_ = {[0] = msg.id_}, disable_notification_ = 0, from_background_ = 1},function(a,t) end,nil) 
 end   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم اذاعة رسالتك بالتوجيه \n⌯︙‏الى ↫ ❨ "..#List.." ❩ مشترك \n ✓", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم اذاعة رسالتك بالتوجيه \n⌯︙‏الى ↫ ❨ "..#List.." ❩ مشترك \n ✓", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Send:FwdPv"..msg.chat_id_..":" .. msg.sender_user_id_) 
 end
 --     Source ANUBIS     --
 if text == "اذاعه بالتثبيت" and msg.reply_to_message_id_ == 0 and SudoBot(msg) or text == "↫ اذاعه بالتثبيت ⌯" and msg.reply_to_message_id_ == 0 and SudoBot(msg) then 
-if Dev Ahme:get(ANUBIS.." Ahme:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:Bot"..ANUBIS) and not SecondSudo(msg) then 
 send(msg.chat_id_, msg.id_,"⌯︙الاذاعه معطله من قبل المطور الاساسي")
 return false
 end
-Dev Ahme:setex(ANUBIS.." Ahme:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
+Dev SOFI:setex(ANUBIS.." SOFI:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_, 600, true) 
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙ارسل لي سواء ↫ ⤈ \n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌯︙للخروج ارسل ↫ ( الغاء ) \n ✓")
 return false
 end 
-if Dev Ahme:get(ANUBIS.." Ahme:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_) then 
+if Dev SOFI:get(ANUBIS.." SOFI:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_) then 
 if text == "الغاء" then   
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء امر الاذاعه بنجاح", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false
 end 
-local List = Dev Ahme:smembers(ANUBIS.." Ahme:Groups") 
+local List = Dev SOFI:smembers(ANUBIS.." SOFI:Groups") 
 if msg.content_.text_ then
 for k,v in pairs(List) do 
- AhmeText = "الرساله"
+ SOFIText = "الرساله"
 send(v, 0,"["..msg.content_.text_.."]") 
-Dev Ahme:set(ANUBIS..' Ahme:PinnedMsgs'..v,msg.content_.text_) 
+Dev SOFI:set(ANUBIS..' SOFI:PinnedMsgs'..v,msg.content_.text_) 
 end
 elseif msg.content_.photo_ then
 if msg.content_.photo_.sizes_[0] then
@@ -11102,185 +11102,185 @@ elseif msg.content_.photo_.sizes_[1] then
 photo = msg.content_.photo_.sizes_[1].photo_.persistent_id_
 end
 for k,v in pairs(List) do 
- AhmeText = "الصوره"
+ SOFIText = "الصوره"
 sendPhoto(v, 0, 0, 1, nil, photo,(msg.content_.caption_ or ''))
-Dev Ahme:set(ANUBIS..' Ahme:PinnedMsgs'..v,photo) 
+Dev SOFI:set(ANUBIS..' SOFI:PinnedMsgs'..v,photo) 
 end 
 elseif msg.content_.animation_ then
 for k,v in pairs(List) do 
- AhmeText = "المتحركه"
+ SOFIText = "المتحركه"
 sendDocument(v, 0, 0, 1,nil, msg.content_.animation_.animation_.persistent_id_,(msg.content_.caption_ or ''))    
-Dev Ahme:set(ANUBIS..' Ahme:PinnedMsgs'..v,msg.content_.animation_.animation_.persistent_id_)
+Dev SOFI:set(ANUBIS..' SOFI:PinnedMsgs'..v,msg.content_.animation_.animation_.persistent_id_)
 end 
 elseif msg.content_.video_ then
 for k,v in pairs(List) do 
- AhmeText = "الفيديو"
+ SOFIText = "الفيديو"
 sendVideo(v, 0, 0, 1, nil, msg.content_.video_.video_.persistent_id_,(msg.content_.caption_ or '')) 
-Dev Ahme:set(ANUBIS..' Ahme:PinnedMsgs'..v,msg.content_.video_.video_.persistent_id_)
+Dev SOFI:set(ANUBIS..' SOFI:PinnedMsgs'..v,msg.content_.video_.video_.persistent_id_)
 end 
 elseif msg.content_.voice_ then
 for k,v in pairs(List) do 
- AhmeText = "البصمه"
+ SOFIText = "البصمه"
 sendVoice(v, 0, 0, 1, nil, msg.content_.voice_.voice_.persistent_id_,(msg.content_.caption_ or '')) 
-Dev Ahme:set(ANUBIS..' Ahme:PinnedMsgs'..v,msg.content_.voice_.voice_.persistent_id_)
+Dev SOFI:set(ANUBIS..' SOFI:PinnedMsgs'..v,msg.content_.voice_.voice_.persistent_id_)
 end 
 elseif msg.content_.audio_ then
 for k,v in pairs(List) do 
- AhmeText = "الصوت"
+ SOFIText = "الصوت"
 sendAudio(v, 0, 0, 1, nil, msg.content_.audio_.audio_.persistent_id_,(msg.content_.caption_ or '')) 
-Dev Ahme:set(ANUBIS..' Ahme:PinnedMsgs'..v,msg.content_.audio_.audio_.persistent_id_)
+Dev SOFI:set(ANUBIS..' SOFI:PinnedMsgs'..v,msg.content_.audio_.audio_.persistent_id_)
 end 
 elseif msg.content_.document_ then
 for k,v in pairs(List) do 
- AhmeText = "الملف"
+ SOFIText = "الملف"
 sendDocument(v, 0, 0, 1,nil, msg.content_.document_.document_.persistent_id_,(msg.content_.caption_ or ''))    
-Dev Ahme:set(ANUBIS..' Ahme:PinnedMsgs'..v,msg.content_.document_.document_.persistent_id_)
+Dev SOFI:set(ANUBIS..' SOFI:PinnedMsgs'..v,msg.content_.document_.document_.persistent_id_)
 end 
 elseif msg.content_.sticker_ then
 for k,v in pairs(List) do 
- AhmeText = "الملصق"
+ SOFIText = "الملصق"
 sendSticker(v, 0, 0, 1, nil, msg.content_.sticker_.sticker_.persistent_id_)   
-Dev Ahme:set(ANUBIS..' Ahme:PinnedMsgs'..v,msg.content_.sticker_.sticker_.persistent_id_) 
+Dev SOFI:set(ANUBIS..' SOFI:PinnedMsgs'..v,msg.content_.sticker_.sticker_.persistent_id_) 
 end 
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم اذاعة ".. AhmeText.." بالتثبيت \n⌯︙‏في ↫ ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
-Dev Ahme:del(ANUBIS.." Ahme:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_) 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم اذاعة ".. SOFIText.." بالتثبيت \n⌯︙‏في ↫ ❨ "..#List.." ❩ مجموعه \n ✓", 1, 'md')
+Dev SOFI:del(ANUBIS.." SOFI:Send:Gp:Pin"..msg.chat_id_..":" .. msg.sender_user_id_) 
 return false
 end
 --     Source ANUBIS     --
 if text == 'حذف رد من متعدد' and Manager(msg) and ChCheck(msg) or text == 'مسح رد من متعدد' and Manager(msg) and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_)
 if #List == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود متعدده مضافه" ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود متعدده مضافه" ,  1, "md")
 return false
 end
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'DelGpRedRedod')
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل كلمة الرد اولا" ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'DelGpRedRedod')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل كلمة الرد اولا" ,  1, "md")
 return false
 end
 if text and text:match("^(.*)$") then
-local DelGpRedRedod = Dev Ahme:get(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+local DelGpRedRedod = Dev SOFI:get(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 if DelGpRedRedod == 'DelGpRedRedod' then
 if text == "الغاء" then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر" ,  1, "md")
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر" ,  1, "md")
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 return false
 end
-if not Dev Ahme:sismember(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_,text) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لايوجد رد متعدد لهذه الكلمه ↫ "..text ,  1, "md")
+if not Dev SOFI:sismember(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_,text) then
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لايوجد رد متعدد لهذه الكلمه ↫ "..text ,  1, "md")
 return false
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙قم بارسال الرد المتعدد الذي تريد حذفه من الكلمه ↫ "..text ,  1, "md")
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'DelGpRedRedods')
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_,text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙قم بارسال الرد المتعدد الذي تريد حذفه من الكلمه ↫ "..text ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'DelGpRedRedods')
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_,text)
 return false
 end end
 if text == 'حذف رد متعدد' and Manager(msg) and ChCheck(msg) or text == 'مسح رد متعدد' and Manager(msg) and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_)
 if #List == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود متعدده مضافه" ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود متعدده مضافه" ,  1, "md")
 return false
 end
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'DelGpRedod')
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه لحذفها" ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'DelGpRedod')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه لحذفها" ,  1, "md")
 return false
 end
 if text == 'اضف رد متعدد' and Manager(msg) and ChCheck(msg) then
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'SetGpRedod')
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه الان" ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'SetGpRedod')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه الان" ,  1, "md")
 return false
 end
 if text and text:match("^(.*)$") then
-local SetGpRedod = Dev Ahme:get(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+local SetGpRedod = Dev SOFI:get(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 if SetGpRedod == 'SetGpRedod' then
 if text == "الغاء" then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر" ,  1, "md")
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر" ,  1, "md")
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 return false
 end
-if Dev Ahme:sismember(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_,text) then
-local  Ahme = "⌯︙لاتستطيع اضافة رد بالتاكيد مضاف في القائمه قم بحذفه اولا !"
+if Dev SOFI:sismember(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_,text) then
+local  SOFI = "⌯︙لاتستطيع اضافة رد بالتاكيد مضاف في القائمه قم بحذفه اولا !"
 keyboard = {} 
 keyboard.inline_keyboard = {{{text="حذف الرد ↫ "..text,callback_data="/DelRed:"..msg.sender_user_id_..text}}} 
 Msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape( Ahme).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape( SOFI).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_)
 return false
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الامر ارسل الرد الاول\n⌯︙للخروج ارسل ↫ ( الغاء )" ,  1, "md")
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'SaveGpRedod')
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_,text)
-Dev Ahme:sadd(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_,text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الامر ارسل الرد الاول\n⌯︙للخروج ارسل ↫ ( الغاء )" ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpRedod'..msg.sender_user_id_..msg.chat_id_,'SaveGpRedod')
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpTexts'..msg.sender_user_id_..msg.chat_id_,text)
+Dev SOFI:sadd(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_,text)
 return false
 end end
 --     Source ANUBIS     --
 if text == 'حذف رد' and Manager(msg) and ChCheck(msg) or text == 'مسح رد' and  Manager(msg) and ChCheck(msg) then
-local List = Dev Ahme:smembers(ANUBIS..' Ahme:Manager:GpRed'..msg.chat_id_)
+local List = Dev SOFI:smembers(ANUBIS..' SOFI:Manager:GpRed'..msg.chat_id_)
 if #List == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود مضافه" ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود مضافه" ,  1, "md")
 return false
 end
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpRed'..msg.sender_user_id_..msg.chat_id_,'DelGpRed')
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه لحذفها " ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpRed'..msg.sender_user_id_..msg.chat_id_,'DelGpRed')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه لحذفها " ,  1, "md")
 return false
 end
 if text == 'اضف رد' and Manager(msg) and ChCheck(msg) then
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpRed'..msg.sender_user_id_..msg.chat_id_,'SetGpRed')
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه الان " ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpRed'..msg.sender_user_id_..msg.chat_id_,'SetGpRed')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه الان " ,  1, "md")
 return false
 end
 if text and text:match("^(.*)$") then
-local SetGpRed = Dev Ahme:get(ANUBIS..' Ahme:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+local SetGpRed = Dev SOFI:get(ANUBIS..' SOFI:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
 if SetGpRed == 'SetGpRed' then
 if text == "الغاء" then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر" ,  1, "md")
-Dev Ahme:del(ANUBIS..' Ahme:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر" ,  1, "md")
+Dev SOFI:del(ANUBIS..' SOFI:Add:GpRed'..msg.sender_user_id_..msg.chat_id_)
 return false
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌯︙يمكنك اضافة الى النص ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n⌯︙🌐 `#username` ↬ معرف المستخدم\n⌯︙📎 `#name` ↬ اسم المستخدم\n⌯︙🆔 `#id` ↬ ايدي المستخدم\n⌯︙✏️ `#bio` ↬ نبذا المستخدم\n⌯︙🎖 `#stast` ↬ رتبة المستخدم\n⌯︙📨 `#msgs` ↬ عدد الرسائل\n⌯︙📝 `#edit` ↬ عدد السحكات\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n⌯︙للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpRed'..msg.sender_user_id_..msg.chat_id_,'SaveGpRed')
-Dev Ahme:set(ANUBIS..' Ahme:Add:GpText'..msg.sender_user_id_..msg.chat_id_,text)
-Dev Ahme:sadd(ANUBIS..' Ahme:Manager:GpRed'..msg.chat_id_,text)
-Dev Ahme:set(ANUBIS..'DelManagerRep'..msg.chat_id_,text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌯︙يمكنك اضافة الى النص ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n⌯︙🌐 `#username` ↬ معرف المستخدم\n⌯︙📎 `#name` ↬ اسم المستخدم\n⌯︙🆔 `#id` ↬ ايدي المستخدم\n⌯︙✏️ `#bio` ↬ نبذا المستخدم\n⌯︙🎖 `#stast` ↬ رتبة المستخدم\n⌯︙📨 `#msgs` ↬ عدد الرسائل\n⌯︙📝 `#edit` ↬ عدد السحكات\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n⌯︙للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpRed'..msg.sender_user_id_..msg.chat_id_,'SaveGpRed')
+Dev SOFI:set(ANUBIS..' SOFI:Add:GpText'..msg.sender_user_id_..msg.chat_id_,text)
+Dev SOFI:sadd(ANUBIS..' SOFI:Manager:GpRed'..msg.chat_id_,text)
+Dev SOFI:set(ANUBIS..'DelManagerRep'..msg.chat_id_,text)
 return false
 end end
 --     Source ANUBIS     --
 if text == 'حذف رد عام' and SecondSudo(msg) or text == '↫ حذف رد عام ⌯' and SecondSudo(msg) or text == 'مسح رد عام' and SecondSudo(msg) then
-local List = Dev Ahme:smembers(ANUBIS.." Ahme:Sudo:AllRed")
+local List = Dev SOFI:smembers(ANUBIS.." SOFI:Sudo:AllRed")
 if #List == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود مضافه" ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود مضافه" ,  1, "md")
 return false
 end
-Dev Ahme:set(ANUBIS.." Ahme:Add:AllRed"..msg.sender_user_id_,'DelAllRed')
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه لحذفها " ,  1, "md")
+Dev SOFI:set(ANUBIS.." SOFI:Add:AllRed"..msg.sender_user_id_,'DelAllRed')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه لحذفها " ,  1, "md")
 return false
 end
 if text == 'اضف رد عام' and SecondSudo(msg) or text == '↫ اضف رد عام ⌯' and SecondSudo(msg) then
-Dev Ahme:set(ANUBIS.." Ahme:Add:AllRed"..msg.sender_user_id_,'SetAllRed')
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه الان " ,  1, "md")
+Dev SOFI:set(ANUBIS.." SOFI:Add:AllRed"..msg.sender_user_id_,'SetAllRed')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙حسنا ارسل الكلمه الان " ,  1, "md")
 return false
 end
 if text and text:match("^(.*)$") then
-local SetAllRed = Dev Ahme:get(ANUBIS.." Ahme:Add:AllRed"..msg.sender_user_id_)
+local SetAllRed = Dev SOFI:get(ANUBIS.." SOFI:Add:AllRed"..msg.sender_user_id_)
 if SetAllRed == 'SetAllRed' then
 if text == "الغاء" then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر" ,  1, "md")
-Dev Ahme:del(ANUBIS..' Ahme:Add:AllRed'..msg.sender_user_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر" ,  1, "md")
+Dev SOFI:del(ANUBIS..' SOFI:Add:AllRed'..msg.sender_user_id_)
 return false
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌯︙يمكنك اضافة الى النص ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n⌯︙🌐 `#username` ↬ معرف المستخدم\n⌯︙📎 `#name` ↬ اسم المستخدم\n⌯︙🆔 `#id` ↬ ايدي المستخدم\n⌯︙✏️ `#bio` ↬ نبذا المستخدم\n⌯︙🎖 `#stast` ↬ رتبة المستخدم\n⌯︙📨 `#msgs` ↬ عدد الرسائل\n⌯︙📝 `#edit` ↬ عدد السحكات\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n⌯︙للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
-Dev Ahme:set(ANUBIS.." Ahme:Add:AllRed"..msg.sender_user_id_,'SaveAllRed')
-Dev Ahme:set(ANUBIS.." Ahme:Add:AllText"..msg.sender_user_id_, text)
-Dev Ahme:sadd(ANUBIS.." Ahme:Sudo:AllRed",text)
-Dev Ahme:set(ANUBIS.."DelSudoRep",text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل لي الرد سواء كان ↫ ⤈\n❨ ملف • ملصق • متحركه • صوره\n • فيديو • بصمه • صوت • رساله ❩\n⌯︙يمكنك اضافة الى النص ↫ ⤈\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n⌯︙🌐 `#username` ↬ معرف المستخدم\n⌯︙📎 `#name` ↬ اسم المستخدم\n⌯︙🆔 `#id` ↬ ايدي المستخدم\n⌯︙✏️ `#bio` ↬ نبذا المستخدم\n⌯︙🎖 `#stast` ↬ رتبة المستخدم\n⌯︙📨 `#msgs` ↬ عدد الرسائل\n⌯︙📝 `#edit` ↬ عدد السحكات\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ \n⌯︙للخروج ارسل ↫ ( الغاء )\n ✓" ,  1, "md")
+Dev SOFI:set(ANUBIS.." SOFI:Add:AllRed"..msg.sender_user_id_,'SaveAllRed')
+Dev SOFI:set(ANUBIS.." SOFI:Add:AllText"..msg.sender_user_id_, text)
+Dev SOFI:sadd(ANUBIS.." SOFI:Sudo:AllRed",text)
+Dev SOFI:set(ANUBIS.."DelSudoRep",text)
 return false 
 end end
 --     Source ANUBIS     --
 if text == 'الردود المتعدده' and Manager(msg) and ChCheck(msg) then
-local redod = Dev Ahme:smembers(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_)
+local redod = Dev SOFI:smembers(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_)
 MsgRep = '⌯︙قائمة الردود المتعدده ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n'
 for k,v in pairs(redod) do
-MsgRep = MsgRep..k..'~ (`'..v..'`) • {*العدد ↫ '..#Dev Ahme:smembers(ANUBIS..' Ahme:Text:GpTexts'..v..msg.chat_id_)..'*}\n' 
+MsgRep = MsgRep..k..'~ (`'..v..'`) • {*العدد ↫ '..#Dev SOFI:smembers(ANUBIS..' SOFI:Text:GpTexts'..v..msg.chat_id_)..'*}\n' 
 end
 if #redod == 0 then
 MsgRep = '⌯︙لا توجد ردود متعدده مضافه'
@@ -11288,13 +11288,13 @@ end
 send(msg.chat_id_,msg.id_,MsgRep)
 end
 if text == 'حذف الردود المتعدده' and Manager(msg) and ChCheck(msg) or text == 'مسح الردود المتعدده' and Manager(msg) and ChCheck(msg) then
-local redod = Dev Ahme:smembers(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_)
+local redod = Dev SOFI:smembers(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_)
 if #redod == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود متعدده مضافه" ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود متعدده مضافه" ,  1, "md")
 else
 for k,v in pairs(redod) do
-Dev Ahme:del(ANUBIS..' Ahme:Text:GpTexts'..v..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Manager:GpRedod'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Text:GpTexts'..v..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Manager:GpRedod'..msg.chat_id_)
 end
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف الردود المتعدده")  
 return false
@@ -11302,24 +11302,24 @@ end
 end
 --     Source ANUBIS     --
 if text == 'الردود' and Manager(msg) and ChCheck(msg) or text == 'ردود المدير' and Manager(msg) and ChCheck(msg) then
-local redod = Dev Ahme:smembers(ANUBIS..' Ahme:Manager:GpRed'..msg.chat_id_)
+local redod = Dev SOFI:smembers(ANUBIS..' SOFI:Manager:GpRed'..msg.chat_id_)
 MsgRep = '⌯︙ردود المدير ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n'
 for k,v in pairs(redod) do
-if Dev Ahme:get(ANUBIS.." Ahme:Gif:GpRed"..v..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS.." SOFI:Gif:GpRed"..v..msg.chat_id_) then
 dp = 'متحركه 🎭'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Voice:GpRed"..v..msg.chat_id_) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Voice:GpRed"..v..msg.chat_id_) then
 dp = 'بصمه 🎙'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Stecker:GpRed"..v..msg.chat_id_) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Stecker:GpRed"..v..msg.chat_id_) then
 dp = 'ملصق 🃏'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Text:GpRed"..v..msg.chat_id_) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Text:GpRed"..v..msg.chat_id_) then
 dp = 'رساله ✉'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Photo:GpRed"..v..msg.chat_id_) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Photo:GpRed"..v..msg.chat_id_) then
 dp = 'صوره 🎇'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Video:GpRed"..v..msg.chat_id_) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Video:GpRed"..v..msg.chat_id_) then
 dp = 'فيديو 📽'
-elseif Dev Ahme:get(ANUBIS.." Ahme:File:GpRed"..v..msg.chat_id_) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:File:GpRed"..v..msg.chat_id_) then
 dp = 'ملف 📁'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Audio:GpRed"..v..msg.chat_id_) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Audio:GpRed"..v..msg.chat_id_) then
 dp = 'اغنيه 🎶'
 end
 MsgRep = MsgRep..k..'~ (`'..v..'`) ↫ {*'..dp..'*}\n' 
@@ -11330,20 +11330,20 @@ end
 send(msg.chat_id_,msg.id_,MsgRep)
 end
 if text == 'حذف الردود' and Manager(msg) and ChCheck(msg) or text == 'مسح الردود' and Manager(msg) and ChCheck(msg) or text == 'حذف ردود المدير' and Manager(msg) and ChCheck(msg) or text == 'مسح ردود المدير' and Manager(msg) and ChCheck(msg) then
-local redod = Dev Ahme:smembers(ANUBIS..' Ahme:Manager:GpRed'..msg.chat_id_)
+local redod = Dev SOFI:smembers(ANUBIS..' SOFI:Manager:GpRed'..msg.chat_id_)
 if #redod == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود مضافه" ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود مضافه" ,  1, "md")
 else
 for k,v in pairs(redod) do
-Dev Ahme:del(ANUBIS..' Ahme:Gif:GpRed'..v..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Voice:GpRed'..v..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Audio:GpRed'..v..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Photo:GpRed'..v..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Stecker:GpRed'..v..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Video:GpRed'..v..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:File:GpRed'..v..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Text:GpRed'..v..msg.chat_id_)
-Dev Ahme:del(ANUBIS..' Ahme:Manager:GpRed'..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Gif:GpRed'..v..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Voice:GpRed'..v..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Audio:GpRed'..v..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Photo:GpRed'..v..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Stecker:GpRed'..v..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Video:GpRed'..v..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:File:GpRed'..v..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Text:GpRed'..v..msg.chat_id_)
+Dev SOFI:del(ANUBIS..' SOFI:Manager:GpRed'..msg.chat_id_)
 end
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف ردود المدير")  
 return false
@@ -11351,24 +11351,24 @@ end
 end
 --     Source ANUBIS     --
 if  text == "ردود المطور" and SecondSudo(msg) or text == "الردود العام" and SecondSudo(msg) or text == "ردود العام" and SecondSudo(msg) or text == "↫ الردود العام ⌯" and SecondSudo(msg) then
-local redod = Dev Ahme:smembers(ANUBIS.." Ahme:Sudo:AllRed")
+local redod = Dev SOFI:smembers(ANUBIS.." SOFI:Sudo:AllRed")
 MsgRep = '⌯︙ردود المطور ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n'
 for k,v in pairs(redod) do
-if Dev Ahme:get(ANUBIS.." Ahme:Gif:AllRed"..v) then
+if Dev SOFI:get(ANUBIS.." SOFI:Gif:AllRed"..v) then
 dp = 'متحركه 🎭'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Voice:AllRed"..v) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Voice:AllRed"..v) then
 dp = 'بصمه 🎙'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Stecker:AllRed"..v) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Stecker:AllRed"..v) then
 dp = 'ملصق 🃏'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Text:AllRed"..v) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Text:AllRed"..v) then
 dp = 'رساله ✉'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Photo:AllRed"..v) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Photo:AllRed"..v) then
 dp = 'صوره 🎇'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Video:AllRed"..v) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Video:AllRed"..v) then
 dp = 'فيديو 📽'
-elseif Dev Ahme:get(ANUBIS.." Ahme:File:AllRed"..v) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:File:AllRed"..v) then
 dp = 'ملف 📁'
-elseif Dev Ahme:get(ANUBIS.." Ahme:Audio:AllRed"..v) then
+elseif Dev SOFI:get(ANUBIS.." SOFI:Audio:AllRed"..v) then
 dp = 'اغنيه 🎶'
 end
 MsgRep = MsgRep..k..'~ (`'..v..'`) ↫ {*'..dp..'*}\n' 
@@ -11379,21 +11379,21 @@ end
 send(msg.chat_id_,msg.id_,MsgRep)
 end
 if text == "حذف ردود المطور" and SecondSudo(msg) or text == "حذف ردود العام" and SecondSudo(msg) or text == "مسح ردود المطور" and SecondSudo(msg) or text == "↫ مسح ردود العام ⌯" and SecondSudo(msg) then
-local redod = Dev Ahme:smembers(ANUBIS.." Ahme:Sudo:AllRed")
+local redod = Dev SOFI:smembers(ANUBIS.." SOFI:Sudo:AllRed")
 if #redod == 0 then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود مضافه" ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙لا توجد ردود مضافه" ,  1, "md")
 else
 for k,v in pairs(redod) do
-Dev Ahme:del(ANUBIS.." Ahme:Add:AllRed"..v)
-Dev Ahme:del(ANUBIS.." Ahme:Gif:AllRed"..v)
-Dev Ahme:del(ANUBIS.." Ahme:Voice:AllRed"..v)
-Dev Ahme:del(ANUBIS.." Ahme:Audio:AllRed"..v)
-Dev Ahme:del(ANUBIS.." Ahme:Photo:AllRed"..v)
-Dev Ahme:del(ANUBIS.." Ahme:Stecker:AllRed"..v)
-Dev Ahme:del(ANUBIS.." Ahme:Video:AllRed"..v)
-Dev Ahme:del(ANUBIS.." Ahme:File:AllRed"..v)
-Dev Ahme:del(ANUBIS.." Ahme:Text:AllRed"..v)
-Dev Ahme:del(ANUBIS.." Ahme:Sudo:AllRed")
+Dev SOFI:del(ANUBIS.." SOFI:Add:AllRed"..v)
+Dev SOFI:del(ANUBIS.." SOFI:Gif:AllRed"..v)
+Dev SOFI:del(ANUBIS.." SOFI:Voice:AllRed"..v)
+Dev SOFI:del(ANUBIS.." SOFI:Audio:AllRed"..v)
+Dev SOFI:del(ANUBIS.." SOFI:Photo:AllRed"..v)
+Dev SOFI:del(ANUBIS.." SOFI:Stecker:AllRed"..v)
+Dev SOFI:del(ANUBIS.." SOFI:Video:AllRed"..v)
+Dev SOFI:del(ANUBIS.." SOFI:File:AllRed"..v)
+Dev SOFI:del(ANUBIS.." SOFI:Text:AllRed"..v)
+Dev SOFI:del(ANUBIS.." SOFI:Sudo:AllRed")
 end
 ReplyStatus(msg,msg.sender_user_id_,"ReplyBy","⌯︙تم حذف ردود المطور")  
 return false
@@ -11402,43 +11402,43 @@ end
 --     Source ANUBIS     --
 if text and text == "تغيير اسم البوت" or text and text == "وضع اسم البوت" or text and text == "تغير اسم البوت" or text and text == "↫ وضع اسم البوت ⌯" then
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل لي اسم البوت الان" ,  1, "md") 
-Dev Ahme:set(ANUBIS..' Ahme:NameBot'..msg.sender_user_id_, 'msg')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل لي اسم البوت الان" ,  1, "md") 
+Dev SOFI:set(ANUBIS..' SOFI:NameBot'..msg.sender_user_id_, 'msg')
 return false 
 end
 end
 if text and text == 'حذف اسم البوت' or text == 'مسح اسم البوت' then
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-Dev Ahme:del(ANUBIS..' Ahme:NameBot')
+Dev SOFI:del(ANUBIS..' SOFI:NameBot')
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم حذف اسم البوت")
 end end 
 --     Source ANUBIS     --
 if text and text:match("^استعاده الاوامر$") and SecondSudo(msg) or text and text:match("^استعادة كلايش الاوامر$") and SecondSudo(msg) then
-HelpList ={' Ahme:Help',' Ahme:Help1',' Ahme:Help2',' Ahme:Help3',' Ahme:Help4',' Ahme:Help5',' Ahme:Help6'}
+HelpList ={' SOFI:Help',' SOFI:Help1',' SOFI:Help2',' SOFI:Help3',' SOFI:Help4',' SOFI:Help5',' SOFI:Help6'}
 for i,Help in pairs(HelpList) do
-Dev Ahme:del(ANUBIS..Help) 
+Dev SOFI:del(ANUBIS..Help) 
 end
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم استعادة الكلايش الاصليه" ,  1, "md") 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم استعادة الكلايش الاصليه" ,  1, "md") 
 end
 if text == "تعيين الاوامر" and SecondSudo(msg) or text == "تعيين امر الاوامر" and SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (الاوامر) الان " ,  1, "md")
-Dev Ahme:set(ANUBIS..' Ahme:Help0'..msg.sender_user_id_, 'msg')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (الاوامر) الان " ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Help0'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
-local DraGoN =  Dev Ahme:get(ANUBIS..' Ahme:Help0'..msg.sender_user_id_)
+local DraGoN =  Dev SOFI:get(ANUBIS..' SOFI:Help0'..msg.sender_user_id_)
 if DraGoN == 'msg' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text , 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Help0'..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS..' Ahme:Help', text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Help0'..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS..' SOFI:Help', text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده " ,  1, "md")
 return false end
 end
 if text == "الاوامر" or text == "اوامر" or text == "مساعده" then
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help')
 local Text = [[
 🖥┇𝐬𝐨𝐮𝐫𝐜𝐞 𝐝𝐫𝐚𝐠𝐨𝐧 𝐜𝐨𝐦𝐦𝐚𝐧𝐝𝐬 .
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -11460,23 +11460,23 @@ Msg_id = msg.id_/2097152/0.5
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Help or Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if text == "تعيين امر م1" and SecondSudo(msg) or text == "تعيين امر م١" and SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م1) الان " ,  1, "md")
-Dev Ahme:set(ANUBIS..' Ahme:Help01'..msg.sender_user_id_, 'msg')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م1) الان " ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Help01'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
-local DraGoN =  Dev Ahme:get(ANUBIS..' Ahme:Help01'..msg.sender_user_id_)
+local DraGoN =  Dev SOFI:get(ANUBIS..' SOFI:Help01'..msg.sender_user_id_)
 if DraGoN == 'msg' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text , 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Help01'..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS..' Ahme:Help1', text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Help01'..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS..' SOFI:Help1', text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده " ,  1, "md")
 return false end
 end
 if text == "م1" or text == "م١" or text == "اوامر1" or text == "اوامر١" then
 if not Admin(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر يخص الرتب الاعلى فقط\n⌯︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر يخص الرتب الاعلى فقط\n⌯︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help1')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help1')
 local Text = [[
 ⌯︙اوامر حماية المجموعه ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -11525,26 +11525,26 @@ local Text = [[
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
 [🖥┇𝐒𝐎𝐔𝐑𝐂𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 .](t.me/SOURCEANUBIS)➤
 ]]
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
 if text == "تعيين امر م2" and SecondSudo(msg) or text == "تعيين امر م٢" and SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م2) الان " ,  1, "md")
-Dev Ahme:set(ANUBIS..' Ahme:Help21'..msg.sender_user_id_, 'msg')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م2) الان " ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Help21'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
-local DraGoN =  Dev Ahme:get(ANUBIS..' Ahme:Help21'..msg.sender_user_id_)
+local DraGoN =  Dev SOFI:get(ANUBIS..' SOFI:Help21'..msg.sender_user_id_)
 if DraGoN == 'msg' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text , 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Help21'..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS..' Ahme:Help2', text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Help21'..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS..' SOFI:Help2', text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده " ,  1, "md")
 return false end
 end
 if text == "م2" or text == "م٢" or text == "اوامر2" or text == "اوامر٢" then
 if not Admin(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر يخص الرتب الاعلى فقط\n⌯︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر يخص الرتب الاعلى فقط\n⌯︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help2')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help2')
 local Text = [[
 ⌯︙اوامر الادمنيه ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -11601,26 +11601,26 @@ local Text = [[
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
 [🖥┇𝐒𝐎𝐔𝐑𝐂𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 .](t.me/SOURCEANUBIS)➤
 ]]
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
 if text == "تعيين امر م3" and SecondSudo(msg) or text == "تعيين امر م٣" and SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م3) الان " ,  1, "md")
-Dev Ahme:set(ANUBIS..' Ahme:Help31'..msg.sender_user_id_, 'msg')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م3) الان " ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Help31'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
-local DraGoN =  Dev Ahme:get(ANUBIS..' Ahme:Help31'..msg.sender_user_id_)
+local DraGoN =  Dev SOFI:get(ANUBIS..' SOFI:Help31'..msg.sender_user_id_)
 if DraGoN == 'msg' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text , 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Help31'..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS..' Ahme:Help3', text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Help31'..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS..' SOFI:Help3', text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده " ,  1, "md")
 return false end
 end
 if text == "م3" or text == "م٣" or text == "اوامر3" or text == "اوامر٣" then
 if not Admin(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر يخص الرتب الاعلى فقط\n⌯︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر يخص الرتب الاعلى فقط\n⌯︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help3')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help3')
 local Text = [[
 ⌯︙اوامر المدراء ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -11666,26 +11666,26 @@ local Text = [[
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
 [🖥┇𝐒𝐎𝐔𝐑𝐂𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 .](t.me/SOURCEANUBIS)➤
 ]]
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
 if text == "تعيين امر م4" and SecondSudo(msg) or text == "تعيين امر م٤" and SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م4) الان " ,  1, "md")
-Dev Ahme:set(ANUBIS..' Ahme:Help41'..msg.sender_user_id_, 'msg')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م4) الان " ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Help41'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
-local DraGoN =  Dev Ahme:get(ANUBIS..' Ahme:Help41'..msg.sender_user_id_)
+local DraGoN =  Dev SOFI:get(ANUBIS..' SOFI:Help41'..msg.sender_user_id_)
 if DraGoN == 'msg' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text , 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Help41'..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS..' Ahme:Help4', text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده" ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Help41'..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS..' SOFI:Help4', text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده" ,  1, "md")
 return false end
 end
 if text == "م٤" or text == "م4" or text == "اوامر4" or text == "اوامر٤" then
 if not Admin(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر يخص الرتب الاعلى فقط\n⌯︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر يخص الرتب الاعلى فقط\n⌯︙ارسل ↫ (م6) لعرض اوامر الاعضاء', 1, 'md')
 else
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help4')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help4')
 local Text = [[
 ⌯︙اوامر المنشئين ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -11725,26 +11725,26 @@ local Text = [[
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
 [🖥┇𝐒𝐎𝐔𝐑𝐂𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 .](t.me/SOURCEANUBIS)➤
 ]]
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
 if text == "تعيين امر م5" and SecondSudo(msg) or text == "تعيين امر م٥" and SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م5) الان " ,  1, "md")
-Dev Ahme:set(ANUBIS..' Ahme:Help51'..msg.sender_user_id_, 'msg')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م5) الان " ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Help51'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
-local DraGoN =  Dev Ahme:get(ANUBIS..' Ahme:Help51'..msg.sender_user_id_)
+local DraGoN =  Dev SOFI:get(ANUBIS..' SOFI:Help51'..msg.sender_user_id_)
 if DraGoN == 'msg' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text , 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Help51'..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS..' Ahme:Help5', text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده " ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Help51'..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS..' SOFI:Help5', text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده " ,  1, "md")
 return false end
 end
 if text == "م٥" or text == "م5" or text == "اوامر5" or text == "اوامر٥" then
 if not SudoBot(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر للمطورين فقط', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙هذا الامر للمطورين فقط', 1, 'md')
 else
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help5')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help5')
 local Text = [[
 ⌯︙اوامر المطورين ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -11811,23 +11811,23 @@ local Text = [[
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
 [🖥┇𝐒𝐎𝐔𝐑𝐂𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 .](t.me/SOURCEANUBIS)➤
 ]]
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end end
 if text == "تعيين امر م6" and SecondSudo(msg) or text == "تعيين امر م٦" and SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م6) الان " ,  1, "md")
-Dev Ahme:set(ANUBIS..' Ahme:Help61'..msg.sender_user_id_, 'msg')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة (م6) الان " ,  1, "md")
+Dev SOFI:set(ANUBIS..' SOFI:Help61'..msg.sender_user_id_, 'msg')
 return false end
 if text and text:match("^(.*)$") then
-local DraGoN =  Dev Ahme:get(ANUBIS..' Ahme:Help61'..msg.sender_user_id_)
+local DraGoN =  Dev SOFI:get(ANUBIS..' SOFI:Help61'..msg.sender_user_id_)
 if DraGoN == 'msg' then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, text , 1, 'md')
-Dev Ahme:del(ANUBIS..' Ahme:Help61'..msg.sender_user_id_)
-Dev Ahme:set(ANUBIS..' Ahme:Help6', text)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده" ,  1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, text , 1, 'md')
+Dev SOFI:del(ANUBIS..' SOFI:Help61'..msg.sender_user_id_)
+Dev SOFI:set(ANUBIS..' SOFI:Help6', text)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ الكليشه الجديده" ,  1, "md")
 return false end
 end
 if text == "م٦" or text == "م6" or text == "اوامر6" or text == "اوامر٦" then
-local Help = Dev Ahme:get(ANUBIS..' Ahme:Help6')
+local Help = Dev SOFI:get(ANUBIS..' SOFI:Help6')
 local Text = [[
 ⌯︙اوامر الاعضاء ↫ ⤈
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
@@ -11859,31 +11859,31 @@ local Text = [[
 ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ
 [🖥┇𝐒𝐎𝐔𝐑𝐂𝐄 𝐃𝐑𝐀𝐆𝐎𝐍 .](t.me/SOURCEANUBIS)➤
 ]]
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, (Help or Text), 1, 'md')
 end
 --     Source ANUBIS     --
 if SecondSudo(msg) then
 if text == "-تحديث السورس-" or text == "-تحديث سورس-" then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙جاري تحديث سورس انوبيس', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙جاري تحديث سورس انوبيس', 1, 'md') 
 os.execute('rm -rf ANUBIS.lua') 
-os.execute('wget https://raw.githubusercontent.com/UUUAhmeaa/ANUBIS/main/ANUBIS.lua') 
+os.execute('wget https://raw.githubusercontent.com/UUUSOFIaa/ANUBIS/main/ANUBIS.lua') 
 dofile('ANUBIS.lua') 
 io.popen("rm -rf ../.telegram-cli/*")
 print("\27[31;47m\n          ( تم تحديث السورس )          \n\27[0;34;49m\n") 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم التحديث الى الاصدار الجديد', 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم التحديث الى الاصدار الجديد', 1, 'md') 
 end
 if text == 'تحديث' or text == 'تحديث البوت' or text == '↫ تحديث ⌯' then  
 dofile('ANUBIS.lua') 
 io.popen("rm -rf ../.telegram-cli/*")
 print("\27[31;47m\n        ( تم تحديث ملفات البوت )        \n\27[0;34;49m\n") 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم تحديث ملفات البوت", 1, "md")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم تحديث ملفات البوت", 1, "md")
 end 
 --     Source ANUBIS     --
 if text == 'تصحيح اضف البوت في مجموعتك' or text == 'تحديث اضف البوت في مجموعتك' then
 if Sudo(msg) then
 local url , res = https.request('https://api.telegram.org/bot'..TokenBot..'/getMe') 
 local data = json:decode(url)
-Dev Ahme:set(Server_ANUBIS.."Token_username",""..data.result.username)
+Dev SOFI:set(Server_ANUBIS.."Token_username",""..data.result.username)
 ReplyStatus(msg,msg.sender_user_id_,"EbDsDrg","⌯︙تم تحديث او تصحيح اضف في مجموعتك\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ")
 end
 end
@@ -11909,7 +11909,7 @@ end
 send(msg.chat_id_, msg.id_,Files)
 end
 if text == "متجر الملفات" or text == 'المتجر' then
-local Get_Files, res = https.request("https://raw.githubusercontent.com/UUUAhmeaa/Files_ANUBIS/main/getfile.json")
+local Get_Files, res = https.request("https://raw.githubusercontent.com/UUUSOFIaa/Files_ANUBIS/main/getfile.json")
 if res == 200 then
 local Get_info, res = pcall(JSON.decode,Get_Files);
 vardump(res.plugins_)
@@ -11941,7 +11941,7 @@ end
 if text and text:match("^(تعطيل ملف) (.*)(.lua)$") then
 local FileGet = {string.match(text, "^(تعطيل ملف) (.*)(.lua)$")}
 local FileName = FileGet[2]..'.lua'
-local GetJson, Res = https.request("https://raw.githubusercontent.com/UUUAhmeaa/Files_ANUBIS/main/Files_ANUBIS/"..FileName)
+local GetJson, Res = https.request("https://raw.githubusercontent.com/UUUSOFIaa/Files_ANUBIS/main/Files_ANUBIS/"..FileName)
 if Res == 200 then
 os.execute("rm -fr Shop_ANUBIS/"..FileName)
 send(msg.chat_id_, msg.id_,"\n⌯︙الملف ↫ *"..FileName.."*\n⌯︙تم تعطيله وحذفه من البوت بنجاح") 
@@ -11953,7 +11953,7 @@ end
 if text and text:match("^(تفعيل ملف) (.*)(.lua)$") then
 local FileGet = {string.match(text, "^(تفعيل ملف) (.*)(.lua)$")}
 local FileName = FileGet[2]..'.lua'
-local GetJson, Res = https.request("https://raw.githubusercontent.com/UUUAhmeaa/Files_ANUBIS/main/Files_ANUBIS/"..FileName)
+local GetJson, Res = https.request("https://raw.githubusercontent.com/UUUSOFIaa/Files_ANUBIS/main/Files_ANUBIS/"..FileName)
 if Res == 200 then
 local ChekAuto = io.open("Shop_ANUBIS/"..FileName,'w+')
 ChekAuto:write(GetJson)
@@ -11968,101 +11968,101 @@ end
 end 
 --     Source ANUBIS     --
 if text and (text == 'حذف معلومات الترحيب' or text == 'مسح معلومات الترحيب') and SecondSudo(msg) then    
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف معلومات الترحيب', 1, 'md')   
-Dev Ahme:del(ANUBIS..' Ahme:Text:BotWelcome')
-Dev Ahme:del(ANUBIS..' Ahme:Photo:BotWelcome')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم حذف معلومات الترحيب', 1, 'md')   
+Dev SOFI:del(ANUBIS..' SOFI:Text:BotWelcome')
+Dev SOFI:del(ANUBIS..' SOFI:Photo:BotWelcome')
 return false
 end 
 if text and (text == 'تفعيل ترحيب البوت' or text == 'تفعيل معلومات الترحيب' or text == '↫ تفعيل ترحيب البوت ⌯') and SecondSudo(msg) then    
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم تفعيل الترحيب عند اضافة البوت في المجموعه', 1, 'md')   
-Dev Ahme:del(ANUBIS..' Ahme:Lock:BotWelcome')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم تفعيل الترحيب عند اضافة البوت في المجموعه', 1, 'md')   
+Dev SOFI:del(ANUBIS..' SOFI:Lock:BotWelcome')
 return false
 end 
 if text and (text == 'تعطيل ترحيب البوت' or text == 'تعطيل معلومات الترحيب' or text == '↫ تعطيل ترحيب البوت ⌯') and SecondSudo(msg) then    
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم تعطيل الترحيب عند اضافة البوت في المجموعه', 1, 'md')   
-Dev Ahme:set(ANUBIS..' Ahme:Lock:BotWelcome',true)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم تعطيل الترحيب عند اضافة البوت في المجموعه', 1, 'md')   
+Dev SOFI:set(ANUBIS..' SOFI:Lock:BotWelcome',true)
 return false
 end 
 if text and (text == 'تغير معلومات الترحيب' or text == 'تغيير معلومات الترحيب' or text == '↫ تغير معلومات الترحيب ⌯') and SecondSudo(msg) then    
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي نص الترحيب', 1, 'md') 
-Dev Ahme:del(ANUBIS..' Ahme:Text:BotWelcome')
-Dev Ahme:del(ANUBIS..' Ahme:Photo:BotWelcome')
-Dev Ahme:set(ANUBIS.." Ahme:Set:BotWelcome"..msg.sender_user_id_,"Text") 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙ارسل لي نص الترحيب', 1, 'md') 
+Dev SOFI:del(ANUBIS..' SOFI:Text:BotWelcome')
+Dev SOFI:del(ANUBIS..' SOFI:Photo:BotWelcome')
+Dev SOFI:set(ANUBIS.." SOFI:Set:BotWelcome"..msg.sender_user_id_,"Text") 
 return false
 end 
-if text and Dev Ahme:get(ANUBIS.." Ahme:Set:BotWelcome"..msg.sender_user_id_) == 'Text' then 
+if text and Dev SOFI:get(ANUBIS.." SOFI:Set:BotWelcome"..msg.sender_user_id_) == 'Text' then 
 if text and text:match("^الغاء$") then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر", 1, "md") 
-Dev Ahme:del(ANUBIS.." Ahme:Set:BotWelcome"..msg.sender_user_id_)   
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر", 1, "md") 
+Dev SOFI:del(ANUBIS.." SOFI:Set:BotWelcome"..msg.sender_user_id_)   
 return false
 end 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ النص ارسل لي صورة الترحيب\n⌯︙ارسل ↫ الغاء لحفظ النص فقط", 1, 'md')   
-Dev Ahme:set(ANUBIS.." Ahme:Text:BotWelcome",text) 
-Dev Ahme:set(ANUBIS.." Ahme:Set:BotWelcome"..msg.sender_user_id_,"Photo") 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ النص ارسل لي صورة الترحيب\n⌯︙ارسل ↫ الغاء لحفظ النص فقط", 1, 'md')   
+Dev SOFI:set(ANUBIS.." SOFI:Text:BotWelcome",text) 
+Dev SOFI:set(ANUBIS.." SOFI:Set:BotWelcome"..msg.sender_user_id_,"Photo") 
 return false 
 end 
-if Dev Ahme:get(ANUBIS.." Ahme:Set:BotWelcome"..msg.sender_user_id_) == 'Photo' then 
+if Dev SOFI:get(ANUBIS.." SOFI:Set:BotWelcome"..msg.sender_user_id_) == 'Photo' then 
 if text and text:match("^الغاء$") then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ النص والغاء حفظ صورة الترحيب", 1, "md") 
-Dev Ahme:del(ANUBIS.." Ahme:Set:BotWelcome"..msg.sender_user_id_)    
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ النص والغاء حفظ صورة الترحيب", 1, "md") 
+Dev SOFI:del(ANUBIS.." SOFI:Set:BotWelcome"..msg.sender_user_id_)    
 return false
 end 
 if msg.content_.photo_ and msg.content_.photo_.sizes_[1] then   
-Dev Ahme:set(ANUBIS.." Ahme:Photo:BotWelcome",msg.content_.photo_.sizes_[1].photo_.persistent_id_)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ النص وصورة الترحيب", 1, 'md')   
-Dev Ahme:del(ANUBIS.." Ahme:Set:BotWelcome"..msg.sender_user_id_)   
+Dev SOFI:set(ANUBIS.." SOFI:Photo:BotWelcome",msg.content_.photo_.sizes_[1].photo_.persistent_id_)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حفظ النص وصورة الترحيب", 1, 'md')   
+Dev SOFI:del(ANUBIS.." SOFI:Set:BotWelcome"..msg.sender_user_id_)   
 end
 return false
 end
 --     Source ANUBIS     --
 if text and text:match("^ضع كليشه المطور$") or text and text:match("^وضع كليشه المطور$") or text and text:match("^↫ وضع كليشه المطور ⌯$") or text and text:match("^تغيير كليشه المطور$") then
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة المطور الان ", 1, "md")
-Dev Ahme:setex(ANUBIS.." Ahme:DevText"..msg.chat_id_..":" .. msg.sender_user_id_, 300, true)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙ارسل كليشة المطور الان ", 1, "md")
+Dev SOFI:setex(ANUBIS.." SOFI:DevText"..msg.chat_id_..":" .. msg.sender_user_id_, 300, true)
 end end
 if text and text:match("^مسح كليشه المطور$") or text and text:match("^حذف كليشه المطور$") then
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف كليشة المطور", 1, "md")
-Dev Ahme:del(ANUBIS.."DevText")
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم حذف كليشة المطور", 1, "md")
+Dev SOFI:del(ANUBIS.."DevText")
 end end
 --     Source ANUBIS     --
-if Dev Ahme:get(ANUBIS.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_) then 
+if Dev SOFI:get(ANUBIS.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_) then 
 if text and text:match("^الغاء$") then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر", 1, "md") 
-Dev Ahme:del(ANUBIS.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, "⌯︙تم الغاء الامر", 1, "md") 
+Dev SOFI:del(ANUBIS.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 return false  end 
-Dev Ahme:del(ANUBIS.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
+Dev SOFI:del(ANUBIS.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_)  
 local texxt = string.match(text, "(.*)") 
-Dev Ahme:set(ANUBIS..' Ahme:ChText',texxt)
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙تم تغيير كليشة الاشتراك الاجباري', 1, 'md')
+Dev SOFI:set(ANUBIS..' SOFI:ChText',texxt)
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙تم تغيير كليشة الاشتراك الاجباري', 1, 'md')
 end
 if text and text:match("^تغير كليشه الاشتراك$") and SecondSudo(msg) or text and text:match("^تغيير كليشه الاشتراك$") and SecondSudo(msg) or text and text:match("^↫ تعيين كليشه الاشتراك ⌯$") and SecondSudo(msg) then  
-Dev Ahme:setex(ANUBIS.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_, 300, true)  
+Dev SOFI:setex(ANUBIS.."textch:user"..msg.chat_id_.."" .. msg.sender_user_id_, 300, true)  
 local text = '⌯︙حسنا ارسل كليشة الاشتراك الجديده'  
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,text, 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,text, 1, 'md') 
 end
 if text == "حذف كليشه الاشتراك الاجباري" or text == "حذف كليشه الاشتراك" or text == "↫ حذف كليشه الاشتراك ⌯" then  
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-Dev Ahme:del(ANUBIS..' Ahme:ChText')
+Dev SOFI:del(ANUBIS..' SOFI:ChText')
 textt = "⌯︙تم حذف كليشة الاشتراك الاجباري"
-Dev_ Ahme(msg.chat_id_, msg.id_, 1,textt, 1, 'md') 
+Dev_ SOFI(msg.chat_id_, msg.id_, 1,textt, 1, 'md') 
 end end
 if text == 'كليشه الاشتراك' or text == 'جلب كليشه الاشتراك' or text == '↫ كليشه الاشتراك ⌯' then
 if not SecondSudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-local chtext = Dev Ahme:get(ANUBIS.." Ahme:ChText")
+local chtext = Dev SOFI:get(ANUBIS.." SOFI:ChText")
 if chtext then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙كليشة الاشتراك ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n['..chtext..']', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙كليشة الاشتراك ↫ ⤈ \nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n['..chtext..']', 1, 'md')
 else
-if Dev Ahme:get(ANUBIS.." Ahme:ChId") then
-local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev Ahme:get(ANUBIS.." Ahme:ChId"))
+if Dev SOFI:get(ANUBIS.." SOFI:ChId") then
+local Check = https.request('https://api.telegram.org/bot'..TokenBot..'/getChat?chat_id='..Dev SOFI:get(ANUBIS.." SOFI:ChId"))
 local GetInfo = JSON.decode(Check)
 if GetInfo.result.username then
 User = "https://t.me/"..GetInfo.result.username
@@ -12075,18 +12075,18 @@ keyboard.inline_keyboard = {{{text=GetInfo.result.title,url=User}}}
 Msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendMessage?chat_id='..msg.chat_id_..'&text=' .. URL.escape(Text).."&reply_to_message_id="..Msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙لم يتم تعيين قناة الاشتراك الاجباري \n⌯︙ارسل ↫ تعيين قناة الاشتراك للتعيين ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙لم يتم تعيين قناة الاشتراك الاجباري \n⌯︙ارسل ↫ تعيين قناة الاشتراك للتعيين ', 1, 'md')
 end end end end
 --     Source ANUBIS     --
 if text == 'القناة' or text == 'قناة السورس' or text == 'قناه السورس' or text == 'قنات السورس' then 
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙Channel ↬ [@SOURCEANUBIS]', 1, 'md')    
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙Channel ↬ [@SOURCEANUBIS]', 1, 'md')    
 end 
 --     Source ANUBIS     --
 if text == 'معلومات السيرفر' or text == 'السيرفر' or text == '↫ السيرفر ⌯' then 
 if not Sudo(msg) then
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, '⌯︙للمطور الاساسي فقط ', 1, 'md')
 else
-Dev_ Ahme(msg.chat_id_, msg.id_, 1, io.popen([[
+Dev_ SOFI(msg.chat_id_, msg.id_, 1, io.popen([[
 LinuxVersion=`lsb_release -ds`
 MemoryUsage=`free -m | awk 'NR==2{printf "%s/%sMB {%.2f%%}\n", $3,$2,$3*100/$2 }'`
 HardDisk=`df -lh | awk '{if ($6 == "/") { print $3"/"$2" ~ {"$5"}" }}'`
@@ -12107,10 +12107,10 @@ Shop_ANUBIS(msg)
 elseif (data.ID == "UpdateMessageEdited") then
 local msg = data
 tdcli_function ({ID = "GetMessage",chat_id_ = msg.chat_id_,message_id_ = tonumber(msg.message_id_)},function(extra, result, success)
-Dev Ahme:incr(ANUBIS..' Ahme:EditMsg'..result.chat_id_..result.sender_user_id_)
+Dev SOFI:incr(ANUBIS..' SOFI:EditMsg'..result.chat_id_..result.sender_user_id_)
 local text = result.content_.text_ or result.content_.caption_
 local Text = result.content_.text_
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_) and not Text and not BasicConstructor(result) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_) and not Text and not BasicConstructor(result) then
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_})
 Media = 'الميديا'
 if result.content_.ID == "MessagePhoto" then Media = 'الصوره'
@@ -12121,10 +12121,10 @@ elseif result.content_.ID == "MessageVideo" then Media = 'الفيديو'
 elseif result.content_.ID == "MessageAnimation" then Media = 'المتحركه'
 end
 tdcli_function ({ID = "GetUser",user_id_ = result.sender_user_id_},function(arg,dp) 
-local  Ahmename = '⌯︙العضو ↫ ['..dp.first_name_..'](tg://user?id='..dp.id_..')'
-local  Ahmeid = '⌯︙ايديه ↫ `'..dp.id_..'`'
-local  Ahmetext = '⌯︙قام بالتعديل على '..Media
-local  Ahmetxt = 'ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙تعالو يامشرفين اكو مخرب'
+local  SOFIname = '⌯︙العضو ↫ ['..dp.first_name_..'](tg://user?id='..dp.id_..')'
+local  SOFIid = '⌯︙ايديه ↫ `'..dp.id_..'`'
+local  SOFItext = '⌯︙قام بالتعديل على '..Media
+local  SOFItxt = 'ꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n⌯︙تعالو يامشرفين اكو مخرب'
 tdcli_function ({ID = "GetChannelMembers",channel_id_ = msg.chat_id_:gsub("-100",""),filter_ = {ID = "ChannelMembersAdministrators"},offset_ = 0,limit_ = 100},function(arg,SoOoFi) 
 local admins = SoOoFi.members_  
 text = '\nꔹ┉ ┉ ┉ ┉ ┉ ┉ ┉ꔹ\n'
@@ -12135,7 +12135,7 @@ if data.first_name_ ~= false then
 text = text.."~ [@"..data.username_.."]\n"
 end
 if #admins == i then 
-SendText(msg.chat_id_,  Ahmename..'\n'.. Ahmeid..'\n'.. Ahmetext..text.. Ahmetxt,0,'md') 
+SendText(msg.chat_id_,  SOFIname..'\n'.. SOFIid..'\n'.. SOFItext..text.. SOFItxt,0,'md') 
 end
 end,nil)
 end
@@ -12146,7 +12146,7 @@ end
 if not VipMem(result) then
 Filters(result, text)
 if text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Mm][Ee]") or text:match("[Tt][Ll][Gg][Rr][Mm].[Mm][Ee]") or text:match("[Tt].[Mm][Ee]") or text:match("[Tt][Ee][Ll][Ee][Gg][Rr][Aa][Mm].[Dd][Oo][Gg]") or text:match("#") or text:match("@") or text:match("[Hh][Tt][Tt][Pp][Ss]://") or text:match("[Hh][Tt][Tt][Pp]://") or text:match(".[Cc][Oo][Mm]") or text:match(".[Oo][Rr][Gg]") or text:match("[Ww][Ww][Ww].") or text:match(".[Xx][Yy][Zz]") then
-if Dev Ahme:get(ANUBIS..' Ahme:Lock:EditMsgs'..msg.chat_id_) then
+if Dev SOFI:get(ANUBIS..' SOFI:Lock:EditMsgs'..msg.chat_id_) then
 DeleteMessage(msg.chat_id_,{[0] = data.message_id_})
 end end end 
 end,nil)
@@ -12154,18 +12154,18 @@ end,nil)
 elseif (data.ID == "UpdateMessageSendSucceeded") then
 local msg = data.message_
 local text = msg.content_.text_
-local GetMsgPin = Dev Ahme:get(ANUBIS..' Ahme:PinnedMsgs'..msg.chat_id_)
+local GetMsgPin = Dev SOFI:get(ANUBIS..' SOFI:PinnedMsgs'..msg.chat_id_)
 if GetMsgPin ~= nil then
 if text == GetMsgPin then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,dp) if dp.ID == 'Ok' then;Dev Ahme:del(ANUBIS..' Ahme:PinnedMsgs'..msg.chat_id_);end;end,nil)   
+tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,dp) if dp.ID == 'Ok' then;Dev SOFI:del(ANUBIS..' SOFI:PinnedMsgs'..msg.chat_id_);end;end,nil)   
 elseif (msg.content_.sticker_) then 
 if GetMsgPin == msg.content_.sticker_.sticker_.persistent_id_ then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,dp) Dev Ahme:del(ANUBIS..' Ahme:PinnedMsgs'..msg.chat_id_) end,nil)   
+tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,dp) Dev SOFI:del(ANUBIS..' SOFI:PinnedMsgs'..msg.chat_id_) end,nil)   
 end
 end
 if (msg.content_.animation_) then 
 if msg.content_.animation_.animation_.persistent_id_ == GetMsgPin then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,dp) Dev Ahme:del(ANUBIS..' Ahme:PinnedMsgs'..msg.chat_id_) end,nil)   
+tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,dp) Dev SOFI:del(ANUBIS..' SOFI:PinnedMsgs'..msg.chat_id_) end,nil)   
 end
 end
 if (msg.content_.photo_) then
@@ -12182,39 +12182,39 @@ if msg.content_.photo_.sizes_[3] then
 id_photo = msg.content_.photo_.sizes_[3].photo_.persistent_id_
 end
 if id_photo == GetMsgPin then
-tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,dp) Dev Ahme:del(ANUBIS..' Ahme:PinnedMsgs'..msg.chat_id_) end,nil)   
+tdcli_function ({ID = "PinChannelMessage",channel_id_ = msg.chat_id_:gsub('-100',''),message_id_ = msg.id_,disable_notification_ = 0},function(arg,dp) Dev SOFI:del(ANUBIS..' SOFI:PinnedMsgs'..msg.chat_id_) end,nil)   
 end end end
 --     Source ANUBIS     --
 elseif (data.ID == "UpdateOption" and data.name_ == "my_id") then
 print('\27[30;32mجاري تنظيف المجموعات الوهميه يرجى الانتظار\n\27[1;37m')
-local PvList = Dev Ahme:smembers(ANUBIS..' Ahme:Users')  
+local PvList = Dev SOFI:smembers(ANUBIS..' SOFI:Users')  
 for k,v in pairs(PvList) do 
 tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data) end,nil) 
 end 
-local GpList = Dev Ahme:smembers(ANUBIS..' Ahme:Groups') 
+local GpList = Dev SOFI:smembers(ANUBIS..' SOFI:Groups') 
 for k,v in pairs(GpList) do 
 tdcli_function({ID='GetChat',chat_id_ = v},function(arg,data)
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusMember" then
 tdcli_function({ID = "ChangeChatMemberStatus",chat_id_=v,user_id_=ANUBIS,status_={ID = "ChatMemberStatusLeft"},},function(e,g) end, nil) 
-Dev Ahme:srem(ANUBIS..' Ahme:Groups',v)  
+Dev SOFI:srem(ANUBIS..' SOFI:Groups',v)  
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusLeft" then
-Dev Ahme:srem(ANUBIS..' Ahme:Groups',v)  
+Dev SOFI:srem(ANUBIS..' SOFI:Groups',v)  
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusKicked" then
-Dev Ahme:srem(ANUBIS..' Ahme:Groups',v)  
+Dev SOFI:srem(ANUBIS..' SOFI:Groups',v)  
 end
 if data and data.code_ and data.code_ == 400 then
-Dev Ahme:srem(ANUBIS..' Ahme:Groups',v)  
+Dev SOFI:srem(ANUBIS..' SOFI:Groups',v)  
 end
 if data and data.type_ and data.type_.channel_ and data.type_.channel_.status_ and data.type_.channel_.status_.ID == "ChatMemberStatusEditor" then
-Dev Ahme:sadd(ANUBIS..' Ahme:Groups',v)  
+Dev SOFI:sadd(ANUBIS..' SOFI:Groups',v)  
 end end,nil) end
 end
 --     Source ANUBIS     --
 end 
 ------------------------------------------------
--- This Source Was Developed By ( Ahme) @U_U_U_Q.--
+-- This Source Was Developed By ( SOFI) @U_U_U_Q.--
 --   This Is The Source Channel @SOURCEANUBIS .     --
 --                 - ANUBIS -                 --
 --         -- https://t.me/SOURCEANUBIS --          --
