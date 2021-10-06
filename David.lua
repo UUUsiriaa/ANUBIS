@@ -942,7 +942,7 @@ DevRio:del(David..'no'..data.sender_user_id_, 'delno')
 EditMsg(Chat_Id2, Msg_Id2, "᥀︙تم الغاء امر اطردني") 
 end
 --- callback added
-if DataText == '/add' then
+if Text == '/add' then
 local Teext =[[
 𓄂  اهلا بك في قسم الالعاب ..↑↓
  اختر العبه الذي تريدها .↑↓
@@ -962,9 +962,9 @@ keyboard.inline_keyboard = {
 {text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"},
 },
 }
-return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if DataText == '/zDRGd' then
+if Text == '/zDRGd' then
 local Teext =[[
 • اختر برجك عزيزي •📮،⍆
 ]]
@@ -998,10 +998,10 @@ keyboard.inline_keyboard = {
 {text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"},
 },
 }
-return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
-if DataText == '/change-hhh' then
+if Text == '/change-hhh' then
 local Teext =[[ 
 𓄂  اليك قائمه الاسعار في الاسفل ..↑↓
 ○━━━━Aꪀꪊ᥇𝓲𝘴━━━━○
@@ -1018,9 +1018,9 @@ keyboard.inline_keyboard = {
 {text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"},
 },
 }
-return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if DataText == '/change-hklp' then
+if Text == '/change-hklp' then
 local Teext =[[
 • سعر تنصيب بوتك علي سورس انوبيس •
 • لتنصيب بوتك بكامل المميزات (30)ج •
@@ -1034,9 +1034,9 @@ keyboard.inline_keyboard = {
 {{text = '˹ᴛᴀᴡᴏsʟ˼',url="t.me/SOURCEANUBIS"}}, 
 {{text = '𓄂 𝙱𝙰𝙲??↵', callback_data="/change-hhh"}},
 }
-return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if DataText == '/change-gfgjo' then
+if Text == '/change-gfgjo' then
 local Teext =[[
 • سعر السورس عندنا بكامل حقوقك (200)ج
 • سعر السيرفر اوبنتو 2 رام (50)ج
@@ -1052,9 +1052,9 @@ keyboard.inline_keyboard = {
 {{text = '•𝚋𝚊𝚛𝚕𝚘♪', url="t.me/bar_lo0o0"}},
 {{text = '𓄂 𝙱𝙰𝙲𝙺↵', callback_data="/change-hhh"}},
 }
-return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if DataText == '/change-ghjjgyy' then
+if Text == '/change-ghjjgyy' then
 local Teext =[[
 📬 • ??𝐛??𝐮𝐭 𝐭𝐡𝐞 𝐬𝐨𝐮𝐫𝐜𝐞
 ○━━━━Aꪀꪊ᥇𝓲𝘴━━━━○
@@ -1072,9 +1072,9 @@ keyboard.inline_keyboard = {
 {{text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"}},
 {{text = '𓄂 𝙱𝙰𝙲𝙺↵', callback_data="/change-hhh"}},
 }
-return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if DataText == '/change-siusr' then
+if Text == '/change-siusr' then
 local Teext =[[
 𖢅 𝙒𝙚𝙡𝙘𝙤𝙢𝙚 𝙩𝙤 𝙨𝙤𝙧𝙘𝙚 𝙖𝙣𝙪𝙗𝙞𝙨 𝄵⁂︎ ⇣
 ]]
@@ -1084,7 +1084,7 @@ keyboard.inline_keyboard = {
 {{text = '•𝙱𝙰𝚁𝙻𝙾♪',url="t.me/bar_lo0o0"},{text = '•𝙶𝟾𝙰𝚉𝙰𝙻♪', url="t.me/G8AZAAL"}},
 {{text = ' مــطــور الــبــوت🔰', url="http://t.me/"..sudos.UserName}},
 }
-return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 --     Source David     --
 if DataText == '/yesdel' and DevRio:get(David..'yesdel'..data.sender_user_id_) == 'delyes' then
@@ -3458,7 +3458,7 @@ end
 end 
 --     Source David     --
 if ChatType == 'pv' then 
-if DataText == '/start' or text == '↫ رجوع ᥀' then 
+if text == '/start' or text == '↫ رجوع ᥀' then 
 if SecondSudo(msg) then 
 local Sudo_Welcome = '᥀︙مرحبا عزيزي المطور \n᥀︙انت المطور الاساسي هنا \n᥀︙اليك ازرار سورس انوبيس \n᥀︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {{'↫ السورس ᥀','وضع اسم البوت'},{'↫  المطورين ᥀','↫ الاحصائيات ᥀'},{'↫ التفعيل والتعطيل ᥀','↫ الاذاعه ᥀'},{'↫ تعيين كلايش الاوامر ᥀','↫ العام ᥀','↫ ردود الخاص ᥀'},{'↫ الاشتراك الاجباري ᥀','↫ الاوامر الخدميه ᥀'}}
