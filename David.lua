@@ -9682,9 +9682,26 @@ return false
 end
 --     Source David     --
 if SudoBot(msg) then
-if text and text == "الاحصائيات" and ChCheck(msg) or text and text == "↫  الاحصائيات ᥀" and ChCheck(msg) then
-local gps = DevRio:scard(David.."Rio:Groups") local users = DevRio:scard(David.."Rio:Users") 
-Dev_Rio(msg.chat_id_, msg.id_, 1, '᥀︙احصائيات البوت ↫ ⤈\n᥀︙عدد المشتركين ↫ ❨ '..users..' ❩\n᥀︙عدد المجموعات ↫ ❨ '..gps..' ❩', 1, 'md')
+if text == 'الاحصائيات' and SudoBot(msg) then 
+local Namebot = (DevRio:get(David.."Rio:Name:Bot') or 'انوبيس') 
+local gps = DevRio:scard(David.."Rio:Chek:Groups')  
+local Users = DevRio:scard(David.."Rio:User_Bot')  
+Namebot = "𝗡𝗔𝗠𝗘𝗕𝗢𝗧 ∭  ➢"..Namebot..'\n➢𝙜𝙧𝙤𝙪𝙥𝙨 🝤  ➢ {'..gps..'}\n𝗦𝗨𝗕𝗦𝗖𝗥𝗜𝗕𝗘𝗥𝗦 ⚚ ➢ {'..Users..'}'
+local msg_id = msg.id_/2097152/0.5  
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '𝘀𝗼𝗿𝗰𝗲 𝗮𝗻𝘂𝗯𝗶𝘀 ⁦˖꒰', url = "https://t.me/SOURCEANUBIS"},
+},
+}
+local function getpro(extra, result, success) 
+if result.photos_[0] then 
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo='..result.photos_[0].sizes_[1].photo_.persistent_id_..'&caption=' .. URL.escape(Namebot).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
+else 
+send(msg.chat_id_, msg.id_,Namebot, 1, 'md') 
+end 
+end 
+tdcli_function ({ ID = "GetUserProfilePhotos", user_id_ = David, offset_ = 0, limit_ = 1 }, getpro, nil) 
 end
 if text and text == "المشتركين" and ChCheck(msg) or text and text == "↫ المشتركين ᥀" and ChCheck(msg) then
 local users = DevRio:scard(David.."Rio:Users")
