@@ -3431,6 +3431,9 @@ end
 SendInline(msg.chat_id_,Start_Source,nil,inline)
 end,nil)
 end
+DevRio:setex(David..'Rio:Start:Time'..msg.sender_user_id_,300,true)
+return false
+end 
 --     Source David     -- 
 if not SecondSudo(msg) and not DevRio:sismember(David..'Rio:Ban:Pv',msg.sender_user_id_) and not DevRio:get(David..'Rio:Texting:Pv') then
 tdcli_function({ID="GetUser",user_id_=DevId},function(arg,chat) 
