@@ -3423,7 +3423,15 @@ end
 --     Source David     --
 if text == '/start' and ChCheck(msg) then  
 local Text = "  ـــــــــــــــــــــــــــــــــــــــــــــــ\n🤖╖ أهلآ بك عزيزي أنا بوت   "..NameBot.."\n🌐╢ وظيفتي حماية المجموعات\n✅╢ لتفعيل البوت عليك اتباع مايلي \n🔘╢ أضِف البوت إلى مجموعتك\n⚡️╢ ارفعهُ » مشرف\n️⬆️╜ سيتم ترقيتك مالك في البوت\nــــــــــــــــــــــــــــــــــــــــــــــــــــ"
-local inline = {{{text="• ᥀ المطور . •",url="t.me/"..(chat.username_ or "SOURCEANUBIS")}},{{text="• ᥀ السورس . •",url="https://t.me/SOURCEANUBIS"},{text="• ᥀ لتنصيب بوت . •",url="https://t.me/U_U_U_Q"}},{{text="• ᥀ اضفني في مجموعتك . •",url="t.me/"..chat.username_.."?startgroup=botstart"}}}
+local inline = {keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'معلومات📚', callback_data="/change-hhh"},{text = 'السورس🌀', callback_data="/change-siusr"},
+},
+{
+{text = 'الابراج🔮', callback_data="/zDRGd"},{text = 'الالعاب🎮', callback_data="/add"},
+},
+}
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
