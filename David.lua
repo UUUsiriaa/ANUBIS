@@ -3421,7 +3421,7 @@ SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
 end
 --     Source David     --
-if text == '/start' or text == '/start' or text == '/start' or text == "/Alamy" then
+if text == '/start' and ChCheck(msg) then  
 local Text = "  ـــــــــــــــــــــــــــــــــــــــــــــــ\n🤖╖ أهلآ بك عزيزي أنا بوت   "..NameBot.."\n🌐╢ وظيفتي حماية المجموعات\n✅╢ لتفعيل البوت عليك اتباع مايلي \n🔘╢ أضِف البوت إلى مجموعتك\n⚡️╢ ارفعهُ » مشرف\n️⬆️╜ سيتم ترقيتك مالك في البوت\nــــــــــــــــــــــــــــــــــــــــــــــــــــ"
 local inline = {{{text="• ᥀ المطور . •",url="t.me/"..(dp.username_ or "SOURCEANUBIS")}},{{text="• ᥀ السورس . •",url="https://t.me/SOURCEANUBIS"},{text="• ᥀ لتنصيب بوت . •",url="https://t.me/U_U_U_Q"}},{{text="• ᥀ اضفني في مجموعتك . •",url="t.me/"..dp.username_.."?startgroup=botstart"}}}
 local msg_id = msg.id_/2097152/0.5
