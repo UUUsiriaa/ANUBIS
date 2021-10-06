@@ -3421,18 +3421,12 @@ SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
 end
 --     Source David     --
-if text == '/start' and ChCheck(msg) then  
-if not DevRio:get(David..'Rio:Start:Time'..msg.sender_user_id_) then
+if text == '/start' or text == '/start' or text == '/start' or text == "/Alamy" then
+local Text = "  ـــــــــــــــــــــــــــــــــــــــــــــــ\n🤖╖ أهلآ بك عزيزي أنا بوت   "..NameBot.."\n🌐╢ وظيفتي حماية المجموعات\n✅╢ لتفعيل البوت عليك اتباع مايلي \n🔘╢ أضِف البوت إلى مجموعتك\n⚡️╢ ارفعهُ » مشرف\n️⬆️╜ سيتم ترقيتك مالك في البوت\nــــــــــــــــــــــــــــــــــــــــــــــــــــ"
 tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp) 
 local inline = {{{text="• ᥀ المطور . •",url="t.me/"..(dp.username_ or "SOURCEANUBIS")}},{{text="• ᥀ السورس . •",url="https://t.me/SOURCEANUBIS"},{text="• ᥀ لتنصيب بوت . •",url="https://t.me/U_U_U_Q"}},{{text="• ᥀ اضفني في مجموعتك . •",url="t.me/"..dp.username_.."?startgroup=botstart"}}}
-local start = DevRio:get(David.."Rio:Start:Bot")
-if start then 
-Start_Source = start
-else
-Start_Source = "᥀︙مرحبا انا بوت اسمي "..NameBot.."\n᥀︙اختصاصي حماية المجموعات\n᥀︙من التفليش والسبام والخخ .. . ،\n᥀︙تفعيلي سهل ومجانا فقط قم برفعي ادمن في مجموعتك وارسل امر ↫ تفعيل\n᥀︙سيتم رفع الادمنيه والمنشئ تلقائيا\n᥀︙ارسل امر /free او /play للتمتع باوامر الاعضاء"
-end 
-SendInline(msg.chat_id_,Start_Source,nil,inline)
-end,nil)
+local msg_id = msg.id_/2097152/0.5
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 DevRio:setex(David..'Rio:Start:Time'..msg.sender_user_id_,300,true)
 return false
@@ -5261,7 +5255,7 @@ name = string.gsub(name,'🎖','🎖')
 name = string.gsub(name,'🏆','🏆')
 name = string.gsub(name,'🥌','🥌')
 name = string.gsub(name,'🛷','🛷')
-name = string.gsub(name,'🚕','🚕')
+name = string.gsub(name,'🚕','??')
 name = string.gsub(name,'🚗','🚗')
 name = string.gsub(name,'🚙','🚙')
 name = string.gsub(name,'🚌','🚌')
@@ -9682,26 +9676,9 @@ return false
 end
 --     Source David     --
 if SudoBot(msg) then
-if text == 'الاحصائيات' and SudoBot(msg) then 
-NameBot = (DevRio:scard(David..'Rio:NameBot') or 'انوبيس') 
-local gps = DevRio:scard(David.."Rio:Groups")
-local users = DevRio:scard(David.."Rio:Users")
-Namebot = "𝗡𝗔𝗠𝗘𝗕𝗢𝗧 ∭  ➢"..Namebot..'\n➢𝙜𝙧𝙤𝙪𝙥𝙨 🝤  ➢ {'..gps..'}\n𝗦𝗨𝗕𝗦𝗖𝗥𝗜𝗕𝗘𝗥𝗦 ⚚ ➢ {'..Users..'}'
-local msg_id = msg.id_/2097152/0.5  
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = '𝘀𝗼𝗿𝗰𝗲 𝗮𝗻𝘂𝗯𝗶𝘀 ⁦˖꒰', url = "https://t.me/SOURCEANUBIS"},
-},
-}
-local function getpro(extra, result, success) 
-if result.photos_[0] then 
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/AnimeDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
-else 
-send(msg.chat_id_, msg.id_,Namebot, 1, 'md') 
-end 
-end 
-tdcli_function ({ ID = "GetUserProfilePhotos", user_id_ = David, offset_ = 0, limit_ = 1 }, getpro, nil) 
+if text and text == "الاحصائيات" and ChCheck(msg) or text and text == "↫  الاحصائيات ♡" and ChCheck(msg) then
+local gps = DevRio:scard(David.."Rio:Groups") local users = DevRio:scard(Prox.."Rio:Users") 
+Dev_Rio(msg.chat_id_, msg.id_, 1, '♡︙احصائيات البوت ↫ ⤈\n♡︙عدد المشتركين ↫ ❨ '..users..' ❩\n♡︙عدد المجموعات ↫ ❨ '..gps..' ❩', 1, 'md')
 end
 if text and text == "المشتركين" and ChCheck(msg) or text and text == "↫ المشتركين ᥀" and ChCheck(msg) then
 local users = DevRio:scard(David.."Rio:Users")
