@@ -9683,7 +9683,7 @@ end
 --     Source David     --
 if SudoBot(msg) then
 if text == 'الاحصائيات' and SudoBot(msg) then 
-NameBot = (DevRio:get(David..'Rio:NameBot') or 'انوبيس') 
+NameBot = (DevRio:scard(David..'Rio:NameBot') or 'انوبيس') 
 local gps = DevRio:scard(David.."Rio:Groups")
 local users = DevRio:scard(David.."Rio:Users")
 Namebot = "𝗡𝗔𝗠𝗘𝗕𝗢𝗧 ∭  ➢"..Namebot..'\n➢𝙜𝙧𝙤𝙪𝙥𝙨 🝤  ➢ {'..gps..'}\n𝗦𝗨𝗕𝗦𝗖𝗥𝗜𝗕𝗘𝗥𝗦 ⚚ ➢ {'..Users..'}'
