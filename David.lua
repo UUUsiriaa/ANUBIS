@@ -942,7 +942,7 @@ DevRio:del(David..'no'..data.sender_user_id_, 'delno')
 EditMsg(Chat_Id2, Msg_Id2, "᥀︙تم الغاء امر اطردني") 
 end
 --- callback added
-if Text == '/add' then
+if DataText == '/add' then
 local Teext =[[
 𓄂  اهلا بك في قسم الالعاب ..↑↓
  اختر العبه الذي تريدها .↑↓
@@ -964,7 +964,7 @@ keyboard.inline_keyboard = {
 }
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if Text == '/zDRGd' then
+if DataText == '/zDRGd' then
 local Teext =[[
 • اختر برجك عزيزي •📮،⍆
 ]]
@@ -1001,7 +1001,7 @@ keyboard.inline_keyboard = {
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
-if Text == '/change-hhh' then
+if DataText == '/change-hhh' then
 local Teext =[[ 
 𓄂  اليك قائمه الاسعار في الاسفل ..↑↓
 ○━━━━Aꪀꪊ᥇𝓲𝘴━━━━○
@@ -1020,7 +1020,7 @@ keyboard.inline_keyboard = {
 }
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if Text == '/change-hklp' then
+if DataText == '/change-hklp' then
 local Teext =[[
 • سعر تنصيب بوتك علي سورس انوبيس •
 • لتنصيب بوتك بكامل المميزات (30)ج •
@@ -1036,7 +1036,7 @@ keyboard.inline_keyboard = {
 }
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if Text == '/change-gfgjo' then
+if DataText == '/change-gfgjo' then
 local Teext =[[
 • سعر السورس عندنا بكامل حقوقك (200)ج
 • سعر السيرفر اوبنتو 2 رام (50)ج
@@ -1054,7 +1054,7 @@ keyboard.inline_keyboard = {
 }
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if Text == '/change-ghjjgyy' then
+if DataText == '/change-ghjjgyy' then
 local Teext =[[
 📬 • ??𝐛??𝐮𝐭 𝐭𝐡𝐞 𝐬𝐨𝐮𝐫𝐜𝐞
 ○━━━━Aꪀꪊ᥇𝓲𝘴━━━━○
@@ -1074,7 +1074,7 @@ keyboard.inline_keyboard = {
 }
 return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
-if Text == '/change-siusr' then
+if DataText == '/change-siusr' then
 local Teext =[[
 𖢅 𝙒𝙚𝙡𝙘𝙤𝙢𝙚 𝙩𝙤 𝙨𝙤𝙧𝙘𝙚 𝙖𝙣𝙪𝙗𝙞𝙨 𝄵⁂︎ ⇣
 ]]
@@ -3458,7 +3458,7 @@ end
 end 
 --     Source David     --
 if ChatType == 'pv' then 
-if text == '/start' or text == '↫ رجوع ᥀' then 
+if DataText == '/start' or text == '↫ رجوع ᥀' then 
 if SecondSudo(msg) then 
 local Sudo_Welcome = '᥀︙مرحبا عزيزي المطور \n᥀︙انت المطور الاساسي هنا \n᥀︙اليك ازرار سورس انوبيس \n᥀︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {{'↫ السورس ᥀','وضع اسم البوت'},{'↫  المطورين ᥀','↫ الاحصائيات ᥀'},{'↫ التفعيل والتعطيل ᥀','↫ الاذاعه ᥀'},{'↫ تعيين كلايش الاوامر ᥀','↫ العام ᥀','↫ ردود الخاص ᥀'},{'↫ الاشتراك الاجباري ᥀','↫ الاوامر الخدميه ᥀'}}
