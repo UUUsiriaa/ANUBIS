@@ -941,6 +941,151 @@ DevRio:del(David..'yes'..data.sender_user_id_, 'delyes')
 DevRio:del(David..'no'..data.sender_user_id_, 'delno')
 EditMsg(Chat_Id2, Msg_Id2, "᥀︙تم الغاء امر اطردني") 
 end
+--- callback added
+if DataText == '/add' then
+local Teext =[[
+𓄂  اهلا بك في قسم الالعاب ..↑↓
+ اختر العبه الذي تريدها .↑↓
+ده من الازرار بلاسفل . ↓
+○━━━━Aꪀꪊ᥇𝓲𝘴━━━━○
+ 
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '♪العاب السورس♪', callback_data="/mute-name"},{text = '♪الاضافات♪', callback_data="/change-photo"},
+},
+{
+{text = '♪ متطوره♪', callback_data="/DRG"},
+},
+{
+{text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+if DataText == '/zDRGd' then
+local Teext =[[
+• اختر برجك عزيزي •📮،⍆
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = '• الاسد ،🦁', callback_data="/zking"},{text = '• الثور 🐂', callback_data="/zzor"},
+},
+{
+{text = '• العقرب 🦂', callback_data="/zakrb"},{text = '• القوس 🏹', callback_data="/zkos"},
+},
+{
+{text = '• الحمل 🐐', callback_data="/zsiria"},
+},
+{
+{text = '• السرطان 🦀', callback_data="/zsltan"},{text = '• العذراء 🦋', callback_data="/zazra"},
+},
+{
+{text = '• الميزان ⚖', callback_data="/zmezan"},{text = '• الجدي 🦌', callback_data="/zgagy"},
+},
+{
+{text = ' معرفة برجك 🧭', callback_data="/zporg"},
+},
+{
+{text = '• الحوت 🐋', callback_data="/zhot"},
+},
+{
+{text = '• الجوزاء 🌩', callback_data="/zguza"},{text = '• الدلو 🦯', callback_data="/zdlu"},
+},
+{
+{text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+
+if DataText == '/change-hhh' then
+local Teext =[[ 
+𓄂  اليك قائمه الاسعار في الاسفل ..↑↓
+○━━━━Aꪀꪊ᥇𝓲𝘴━━━━○
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{
+{text = 'اسعار التنصيب', callback_data="/change-hklp"},{text = 'اسعار السورسات', callback_data="/change-gfgjo"},
+},
+{
+{text = 'نبذه عن السورس', callback_data="/change-ghjjgyy"},
+},
+{
+{text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"},
+},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+if DataText == '/change-hklp' then
+local Teext =[[
+• سعر تنصيب بوتك علي سورس انوبيس •
+• لتنصيب بوتك بكامل المميزات (30)ج •
+⇣ للتواصل مع المبرمجين اتبع الازرار ⇣
+○━━━━Aꪀꪊ᥇𝓲𝘴━━━━○
+
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '•𝘴𝓲𝘳𝓲ꪖ',url="t.me/AHMED_MERO_love"},{text = '•𝚋𝚊𝚛𝚕𝚘♪', url="t.me/bar_lo0o0"}},
+{{text = '˹ᴛᴀᴡᴏsʟ˼',url="t.me/SOURCEANUBIS"}}, 
+{{text = '𓄂 𝙱𝙰𝙲??↵', callback_data="/change-hhh"}},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+if DataText == '/change-gfgjo' then
+local Teext =[[
+• سعر السورس عندنا بكامل حقوقك (200)ج
+• سعر السيرفر اوبنتو 2 رام (50)ج
+• سعر السيرفر اوبنتو 4 رام (100)ج
+• سعر السيرفر اوبنتو 8 رام (150)ج
+• سعر مصنع مميزات بكامل حقوقك (150)ج
+⇣ للتواصل مع المبرمجين اتبع الازرار بالأسفل ⇣
+○━━━━Aꪀꪊ᥇𝓲𝘴━━━━○
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = 'Aꫝꪑꫀᦔ𝅘𝅥𝅯', url="t.me/AHMED_MERO_love"}},
+{{text = '•𝚋𝚊𝚛𝚕𝚘♪', url="t.me/bar_lo0o0"}},
+{{text = '𓄂 𝙱𝙰𝙲𝙺↵', callback_data="/change-hhh"}},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+if DataText == '/change-ghjjgyy' then
+local Teext =[[
+📬 • ??𝐛??𝐮𝐭 𝐭𝐡𝐞 𝐬𝐨𝐮𝐫𝐜𝐞
+○━━━━Aꪀꪊ᥇𝓲𝘴━━━━○
+𓄂 سورس خاص في حماية المجموعات من التفليش 🚸 . 
+𓄂 تستطيع تنصيب بوتك وتصبح المطور الاساسي 👨🏼‍𓄂 ️.
+𓄂 تستطيع اضافة قناتك اشتراك اجباري في بوتك ⚠️ .
+𓄂 سرعة في اداء البوت ومزايا حصرية فقط لسورسنا 〽️ .
+𓄂 لمعرفة ميزات اكثر عن السورس زور قناة التحديثات .
+𓄂 اطلب بوتك الأن 🌐 .
+○━━━━Aꪀꪊ᥇𝓲𝘴━━━━○
+
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"}},
+{{text = '𓄂 𝙱𝙰𝙲𝙺↵', callback_data="/change-hhh"}},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
+if DataText == '/change-siusr' then
+local Teext =[[
+𖢅 𝙒𝙚𝙡𝙘𝙤𝙢𝙚 𝙩𝙤 𝙨𝙤𝙧𝙘𝙚 𝙖𝙣𝙪𝙗𝙞𝙨 𝄵⁂︎ ⇣
+]]
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '•Aꫝꪑꫀᦔ𝅘𝅥𝅯♪',url="t.me/AHMED_MERO_love"},{text = '•𝘬ꪖ𝘴ꪖꫝꪖ 𝅘𝅥𝅮♪', url="t.me/MR_AAS"}},
+{{text = '•𝙱𝙰𝚁𝙻𝙾♪',url="t.me/bar_lo0o0"},{text = '•𝙶𝟾𝙰𝚉𝙰𝙻♪', url="t.me/G8AZAAL"}},
+{{text = ' مــطــور الــبــوت🔰', url="http://t.me/"..sudos.UserName}},
+}
+return https.request("https://api.telegram.org/bot"..token..'/editMessagecaption?chat_id='..Chat_id..'&caption='..URL.escape(Teext)..'&message_id='..msg_idd..'&disable_web_page_preview=true&reply_markup='..JSON.encode(keyboard))  
+end
 --     Source David     --
 if DataText == '/yesdel' and DevRio:get(David..'yesdel'..data.sender_user_id_) == 'delyes' then
 DevRio:del(David..'yesdel'..data.sender_user_id_, 'delyes')
@@ -3313,7 +3458,7 @@ end
 end 
 --     Source David     --
 if ChatType == 'pv' then 
-if text == '/start' or text == '↫ رجوع ᥀' then 
+if DataText == '/start' or text == '↫ رجوع ᥀' then 
 if SecondSudo(msg) then 
 local Sudo_Welcome = '᥀︙مرحبا عزيزي المطور \n᥀︙انت المطور الاساسي هنا \n᥀︙اليك ازرار سورس انوبيس \n᥀︙تستطيع التحكم بكل الاوامر فقط اضغط على الامر الذي تريد تنفيذه'
 local key = {{'↫ السورس ᥀','وضع اسم البوت'},{'↫  المطورين ᥀','↫ الاحصائيات ᥀'},{'↫ التفعيل والتعطيل ᥀','↫ الاذاعه ᥀'},{'↫ تعيين كلايش الاوامر ᥀','↫ العام ᥀','↫ ردود الخاص ᥀'},{'↫ الاشتراك الاجباري ᥀','↫ الاوامر الخدميه ᥀'}}
@@ -3421,7 +3566,7 @@ SendInline(msg.chat_id_,Sudo_Welcome,key)
 return false
 end
 --     Source David     --
-if text == '/start' and ChCheck(msg) then  
+if Text == '/start' and ChCheck(msg) then  
 local Text = "  ـــــــــــــــــــــــــــــــــــــــــــــــ\n🤖╖ أهلآ بك عزيزي أنا بوت   "..NameBot.."\n🌐╢ وظيفتي حماية المجموعات\n✅╢ لتفعيل البوت عليك اتباع مايلي \n🔘╢ أضِف البوت إلى مجموعتك\n⚡️╢ ارفعهُ » مشرف\n️⬆️╜ سيتم ترقيتك مالك في البوت\nــــــــــــــــــــــــــــــــــــــــــــــــــــ"
 keyboard = {} 
 keyboard.inline_keyboard = {
