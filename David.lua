@@ -3423,8 +3423,11 @@ end
 --     Source David     --
 if text == '/start' or text == '/start' or text == '/start' or text == "/Alamy" then
 local Text = "  ـــــــــــــــــــــــــــــــــــــــــــــــ\n🤖╖ أهلآ بك عزيزي أنا بوت   "..NameBot.."\n🌐╢ وظيفتي حماية المجموعات\n✅╢ لتفعيل البوت عليك اتباع مايلي \n🔘╢ أضِف البوت إلى مجموعتك\n⚡️╢ ارفعهُ » مشرف\n️⬆️╜ سيتم ترقيتك مالك في البوت\nــــــــــــــــــــــــــــــــــــــــــــــــــــ"
-tdcli_function({ID="GetUser",user_id_=DevId},function(arg,dp) 
-local inline = {{{text="• ᥀ المطور . •",url="t.me/"..(dp.username_ or "SOURCEANUBIS")}},{{text="• ᥀ السورس . •",url="https://t.me/SOURCEANUBIS"},{text="• ᥀ لتنصيب بوت . •",url="https://t.me/U_U_U_Q"}},{{text="• ᥀ اضفني في مجموعتك . •",url="t.me/"..dp.username_.."?startgroup=botstart"}}}
+keyboard = {} 
+keyboard.inline_keyboard = {
+{{text = '🌖 مطور البوت 🐾', url = "https://t.me/"..Name_Dev}},
+{{text = 'ضـيـف البـوت لمجمـوعـتك ✅', url="https://t.me/"..Dev_Rio.."?startgroup=new"}},
+}
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
