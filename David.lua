@@ -5139,35 +5139,12 @@ end
 end 
 --     Source David     --
 if ChatType == 'sp' or ChatType == 'gp' or ChatType == 'pv' then
-if text == "بوت" then
-local NameBot = (DevRio:get(David..'Rio:NameBot') or 'سوريا')
-local DavidTeam  = { 
-'اسمي  '..Namebot..' يا قلبي 🤤💚',
-'اسمي '..Namebot..' يا روحي🙈❤️',
-'اسمي  '..Namebot..' يعمري🌚🌹',
-'اسمي  '..Namebot..' يا قمر 🐭🤍',
-'اسمي  '..Namebot..' يامزه 🥺❤️',
-'اسمي  '..Namebot..' يعم 😒',
-'مقولت اسمي '..Namebot..' في اي 🙄',
-'اسمي الكيوت '..Namebot..' 🌝💘',
-'اسمي  '..Namebot..' ياحياتي🧸♥️',
-'اسمي  '..Namebot..' يوتكه🙈🍑',
-} 
+if text == 'بوت' or text == 'بوتت' then 
+NameBot = (DevRio:get(David..'Rio:NameBot') or 'انوبيس')
+local DavidTeam = {' كول حبيبي ؟ اني '..NameBot..' ',' وياك القميل '..NameBot..' ',' اسمي القميل '..NameBot..' '}
 DevRio2 = math.random(#DavidTeam) 
-local msg_id = msg.id_/2097152/0.5  
-keyboard = {} 
-keyboard.inline_keyboard = {
-{
-{text = ' مــطــور الــبــوت🔰', url="http://t.me/U_U_U_Q},
-}
-local function getpro(extra, result, success) 
-if result.photos_[0] then 
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo='..result.photos_[0].sizes_[1].photo_.persistent_id_..'&caption=' .. URL.escape(Namebot).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
-else 
 Dev_Rio(msg.chat_id_, msg.id_, 1, DavidTeam[DevRio2] , 1, 'html') 
-end 
-end 
-tdcli_function ({ ID = "GetUserProfilePhotos", user_id_ = David, offset_ = 0, limit_ = 1 }, getpro, nil) 
+return false
 end
 if text == 'اسم البوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
 NameBot = (DevRio:get(David..'Rio:NameBot') or 'انوبيس') 
