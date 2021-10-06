@@ -3423,14 +3423,14 @@ end
 --     Source David     --
 if text == '/start' or text == '/start' or text == '/start' or text == "/Alamy" then
 local Text = "  ـــــــــــــــــــــــــــــــــــــــــــــــ\n🤖╖ أهلآ بك عزيزي أنا بوت   "..NameBot.."\n🌐╢ وظيفتي حماية المجموعات\n✅╢ لتفعيل البوت عليك اتباع مايلي \n🔘╢ أضِف البوت إلى مجموعتك\n⚡️╢ ارفعهُ » مشرف\n️⬆️╜ سيتم ترقيتك مالك في البوت\nــــــــــــــــــــــــــــــــــــــــــــــــــــ"
-keyboard = {} 
-keyboard.inline_keyboard = {
-{{text = 'المطور', url="t.me/'..(chat.username_ or "SOURCEANUBIS")..'"}}, 
-}
+local inline = {{{text="• ᥀ المطور . •",url="t.me/"..(dp.username_ or "SOURCEANUBIS")}},{{text="• ᥀ السورس . •",url="https://t.me/SOURCEANUBIS"},{text="• ᥀ لتنصيب بوت . •",url="https://t.me/U_U_U_Q"}},{{text="• ᥀ اضفني في مجموعتك . •",url="t.me/"..dp.username_.."?startgroup=botstart"}}}
 local msg_id = msg.id_/2097152/0.5
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
---     Source David     --
+SendInline(msg.chat_id_,Start_Source,nil,inline)
+end,nil)
+end
+--     Source David     -- 
 if not SecondSudo(msg) and not DevRio:sismember(David..'Rio:Ban:Pv',msg.sender_user_id_) and not DevRio:get(David..'Rio:Texting:Pv') then
 tdcli_function({ID="GetUser",user_id_=DevId},function(arg,chat) 
 Dev_Rio(msg.sender_user_id_, msg.id_, 1, '᥀︙تم ارسال رسالتك الى [المطور](t.me/'..(chat.username_ or "SOURCEANUBIS")..')', 1, 'md') 
