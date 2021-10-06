@@ -962,7 +962,7 @@ keyboard.inline_keyboard = {
 {text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"},
 },
 }
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..Msg_Id2.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if DataText == '/zDRGd' then
 local Teext =[[
@@ -998,7 +998,7 @@ keyboard.inline_keyboard = {
 {text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"},
 },
 }
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..Msg_Id2.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 
 if DataText == '/change-hhh' then
@@ -1018,7 +1018,7 @@ keyboard.inline_keyboard = {
 {text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"},
 },
 }
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..Msg_Id2.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if DataText == '/change-hklp' then
 local Teext =[[
@@ -1034,7 +1034,7 @@ keyboard.inline_keyboard = {
 {{text = '˹ᴛᴀᴡᴏsʟ˼',url="t.me/SOURCEANUBIS"}}, 
 {{text = '𓄂 𝙱𝙰𝙲??↵', callback_data="/change-hhh"}},
 }
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..Msg_Id2.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if DataText == '/change-gfgjo' then
 local Teext =[[
@@ -1052,7 +1052,7 @@ keyboard.inline_keyboard = {
 {{text = '•𝚋𝚊𝚛𝚕𝚘♪', url="t.me/bar_lo0o0"}},
 {{text = '𓄂 𝙱𝙰𝙲𝙺↵', callback_data="/change-hhh"}},
 }
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..Msg_Id2.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if DataText == '/change-ghjjgyy' then
 local Teext =[[
@@ -1072,7 +1072,7 @@ keyboard.inline_keyboard = {
 {{text = '⇣ 𝙰𝙽𝚄𝙱𝙸𝚂 ⇣', url="t.me/SOURCEANUBIS"}},
 {{text = '𓄂 𝙱𝙰𝙲𝙺↵', callback_data="/change-hhh"}},
 }
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..Msg_Id2.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 if DataText == '/change-siusr' then
 local Teext =[[
@@ -1084,7 +1084,7 @@ keyboard.inline_keyboard = {
 {{text = '•𝙱𝙰𝚁𝙻𝙾♪',url="t.me/bar_lo0o0"},{text = '•𝙶𝟾𝙰𝚉𝙰𝙻♪', url="t.me/G8AZAAL"}},
 {{text = ' مــطــور الــبــوت🔰', url="http://t.me/"..sudos.UserName}},
 }
-return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+return https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. data.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS&caption=' .. URL.escape(Text).."&reply_to_message_id="..Msg_Id2.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 end
 --     Source David     --
 if DataText == '/yesdel' and DevRio:get(David..'yesdel'..data.sender_user_id_) == 'delyes' then
