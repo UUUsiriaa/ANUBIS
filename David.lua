@@ -5139,7 +5139,7 @@ end
 end 
 --     Source David     --
 if ChatType == 'sp' or ChatType == 'gp' or ChatType == 'pv' then
-if text == 'بوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
+if text == 'بوت' or text == 'بوتت' or text == 'شسمه البوت' or text == 'البوت شسمه' then
 Rio = math.random(3,1002); 
 local Text ='*𖢅اسمي '..NameBot..'*'
 keyboard = {}  
@@ -5212,7 +5212,7 @@ name = string.gsub(name,'🍈','🍈')
 name = string.gsub(name,'🍒','🍒')
 name = string.gsub(name,'🍑','🍑')
 name = string.gsub(name,'🍍','🍍')
-name = string.gsub(name,'??','🥥')
+name = string.gsub(name,'🥥','🥥')
 name = string.gsub(name,'🥝','🥝')
 name = string.gsub(name,'🍅','🍅')
 name = string.gsub(name,'🍆','🍆')
@@ -9183,7 +9183,7 @@ local List = {
 𓄼🇮🇶 𝑴𝒔𝒈𝒔 : #msgs
 ]],
 [[
-➞: 𝒔𝒕𝒂𓂅 #stast 𓍯➸💞.
+➞: ??𝒕𝒂𓂅 #stast 𓍯➸💞.
 ➞: 𝒖𝒔𝒆𝒓𓂅 #username 𓍯➸💞.
 ➞: 𝒎𝒔𝒈𝒆𓂅 #msgs 𓍯➸💞.
 ➞: 𝒊𝒅 𓂅 #id 𓍯➸💞.
