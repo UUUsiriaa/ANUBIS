@@ -27,7 +27,6 @@ local DevId = io.read():gsub(' ','')
 if tostring(DevId):match('%d+') then 
 io.write('\27[1;36mتم حفظ ايدي المطور الاساسي\n27[0;39;49m') 
 DevRio:set(Server.."IdDavid",DevId) 
-end ---ifok
 else 
 print('\27[1;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\nلم يتم حفظ ايدي المطور الاساسي ارسله مره اخرى\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉') 
 end
@@ -48,7 +47,7 @@ end
 else 
 print('\27[1;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\nلم يتم حفظ توكن البوت ارسله مره اخرى\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉') 
 end  
-os.execute('lua David-Fatime.lua') 
+os.execute('lua David.lua') 
 end
 local Create = function(data, file, uglify)  
 file = io.open(file, "w+")   
@@ -99,7 +98,7 @@ cd $HOME/David
 while(true) do
 rm -fr ../.telegram-cli
 screen -S David -X kill
-screen -S David ./David-Fatime.sh
+screen -S David ./David.sh
 done
 ]]) 
 file:close() 
