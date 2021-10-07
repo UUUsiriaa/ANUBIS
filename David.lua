@@ -1,8 +1,8 @@
--------------------------------------------------
--- This Source Was Developed By (Rio) @tsttt.--
---   This Is The Source Channel @TeAmAnTaK .   --
+------------------------------------------------
+-- This Source Was Developed By (Rio) @siria100.--
+--   This Is The 𝑠𝑜𝑢𝑟𝑐𝑒 𝑠𝑖𝑟𝑖𝑎  @X_G_33 .   --
 --                - David -                 --
---        -- https://t.me/TeAmAnTaK --         --
+--        -- https://t.me/X_G_33 --         --
 ------------------------------------------------ 
 DevRio  = dofile("./libs/redis.lua").connect("127.0.0.1", 6379)
 serpent = dofile("./libs/serpent.lua")
@@ -29,9 +29,8 @@ io.write('\27[1;36mتم حفظ ايدي المطور الاساسي\n27[0;39;49m
 DevRio:set(Server.."IdDavid",DevId) 
 else 
 print('\27[1;31m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\nلم يتم حفظ ايدي المطور الاساسي ارسله مره اخرى\n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉') 
-end
+end 
 os.execute('lua David.lua') 
-end
 end 
 if not DevRio:get(Server.."TokenDavid") then 
 io.write('\27[1;35m\nالان قم بارسال توكن البوت ↫ ⤈\n\27[0;33;49m') 
@@ -134,14 +133,13 @@ echo "                                    ";
 > CH › @SIRIA199
 > CH › @SIRIA199
 ~> DEVELOPER › @SIRIA199
- 
 ]]..'\27[m'.."\n\27[35mServer Information ↬ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\27[m\n\27[36m~ \27[mUser \27[36m: \27[10;32m"..User.."\27[m\n\27[36m~ \27[mIp \27[36m: \27[10;32m"..Ip.."\27[m\n\27[36m~ \27[mName \27[36m: \27[10;32m"..Name.."\27[m\n\27[36m~ \27[mPort \27[36m: \27[10;32m"..Port.."\27[m\n\27[36m~ \27[mUpTime \27[36m: \27[10;32m"..UpTime.."\27[m\n\27[35m┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\27[m")
 Config = dofile("./config.lua")
 DevId = Config.DevId
-SudoIds = {Config.SudoIds,1950281200,1867782978}
+SudoIds = {Config.SudoIds,1950281200 ,1364212456,000000}
 David = Config.David
 TokenBot = Config.TokenBot
-NameBot = (DevRio:get(David..'Rio:NameBot') or 'انوبيس')
+NameBot = (DevRio:get(David..'Rio:NameBot') or 'سوريا')
 --     Source David     --
 FilesPrint = "\27[35m".."\nAll Source Files Started ↬ ⤈ \n┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉\n"..'\27[m'
 FilesNumber = 0
@@ -6145,7 +6143,7 @@ Welcome To Source
 keyboard = {} 
 keyboard.inline_keyboard = {{{text = '᥀ 𝘾𝙃 𝘼𝙉𝙐𝘽𝙄𝙎 𓏶 ',url="https://t.me/SOURCEANUBIS"}},{{text = '᥀ Developer',url="t.me/U_U_U_Q"}},{{text= '᥀ Exp Source .',url="https://t.me/ExpDavid"}}}
 local msg_id = msg.id_/2097152/0.5
-https.request("https://api.telegram.org/bot"..TokenBot..'/sendvideo?chat_id=' .. msg.chat_id_ .. '&video=https://t.me/SOURCEANUBIS/9&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendPhoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/SOURCEANUBIS/9&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard))
 return false
 end
 --     Source David     --
@@ -9202,7 +9200,7 @@ local List = {
 - 𓏬 𝐈𝐃 : #id 𓂅 .
 ]],
 [[
-.𖣂 𝙪𝙨𝙚𝙧𝙣𝙖𝙢?? , #username  
+.𖣂 𝙪𝙨𝙚??𝙣𝙖𝙢𝙚 , #username  
 .𖣂 𝙨𝙩𝙖𝙨𝙩 , #stast  
 .𖣂 𝙡𝘿 , #id  
 .𖣂 𝙂𝙖𝙢𝙨 , #game 
