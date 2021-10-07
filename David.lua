@@ -87,7 +87,7 @@ echo "~ The Token Was Not Found In The config.lua File!"
 echo "┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉ ┉"
 exit 1
 fi
-./tg -s ./David-Fatime.lua -p PROFILE --bot=$token
+./tg -s ./David.lua -p PROFILE --bot=$token
 done
 ]])  
 file:close()  
@@ -9202,7 +9202,7 @@ local List = {
 - 𓏬 𝐈𝐃 : #id 𓂅 .
 ]],
 [[
-.𖣂 𝙪𝙨𝙚𝙧𝙣𝙖𝙢𝙚 , #username  
+.𖣂 𝙪𝙨𝙚𝙧𝙣𝙖𝙢?? , #username  
 .𖣂 𝙨𝙩𝙖𝙨𝙩 , #stast  
 .𖣂 𝙡𝘿 , #id  
 .𖣂 𝙂𝙖𝙢𝙨 , #game 
