@@ -11258,9 +11258,7 @@ DevRio:set(David..'Rio:Anime:Rio'..msg.chat_id_,true)
 end
 if text and (text == "انمي" or text == "↫ انمي ᥀") and not DevRio:get(David..'Rio:Anime:Rio'..msg.chat_id_) and ChCheck(msg) then
 Rio = math.random(3,1002); 
-NameBot = (DevRio:get(David..'Rio:NameBot') or 'انوبيس')
-local DavidTeam = {' كول حبيبي ؟ اني '..NameBot..' ',' وياك القميل '..NameBot..' ',' اسمي القميل '..NameBot..' '}
-DevRio2 = math.random(#DavidTeam) 
+local Text ='*𖢅⤈كول حبيبي ؟ اني '..NameBot..'*'
 keyboard = {}  
 keyboard.inline_keyboard = {{{text="• مره اخرى •",callback_data="/anime:"..msg.sender_user_id_}},{{text = '• David Team •',url="t.me/SOURCEANUBIS"}}} 
 local msg_id = msg.id_/2097152/0.5 
