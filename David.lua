@@ -5139,12 +5139,13 @@ end
 end 
 --     Source David     --
 if ChatType == 'sp' or ChatType == 'gp' or ChatType == 'pv' then
-if text == 'بوت' or text == 'بوتت' then 
-NameBot = (DevRio:get(David..'Rio:NameBot') or 'انوبيس')
-local DavidTeam = {' كول حبيبي ؟ اني '..NameBot..' ',' وياك القميل '..NameBot..' ',' اسمي القميل '..NameBot..' '}
-DevRio2 = math.random(#DavidTeam) 
-Dev_Rio(msg.chat_id_, msg.id_, 1, DavidTeam[DevRio2] , 1, 'html') 
-return false
+if text == 'بوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
+Rio = math.random(3,1002); 
+local Text ='*𖢅اسمي '..NameBot..'*'
+keyboard = {}  
+keyboard.inline_keyboard = {{{text = '• 𝒄𝒉 𝒂𝒏𝒖𝒃𝒊𝒔 𖢅 •',url="t.me/SOURCEANUBIS"}},{{text = '• 𝒄𝒉 𝒂𝒏𝒖𝒃𝒊𝒔 𖢅 •',url="t.me/SOURCEANUBIS"}}} 
+local msg_id = msg.id_/2097152/0.5 
+https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/AnimeDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
 if text == 'اسم البوت' or text == 'البوت شنو اسمه' or text == 'شسمه البوت' or text == 'البوت شسمه' then
 NameBot = (DevRio:get(David..'Rio:NameBot') or 'انوبيس') 
@@ -5211,7 +5212,7 @@ name = string.gsub(name,'🍈','🍈')
 name = string.gsub(name,'🍒','🍒')
 name = string.gsub(name,'🍑','🍑')
 name = string.gsub(name,'🍍','🍍')
-name = string.gsub(name,'🥥','🥥')
+name = string.gsub(name,'??','🥥')
 name = string.gsub(name,'🥝','🥝')
 name = string.gsub(name,'🍅','🍅')
 name = string.gsub(name,'🍆','🍆')
@@ -9200,7 +9201,7 @@ local List = {
 - 𓏬 𝐈𝐃 : #id 𓂅 .
 ]],
 [[
-.𖣂 𝙪𝙨𝙚??𝙣𝙖𝙢𝙚 , #username  
+.𖣂 𝙪𝙨𝙚𝙧𝙣𝙖𝙢𝙚 , #username  
 .𖣂 𝙨𝙩𝙖𝙨𝙩 , #stast  
 .𖣂 𝙡𝘿 , #id  
 .𖣂 𝙂𝙖𝙢𝙨 , #game 
@@ -11258,9 +11259,9 @@ DevRio:set(David..'Rio:Anime:Rio'..msg.chat_id_,true)
 end
 if text and (text == "انمي" or text == "↫ انمي ᥀") and not DevRio:get(David..'Rio:Anime:Rio'..msg.chat_id_) and ChCheck(msg) then
 Rio = math.random(3,1002); 
-local Text ='*𖢅⤈كول حبيبي ؟ اني '..NameBot..'*'
+local Text ='*𖢅⤈ تم اختيار صورة الانمي لك*'
 keyboard = {}  
-keyboard.inline_keyboard = {{{text = '• 𝒄𝒉 𝒂𝒏𝒖𝒃𝒊𝒔 𖢅 •',url="t.me/SOURCEANUBIS"}},{{text = '• 𝒄𝒉 𝒂𝒏𝒖𝒃𝒊𝒔 𖢅 •',url="t.me/SOURCEANUBIS"}}} 
+keyboard.inline_keyboard = {{{text="• مره اخرى •",callback_data="/anime:"..msg.sender_user_id_}},{{text = '• 𝒄𝒉 𝒂𝒏𝒖𝒃𝒊𝒔 𖢅 •',url="t.me/SOURCEANUBIS"}}} 
 local msg_id = msg.id_/2097152/0.5 
 https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' .. msg.chat_id_ .. '&photo=https://t.me/AnimeDavid/'..Rio..'&caption=' .. URL.escape(Text).."&reply_to_message_id="..msg_id.."&parse_mode=markdown&disable_web_page_preview=true&reply_markup="..JSON.encode(keyboard)) 
 end
@@ -11285,7 +11286,7 @@ https.request("https://api.telegram.org/bot"..TokenBot..'/sendphoto?chat_id=' ..
 end
 --     Source David     --
 if text == "تفعيل مسلسل" and Manager(msg) and ChCheck(msg) then
-local DavidTeam = '𖢅⤈ اهلا عزيزي ↫ '..RioRank(msg)..' \n??⤈ تم تفعيل المسلسلات'
+local DavidTeam = '𖢅⤈ اهلا عزيزي ↫ '..RioRank(msg)..' \n𖢅⤈ تم تفعيل المسلسلات'
 riomoned(msg.chat_id_, msg.sender_user_id_, msg.id_, DavidTeam, 14, string.len(msg.sender_user_id_))
 DevRio:del(David..'Rio:Series:Rio'..msg.chat_id_) 
 end
