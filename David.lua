@@ -528,6 +528,50 @@ end
 end
 send(chat,msg.id_,"𖢅⤈ تم رفع النسخه بنجاح \n𖢅⤈ تم تفعيل جميع المجموعات \n𖢅⤈ تم استرجاع مشرفين المجموعات \n𖢅⤈ تم استرجاع اوامر القفل والفتح في جميع مجموعات البوت ")
 end
+function AddFile_Bot(msg,chat,ID_FILE,File_Name)
+if File_Name:match('.json') then
+if tonumber(File_Name:match('(%d+)')) ~= tonumber(ban_id) then 
+send(chat,msg.id_," 𓄂   ملف نسخه ليس لهاذا البوت")
+return false 
+end      
+local File = json:decode(https.request('https://api.telegram.org/bot'.. token..'/getfile?file_id='..ID_FILE) ) 
+download_to_file('https://api.telegram.org/file/bot'..token..'/'..File.result.file_path, ''..File_Name) 
+send(chat,msg.id_," 𓄂   جاري ...\n 𓄂   رفع الملف الان")
+else
+send(chat,msg.id_,"* 𓄂  عذرا الملف ليس بصيغة {JSON} يرجى رفع الملف الصحيح*")
+end      
+local info_file = io.open('./'..ban_id..'.json', "r"):read('*a')
+local groups = JSON.decode(info_file)
+for idg,v in pairs(groups.GP_BOT) do
+bot_data:sadd(ban_id..'Chek:Groups',idg)  
+bot_data:set(ban_id..'lock:tagservrbot'..idg,true)   
+list ={"lock:Bot:kick","lock:user:name","lock:hashtak","lock:Cmd","lock:Link","lock:forward","lock:Keyboard","lock:geam","lock:Photo","lock:Animation","lock:Video","lock:Audio","lock:vico","lock:Sticker","lock:Document","lock:Unsupported","lock:Markdaun","lock:Contact","lock:Spam"}
+for i,lock in pairs(list) do 
+bot_data:set(ban_id..lock..idg,'del')    
+end
+if v.MNSH then
+for k,idmsh in pairs(v.MNSH) do
+bot_data:sadd(ban_id..'Constructor'..idg,idmsh)
+end
+end
+if v.MDER then
+for k,idmder in pairs(v.MDER) do
+bot_data:sadd(ban_id..'Manager'..idg,idmder)  
+end
+end
+if v.MOD then
+for k,idmod in pairs(v.MOD) do
+bot_data:sadd(ban_id..'Mod:User'..idg,idmod)  
+end
+end
+if v.ASAS then
+for k,idASAS in pairs(v.ASAS) do
+bot_data:sadd(ban_id..'Basic:Constructor'..idg,idASAS)  
+end
+end
+end
+send(chat,msg.id_,"\n 𓄂  تم رفع الملف بنجاح وتفعيل الجروبات\n 𓄂  ورفع {الامنشئين الاساسين ; والمنشئين ; والمدراء; والادمنيه} بنجاح")
+end
 --     Source David     --
 function resolve_username(username,cb)
 tdcli_function ({
@@ -2323,6 +2367,20 @@ return https.request("https://api.telegram.org/bot"..TokenBot..'/answercallbackq
 end
 end
 --     Source David     -- 
+if Text == '/ven1' then
+tdcli_function({ID ="GetChat",chat_id_=msg.chat_id_},function(arg,ta) 
+local linkgpp = json:decode(https.request('https://api.telegram.org/bot'..token..'/exportChatInviteLink?chat_id='..msg.chat_id_)) or bot_data:get(ban_id.."Private:Group:Link"..msg.chat_id_) 
+if linkgpp.ok == true then 
+local linkgp = '• 🖤 |ＬＩＮＫ ＧＲＯＵＰ.\nـــــــــــــــــــــــــ\n ['..ta.title_..']('..linkgpp.result..')\nـــــــــــــــــــــــــ\n  ['..linkgpp.result..']'
+keyboard = {} 
+keyboard.inline_keyboard = {{{text = ta.title_, url=linkgpp.result}},}
+DeleteMessage(Chat_id,{[0] = Msg_id})  
+https.request("https://api.telegram.org/bot"..token..'/sendmessage?chat_id=' .. msg.chat_id_ .. '&text=' .. URL.escape(linkgp).."&parse_mode=markdown&reply_markup="..JSON.encode(keyboard)) 
+else 
+send(msg.chat_id_, msg.id_,'𓄂  لا يوجد رابط ارسل ضع رابط') 
+end 
+end,nil) 
+end
 if DataText and DataText:match('/Linkinline:'..tonumber(data.sender_user_id_)..'(.*)') then
 local Rio = DataText:match('/Linkinline:'..tonumber(data.sender_user_id_)..'(.*)')
 if not DevRio:get(David.."Rio:Lock:GpLinksinline"..data.chat_id_) then 
@@ -2602,7 +2660,7 @@ local Help = DevRio:get(David..'Rio:Help1')
 local Text = [[
 𖢅⤈ اوامر حماية المجموعه ↫ ⤈
 𖢅○━━━━ 𝒂𝒏𝒖𝒃𝒊𝒔 𖢅━━━━○𖢅
-𖢅⤈ قفل • فتح ↫ الروابط
+??⤈ قفل • فتح ↫ الروابط
 𖢅⤈ قفل • فتح ↫ المعرفات
 𖢅⤈ قفل • فتح ↫ البوتات
 𖢅⤈ قفل • فتح ↫ المتحركه
@@ -9402,7 +9460,7 @@ if not DevRio:get(David..'Rio:Lock:Id'..msg.chat_id_) then
 if not DevRio:get(David..'Rio:Lock:Id:Photo'..msg.chat_id_) then
 Dev_Rio(msg.chat_id_, msg.id_, 1, notpicid, 1, 'html')
 else
-Dev_Rio(msg.chat_id_, msg.id_, 1, "𖢅⤈ معرفك ↫ ❨ "..username.." ❩\n𖢅⤈ ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n𖢅⤈ رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n𖢅⤈ رسائلك ↫ ❨ "..user_msgs.." ❩\n𖢅⤈ سحكاتك ↫ ❨ "..edit_msg.." ❩\n𖢅⤈ رسائلك ↫ ❨ "..user_msgs.." ❩\n𖢅⤈ تفاعلك ↫ "..formsgs(msguser).."\n𖢅⤈ نقاطك ↫ ❨ "..user_nkt.." ❩", 1, 'md')
+Dev_Rio(msg.chat_id_, msg.id_, 1, "𖢅⤈ معرفك ↫ ❨ "..username.." ❩\n??⤈ ايديك ↫ ❨ "..msg.sender_user_id_.." ❩\n𖢅⤈ رتبتك ↫ "..IdRank(msg.sender_user_id_, msg.chat_id_).."\n𖢅⤈ رسائلك ↫ ❨ "..user_msgs.." ❩\n𖢅⤈ سحكاتك ↫ ❨ "..edit_msg.." ❩\n𖢅⤈ رسائلك ↫ ❨ "..user_msgs.." ❩\n𖢅⤈ تفاعلك ↫ "..formsgs(msguser).."\n𖢅⤈ نقاطك ↫ ❨ "..user_nkt.." ❩", 1, 'md')
 end
 else
 Dev_Rio(msg.chat_id_, msg.id_, 1, '𖢅⤈ عذرا الايدي معطل', 1, 'md')
